@@ -55,7 +55,7 @@ plan = {
         "type": "carousel" if len(urls) > 1 else "photo",
         "caption": cap,
         "image_url": urls[0],
-        "media": [{"media_type": "IMAGE", "url": u} for u in urls],
+        "media": [{"media_type": "IMAGE", "image_url": u} for u in urls],
     },
     "story": {"image_url": f"{base}/{os.path.basename(story_files[0])}"},
 }
