@@ -1,17 +1,18 @@
 # Ton Itinéraire — Instagram automatique : procédure quotidienne
 
 Ce dépôt sert d'hébergement public aux visuels. Make lit `planning/AAAA-MM-JJ.json` chaque jour à 18h (Europe/Paris) et publie le post + la story sur Instagram.
-Ta mission à chaque exécution : **garantir que les fichiers de planning de DEMAIN et d'APRÈS-DEMAIN existent**, sont beaux, justes et variés.
+Ta mission à chaque exécution : **garantir que les fichiers de planning des 3 prochains jours existent**, sont beaux, justes et variés.
 
-## 1. Préparer
+## 1. Préparer (espace cloud)
 ```
-git clone https://<TOKEN>@github.com/<USER>/ton-itineraire-media.git && cd ton-itineraire-media
+cd /home/claude && rm -rf ti && git clone -q --depth 1 https://github.com/Victor13013/ton-itineraire-media.git ti && cd ti
 pip install playwright pillow --break-system-packages -q   # Chromium est déjà installé
-git config user.name "Ton Itineraire Bot"; git config user.email "bot@ton-itineraire.com"
 ```
-Lis `history.json` (30 derniers jours) et liste `queue/`.
+Le cloud peut LIRE le dépôt mais pas y écrire : l'envoi se fait depuis le Mac (étape 4).
+Lis `history.json` (30 derniers jours), liste `queue/` et `planning/`.
+Dates à préparer : **J+1, J+2 et J+3** (fuseau Europe/Paris) si leur `planning/<date>.json` n'existe pas encore. Ce tampon de 3 jours couvre les jours où le Mac est éteint.
 
-## 2. Pour chaque date manquante (J+1, J+2)
+## 2. Pour chaque date manquante (J+1 à J+3)
 1. **File d'attente d'abord** : si un fichier de `queue/` respecte sa contrainte `not_before`, utilise-le (ordre alphabétique), puis supprime-le de `queue/`.
 2. **Sinon, crée un contenu neuf** :
    - **Veille tendances (obligatoire)** : 2 à 4 recherches web du jour (actu voyage France, destinations tendance du mois, vacances scolaires à venir, nouvelles règles d'entrée/visa/taxes, événements). Choisis un angle utile pour quelqu'un qui prépare un voyage.
@@ -45,14 +46,25 @@ Lis `history.json` (30 derniers jours) et liste `queue/`.
 - **Tout chiffre, prix, date, règle** (visa, taxe, météo, horaires) : vérifié sur 2 sources dont 1 officielle si possible, le jour même. Mets les URL dans `"sources"` de l'item. Si incertain : ne publie pas le chiffre.
 - Victor n'apparaît jamais en photo.
 
-## 4. Publier
+## 4. Publier (via le Mac)
+1. Copie les fichiers produits (dossiers `media/<date>/`, `planning/<date>.json`, `history.json`, et note les fichiers `queue/` consommés) dans `/mnt/user-data/outputs/sync/` en gardant l'arborescence.
+2. `device_commit_files` → vers `/Users/victormazuy/Claude/Projects/ton itinéraire/instagram-auto/_sync/` (même arborescence).
+3. `device_bash` :
 ```
-git add -A && git commit -m "Planning AAAA-MM-JJ" && git push
+set -e; P="$HOME/mnt/ton itinéraire/instagram-auto"; cd $HOME; rm -rf repo
+git clone -q https://x-access-token:$TOKEN@github.com/Victor13013/ton-itineraire-media.git repo && cd repo
+git config user.name "Ton Itineraire Bot"; git config user.email "bot@ton-itineraire.com"
+cp -r "$P/_sync/." ./ ; git rm -q --ignore-unmatch queue/<fichiers consommés>
+git add -A && git commit -qm "Planning <dates>" && git push -q
+mkdir -p "$P/_sync_archive" && mv -n "$P/_sync" "$P/_sync_archive/$(date +%F-%H%M)"
 ```
-Vérifie ensuite qu'une URL `raw.githubusercontent.com/.../media/<date>/...` répond 200 (curl -I).
+4. Vérifie qu'une URL `https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/main/media/<date>/<fichier>.jpg` répond 200.
 
-## 5. Banque de photos
-Si moins de 30 photos n'ont jamais été utilisées (d'après `history.json`), ajoute une ligne `"photos_basses": true` au planning du jour et signale-le dans le résumé final : la tâche hebdomadaire de recharge (Mac) complètera.
+## 5. Banque de photos (recharge)
+Si moins de 30 photos de `photos/` n'ont jamais été utilisées (d'après `history.json`), recharge ~24 photos (6 destinations absentes ou peu couvertes × 4) :
+- Navigateur intégré de l'app Claude (outils `Claude_Browser`), onglet sur https://unsplash.com.
+- En JS dans la page : `fetch('/napi/search/photos?query=...&per_page=20&orientation=portrait')`, garde uniquement `!premium && !plus`, télécharge chaque photo via `fetch('/photos/'+id+'/download?force=true&w=1600')`, concatène tout en un seul Blob `[images..., JSON index {file,dest,id,alt,author,link,offset,size}, longueur JSON sur 8 octets big-endian]`, puis déclenche UN seul téléchargement `ti_bank.bin` (le navigateur bloque les téléchargements multiples).
+- Le fichier arrive dans `~/Downloads` sous un nom caché `.…claudefordesktop.…` : repère le plus récent, découpe-le en Python (device_bash) dans `instagram-auto/photos/` (noms `<destination>-NN.jpg`), compresse (1600 px, qualité 82), ajoute les entrées à `photos/credits.json`, copie dans le dépôt cloné et pousse.
 
 ## 6. Résumé final
 Termine par un résumé court : dates préparées, sujet, format, nombre de visuels, sources vérifiées, alertes éventuelles.
