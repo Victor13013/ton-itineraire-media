@@ -1,1 +1,40 @@
-[]
+[
+ {
+  "date": "2026-09-26",
+  "topic": "mythe-realite",
+  "format": "carousel",
+  "slides": 6,
+  "photos": [
+   "valise-02.jpg",
+   "valise-03.jpg",
+   "valise-04.jpg",
+   "voyage-01.jpg",
+   "voyage-02.jpg",
+   "voyage-03.jpg"
+  ]
+ },
+ {
+  "date": "2026-09-27",
+  "topic": "bali-9-jours",
+  "format": "carousel",
+  "slides": 6,
+  "photos": [
+   "bali-02.jpg",
+   "bali-03.jpg",
+   "bali-nusapenida-1.jpg",
+   "bali-nusapenida-3.jpg",
+   "bali-uluwatu-1.jpg",
+   "bali-uluwatu-3.jpg"
+  ]
+ },
+ {
+  "date": "2026-09-28",
+  "topic": "lisbonne-automne",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "portugal-01.jpg",
+   "portugal-03.jpg"
+  ]
+ }
+]
