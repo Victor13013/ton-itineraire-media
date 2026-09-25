@@ -1,0 +1,76 @@
+{
+ "post": {
+  "slug": "mythe-realite-sur-mesure",
+  "slides": [
+   {
+    "type": "cover",
+    "photo": "voyage-03.jpg",
+    "badge": "Mythe vs Réalité",
+    "title": "Itinéraire sur mesure : 4 idées reçues",
+    "sub": "On démêle le vrai du faux.",
+    "credit": "Global Residence Index"
+   },
+   {
+    "type": "myth",
+    "photo": "voyage-01.jpg",
+    "myth": "Un itinéraire sur mesure, c'est pour les gros budgets.",
+    "title": "Dès 49 € l'itinéraire",
+    "text": "Formule Essentiel, pour un voyage de 7 jours maximum. C'est le prix du service, pas celui du voyage.",
+    "credit": "oxana v"
+   },
+   {
+    "type": "myth",
+    "photo": "valise-03.jpg",
+    "myth": "Il faut une agence qui réserve tout pour vous.",
+    "title": "Vous réservez vous-même",
+    "text": "Ton Itinéraire ne réserve rien à votre place. Vous gardez la main sur vos dates et vos tarifs. 0 % de commission.",
+    "credit": "Dev Schwartz"
+   },
+   {
+    "type": "myth",
+    "photo": "voyage-02.jpg",
+    "myth": "Un itinéraire en ligne, c'est généré automatiquement.",
+    "title": "Chaque itinéraire est fait main",
+    "text": "Vos envies, votre rythme, votre budget : tout est construit à la main, jour par jour.",
+    "credit": "Amanda Bartel"
+   },
+   {
+    "type": "myth",
+    "photo": "valise-04.jpg",
+    "myth": "Sans réseau, impossible de suivre son programme.",
+    "title": "Il fonctionne hors connexion",
+    "text": "Livré en PDF, votre itinéraire reste lisible sur votre téléphone, sans 4G ni Wi-Fi.",
+    "credit": "Joshua Woroniecki"
+   },
+   {
+    "type": "cta",
+    "badge": "Votre voyage",
+    "title_html": "Un voyage pensé <em>pour vous</em>, pas pour tout le monde.",
+    "points": [
+     "Construit à la main, pour vous",
+     "0 % de commission : vous réservez vous-même",
+     "Accessible hors connexion"
+    ],
+    "button": "Itinéraire dès 49 € — lien en bio"
+   }
+  ]
+ },
+ "caption": "Itinéraire de voyage sur mesure : vous pensez que c'est cher, compliqué ou réservé aux agences ? On démêle 4 idées reçues.\n\n→ Dès 49 € l'itinéraire (formule Essentiel, jusqu'à 7 jours). C'est le prix du service, pas celui du voyage.\n→ Vous réservez vous-même, à vos tarifs. 0 % de commission.\n→ Chaque itinéraire est construit à la main, jour par jour.\n→ Livré en PDF, il reste lisible hors connexion.\n\nQuelle idée reçue aviez-vous avant de lire ce post ? Dites-le en commentaire.\n\nVotre #itinerairesurmesure vous attend : lien en bio.\n\n#voyagesurmesure #organiservoyage #conseilsvoyage #tonitineraire",
+ "story": {
+  "slug": "story-mythe-realite",
+  "format": "story",
+  "slides": [
+   {
+    "photo": "voyage-04.jpg",
+    "badge": "Nouveau post",
+    "title": "4 idées reçues sur le sur-mesure",
+    "text": "Laquelle pensiez-vous vraie ?",
+    "cta": "Voir le post →",
+    "type": "story",
+    "credit": "WanderLabs"
+   }
+  ]
+ },
+ "not_before": null,
+ "topic": "mythe-realite"
+}

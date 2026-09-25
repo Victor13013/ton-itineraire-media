@@ -1,0 +1,68 @@
+{
+ "post": {
+  "slug": "japon-le-saviez-vous",
+  "slides": [
+   {
+    "type": "cover",
+    "photo": "japon-01.jpg",
+    "badge": "Le saviez-vous ?",
+    "title": "Japon : 3 changements en 2026",
+    "sub": "À connaître avant de réserver.",
+    "credit": "Roméo A."
+   },
+   {
+    "type": "fact",
+    "photo": "japon-04.jpg",
+    "big": "3 000 ¥",
+    "title": "La taxe de départ a triplé",
+    "text": "Depuis juillet 2026, elle passe de 1 000 à 3 000 ¥ par départ. Elle est ajoutée au prix de votre billet d'avion.",
+    "credit": "Ice Tea"
+   },
+   {
+    "type": "fact",
+    "photo": "japon-02.jpg",
+    "big": "50 000 ¥",
+    "title": "Le JR Pass 7 jours : achetez-le au bon endroit",
+    "text": "Depuis le 1er octobre 2026, il coûte 53 000 ¥ via une agence. Sur le site officiel JR, le prix reste à 50 000 ¥.",
+    "credit": "David Emrich"
+   },
+   {
+    "type": "fact",
+    "photo": "japon-03.jpg",
+    "big": "1er nov.",
+    "title": "Détaxe : payer d'abord, rembourser au départ",
+    "text": "Dès le 1er novembre 2026, vous payez la taxe en boutique. Le remboursement se fait en quittant le Japon. Minimum : 5 000 ¥ par boutique et par jour.",
+    "credit": "Redd Francisco"
+   },
+   {
+    "type": "cta",
+    "badge": "Votre voyage au Japon",
+    "title_html": "Toutes ces infos, <em>déjà intégrées</em> à votre itinéraire.",
+    "points": [
+     "Construit à la main, pour vous",
+     "0 % de commission : vous réservez vous-même",
+     "Accessible hors connexion"
+    ],
+    "button": "Itinéraire dès 49 € — lien en bio"
+   }
+  ]
+ },
+ "caption": "Voyage au Japon 🇯🇵 : 3 changements à connaître en 2026 avant de réserver.\n\n→ Taxe de départ : depuis juillet 2026, elle passe de 1 000 à 3 000 ¥ par départ, incluse dans le billet d'avion.\n→ JR Pass : depuis le 1er octobre 2026, le pass 7 jours coûte 53 000 ¥ via une agence, contre 50 000 ¥ sur le site officiel JR.\n→ Détaxe : à partir du 1er novembre 2026, vous payez la taxe en boutique et vous êtes remboursé au départ du Japon. Minimum 5 000 ¥ d'achats par boutique et par jour.\n\nCes règles évoluent vite. Vérifiez toujours les sites officiels avant de partir.\n\nDans votre itinéraire sur mesure, ces infos sont déjà vérifiées et intégrées. Dès 49 € : lien en bio.\n\n#voyageJapon #Japon #JRPass #itinerairesurmesure #conseilsvoyage",
+ "story": {
+  "slug": "story-japon-2026",
+  "format": "story",
+  "slides": [
+   {
+    "photo": "japon-01.jpg",
+    "badge": "Le saviez-vous ?",
+    "title": "Japon : la taxe de départ a triplé",
+    "text": "3 000 ¥ par départ depuis juillet 2026. Les 2 autres changements sont sur le fil.",
+    "cta": "Voir le post →",
+    "type": "story",
+    "credit": "Roméo A."
+   }
+  ]
+ },
+ "not_before": "2026-10-01",
+ "topic": "japon-2026"
+}
