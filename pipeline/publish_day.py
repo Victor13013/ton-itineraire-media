@@ -12,9 +12,21 @@ date = sys.argv[2]
 user = sys.argv[3]
 base = f"https://raw.githubusercontent.com/{user}/ton-itineraire-media/main/media/{date}"
 out = REPO / "media" / date
+
+# RÈGLE : une photo n'est JAMAIS réutilisée (ni dans la même publication, ni d'une publication à l'autre)
+hp = REPO / "history.json"
+hist = json.load(open(hp)) if hp.exists() else []
+hist = [h for h in hist if h["date"] != date]          # relance d'une même date : on remplace
+used_before = {p for h in hist for p in h["photos"]}
+slides_all = item["post"]["slides"] + item["story"]["slides"]
+photos_list = [s["photo"] for s in slides_all if s.get("photo")]
+dups = sorted({p for p in photos_list if photos_list.count(p) > 1})
+reused = sorted(set(photos_list) & used_before)
+if dups or reused:
+    print("ERREURS : photo en double dans la publication :", dups, "| photo déjà publiée :", reused); sys.exit(1)
+
 if out.exists():
     shutil.rmtree(out)
-
 post_files, p1 = render(item["post"], str(out))
 story_files, p2 = render(item["story"], str(out))
 problems = p1 + p2
@@ -51,9 +63,8 @@ plan = {
 json.dump(plan, open(REPO / "planning" / f"{date}.json", "w"), ensure_ascii=False, indent=1)
 
 # historique (sujets + photos utilisées) pour varier
-hp = REPO / "history.json"
-hist = json.load(open(hp)) if hp.exists() else []
-photos = sorted({s["photo"] for s in item["post"]["slides"] + item["story"]["slides"] if s.get("photo")})
+photos = sorted(set(photos_list))
 hist.append({"date": date, "topic": item.get("topic"), "format": plan["post"]["type"], "slides": len(urls), "photos": photos})
+hist.sort(key=lambda h: h["date"])
 json.dump(hist, open(hp, "w"), ensure_ascii=False, indent=1)
 print("OK", date, plan["post"]["type"], len(urls), "visuels + 1 story")
