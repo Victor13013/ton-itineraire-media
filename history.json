@@ -38,6 +38,18 @@
   ]
  },
  {
+  "date": "2026-09-28-b",
+  "topic": "norvege-fjords-octobre",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "norvege-01.jpg",
+   "norvege-02.jpg",
+   "norvege-03.jpg",
+   "norvege-04.jpg"
+  ]
+ },
+ {
   "date": "2026-09-29",
   "topic": "dubrovnik-automne",
   "format": "photo",
