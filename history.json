@@ -71,5 +71,84 @@
    "japon-04.jpg",
    "valise-01.jpg"
   ]
+ },
+ {
+  "date": "2026-10-02",
+  "topic": "toussaint-2026",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "egypte-01.jpg",
+   "egypte-02.jpg",
+   "egypte-03.jpg",
+   "grece-02.jpg",
+   "italie-01.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-03",
+  "topic": "laponie-aurores",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "laponie-01.jpg",
+   "laponie-02.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-04",
+  "topic": "kenya-safari",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "kenya-01.jpg",
+   "kenya-02.jpg",
+   "kenya-03.jpg",
+   "kenya-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-05",
+  "topic": "ia-ou-humain",
+  "format": "carousel",
+  "slides": 3,
+  "photos": [
+   "italie-02.jpg",
+   "voyage-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-06",
+  "topic": "machu-picchu",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "perou-01.jpg",
+   "perou-03.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-07",
+  "topic": "sri-lanka-train",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "srilanka-01.jpg",
+   "srilanka-02.jpg",
+   "srilanka-03.jpg",
+   "srilanka-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-08",
+  "topic": "baie-ha-long",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "vietnam-01.jpg",
+   "vietnam-02.jpg",
+   "vietnam-03.jpg",
+   "vietnam-04.jpg"
+  ]
  }
 ]

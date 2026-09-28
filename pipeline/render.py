@@ -89,6 +89,17 @@ p{font-weight:500;line-height:1.45}
 .cta li{font-size:38px;font-weight:500;padding:14px 0;display:flex;gap:18px;align-items:center}
 .cta li svg{flex:none}
 .cta .btn{display:inline-block;background:var(--accent);color:#12141C;font-family:'Bricolage';font-weight:800;font-size:38px;padding:26px 44px;border-radius:60px}
+
+.compare{background:var(--bg)}
+.compare .ttl{position:absolute;left:64px;right:64px;top:170px}
+.compare .ttl h2{font-size:76px}
+.compare .cols{position:absolute;left:64px;right:64px;top:380px;bottom:150px;display:flex;gap:28px}
+.compare .col{flex:1;background:#fff;border-radius:28px;padding:48px 36px;border-top:12px solid var(--accent)}
+.compare .col.h{border-top-color:var(--ink)}
+.compare .col .lab{font-family:'Bricolage';font-weight:800;font-size:30px;letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
+.compare .col.h .lab{color:var(--ink)}
+.compare .col h3{font-family:'Bricolage';font-weight:800;font-size:58px;margin:14px 0 34px}
+.compare .col li{font-size:36px;line-height:1.3;color:var(--soft);margin-bottom:26px;list-style:none}
 [hidden]{display:none!important}
 .credit{position:absolute;right:64px;bottom:96px;font-size:18px;opacity:.75;z-index:5}
 """
@@ -132,6 +143,11 @@ def slide_html(s, i, n):
 <div class="flow"><div class="box m"><div class="lab">Mythe</div><h2>{e(s['myth'])}</h2></div>
 <div class="box r"><div class="lab">Réalité</div><h2>{e(s['title'])}</h2><p>{e(s['text'])}</p></div></div>"""
         top, _ = chrome(i, n, True)
+    elif t == "compare":
+        def col(c, cls):
+            lis = "".join(f"<li>→ {e(x)}</li>" for x in c["lines"])
+            return f'<div class="col {cls}"><div class="lab">{e(c["label"])}</div><h3>{e(c["title"])}</h3><ul>{lis}</ul></div>'
+        body = f"""<div class="s compare"><div class="ttl"><h2>{e(s['title'])}</h2></div><div class="cols">{col(s['left'],'')}{col(s['right'],'h')}</div>"""
     elif t == "cta":
         lis = "".join(f"<li>{CHECK}<span>{e(x)}</span></li>" for x in s["points"])
         body = f"""<div class="s cta"><div class="glow"></div><div class="txt"><span class="pill">{e(s.get('badge','Votre voyage'))}</span>
@@ -178,7 +194,7 @@ def render(spec, outdir):
             pg.evaluate("document.fonts.ready")
             pg.wait_for_timeout(300)
             # contrôle débordement : aucun texte ne sort du cadre ni ne chevauche le bas (dots)
-            over = pg.evaluate("""()=>[...document.querySelectorAll('h1,h2,p,li,.pill,.btn')].filter(el=>{const r=el.getBoundingClientRect();return r.right>1080-40||r.bottom>1350-90||r.left<40}).map(el=>el.textContent.slice(0,40))""")
+            over = pg.evaluate("""()=>[...document.querySelectorAll('h1,h2,h3,p,li,.pill,.btn')].filter(el=>{const r=el.getBoundingClientRect();return r.right>1080-40||r.bottom>1350-90||r.left<40}).map(el=>el.textContent.slice(0,40))""")
             if over:
                 problems.append((i, over))
             f = os.path.join(outdir, f"{spec['slug']}-{i:02d}.jpg")
