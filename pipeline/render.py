@@ -121,7 +121,7 @@ def slide_html(s, i, n):
         body = f"""<div class="s cover"><img class="bg" src="{photo(s['photo'])}"><div class="shade"></div>
 <div class="txt"><span class="pill">{e(s['badge'])}</span><h1>{e(s['title'])}</h1><p>{e(s.get('sub'))}</p></div>"""
     elif t == "photo":
-        body = f"""<div class="s photo"><div class="imgwrap"><img src="{photo(s['photo'])}"></div>
+        body = f"""<div class="s photo"><div class="imgwrap"><img src="{photo(s['photo'])}" style="object-position:{s.get('pos','center')}"></div>
 <div class="panel"><div class="kicker">{e(s['kicker'])}</div><h2>{e(s['title'])}</h2><p>{e(s['text'])}</p></div>"""
         top, _ = chrome(i, n, True)
     elif t == "fact":

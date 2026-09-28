@@ -36,5 +36,40 @@
    "portugal-01.jpg",
    "portugal-03.jpg"
   ]
+ },
+ {
+  "date": "2026-09-29",
+  "topic": "dubrovnik-automne",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "croatie-01.jpg",
+   "croatie-02.jpg"
+  ]
+ },
+ {
+  "date": "2026-09-30",
+  "topic": "marrakech-agafay-5-jours",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "maroc-01.jpg",
+   "maroc-02.jpg",
+   "maroc-03.jpg",
+   "maroc-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-01",
+  "topic": "japon-2026",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "japon-01.jpg",
+   "japon-02.jpg",
+   "japon-03.jpg",
+   "japon-04.jpg",
+   "valise-01.jpg"
+  ]
  }
 ]
