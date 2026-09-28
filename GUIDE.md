@@ -19,7 +19,7 @@ Dates à préparer : **J+1, J+2 et J+3** (fuseau Europe/Paris) si leur `planning
    - **Format selon le jour** (varie si le même sujet revient) :
      | Jour | Format | Type |
      |---|---|---|
-     | Lundi | Mythe vs Réalité OU Dans les coulisses (signé « — Victor, fondateur de Ton Itinéraire ») | carrousel 5-7 |
+     | Lundi | Mythe vs Réalité (jamais le mythe « généré automatiquement », puisque l'Essentiel est en IA) OU Dans les coulisses (signé « — Victor, fondateur de Ton Itinéraire ») | carrousel 5-7 |
      | Mardi | Destination du jour | post simple (1 slide `cover`) |
      | Mercredi | Exemple d'itinéraire (jour par jour, rappel final « ceci est un exemple ») | carrousel 5-7 |
      | Jeudi | Le saviez-vous ? (faits vérifiés, 1 par slide `fact`) | carrousel 4-6 |
@@ -40,8 +40,15 @@ Dates à préparer : **J+1, J+2 et J+3** (fuseau Europe/Paris) si leur `planning
 - **Mots interdits** : paradisiaque, magique, incroyable, inoubliable, époustouflant, pépite, « n'hésitez pas », voyage de rêve, havre de paix, à couper le souffle, incontournable.
 - **Aucun emoji** sauf drapeaux et flèches typographiques (→).
 - **Légende** : mot-clé principal (ex. « itinéraire Portugal 7 jours ») dans la 1re phrase ; puces avec « → » ; une question pour les commentaires ; CTA « lien en bio » ; **5 hashtags max** intégrés ou en fin (mix : 1 destination, 1 niche FR, #itinerairesurmesure, #tonitineraire). ≤ 1 500 caractères.
-- **Tarifs** (ne jamais inventer) : Essentiel 49-69 € (0-7 j : 49 €, 8-14 j : 59 €, 15 j+ : 69 €), Complet 99-139 €, Premium 179-229 €. Toujours préciser que c'est le prix du service, pas du voyage.
-- **Ton Itinéraire ne réserve jamais rien** à la place du client. 0 % de commission. Fait main. Accessible hors connexion.
+- **Les 3 formules (vérifié sur ton-itineraire.com le 26/09/2026 — relis /formules, /essentiel et l'accueil à chaque exécution et adapte-toi si ça change)** :
+  | Formule | Qui la fait | Délai | Prix (service, pas le voyage) |
+  |---|---|---|---|
+  | **Essentiel** | **Générée par IA**, en temps réel, **sans relecture humaine** | 1 à 3 min, aperçu gratuit avant paiement | dès 49 € (0-7 j : 49 €, 8-14 j : 59 €, 15 j+ : 69 €) |
+  | **Complet** | **Humain** (Victor), recherché et vérifié à 100 % | 4 à 5 jours | 99-139 € |
+  | **Premium / Accompagné** | **Humain** + accompagnement pendant le voyage | 4 à 5 jours | 179-229 € |
+- **Règle IA / humain (obligatoire)** : ne JAMAIS écrire que « tous les itinéraires sont faits main » ni « jamais générés automatiquement ». « Fait main / vérifié par un humain » = uniquement Complet et Premium. Quand tu cites « dès 49 € », précise que c'est la formule IA (Essentiel). Angle marketing autorisé : « Aperçu gratuit en 3 min avec l'IA, ou un itinéraire 100 % vérifié par un humain avec Complet / Premium ».
+- **Ton Itinéraire ne réserve jamais rien** à la place du client. 0 % de commission (« Pas d'agence, pas de commission »). PDF consultable hors connexion. Paiement sécurisé Stripe.
+- **Points CTA par défaut** (slide `cta`) : « 0 % de commission : vous réservez vous-même » · « Aperçu gratuit en 3 min (formule IA) » · « Complet et Premium : vérifiés par un humain » ; bouton « Aperçu gratuit — lien en bio ».
 - **Aucun avis client inventé**. Avis réels utilisables uniquement : Manon R. (Islande, 9 j), Thomas B. (Maroc, 12 j), Léa D. (Vietnam, 15 j), Camille V. (Kenya, 10 j) — sans inventer de citation.
 - **Tout chiffre, prix, date, règle** (visa, taxe, météo, horaires) : vérifié sur 2 sources dont 1 officielle si possible, le jour même. Mets les URL dans `"sources"` de l'item. Si incertain : ne publie pas le chiffre.
 - Victor n'apparaît jamais en photo.
