@@ -162,5 +162,31 @@
    "vietnam-03.jpg",
    "vietnam-04.jpg"
   ]
+ },
+ {
+  "date": "2026-10-09",
+  "topic": "esta-new-york",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "newyork-01.jpg",
+   "newyork-02.jpg",
+   "newyork-03.jpg",
+   "newyork-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-10",
+  "topic": "ou-partir-novembre",
+  "format": "carousel",
+  "slides": 6,
+  "photos": [
+   "egypte-04.jpg",
+   "jordanie-02.jpg",
+   "jordanie-04.jpg",
+   "mexique-01.jpg",
+   "mexique-03.jpg",
+   "thailande-04.jpg"
+  ]
  }
 ]
