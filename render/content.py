@@ -357,7 +357,7 @@ Vacances de la Toussaint, week-end, déplacement pro : elle rentre dans toutes l
 # ───────────────────────── 17 · CAROUSEL
 dict(date="2026-10-25", kind="carousel", slides=[
   dict(tpl="hero", img=s("ricin_arriere"), kicker="Brosse à dents électrique", title="3 signes qu'il faut changer ta tête", swipe=True),
-  dict(tpl="list", img=s("ricin_solo"), title="Change-la si...", items=[("Les poils s'écartent","Ils nettoient moins bien."),("La couleur a changé","Signe d'usure."),("Ça fait plus de 3 mois","Même si elle a l'air propre.")], page="2/3"),
+  dict(tpl="list", img=s("nylon_profil"), title="Change-la si...", items=[("Les poils s'écartent","Ils nettoient moins bien."),("La couleur a changé","Signe d'usure."),("Ça fait plus de 3 mois","Même si elle a l'air propre.")], page="2/3"),
   dict(tpl="product", img=s("ricin_pack2"), kicker="Têtes de recharge", title="Clip en une seconde", sub="Têtes en bambou, poils ricin ou nylon.", page="3/3"),
 ],
 caption="""3 signes qu'il est temps de changer la tête de ta brosse à dents électrique :

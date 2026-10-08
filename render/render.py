@@ -276,7 +276,10 @@ def prep(src):
     if is_packshot(src): return src, True
     b = border_px(src)
     if (b.min(axis=1) > 238).mean() > 0.8: return whiten(src), True
-    if is_flat(src): return rekey(src, (255, 255, 255)), True
+    if is_flat(src):
+        r, g, bl = b.mean(axis=0)
+        if g > r and g > bl: return src, False        # fond vert : déjà dans la charte, on garde la photo
+        return rekey(src, (255, 255, 255)), True
     return src, False
 
 def rekey(im, target):
