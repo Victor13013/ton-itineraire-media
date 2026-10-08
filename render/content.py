@@ -61,7 +61,7 @@ TAGS = "#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulse
 POSTS = [
 # ───────────────────────── 18/10 18h (remplace le post publié en test le 08/10)
 dict(date="2026-10-18", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1759563871375-d5b140f6646e", kicker="Pulse Care Bamboo+", title="Ce qu'il y a *dans la boîte*", swipe=True),
+  dict(tpl="hero", img="u:1668463876833-339717e58c4c", kicker="Pulse Care Bamboo+", title="Ce qu'il y a *dans la boîte*", swipe=True),
   dict(tpl="list", img="u:1643274390061-cef676c273d7", title="Le contenu", numbered=True, items=[("1 manche Bamboo+","En plastique ASA, il reste."),("2 têtes en bambou","Une à utiliser, une d'avance."),("1 étui de voyage","En bambou."),("1 câble USB-C","Recharge en 2,5 h environ.")], page="2/3"),
   dict(tpl="stats", img="u:1535295972055-1c762f4483e5", title="Pour 59,90 €", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie"),("IPX7","étanche")], page="3/3"),
 ],
