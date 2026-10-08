@@ -125,7 +125,7 @@ Si ça dure, parles-en à ton dentiste.
 """ + T),
 
 dict(date="2026-10-17", kind="photo", slides=[
-  dict(tpl="statement", img="u:1602005106566-1b6ccf2c95bb", kicker="Autonomie", title="Une charge. *Un mois de brossage.*", sub="Jusqu'à 30 jours d'autonomie, recharge USB-C."),
+  dict(tpl="statement", img="u:1533093818119-ac1fa47a6d59", kicker="Autonomie", title="Une charge. *Un mois de brossage.*", sub="Jusqu'à 30 jours d'autonomie, recharge USB-C."),
 ], caption="""Une charge de ta brosse à dents électrique Bamboo+ tient jusqu'à 30 jours.
 
 → recharge en USB-C, environ 2,5 heures
@@ -154,7 +154,7 @@ Simple. Et ta tête reste propre jusqu'au bout.
 """ + T3),
 
 dict(date="2026-10-19", kind="photo", slides=[
-  dict(tpl="hero", img="u:1785872886414-4c1c3206f79c", kicker="Hygiène", title="Ta brosse sèche *à l'air libre* ?", sub="Range-la tête en haut. Évite le placard fermé juste après usage."),
+  dict(tpl="hero", img="u:1685084844860-5d94e6c82939", kicker="Hygiène", title="Ta brosse sèche *à l'air libre* ?", sub="Range-la tête en haut. Évite le placard fermé juste après usage."),
 ], caption="""Où ranges-tu ta brosse à dents électrique après usage ?
 
 La bonne place : à l'air libre, tête en haut. Elle sèche plus vite.
@@ -183,7 +183,7 @@ Tu n'as plus à te demander quand changer ta tête.
 #brosseadentselectrique #abonnement #tetederechange #pulsecare"""),
 
 dict(date="2026-10-21", kind="photo", slides=[
-  dict(tpl="statement", img="u:1606811971618-4486d14f3f99", kicker="Maladies dentaires", title="Le tartre, c'est de la plaque *qui a durci.*", sub="Une fois installé, seul ton dentiste peut l'enlever."),
+  dict(tpl="statement", img="u:1698749778813-ad5f2814e50f", kicker="Maladies dentaires", title="Le tartre, c'est de la plaque *qui a durci.*", sub="Une fois installé, seul ton dentiste peut l'enlever."),
 ], caption="""Le tartre : ce que ta brosse à dents électrique peut faire, et ce qu'elle ne peut pas faire.
 
 La plaque dentaire se forme chaque jour. Si elle n'est pas retirée, elle durcit et devient du tartre.
@@ -266,7 +266,7 @@ Les têtes sont compatibles uniquement avec les manches Pulse Care.
 #brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare"""),
 
 dict(date="2026-10-27", kind="photo", slides=[
-  dict(tpl="hero", img="u:1690959923318-afe5aa13c979", kicker="Bain de bouche", title="Pas *juste après* le brossage.", sub="Sinon tu rinces le fluor du dentifrice. Utilise-le à un autre moment."),
+  dict(tpl="hero", img="u:1598033594208-5b9d61d5df3c", kicker="Bain de bouche", title="Pas *juste après* le brossage.", sub="Sinon tu rinces le fluor du dentifrice. Utilise-le à un autre moment."),
 ], caption="""Bain de bouche après ta brosse à dents électrique ? Pas tout de suite.
 
 Juste après le brossage, il rince le fluor du dentifrice.
@@ -361,7 +361,7 @@ Réponds en commentaire : moins de 3 mois ou plus ?
 """ + T),
 
 dict(date="2026-11-03", kind="photo", slides=[
-  dict(tpl="hero", img="u:1667133295352-ef4c83620e8e", kicker="Maladies dentaires", title="La parodontite, *ça commence aux gencives.*", sub="Une gingivite non soignée peut évoluer. Le contrôle annuel sert à ça."),
+  dict(tpl="hero", img="u:1588776814546-1ffcf47267a5", kicker="Maladies dentaires", title="La parodontite, *ça commence aux gencives.*", sub="Une gingivite non soignée peut évoluer. Le contrôle annuel sert à ça."),
 ], caption="""Parodontite : ce que ta brosse à dents électrique peut faire pour tes gencives.
 
 C'est une maladie des gencives qui commence souvent par une gingivite non soignée.
