@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-28-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-28-2.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique : dans quel ordre faire les choses ?\n\n1. Fil dentaire ou brossettes\n2. Brossage 2 minutes\n3. Tu craches le dentifrice\n4. Tu ne rinces PAS à l'eau\n\nRincer enlève le fluor du dentifrice. En ne rinçant pas, il reste sur les dents plus longtemps.\n\nTu rinces, toi ? Sois honnête.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #conseilsdentaires #routinedentaire #pulsecare",
+    "fb_message": "Brosse à dents électrique : dans quel ordre faire les choses ?\n\n1. Fil dentaire ou brossettes\n2. Brossage 2 minutes\n3. Tu craches le dentifrice\n4. Tu ne rinces PAS à l'eau\n\nRincer enlève le fluor du dentifrice. En ne rinçant pas, il reste sur les dents plus longtemps.\n\nTu rinces, toi ? Sois honnête.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #conseilsdentaires #routinedentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-28-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-28-2.jpg"
+      }
+    ]
+  }
+}

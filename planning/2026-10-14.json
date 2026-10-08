@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-14-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-14-2.jpg"
+      }
+    ],
+    "caption": "Question rapide sur ta brosse à dents électrique : tu changes ta tête tous les combien ?\n\nA. Tous les 3 mois\nB. Quand les poils partent dans tous les sens\nC. Euh... jamais ?\n\nRéponds en commentaire avant de swiper. On ne juge pas.\n\nLa bonne réponse : tous les 3 mois. C'est la recommandation des dentistes. Après ça, les poils s'écartent et retirent moins bien la plaque.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #routinedentaire #pulsecare",
+    "fb_message": "Question rapide sur ta brosse à dents électrique : tu changes ta tête tous les combien ?\n\nA. Tous les 3 mois\nB. Quand les poils partent dans tous les sens\nC. Euh... jamais ?\n\nRéponds en commentaire avant de swiper. On ne juge pas.\n\nLa bonne réponse : tous les 3 mois. C'est la recommandation des dentistes. Après ça, les poils s'écartent et retirent moins bien la plaque.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #routinedentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-14-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-14-2.jpg"
+      }
+    ]
+  }
+}

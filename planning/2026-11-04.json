@@ -1,0 +1,43 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-04-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-04-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-04-3.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-04-4.jpg"
+      }
+    ],
+    "caption": "FAQ brosse à dents électrique Pulse Care : on répond à tes questions.\n\nLes têtes sont-elles compatibles avec d'autres marques ?\nNon. Elles sont conçues uniquement pour les manches Pulse Care.\n\nJe peux l'utiliser sous la douche ?\nOui, elle est étanche IPX7.\n\nCombien de temps dure la batterie ?\nJusqu'à 30 jours, pour 2 brossages par jour.\n\nUne autre question ? Pose-la en commentaire.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #faq #brosseadentsbambou #pulsecare",
+    "fb_message": "FAQ brosse à dents électrique Pulse Care : on répond à tes questions.\n\nLes têtes sont-elles compatibles avec d'autres marques ?\nNon. Elles sont conçues uniquement pour les manches Pulse Care.\n\nJe peux l'utiliser sous la douche ?\nOui, elle est étanche IPX7.\n\nCombien de temps dure la batterie ?\nJusqu'à 30 jours, pour 2 brossages par jour.\n\nUne autre question ? Pose-la en commentaire.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #faq #brosseadentsbambou #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-04-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-04-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-04-3.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-04-4.jpg"
+      }
+    ]
+  }
+}

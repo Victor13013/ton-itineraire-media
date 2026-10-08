@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-21-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-21-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-21-3.jpg"
+      }
+    ],
+    "caption": "Le pack duo : deux brosses à dents électriques Pulse Care Bamboo+ pour la maison.\n\nPour le couple. Pour les colocs. Pour toi et ton ado.\n\nChacun son manche. Chacun ses têtes en bambou. Une seule routine pour toute la salle de bain.\n\nPack duo : 94,90 € les deux.\n\nIdentifie la personne avec qui tu partages ton lavabo.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #packduo #brosseadentsbambou #pulsecare",
+    "fb_message": "Le pack duo : deux brosses à dents électriques Pulse Care Bamboo+ pour la maison.\n\nPour le couple. Pour les colocs. Pour toi et ton ado.\n\nChacun son manche. Chacun ses têtes en bambou. Une seule routine pour toute la salle de bain.\n\nPack duo : 94,90 € les deux.\n\nIdentifie la personne avec qui tu partages ton lavabo.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #packduo #brosseadentsbambou #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-21-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-21-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-21-3.jpg"
+      }
+    ]
+  }
+}

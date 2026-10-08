@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-02-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-02-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-02-3.jpg"
+      }
+    ],
+    "caption": "Bien utiliser ta brosse à dents électrique en 3 étapes.\n\n1. Mets le dentifrice sur la tête, place-la sur les dents AVANT d'allumer. Sinon, éclaboussures garanties.\n2. Angle de 45° vers la gencive. Tu glisses dent par dent, sans frotter.\n3. Suis le minuteur : 30 secondes par zone, la micro-pause te dit quand changer.\n\nEnregistre ce post pour l'avoir sous la main.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tuto #hygienebuccodentaire #pulsecare",
+    "fb_message": "Bien utiliser ta brosse à dents électrique en 3 étapes.\n\n1. Mets le dentifrice sur la tête, place-la sur les dents AVANT d'allumer. Sinon, éclaboussures garanties.\n2. Angle de 45° vers la gencive. Tu glisses dent par dent, sans frotter.\n3. Suis le minuteur : 30 secondes par zone, la micro-pause te dit quand changer.\n\nEnregistre ce post pour l'avoir sous la main.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tuto #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-02-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-02-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-02-3.jpg"
+      }
+    ]
+  }
+}

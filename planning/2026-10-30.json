@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-30-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-30-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-30-3.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique : 4 astuces pour une routine qui tient en famille.\n\n1. Même heure tous les soirs, juste après le pyjama\n2. Les parents se brossent en même temps que les enfants\n3. Le minuteur de 2 minutes devient un défi\n4. Chacun son repère pour ne pas mélanger les têtes\n\nPour les enfants, demande à ton dentiste le type de brosse adapté à leur âge.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #routinefamille #parents #pulsecare",
+    "fb_message": "Brosse à dents électrique : 4 astuces pour une routine qui tient en famille.\n\n1. Même heure tous les soirs, juste après le pyjama\n2. Les parents se brossent en même temps que les enfants\n3. Le minuteur de 2 minutes devient un défi\n4. Chacun son repère pour ne pas mélanger les têtes\n\nPour les enfants, demande à ton dentiste le type de brosse adapté à leur âge.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #routinefamille #parents #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-30-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-30-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-30-3.jpg"
+      }
+    ]
+  }
+}

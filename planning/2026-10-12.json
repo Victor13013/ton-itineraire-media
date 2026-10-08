@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-3.jpg"
+      }
+    ],
+    "caption": "4 modes sur ta brosse à dents électrique : lequel choisir ?\n\n→ Sensible : vibrations adoucies, pour les gencives qui saignent ou les dents sensibles\n→ Nettoyage : le mode de tous les jours\n→ Blanchiment : pour aider à retirer les taches de surface (café, thé)\n→ Polissage : pour finir avec une sensation de dents lisses\n\nAstuce : commence 1 à 2 semaines en mode Sensible si tu passes d'une brosse manuelle à l'électrique.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare",
+    "fb_message": "4 modes sur ta brosse à dents électrique : lequel choisir ?\n\n→ Sensible : vibrations adoucies, pour les gencives qui saignent ou les dents sensibles\n→ Nettoyage : le mode de tous les jours\n→ Blanchiment : pour aider à retirer les taches de surface (café, thé)\n→ Polissage : pour finir avec une sensation de dents lisses\n\nAstuce : commence 1 à 2 semaines en mode Sensible si tu passes d'une brosse manuelle à l'électrique.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-3.jpg"
+      }
+    ]
+  }
+}

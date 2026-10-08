@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-3.jpg"
+      }
+    ],
+    "caption": "Pourquoi une tête de brosse à dents électrique en bambou ?\n\nParce que la tête, c'est la partie que tu jettes tous les 3 mois. Le manche, lui, reste.\n\nChez Pulse Care :\n→ la tête est en bambou\n→ les poils sont à base d'huile de ricin, d'origine végétale\n→ le manche est en plastique ASA, conçu pour durer des années\n\nSwipe pour le détail.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentsbambou #brosseadentselectrique #bambou #pulsecare",
+    "fb_message": "Pourquoi une tête de brosse à dents électrique en bambou ?\n\nParce que la tête, c'est la partie que tu jettes tous les 3 mois. Le manche, lui, reste.\n\nChez Pulse Care :\n→ la tête est en bambou\n→ les poils sont à base d'huile de ricin, d'origine végétale\n→ le manche est en plastique ASA, conçu pour durer des années\n\nSwipe pour le détail.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentsbambou #brosseadentselectrique #bambou #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-3.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-05-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-05-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-05-3.jpg"
+      }
+    ],
+    "caption": "Têtes de recharge pour brosse à dents électrique : prends un pack, oublie le sujet.\n\nUne tête tous les 3 mois. Un pack de 4, c'est un an de brossage.\n\n→ en poils ricin ou en poils nylon\n→ têtes en bambou\n→ clip en une seconde sur ton manche Pulse Care\n\nPack de 4 : 14,90 €.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare",
+    "fb_message": "Têtes de recharge pour brosse à dents électrique : prends un pack, oublie le sujet.\n\nUne tête tous les 3 mois. Un pack de 4, c'est un an de brossage.\n\n→ en poils ricin ou en poils nylon\n→ têtes en bambou\n→ clip en une seconde sur ton manche Pulse Care\n\nPack de 4 : 14,90 €.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-05-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-05-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-05-3.jpg"
+      }
+    ]
+  }
+}

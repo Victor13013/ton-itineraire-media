@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-3.jpg"
+      }
+    ],
+    "caption": "3 signes qu'il est temps de changer la tête de ta brosse à dents électrique :\n\n→ les poils s'écartent vers l'extérieur\n→ la couleur des poils a changé\n→ ça fait plus de 3 mois\n\nChange-la aussi après une angine ou un gros rhume.\n\nNos têtes de recharge sont en bambou, avec poils ricin ou nylon. Elles se clipsent en une seconde sur le manche Pulse Care.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare",
+    "fb_message": "3 signes qu'il est temps de changer la tête de ta brosse à dents électrique :\n\n→ les poils s'écartent vers l'extérieur\n→ la couleur des poils a changé\n→ ça fait plus de 3 mois\n\nChange-la aussi après une angine ou un gros rhume.\n\nNos têtes de recharge sont en bambou, avec poils ricin ou nylon. Elles se clipsent en une seconde sur le manche Pulse Care.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-3.jpg"
+      }
+    ]
+  }
+}

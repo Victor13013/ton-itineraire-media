@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-24-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-24-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-24-3.jpg"
+      }
+    ],
+    "caption": "Partir en vacances avec sa brosse à dents électrique, sans le chargeur.\n\nAvec 30 jours d'autonomie, la Bamboo+ tient tout ton séjour.\n\nDans la boîte :\n→ un étui de voyage en bambou pour protéger la tête\n→ un câble USB-C si tu pars longtemps\n\nVacances de la Toussaint, week-end, déplacement pro : elle rentre dans toutes les trousses.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #voyage #troussedetoilette #pulsecare",
+    "fb_message": "Partir en vacances avec sa brosse à dents électrique, sans le chargeur.\n\nAvec 30 jours d'autonomie, la Bamboo+ tient tout ton séjour.\n\nDans la boîte :\n→ un étui de voyage en bambou pour protéger la tête\n→ un câble USB-C si tu pars longtemps\n\nVacances de la Toussaint, week-end, déplacement pro : elle rentre dans toutes les trousses.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #voyage #troussedetoilette #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-24-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-24-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-24-3.jpg"
+      }
+    ]
+  }
+}

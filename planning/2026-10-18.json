@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-3.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique ou manuelle : laquelle choisir ?\n\nLa manuelle marche si ta technique est parfaite. Bon angle, bon mouvement, 2 minutes pile.\n\nLa brosse à dents électrique sonique te facilite la vie :\n→ 41 000 vibrations par minute, tu n'as qu'à guider\n→ minuteur intégré, plus de brossage bâclé\n→ un mode Sensible pour les gencives fragiles\n\nTeam manuelle ou team électrique ?\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare",
+    "fb_message": "Brosse à dents électrique ou manuelle : laquelle choisir ?\n\nLa manuelle marche si ta technique est parfaite. Bon angle, bon mouvement, 2 minutes pile.\n\nLa brosse à dents électrique sonique te facilite la vie :\n→ 41 000 vibrations par minute, tu n'as qu'à guider\n→ minuteur intégré, plus de brossage bâclé\n→ un mode Sensible pour les gencives fragiles\n\nTeam manuelle ou team électrique ?\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-3.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-23-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-23-2.jpg"
+      }
+    ],
+    "caption": "Vrai ou faux : plus tu appuies fort avec ta brosse à dents électrique, plus tes dents sont propres ?\n\nFAUX.\n\nAppuyer fort use l'émail et fait reculer les gencives. Avec une brosse sonique, ce sont les vibrations qui nettoient.\n\nSwipe pour la bonne méthode.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #vraioufaux #conseilsdentaires #pulsecare",
+    "fb_message": "Vrai ou faux : plus tu appuies fort avec ta brosse à dents électrique, plus tes dents sont propres ?\n\nFAUX.\n\nAppuyer fort use l'émail et fait reculer les gencives. Avec une brosse sonique, ce sont les vibrations qui nettoient.\n\nSwipe pour la bonne méthode.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #vraioufaux #conseilsdentaires #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-23-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-23-2.jpg"
+      }
+    ]
+  }
+}
