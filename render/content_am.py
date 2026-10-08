@@ -26,7 +26,7 @@ Passe 2 secondes de plus sur chacune. C'est là que la plaque reste.
 """ + T),
 
 dict(date="2026-10-09", kind="photo", slides=[
-  dict(tpl="hero", img="u:1640625488786-ac3975ac3bf4", kicker="Question du matin", title="Avant ou après *le petit-déj* ?", sub="Avant : plus simple. Après : attends 30 minutes, surtout après un jus d'orange."),
+  dict(tpl="hero", img="u:1613478223719-2ab802602423", kicker="Question du matin", title="Avant ou après *le petit-déj* ?", sub="Avant : plus simple. Après : attends 30 minutes, surtout après un jus d'orange."),
 ], caption="""Brosse à dents électrique : avant ou après le petit-déjeuner ?
 
 Les deux marchent. Ce qui compte :
