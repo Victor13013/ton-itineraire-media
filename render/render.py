@@ -518,7 +518,7 @@ def main():
             rel = f"media/reels/{date}.mp4"; t0 = time.time()
             dur = render_reel(p["scenes"], os.path.join(ROOT, rel))
             print(f"{date} reel {dur:.1f}s ({time.time() - t0:.0f}s de rendu)")
-            post = {"type": "reel", "video_url": PAGES + rel, "caption": ig, "fb_message": fb}
+            post = {"type": "reel", "video_url": PAGES + rel, "thumb_offset": 1600, "caption": ig, "fb_message": fb}
             gallery.append((date, "reel", [rel.replace(".mp4", "-cover.jpg")], rel, ig))
         else:
             rels = []
