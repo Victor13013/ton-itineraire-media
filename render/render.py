@@ -16,6 +16,8 @@ from content import POSTS, SHOP, CTA_IG, CTA_FB  # noqa: E402
 from content_am import POSTS_AM  # noqa: E402
 SLOTS = [("", POSTS, 0), ("-10h", POSTS_AM, 1)]   # 18h -> AAAA-MM-JJ.json · 10h -> AAAA-MM-JJ-10h.json
 ALL = [p for _, L, _ in SLOTS for p in L]
+# Posts déjà publiés en test le 08/10 : plus de fichier de planning, pour éviter un doublon
+PUBLISHED = {"2026-10-18", "2026-10-15-10h"}
 
 FAKE = "--fake" in sys.argv
 ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
@@ -850,7 +852,12 @@ def main():
                   post = {"type": "carousel", "media": [{"media_type": "IMAGE", "image_url": u} for u in urls]}
               post.update({"caption": ig, "fb_message": fb, "fb_photos": [{"type": "url", "url": u} for u in urls]})
               gallery.append((date, p["kind"], rels, None, ig))
-          json.dump({"post": post}, open(os.path.join(ROOT, "planning", date + ".json"), "w"), ensure_ascii=False, indent=2)
+          if date in PUBLISHED:
+              json.dump({"post": post}, open(os.path.join(ROOT, "planning", "test-" + date + ".json"), "w"), ensure_ascii=False, indent=2)
+              pf = os.path.join(ROOT, "planning", date + ".json")
+              if os.path.exists(pf): os.remove(pf)
+          else:
+              json.dump({"post": post}, open(os.path.join(ROOT, "planning", date + ".json"), "w"), ensure_ascii=False, indent=2)
     if not ONLY: write_index(gallery)
 
 def write_index(gallery):
