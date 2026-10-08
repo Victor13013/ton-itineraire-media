@@ -57,10 +57,10 @@ TAGS = "#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulse
 POSTS = [
 # ───────────────────────── 1 · REEL
 dict(date="2026-10-09", kind="carousel", slides=[
-  dict(tpl="hero", img=s("p046"), kicker="Nouveau sur ton lavabo", title="Pulse Care Bamboo+", sub="La brosse à dents électrique sonique", swipe=True),
+  dict(tpl="hero", img=s("p046"), kicker="Nouveau sur ton lavabo", title="Pulse Care *Bamboo+*", sub="La brosse à dents électrique sonique", swipe=True),
   dict(tpl="stats", img=s("modes_main"), title="Les chiffres clés", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie"),("IPX7","étanche, même sous la douche")], page="2/4"),
   dict(tpl="hero", img=s("p083"), kicker="Recharge USB-C", title="Jusqu'à 30 jours d'autonomie", page="3/4"),
-  dict(tpl="product", img=s("decouverte_tetes"), kicker="Le principe", title="Tu gardes le manche. Tu changes la tête.", sub="Têtes en bambou, poils ricin ou nylon.", page="4/4"),
+  dict(tpl="product", img=s("decouverte_tetes"), kicker="Le principe", title="Tu gardes le manche.\n*Tu changes la tête.*", sub="Têtes en bambou, poils ricin ou nylon.", page="4/4"),
 ],
 caption="""Brosse à dents électrique Pulse Care Bamboo+ : on te la présente.
 
@@ -77,7 +77,7 @@ Le principe est simple. Tu gardes le manche. Tu changes seulement la tête, en b
 
 # ───────────────────────── 2 · PHOTO
 dict(date="2026-10-10", kind="photo", slides=[
-  dict(tpl="hero", img="u:1693692273603-3b9e13789298", kicker="La règle de base", title="2 minutes.\n2 fois par jour.", sub="Le minuteur s'arrête seul à 2 min, avec une pause toutes les 30 s pour changer de zone."),
+  dict(tpl="hero", img="u:1693692273603-3b9e13789298", kicker="La règle de base", title="2 minutes.\n*2 fois par jour.*", sub="Le minuteur s'arrête seul à 2 min, avec une pause toutes les 30 s pour changer de zone."),
 ],
 caption="""2 minutes, 2 fois par jour. C'est la base avec une brosse à dents électrique comme avec une manuelle.
 
@@ -97,7 +97,7 @@ Tu brosses combien de temps, honnêtement ? Dis-le en commentaire.
 
 # ───────────────────────── 3 · CAROUSEL
 dict(date="2026-10-11", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1586061968253-7bf5724aab7b", kicker="Brosse à dents électrique", title="Pourquoi une tête en bambou ?", swipe=True),
+  dict(tpl="hero", img="u:1586061968253-7bf5724aab7b", kicker="Brosse à dents électrique", title="Pourquoi une tête *en bambou* ?", swipe=True),
   dict(tpl="list", img=s("ricin_profil"), title="Ce qui compose ta brosse", items=[("Tête en bambou","La partie que tu changes tous les 3 mois."),("Poils à base de ricin","Une fibre d'origine végétale."),("Manche en plastique ASA","Conçu pour durer des années.")], page="2/3"),
   dict(tpl="statement", img="u:1761311554695-68cfca1f3140", kicker="Le concept", title="Moins de plastique dans la partie que tu jettes.", page="3/3"),
 ],
@@ -118,7 +118,7 @@ Swipe pour le détail.
 
 # ───────────────────────── 4 · REEL
 dict(date="2026-10-12", kind="carousel", slides=[
-  dict(tpl="hero", img=s("icones"), kicker="Brosse à dents électrique", title="Quel mode choisir ?", swipe=True),
+  dict(tpl="hero", img=s("icones"), kicker="Brosse à dents électrique", title="Quel mode *choisir* ?", swipe=True),
   dict(tpl="list", img=s("p090"), title="Au quotidien", items=[("Sensible","Gencives fragiles, débuts à l'électrique."),("Nettoyage","Matin et soir, tous les jours.")], page="2/3"),
   dict(tpl="list", img=s("p019"), title="En complément", items=[("Blanchiment","Taches de surface : café, thé."),("Polissage","Sensation de dents lisses.")], page="3/3", alt=True),
 ],
@@ -137,7 +137,7 @@ Astuce : commence 1 à 2 semaines en mode Sensible si tu passes d'une brosse man
 
 # ───────────────────────── 5 · PHOTO
 dict(date="2026-10-13", kind="photo", slides=[
-  dict(tpl="product", img=s("ricin_gp"), kicker="Gros plan", title="Des poils à base de ricin", sub="Fibre d'origine végétale, douce pour l'émail et les gencives."),
+  dict(tpl="product", img=s("ricin_gp"), kicker="Gros plan", title="Des poils à base *de ricin*", sub="Fibre d'origine végétale, douce pour l'émail et les gencives."),
 ],
 caption="""Gros plan sur les poils de nos têtes de brosse à dents électrique.
 
@@ -154,7 +154,7 @@ Monté sur une tête en bambou. Compatible uniquement avec les manches Pulse Car
 # ───────────────────────── 6 · CAROUSEL
 dict(date="2026-10-14", kind="carousel", slides=[
   dict(tpl="statement", img="u:1563635707334-5ce91b375ea6", kicker="Question du jour", title="Tu changes ta tête de brosse tous les combien ?", sub="A. Tous les 3 mois\nB. Quand les poils s'écartent\nC. Euh... jamais", swipe=True),
-  dict(tpl="product", img=s("tete_main"), kicker="La réponse", title="Tous les 3 mois", sub="Et après un rhume ou une angine.", page="2/2"),
+  dict(tpl="product", img=s("tete_main"), kicker="La réponse", title="Tous les *3 mois*", sub="Et après un rhume ou une angine.", page="2/2"),
 ],
 caption="""Question rapide sur ta brosse à dents électrique : tu changes ta tête tous les combien ?
 
@@ -229,7 +229,7 @@ Enregistre ce post pour ce soir.
 
 # ───────────────────────── 10 · REEL
 dict(date="2026-10-18", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1553691158-91a7f9183156", kicker="Le match", title="Manuelle ou électrique ?", swipe=True),
+  dict(tpl="hero", img="u:1553691158-91a7f9183156", kicker="Le match", title="Manuelle ou *électrique* ?", swipe=True),
   dict(tpl="list", img="u:1553691475-f38e4026275b", title="Ce que l'électrique change", items=[("41 000 vibrations par minute","Tu guides, elle nettoie."),("Minuteur 2 minutes","Plus de brossage bâclé."),("Mode Sensible","Pour les gencives fragiles.")], page="2/3"),
   dict(tpl="product", img=s("bamboo_face"), kicker="Pulse Care Bamboo+", title="Prête à passer à l'électrique ?", sub="2 têtes, étui et câble USB-C inclus.", price="59,90 €", page="3/3"),
 ],
@@ -266,7 +266,7 @@ Une charge par mois. Pas de socle encombrant sur le lavabo.
 
 # ───────────────────────── 12 · PHOTO
 dict(date="2026-10-20", kind="photo", slides=[
-  dict(tpl="hero", img="u:1620626011761-996317b8d101", kicker="Étanche IPX7", title="Sous la douche ?\nAucun problème.", sub="Ta brosse résiste à l'immersion. Sèche juste le port USB-C avant de la recharger."),
+  dict(tpl="hero", img="u:1620626011761-996317b8d101", kicker="Étanche IPX7", title="Sous la douche ?\n*Aucun problème.*", sub="Ta brosse résiste à l'immersion. Sèche juste le port USB-C avant de la recharger."),
 ],
 caption="""IPX7 sur ta brosse à dents électrique, ça veut dire quoi ?
 
@@ -283,7 +283,7 @@ Pense juste à bien sécher le port USB-C avant de la recharger.
 
 # ───────────────────────── 13 · REEL
 dict(date="2026-10-21", kind="carousel", slides=[
-  dict(tpl="hero", img=s("p121"), kicker="Pack duo", title="Une brosse pour toi.\nUne pour l'autre.", swipe=True),
+  dict(tpl="hero", img=s("p121"), kicker="Pack duo", title="Une brosse pour toi.\n*Une pour l'autre.*", swipe=True),
   dict(tpl="list", img=s("duo_acc"), title="Dans la boîte", items=[("2 manches Bamboo+","41 000 vibrations par minute."),("Des têtes en bambou","Chacun les siennes."),("Étuis de voyage","En bambou.")], page="2/3"),
   dict(tpl="product", img=s("p091"), kicker="Pack duo", title="Une routine pour toute la salle de bain", price="94,90 €", page="3/3"),
 ],
@@ -319,7 +319,7 @@ Ton dernier rendez-vous date de quand ?
 
 # ───────────────────────── 15 · CAROUSEL
 dict(date="2026-10-23", kind="carousel", slides=[
-  dict(tpl="statement", img="u:1489278353717-f64c6ee8a4d2", kicker="Vrai ou faux", title="Appuyer fort = dents plus propres ?", swipe=True),
+  dict(tpl="statement", img="u:1489278353717-f64c6ee8a4d2", kicker="Vrai ou faux", title="Appuyer fort =\n*dents plus propres ?*", swipe=True),
   dict(tpl="list", img="u:1693692258834-74c62f467cb7", title="FAUX. Voilà la bonne méthode", items=[("Tête posée en douceur","Angle de 45° vers la gencive."),("Tu glisses lentement","D'une dent à l'autre."),("Aucune pression","Les vibrations nettoient, toi tu guides.")], page="2/2"),
 ],
 caption="""Vrai ou faux : plus tu appuies fort avec ta brosse à dents électrique, plus tes dents sont propres ?
@@ -336,7 +336,7 @@ Swipe pour la bonne méthode.
 
 # ───────────────────────── 16 · REEL
 dict(date="2026-10-24", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1502301197179-65228ab57f78", kicker="Vacances de la Toussaint", title="Laisse le chargeur à la maison", swipe=True),
+  dict(tpl="hero", img="u:1502301197179-65228ab57f78", kicker="Vacances de la Toussaint", title="Laisse le chargeur *à la maison*", swipe=True),
   dict(tpl="product", img=s("etui"), kicker="Inclus", title="Un étui de voyage en bambou", sub="Pour protéger la tête dans ta trousse.", page="2/3"),
   dict(tpl="stats", img="u:1764909262009-3dcd5691185c", title="En voyage", items=[("30 j","d'autonomie, pas besoin du chargeur"),("USB-C","le câble de ton téléphone"),("IPX7","douche d'hôtel ok"),("Étui","en bambou, inclus")], page="3/3"),
 ],
@@ -376,7 +376,7 @@ Nos têtes de recharge sont en bambou, avec poils ricin ou nylon. Elles se clips
 
 # ───────────────────────── 18 · PHOTO
 dict(date="2026-10-26", kind="photo", slides=[
-  dict(tpl="hero", img="u:1494790108377-be9c29b29330", kicker="Astuce haleine fraîche", title="Et ta langue, tu la brosses ?", sub="3 ou 4 passages doux, de l'arrière vers l'avant."),
+  dict(tpl="hero", img="u:1494790108377-be9c29b29330", kicker="Astuce haleine fraîche", title="Et ta langue,\n*tu la brosses ?*", sub="3 ou 4 passages doux, de l'arrière vers l'avant."),
 ],
 caption="""Ta brosse à dents électrique fait le boulot sur les dents. Mais tu brosses ta langue ?
 
@@ -392,7 +392,7 @@ Le geste : après tes 2 minutes, passe doucement la brosse de l'arrière vers l'
 
 # ───────────────────────── 19 · REEL
 dict(date="2026-10-27", kind="carousel", slides=[
-  dict(tpl="hero", img=s("ricin_fibres"), kicker="Têtes de recharge", title="Poils ricin ou poils nylon ?", swipe=True),
+  dict(tpl="hero", img=s("ricin_fibres"), kicker="Têtes de recharge", title="Poils *ricin* ou poils *nylon* ?", swipe=True),
   dict(tpl="list", img=s("ricin_face"), title="Poils ricin", items=[("Fibre d'origine végétale","À base d'huile de ricin."),("Toucher très doux","Idéal gencives sensibles.")], page="2/3"),
   dict(tpl="list", img=s("nylon_face"), title="Poils nylon", items=[("Brossage plus ferme","Tu sens bien le nettoyage."),("Tête en bambou","Comme la version ricin.")], page="3/3", alt=True),
 ],
@@ -466,7 +466,7 @@ Pour les enfants, demande à ton dentiste le type de brosse adapté à leur âge
 
 # ───────────────────────── 23 · PHOTO
 dict(date="2026-10-31", kind="photo", slides=[
-  dict(tpl="statement", img="u:1612715623676-a68370d10596", kicker="Halloween", title="Bonbons ok.\nBrossage obligatoire.", sub="Mange-les d'un coup, bois de l'eau, 2 minutes de brossage avant de dormir."),
+  dict(tpl="statement", img="u:1612715623676-a68370d10596", kicker="Halloween", title="Bonbons ok.\n*Brossage obligatoire.*", sub="Mange-les d'un coup, bois de l'eau, 2 minutes de brossage avant de dormir."),
 ],
 caption="""Halloween et brosse à dents électrique : le plan de survie.
 
@@ -484,7 +484,7 @@ Et toi, team bonbons acides ou team chocolat ?
 
 # ───────────────────────── 24 · PHOTO
 dict(date="2026-11-01", kind="photo", slides=[
-  dict(tpl="hero", img="u:1525124480298-565f20ea00ae", kicker="Pourquoi le bambou ?", title="Il pousse vite. Il résiste à l'eau.", sub="Sur la Bamboo+, il est sur les têtes et l'étui. Le manche est en plastique ASA."),
+  dict(tpl="hero", img="u:1525124480298-565f20ea00ae", kicker="Pourquoi le bambou ?", title="Il pousse vite.\n*Il résiste à l'eau.*", sub="Sur la Bamboo+, il est sur les têtes et l'étui. Le manche est en plastique ASA."),
 ],
 caption="""Le bambou dans ta brosse à dents électrique, pourquoi ce matériau ?
 
@@ -518,7 +518,7 @@ Enregistre ce post pour l'avoir sous la main.
 
 # ───────────────────────── 26 · PHOTO
 dict(date="2026-11-03", kind="photo", slides=[
-  dict(tpl="hero", img=s("p087"), kicker="Pulse Care", title="Un manche qu'on garde.\nDes têtes qu'on change."),
+  dict(tpl="hero", img=s("p087"), kicker="Pulse Care", title="Un manche qu'on garde.\n*Des têtes qu'on change.*"),
 ],
 caption="""Une brosse à dents électrique. Un manche qu'on garde. Des têtes en bambou qu'on change.
 
@@ -557,7 +557,7 @@ Une autre question ? Pose-la en commentaire.
 # ───────────────────────── 28 · REEL
 dict(date="2026-11-05", kind="carousel", slides=[
   dict(tpl="hero", img=s("ricin_pack4"), kicker="Têtes de recharge", title="Prends un pack, oublie le sujet", swipe=True),
-  dict(tpl="statement", img="u:1609879937493-56540300d8cc", kicker="Une tête tous les 3 mois", title="4 têtes = 1 an de brossage", page="2/3"),
+  dict(tpl="statement", img="u:1609879937493-56540300d8cc", kicker="Une tête tous les 3 mois", title="4 têtes =\n*1 an de brossage*", page="2/3"),
   dict(tpl="product", img=s("ricin_pack4_vue"), kicker="Pack de 4", title="Poils ricin ou nylon", sub="Têtes en bambou, clip en une seconde.", price="14,90 €", page="3/3"),
 ],
 caption="""Têtes de recharge pour brosse à dents électrique : prends un pack, oublie le sujet.
@@ -576,7 +576,7 @@ Pack de 4 : 14,90 €.
 
 # ───────────────────────── 29 · PHOTO
 dict(date="2026-11-06", kind="photo", slides=[
-  dict(tpl="hero", img="u:1617812191081-2a24e3f30e45", kicker="Le vrai secret", title="La régularité.", sub="Matin et soir. 2 minutes. Tous les jours."),
+  dict(tpl="hero", img="u:1617812191081-2a24e3f30e45", kicker="Le vrai secret", title="*La régularité.*", sub="Matin et soir. 2 minutes. Tous les jours."),
 ],
 caption="""Un beau sourire, ça ne se joue pas sur un brossage. Ça se joue sur la régularité, avec ou sans brosse à dents électrique.
 
@@ -592,10 +592,10 @@ Tu brosses déjà 2 fois par jour ? Oui ou non en commentaire.
 
 # ───────────────────────── 30 · CAROUSEL
 dict(date="2026-11-07", kind="carousel", slides=[
-  dict(tpl="hero", img=s("p088"), kicker="Le récap", title="Pourquoi la Bamboo+ ?", swipe=True),
+  dict(tpl="hero", img=s("p088"), kicker="Le récap", title="Pourquoi la *Bamboo+* ?", swipe=True),
   dict(tpl="stats", img=s("decouverte_contenu"), title="En résumé", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie, USB-C"),("IPX7","étanche")], page="2/4"),
   dict(tpl="list", img=s("duo_tete"), title="Et aussi", items=[("Minuteur 2 minutes","Pause toutes les 30 s."),("Têtes en bambou","Poils ricin ou nylon."),("Étui de voyage","En bambou, inclus.")], page="3/4", alt=True),
-  dict(tpl="product", img=s("p097"), kicker="Pulse Care Bamboo+", title="Le manche reste. La tête se change.", sub="Avec 2 têtes, l'étui et le câble USB-C.", price="59,90 €", page="4/4"),
+  dict(tpl="product", img=s("p097"), kicker="Pulse Care Bamboo+", title="Le manche reste.\n*La tête se change.*", sub="Avec 2 têtes, l'étui et le câble USB-C.", price="59,90 €", page="4/4"),
 ],
 caption="""Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap.
 
