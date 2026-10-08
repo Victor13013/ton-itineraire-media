@@ -307,161 +307,279 @@ def arch_mask(w, h):
     d.rectangle([0, w // 2, w, h], fill=255); d.ellipse([0, 0, w, w], fill=255)
     return m
 
-# ───────────────────────────── v3 : affiches graphiques, sans cadre
-GOLD = (226, 199, 150); BRONZE = (168, 120, 58); OLIVE = (122, 140, 98)
-THEMES = [  # fond, texte, accent italique, forme déco, texte secondaire
-    dict(bg=DEEP,  fg=CREAM, acc=GOLD,   deco=BAMBOO, sub=(206, 216, 206), dark=True),
-    dict(bg=SAGE,  fg=INK,   acc=BRONZE, deco=CREAM,  sub=(64, 84, 72),    dark=False),
-    dict(bg=SAND,  fg=INK,   acc=BRONZE, deco=SAGE,   sub=(92, 96, 82),    dark=False),
-    dict(bg=GREEN, fg=CREAM, acc=GOLD,   deco=(52, 86, 70), sub=(206, 216, 206), dark=True),
-]
-def theme(c, default=0):
-    return THEMES[c.get("theme_i", c.get("_n", default)) % len(THEMES)]
+# ───────────────────────────── v4 : codes des marques DTC qui performent
+# Grosse typo sans-serif noire, produit détouré sur aplat de couleur, callouts,
+# cartes blanches, texte « natif » sur photo, bento. Pas de cadre.
+def BLACK(s): return F("InterDisplay-Black.otf", s)
+def XB(s): return F("InterDisplay-ExtraBold.otf", s)
+def DB(s): return F("InterDisplay-Bold.otf", s)
+def SB(s): return F("Inter-SemiBold.otf", s)
+def IM(s): return F("Inter-Medium.otf", s)
+def IR(s): return F("Inter-Regular.otf", s)
 
-def canvas(t):
-    return Image.new("RGBA", (W, H), t["bg"] + (255,))
+FOREST = (24, 52, 40); MINTV = (210, 234, 220); SANDV = (243, 232, 214); HONEY = (236, 205, 150)
+LIME = (214, 240, 120); INKV = (16, 28, 22); GREYV = (84, 98, 90)
+BGS = [MINTV, SANDV, HONEY, FOREST]
+def bg_for(c, k=0): return BGS[(c.get("_n", 0) + k) % len(BGS)]
+def on(bg): return CREAM if bg == FOREST else INKV
+def sub_on(bg): return (200, 214, 204) if bg == FOREST else GREYV
+def hl_on(bg): return LIME if bg == FOREST else FOREST
 
-def shape_photo(base, src, box, shape="arch", fx=0.5, fy=0.5):
-    x0, y0, x1, y1 = box; w, h = x1 - x0, y1 - y0
-    im, pk = prep(src)
-    if pk:
-        prod = trim(im); prod = prod.resize(fit_size(prod, int(w * 0.78), int(h * 0.74)), Image.LANCZOS)
-        pad = Image.new("RGB", (w, h), WHITE); pad.paste(prod, ((w - prod.width) // 2, (h - prod.height) // 2 + int(h * 0.05)))
-        ph = multiply_on(Image.new("RGB", (w, h), CREAM), pad)
-    else:
-        if (border_px(im).min(axis=1) > 238).mean() > 0.5:
-            ww, hh = im.size; k = 0.6
-            im = im.crop((int(ww * (1 - k) / 2), int(hh * (1 - k) / 2), int(ww * (1 + k) / 2), int(hh * (1 + k) / 2)))
-        ph = cover(im, w, h, fx, fy)
-    m = Image.new("L", (w, h), 0); md = ImageDraw.Draw(m)
-    if shape == "arch":
-        md.rectangle([0, w // 2, w, h], fill=255); md.ellipse([0, 0, w, w], fill=255)
-    elif shape == "circle":
-        md.ellipse([0, 0, w, h], fill=255)
-    elif shape == "pill":
-        md.rounded_rectangle([0, 0, w, h], radius=min(w, h) // 2, fill=255)
-    else:
-        md.rounded_rectangle([0, 0, w, h], radius=48, fill=255)
-    base.paste(ph, (x0, y0), m)
-    return pk
+def clean(t): return t.replace("*", "")
 
-def disc(base, cx, cy, r, color, alpha=255):
-    ov = Image.new("RGBA", base.size, (0, 0, 0, 0))
-    ImageDraw.Draw(ov).ellipse([cx - r, cy - r, cx + r, cy + r], fill=color + (alpha,))
-    base.alpha_composite(ov)
+def mk_tokens(text):
+    out = []
+    for i, part in enumerate(re.split(r"\*", nb(text))):
+        for j, seg in enumerate(part.split("\n")):
+            if j: out.append(("\n", False))
+            for w in seg.split(" "):
+                if w: out.append((w, i % 2 == 1))
+    return out
 
-def sticker(base, text, cx, cy, r, bg, fg, angle=-12):
-    """Pastille ronde inclinée (prix, mot-clé)."""
-    s_ = Image.new("RGBA", (2 * r + 4, 2 * r + 4), (0, 0, 0, 0)); d = ImageDraw.Draw(s_)
-    d.ellipse([2, 2, 2 * r + 2, 2 * r + 2], fill=bg)
-    lines = text.split("\n"); f = SERIF(int(r * 0.42) if len(lines) == 1 else int(r * 0.30), True, 600)
-    yy = r + 2 - f.size * 0.62 * len(lines)
+def sans_lines(text, fnt, maxw):
+    d = ImageDraw.Draw(Image.new("L", (1, 1))); sp = d.textlength(" ", font=fnt)
+    lines, cur, cw = [], [], 0
+    for w, hl in mk_tokens(text):
+        if w == "\n": lines.append(cur); cur, cw = [], 0; continue
+        ww = d.textlength(w, font=fnt)
+        if w.startswith(" ") and cur: cur.append((w, hl, ww, 1)); cw += ww; continue
+        if cur and cw + sp + ww > maxw: lines.append(cur); cur, cw = [], 0
+        cur.append((w, hl, ww, 0)); cw += (sp if len(cur) > 1 else 0) + ww
+    if cur: lines.append(cur)
+    return lines
+
+def sans_fit(text, maker, maxw, start, minsize, maxlines):
+    s_ = start
+    while s_ > minsize and len(sans_lines(text, maker(s_), maxw)) > maxlines: s_ -= 4
+    return maker(s_), sans_lines(text, maker(s_), maxw)
+
+def sans_draw(base, x, y, lines, fnt, fill, hl_bg=None, hl_fg=None, lh=1.0, center_w=None):
+    """Titre gras ; les *mots* consécutifs reçoivent un seul surlignage façon marqueur."""
+    d = ImageDraw.Draw(base); sp = d.textlength(" ", font=fnt); pad = fnt.size * 0.14
     for ln in lines:
-        tw = d.textlength(nb(ln), font=f); d.text((r + 2 - tw / 2, yy), nb(ln), font=f, fill=fg); yy += f.size * 1.1
+        lw = sum(t[2] for t in ln) + sp * sum(1 for t in ln[1:] if not t[3])
+        xx = x + ((center_w - lw) / 2 if center_w else 0)
+        pos = []
+        for w, hl, ww, glue in ln:
+            if glue: xx -= sp
+            pos.append((w, hl, ww, xx)); xx += ww + sp
+        if hl_bg:   # regroupe les mots surlignés contigus
+            run = None
+            for w, hl, ww, px in pos + [("", False, 0, 0)]:
+                if hl and run is None: run = [px, px + ww]
+                elif hl: run[1] = px + ww
+                elif run is not None:
+                    d.rounded_rectangle([run[0] - pad, y + fnt.size * 0.08, run[1] + pad, y + fnt.size * 1.1], radius=int(fnt.size * 0.16), fill=hl_bg); run = None
+        for w, hl, ww, px in pos:
+            d.text((px, y), w, font=fnt, fill=(hl_fg if (hl and hl_fg) else fill))
+        y += fnt.size * lh
+    return y + (fnt.size * 0.12)
+
+def handle(d, x, y, fill, center_w=None):
+    f = SB(24); t = "@pulsecare.france"
+    if center_w: x = x + (center_w - d.textlength(t, font=f)) / 2
+    d.text((x, y), t, font=f, fill=fill)
+
+def dots(d, n, k, fill, dim):
+    if not n: return
+    r, g = 7, 22; x = W - M - (n - 1) * g
+    for i in range(n):
+        d.ellipse([x + i * g - r, H - 74 - r, x + i * g + r, H - 74 + r], fill=fill if i == k else dim)
+
+def page_info(c):
+    if c.get("page"):
+        a_, b_ = c["page"].split("/"); return int(b_), int(a_) - 1
+    if c.get("swipe"): return 0, 0
+    return 0, 0
+
+def swipe_btn(base, color, fg):
+    d = ImageDraw.Draw(base); r = 46; cx, cy = W - M - r, H - 74 - 0
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=color)
+    tw = d.textlength("→", font=ARR(40)); d.text((cx - tw / 2, cy - 26), "→", font=ARR(40), fill=fg)
+
+def chrome(base, c, fg, dim, light_btn=True):
+    d = ImageDraw.Draw(base)
+    handle(d, M, H - 88, fg)
+    n, k = page_info(c)
+    if c.get("swipe"): swipe_btn(base, CREAM if light_btn else FOREST, INKV if light_btn else CREAM)
+    elif n: dots(d, n, k, fg, dim)
+
+def pill_box(d, x, y, text, fnt, bg, fg, padx=22, pady=12, r=None):
+    tw = d.textlength(text, font=fnt); h = fnt.size + 2 * pady
+    d.rounded_rectangle([x, y, x + tw + 2 * padx, y + h], radius=r if r is not None else h // 2, fill=bg)
+    d.text((x + padx, y + pady - fnt.size * 0.08), text, font=fnt, fill=fg)
+    return x + tw + 2 * padx, y + h
+
+def sticker_v4(base, text, cx, cy, r=110, bg=LIME, fg=INKV, angle=-10):
+    s_ = Image.new("RGBA", (2 * r + 6, 2 * r + 6), (0, 0, 0, 0)); d = ImageDraw.Draw(s_)
+    d.ellipse([3, 3, 2 * r + 3, 2 * r + 3], fill=bg)
+    f = BLACK(int(r * 0.42)); t = nb(text); tw = d.textlength(t, font=f)
+    d.text((r + 3 - tw / 2, r + 3 - f.size * 0.62), t, font=f, fill=fg)
     s_ = s_.rotate(angle, resample=Image.BICUBIC, expand=True)
     base.alpha_composite(s_, (int(cx - s_.width / 2), int(cy - s_.height / 2)))
 
-def foot3(d, t, page=None, swipe=False):
-    f = MED(22)
-    if page:
-        tw = d.textlength(page, font=f); d.text((W - M - tw, H - 92), page, font=f, fill=t["sub"])
-    if swipe:
-        tracked(d, M, H - 92, "SWIPE", f, t["acc"], 0.3)
-        d.text((M + 104, H - 96), "→", font=ARR(28), fill=t["acc"])
+def product_cut(src, bg, mw, mh):
+    """Produit détouré (fond blanc fondu dans l'aplat) ou photo arrondie."""
+    im, pk = prep(src)
+    if pk:
+        prod = trim(im); prod = prod.resize(fit_size(prod, mw, mh), Image.LANCZOS)
+        return multiply_on(Image.new("RGB", prod.size, bg), prod), True
+    return None, False
 
-# ── 1. Affiche : arche photo + gros titre
+def soft_shadow(base, box, alpha=70, blur=26):
+    x0, y0, x1, y1 = box
+    sh = Image.new("RGBA", base.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).ellipse([x0, y1 - 26, x1, y1 + 26], fill=(10, 24, 18, alpha))
+    base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(blur)))
+
+def rounded_photo(base, src, box, r=44, fy=0.5):
+    x0, y0, x1, y1 = box; w, h = x1 - x0, y1 - y0
+    im = src
+    if (border_px(im).min(axis=1) > 238).mean() > 0.5:
+        ww, hh = im.size; k = 0.62
+        im = im.crop((int(ww * (1 - k) / 2), int(hh * (1 - k) / 2), int(ww * (1 + k) / 2), int(hh * (1 + k) / 2)))
+    ph = cover(im, w, h, 0.5, fy)
+    m = Image.new("L", (w, h), 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, w, h], radius=r, fill=255)
+    base.paste(ph, (x0, y0), m)
+
+# ── 1. Hook : photo plein cadre + gros titre natif
 def t_hero(c):
-    t = theme(c); base = canvas(t); src = load(c["img"])
-    flip = c.get("_n", 0) % 2 == 1
-    size, tl = rich_fit(c["title"], W - 2 * M, 108, 62, 3)
-    sl = wrap(c["sub"], REG(31), W - 2 * M - 60) if c.get("sub") else []
-    block = (62 if c.get("kicker") else 0) + size * 1.04 * len(tl) + (18 + text_h(sl, REG(31), 1.42) if sl else 0)
-    top = H - 150 - block
-    disc(base, (W - 250 if flip else 250), 250, 190, t["deco"], 255 if not t["dark"] else 120)
-    ax0 = 70 if flip else 330; box = (ax0, 120, ax0 + 680, int(top - 40))
-    shape_photo(base, src, box, "arch", 0.5, c.get("fy", 0.4))
+    src = load(c["img"])
+    if prep(src)[1]: return t_product(c)
+    base = cover(src, W, H, 0.5, c.get("fy", 0.5)).convert("RGBA")
+    base.alpha_composite(gradient(W, H, (8, 18, 12), 0.0, 0.55, 150, 0))
+    base.alpha_composite(gradient(W, H, (8, 18, 12), 0.72, 1.0, 0, 150))
     d = ImageDraw.Draw(base)
-    brand(d, M, 70, t["fg"])
-    y = top
-    if c.get("kicker"): kicker(d, M, y, c["kicker"], t["acc"]); y += 62
-    y = rich_draw(d, M, y, tl, size, t["fg"], t["acc"], 1.04)
-    if sl: draw_lines(d, M, y + 18, sl, REG(31), t["sub"], 1.42)
-    if c.get("price"):
-        sticker(base, c["price"], (ax0 + 680 - 40) if not flip else (ax0 + 40), int(top - 140), 112, BAMBOO, DEEP)
-    foot3(ImageDraw.Draw(base), t, c.get("page"), c.get("swipe"))
-    return grain(base, 3).convert("RGB")
+    y = 110
+    if c.get("kicker"):
+        pill_box(d, M, y, clean(c["kicker"]).upper(), SB(24), LIME, INKV); y += 82
+    f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 112, 64, 4)
+    y = sans_draw(base, M, y, tl, f, WHITE, LIME, INKV, 1.02)
+    if c.get("sub"):
+        d = ImageDraw.Draw(base)
+        for ln in wrap(c["sub"], IM(32), W - 2 * M - 60):
+            _, y2 = pill_box(d, M, y + 26, ln, IM(32), (255, 255, 255), INKV, 20, 10, 14); y = y2 - 14
+    if c.get("price"): sticker_v4(base, c["price"], W - M - 110, H - 300)
+    chrome(base, c, WHITE, (255, 255, 255, 110))
+    return base.convert("RGB")
 
-# ── 2. Phrase choc : titre géant + photo ronde
+# ── 2. Question : texte en boîtes blanches façon story
 def t_statement(c):
-    t = theme(c, 0); base = canvas(t)
-    disc(base, W - 120, H - 220, 260, t["deco"], 110 if t["dark"] else 255)
-    shape_photo(base, load(c["img"]), (W // 2 - 170, 150, W // 2 + 170, 490), "circle")
+    base = cover(load(c["img"]), W, H).convert("RGBA")
+    base.alpha_composite(Image.new("RGBA", (W, H), (8, 18, 12, 90)))
     d = ImageDraw.Draw(base)
-    brand(d, 0, 70, t["fg"], W)
-    y = 560
-    if c.get("kicker"): kicker(d, 0, y, c["kicker"], t["acc"], center_w=W); y += 70
-    size, tl = rich_fit(c["title"], W - 2 * M, 104, 58, 4)
-    y = rich_draw(d, 0, y, tl, size, t["fg"], t["acc"], 1.06, center_w=W)
-    if c.get("sub"):
-        draw_lines(d, 0, y + 28, wrap(c["sub"], REG(32), W - 2 * M - 60), REG(32), t["sub"], 1.45, anchor_center=True, W=W)
-    foot3(d, t, c.get("page"), c.get("swipe"))
-    return grain(base, 3).convert("RGB")
+    f, tl = sans_fit(clean(c["title"]), XB, W - 2 * M - 60, 76, 50, 5)
+    sub = wrap(c["sub"], IM(34), W - 2 * M - 80) if c.get("sub") else []
+    lh = f.size + 30; total = (70 if c.get("kicker") else 0) + lh * len(tl) + (24 + 64 * len(sub) if sub else 0)
+    y = (H - total) / 2
+    if c.get("kicker"):
+        k = clean(c["kicker"]).upper(); tw = d.textlength(k, font=SB(24))
+        pill_box(d, (W - tw - 44) / 2, y, k, SB(24), LIME, INKV); y += 70
+    for ln in tl:
+        txt = " ".join(t[0] for t in ln).replace("  ", " ")
+        tw = d.textlength(txt, font=f)
+        d.rounded_rectangle([(W - tw) / 2 - 26, y, (W + tw) / 2 + 26, y + f.size + 22], radius=16, fill=WHITE)
+        d.text(((W - tw) / 2, y + 8), txt, font=f, fill=INKV); y += lh
+    y += 24
+    for ln in sub:
+        tw = d.textlength(ln, font=IM(34))
+        d.rounded_rectangle([(W - tw) / 2 - 20, y, (W + tw) / 2 + 20, y + 56], radius=12, fill=FOREST)
+        d.text(((W - tw) / 2, y + 8), ln, font=IM(34), fill=CREAM); y += 64
+    chrome(base, c, WHITE, (255, 255, 255, 110))
+    return base.convert("RGB")
 
-# ── 3. Produit : grande arche crème sur fond couleur
+# ── 3. Produit : aplat de couleur, produit détouré, callouts
 def t_product(c):
-    t = theme(c, 1); base = canvas(t)
-    disc(base, 200, 330, 170, t["deco"], 255 if not t["dark"] else 120)
-    disc(base, W - 150, 860, 90, BAMBOO, 255)
-    shape_photo(base, load(c["img"]), (190, 130, 890, 900), "arch")
-    d = ImageDraw.Draw(base)
-    brand(d, 0, 70, t["fg"], W)
-    y = 950
-    if c.get("kicker"): kicker(d, 0, y, c["kicker"], t["acc"], center_w=W); y += 58
-    size, tl = rich_fit(c["title"], W - 2 * M, 76, 50, 2)
-    y = rich_draw(d, 0, y, tl, size, t["fg"], t["acc"], 1.06, center_w=W)
+    bg = [MINTV, SANDV, HONEY][c.get("_n", 0) % 3]; fg = on(bg)
+    base = Image.new("RGBA", (W, H), bg + (255,)); d = ImageDraw.Draw(base)
+    y = 100
+    if c.get("kicker"):
+        k = clean(c["kicker"]).upper(); tw = d.textlength(k, font=SB(24))
+        pill_box(d, (W - tw - 44) / 2, y, k, SB(24), FOREST if bg != FOREST else LIME, CREAM if bg != FOREST else INKV); y += 78
+    f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 92, 56, 2)
+    y = sans_draw(base, 0, y, tl, f, fg, hl_on(bg), (INKV if bg == FOREST else CREAM), 1.02, center_w=W)
     if c.get("sub"):
-        draw_lines(d, 0, y + 14, wrap(c["sub"], REG(30), W - 2 * M - 80), REG(30), t["sub"], 1.42, anchor_center=True, W=W)
-    if c.get("price"): sticker(base, c["price"], 860, 230, 118, DEEP if not t["dark"] else BAMBOO, CREAM if not t["dark"] else DEEP)
-    foot3(ImageDraw.Draw(base), t, c.get("page"), c.get("swipe"))
-    return grain(base, 3).convert("RGB")
+        y = draw_lines(ImageDraw.Draw(base), 0, y + 10, wrap(c["sub"], IM(30), W - 2 * M - 80), IM(30), sub_on(bg), 1.4, anchor_center=True, W=W)
+    top = int(y + 40); bottom = H - 140
+    src = load(c["img"])
+    cut, pk = product_cut(src, bg, W - 260, bottom - top)
+    if pk:
+        px = (W - cut.width) // 2; py = top + (bottom - top - cut.height) // 2
+        soft_shadow(base, (px + cut.width * 0.15, py, px + cut.width * 0.85, py + cut.height), 60)
+        base.paste(cut, (px, py)); pbox = (px, py, px + cut.width, py + cut.height)
+    else:
+        pbox = (M, top, W - M, bottom); rounded_photo(base, src, pbox)
+    d = ImageDraw.Draw(base)
+    for i, txt in enumerate(c.get("callouts", [])):          # étiquettes reliées au produit
+        left = i % 2 == 0; cy = pbox[1] + (pbox[3] - pbox[1]) * (0.36 + 0.52 * (i // 2) / max(1, (len(c["callouts"]) - 1) // 2))
+        cx = (pbox[0] + pbox[2]) / 2 + (-40 if left else 40)
+        f2 = SB(28); tw = d.textlength(txt, font=f2); bx = M if left else W - M - tw - 44
+        d.line([(cx, cy), (bx + (tw + 44 if left else 0), cy)], fill=fg, width=2)
+        d.ellipse([cx - 8, cy - 8, cx + 8, cy + 8], fill=fg)
+        pill_box(d, bx, cy - 26, txt, f2, WHITE if bg != FOREST else CREAM, INKV, 22, 11)
+    if c.get("price"):
+        sticker_v4(base, c["price"], W - M - 90, top + 90)
+    chrome(base, c, fg, sub_on(bg), light_btn=(bg == FOREST))
+    return base.convert("RGB")
 
-# ── 4. Liste : photo ronde en débord + grands numéros
+# ── 4. Liste : photo en tête, cartes blanches
 def t_list(c):
-    t = theme(c, 2); base = canvas(t)
-    shape_photo(base, load(c["img"]), (W - 470, -120, W + 110, 460), "circle")
-    disc(base, W - 470, 420, 70, BAMBOO, 255)
+    bg = bg_for(c, 1) if bg_for(c, 1) != FOREST else MINTV
+    base = Image.new("RGBA", (W, H), bg + (255,))
+    src = load(c["img"]); im, pk = prep(src); ph_h = 520
+    if pk:
+        cut, _ = product_cut(src, FOREST if False else (255, 255, 255), W - 300, ph_h - 120)
+        band = Image.new("RGB", (W, ph_h), FOREST); band_cut = multiply_on(Image.new("RGB", cut.size, CREAM), cut)
+        band = Image.new("RGB", (W, ph_h), CREAM); band.paste(band_cut, ((W - cut.width) // 2, (ph_h - cut.height) // 2 + 30))
+        base.paste(band, (0, 0)); title_fg = INKV
+    else:
+        ph = cover(im, W, ph_h).convert("RGBA"); ph.alpha_composite(gradient(W, ph_h, (8, 18, 12), 0.25, 1, 0, 200))
+        base.paste(ph, (0, 0)); title_fg = WHITE
+    f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 74, 50, 2)
+    sans_draw(base, M, ph_h - 40 - f.size * 1.02 * len(tl), tl, f, title_fg, LIME, INKV, 1.02)
     d = ImageDraw.Draw(base)
-    brand(d, M, 70, t["fg"])
-    size, tl = rich_fit(c["title"], 520, 74, 50, 3)
-    y = rich_draw(d, M, 190, tl, size, t["fg"], t["acc"], 1.06)
-    y = max(y + 50, 560)
-    n = len(c["items"]); fa = 40 if n <= 3 else 35; fb = 29 if n <= 3 else 27
+    y = ph_h + 40; n = len(c["items"]); fa = 36 if n <= 3 else 32; fb = 27 if n <= 3 else 25
+    avail = H - 130 - y; gap = 18
+    ch = (avail - gap * (n - 1)) / n
+    ch = min(ch, 190)
     for i, (a_, b_) in enumerate(c["items"]):
-        num = f"{c.get('start', 1) + i:02d}" if c.get("numbered") else f"{i + 1:02d}"
-        d.text((M, y - 18), num, font=SERIF(78 if n <= 3 else 64, True, 500), fill=t["acc"])
-        yy = draw_lines(d, M + 150, y, wrap(a_, MED(fa), W - 2 * M - 150), MED(fa), t["fg"], 1.2)
-        if b_: yy = draw_lines(d, M + 150, yy + 2, wrap(b_, REG(fb), W - 2 * M - 150), REG(fb), t["sub"], 1.38)
-        y = yy + (52 if n <= 3 else 30)
-    foot3(d, t, c.get("page"), c.get("swipe"))
-    return grain(base, 3).convert("RGB")
+        d.rounded_rectangle([M - 20, y, W - M + 20, y + ch], radius=28, fill=WHITE)
+        num = str(c.get("start", 1) + i) if c.get("numbered") else "✓"
+        r = 32; cx, cy = M + 30, y + ch / 2
+        d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=FOREST)
+        fnum = BLACK(32) if num != "✓" else F("DejaVuSans-Bold.ttf", 30) if os.path.exists(os.path.join(FD, "DejaVuSans-Bold.ttf")) else BLACK(30)
+        if num == "✓": num = "→"; fnum = ARR(30)
+        tw = d.textlength(num, font=fnum); d.text((cx - tw / 2, cy - fnum.size * 0.62), num, font=fnum, fill=LIME)
+        la = wrap(a_, DB(fa), W - 2 * M - 120); lb = wrap(b_, IR(fb), W - 2 * M - 120) if b_ else []
+        th = fa * 1.15 * len(la) + (6 + fb * 1.3 * len(lb) if lb else 0)
+        ty = cy - th / 2
+        ty = draw_lines(d, M + 90, ty, la, DB(fa), INKV, 1.15)
+        if lb: draw_lines(d, M + 90, ty + 6, lb, IR(fb), GREYV, 1.3)
+        y += ch + gap
+    chrome(base, c, INKV, GREYV)
+    return base.convert("RGB")
 
-# ── 5. Chiffres : énormes chiffres + photo pilule
+# ── 5. Bento : photo + tuiles chiffres
 def t_stats(c):
-    t = THEMES[0] if c.get("_n", 0) % 2 == 0 else THEMES[3]; base = canvas(t)
-    shape_photo(base, load(c["img"]), (W - 330, 110, W - 70, 620), "pill")
+    base = Image.new("RGBA", (W, H), FOREST + (255,)); d = ImageDraw.Draw(base)
+    f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 84, 56, 2)
+    y = sans_draw(base, M, 96, tl, f, CREAM, LIME, INKV, 1.02) + 30
+    g = 20; tw_ = (W - 2 * M - g) // 2
+    ph_h = 330
+    rounded_photo(base, load(c["img"]), (M, int(y), W - M, int(y) + ph_h), 32)
+    y = int(y) + ph_h + g
+    th = (H - 130 - y - g) // 2
+    cols = [LIME, MINTV, SANDV, HONEY]
     d = ImageDraw.Draw(base)
-    brand(d, M, 70, t["fg"])
-    size, tl = rich_fit(c["title"], 560, 92, 60, 2)
-    rich_draw(d, M, 170, tl, size, t["fg"], t["acc"])
-    cw = (W - 2 * M) // 2
     for i, (big, small) in enumerate(c["items"]):
-        x = M + (i % 2) * cw; y = [680, 680, 960, 960][i]
-        f = SERIF(124, False, 600)
-        while d.textlength(nb(big), font=f) > cw - 40: f = SERIF(f.size - 6, False, 600)
-        d.text((x, y), nb(big), font=f, fill=GOLD if i in (0, 3) else t["fg"])
-        draw_lines(d, x, y + 152, wrap(small, REG(29), cw - 60), REG(29), t["sub"], 1.4)
-    foot3(d, t, c.get("page"), c.get("swipe"))
-    return grain(base, 3).convert("RGB")
+        x = M + (i % 2) * (tw_ + g); yy = y + (i // 2) * (th + g)
+        d.rounded_rectangle([x, yy, x + tw_, yy + th], radius=32, fill=cols[i])
+        fb_ = BLACK(104)
+        while d.textlength(nb(big), font=fb_) > tw_ - 60: fb_ = BLACK(fb_.size - 6)
+        d.text((x + 30, yy + 26), nb(big), font=fb_, fill=INKV)
+        draw_lines(d, x + 32, yy + th - 30 - 30 * 1.3 * len(wrap(small, IM(28), tw_ - 64)), wrap(small, IM(28), tw_ - 64), IM(28), INKV, 1.3)
+    chrome(base, c, CREAM, (120, 150, 132))
+    return base.convert("RGB")
 
 TPL = {"hero": t_hero, "statement": t_statement, "product": t_product, "list": t_list, "stats": t_stats}
 

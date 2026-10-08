@@ -192,7 +192,7 @@ Tu te reconnais dans laquelle ?
 
 # ───────────────────────── 8 · PHOTO
 dict(date="2026-10-16", kind="photo", slides=[
-  dict(tpl="product", img=s("decouverte_neutre"), kicker="Pack découverte", title="Pour passer à l'électrique", sub="Le manche Bamboo+ et des têtes en bambou à poils de ricin.", price="64,90 €"),
+  dict(tpl="product", img=s("decouverte_neutre"), kicker="Pack découverte", title="Ton kit pour passer *à l'électrique*", price="64,90 €", callouts=["Manche Bamboo+","Têtes en bambou","Poils ricin","Étui de voyage"]),
 ],
 caption="""Le pack découverte Pulse Care, pour passer à la brosse à dents électrique en bambou.
 
@@ -231,7 +231,7 @@ Enregistre ce post pour ce soir.
 dict(date="2026-10-18", kind="carousel", slides=[
   dict(tpl="hero", img="u:1553691158-91a7f9183156", kicker="Le match", title="Manuelle ou *électrique* ?", swipe=True),
   dict(tpl="list", img="u:1553691475-f38e4026275b", title="Ce que l'électrique change", items=[("41 000 vibrations par minute","Tu guides, elle nettoie."),("Minuteur 2 minutes","Plus de brossage bâclé."),("Mode Sensible","Pour les gencives fragiles.")], page="2/3"),
-  dict(tpl="product", img=s("bamboo_face"), kicker="Pulse Care Bamboo+", title="Prête à passer à l'électrique ?", sub="2 têtes, étui et câble USB-C inclus.", price="59,90 €", page="3/3"),
+  dict(tpl="product", img=s("bamboo_face"), kicker="Pulse Care Bamboo+", title="Prête à passer à *l'électrique* ?", price="59,90 €", callouts=["Tête en bambou","41 000 vib/min","4 modes","USB-C · 30 j","IPX7"], page="3/3"),
 ],
 caption="""Brosse à dents électrique ou manuelle : laquelle choisir ?
 
