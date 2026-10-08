@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-3.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique Pulse Care Bamboo+ : ce qu'il y a dans la boîte.\n\n→ 1 manche Bamboo+, en plastique ASA\n→ 2 têtes en bambou\n→ 1 étui de voyage en bambou\n→ 1 câble USB-C\n\nTout est inclus pour 59,90 €. Tu n'as rien d'autre à acheter avant 6 mois.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #unboxing #pulsecare",
+    "fb_message": "Brosse à dents électrique Pulse Care Bamboo+ : ce qu'il y a dans la boîte.\n\n→ 1 manche Bamboo+, en plastique ASA\n→ 2 têtes en bambou\n→ 1 étui de voyage en bambou\n→ 1 câble USB-C\n\nTout est inclus pour 59,90 €. Tu n'as rien d'autre à acheter avant 6 mois.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #unboxing #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-3.jpg"
+      }
+    ]
+  }
+}
