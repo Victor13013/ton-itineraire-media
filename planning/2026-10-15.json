@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-15-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-15-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-15-3.jpg"
+      }
+    ],
+    "caption": "5 erreurs fréquentes avec une brosse à dents électrique.\n\n1. Frotter comme avec une manuelle. Pose la tête et laisse les vibrations bosser.\n2. Appuyer trop fort. Ça abîme les gencives.\n3. Oublier l'arrière des dents.\n4. Rincer juste après. Crache le dentifrice, ne rince pas : le fluor agit plus longtemps.\n5. Garder la même tête 6 mois.\n\nTu te reconnais dans laquelle ?\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #conseilsdentaires #hygienebuccodentaire #pulsecare",
+    "fb_message": "5 erreurs fréquentes avec une brosse à dents électrique.\n\n1. Frotter comme avec une manuelle. Pose la tête et laisse les vibrations bosser.\n2. Appuyer trop fort. Ça abîme les gencives.\n3. Oublier l'arrière des dents.\n4. Rincer juste après. Crache le dentifrice, ne rince pas : le fluor agit plus longtemps.\n5. Garder la même tête 6 mois.\n\nTu te reconnais dans laquelle ?\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #conseilsdentaires #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-15-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-15-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-15-3.jpg"
+      }
+    ]
+  }
+}

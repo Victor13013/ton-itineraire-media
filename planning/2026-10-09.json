@@ -1,9 +1,43 @@
 {
   "post": {
-    "type": "reel",
-    "video_url": "https://victor13013.github.io/pulse-care-media/media/reels/2026-10-09.mp4",
-    "thumb_offset": 1600,
-    "caption": "Brosse à dents électrique Pulse Care Bamboo+ : on te la présente en 15 secondes.\n\nLe principe est simple. Tu gardes le manche. Tu changes seulement la tête, en bambou.\n\n→ 41 000 vibrations par minute (technologie sonique)\n→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage\n→ Jusqu'à 30 jours d'autonomie, recharge USB-C\n→ Étanche IPX7\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "Brosse à dents électrique Pulse Care Bamboo+ : on te la présente en 15 secondes.\n\nLe principe est simple. Tu gardes le manche. Tu changes seulement la tête, en bambou.\n\n→ 41 000 vibrations par minute (technologie sonique)\n→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage\n→ Jusqu'à 30 jours d'autonomie, recharge USB-C\n→ Étanche IPX7\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare"
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-09-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-09-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-09-3.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-09-4.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique Pulse Care Bamboo+ : on te la présente.\n\nLe principe est simple. Tu gardes le manche. Tu changes seulement la tête, en bambou.\n\n→ 41 000 vibrations par minute (technologie sonique)\n→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage\n→ Jusqu'à 30 jours d'autonomie, recharge USB-C\n→ Étanche IPX7\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "Brosse à dents électrique Pulse Care Bamboo+ : on te la présente.\n\nLe principe est simple. Tu gardes le manche. Tu changes seulement la tête, en bambou.\n\n→ 41 000 vibrations par minute (technologie sonique)\n→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage\n→ Jusqu'à 30 jours d'autonomie, recharge USB-C\n→ Étanche IPX7\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-09-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-09-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-09-3.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-10-09-4.jpg"
+      }
+    ]
   }
 }
