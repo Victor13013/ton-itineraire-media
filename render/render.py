@@ -236,7 +236,7 @@ def t_list(c):
     for i, (a, b) in enumerate(c["items"]):
         cy = y + 6
         d.ellipse([70, cy, 70 + 56, cy + 56], fill=BAMBOO if not c.get("alt") else GREEN)
-        mark = str(i + 1) if c.get("numbered") else "→"
+        mark = str(c.get("start", 1) + i) if c.get("numbered") else "→"
         f = BOLD(28) if c.get("numbered") else ARR(28)
         tw = d.textlength(mark, font=f)
         d.text((98 - tw / 2, cy + 8), mark, font=f, fill=DEEP if not c.get("alt") else CREAM)
@@ -513,7 +513,10 @@ def main():
     gallery = []
     for p in POSTS:
         if ONLY and p["date"] not in ONLY: continue
-        date = p["date"]; ig = p["caption"].replace("[CTA]", CTA_IG); fb = p["caption"].replace("[CTA]", CTA_FB)
+        date = p["date"]; cap = p["caption"]
+        if p["kind"] == "carousel" and "swipe" not in cap.lower():
+            cap = cap.replace("[CTA]", "Swipe pour tout voir.\n\n[CTA]")
+        ig = cap.replace("[CTA]", CTA_IG); fb = cap.replace("[CTA]", CTA_FB)
         if p["kind"] == "reel":
             rel = f"media/reels/{date}.mp4"; t0 = time.time()
             dur = render_reel(p["scenes"], os.path.join(ROOT, rel))

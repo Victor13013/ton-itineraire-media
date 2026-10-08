@@ -56,14 +56,13 @@ TAGS = "#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulse
 
 POSTS = [
 # ───────────────────────── 1 · REEL
-dict(date="2026-10-09", kind="reel", scenes=[
-  dict(t="photo", img=s("p046"), dur=3.2, kicker="Nouveau sur ton lavabo", title="Pulse Care Bamboo+", sub="La brosse à dents électrique sonique"),
-  dict(t="counter", dur=3.0, value=41000, label="vibrations par minute", kicker="Technologie sonique"),
-  dict(t="photo", img=s("modes_main"), dur=3.0, kicker="Sensible · Nettoyage · Blanchiment · Polissage", title="4 modes de brossage"),
-  dict(t="photo", img=s("p083"), dur=3.0, kicker="Recharge USB-C", title="Jusqu'à 30 jours d'autonomie"),
-  dict(t="end", dur=2.8, title="Tu gardes le manche.\nTu changes la tête.", sub="pulsecarefrance.com"),
+dict(date="2026-10-09", kind="carousel", slides=[
+  dict(tpl="hero", img=s("p046"), kicker="Nouveau sur ton lavabo", title="Pulse Care Bamboo+", sub="La brosse à dents électrique sonique", swipe=True),
+  dict(tpl="stats", img=s("modes_main"), title="Les chiffres clés", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie"),("IPX7","étanche, même sous la douche")], page="2/4"),
+  dict(tpl="hero", img=s("p083"), kicker="Recharge USB-C", title="Jusqu'à 30 jours d'autonomie", page="3/4"),
+  dict(tpl="product", img=s("decouverte_tetes"), kicker="Le principe", title="Tu gardes le manche. Tu changes la tête.", sub="Têtes en bambou, poils ricin ou nylon.", page="4/4"),
 ],
-caption="""Brosse à dents électrique Pulse Care Bamboo+ : on te la présente en 15 secondes.
+caption="""Brosse à dents électrique Pulse Care Bamboo+ : on te la présente.
 
 Le principe est simple. Tu gardes le manche. Tu changes seulement la tête, en bambou.
 
@@ -118,11 +117,10 @@ Swipe pour le détail.
 #brosseadentsbambou #brosseadentselectrique #bambou #pulsecare"""),
 
 # ───────────────────────── 4 · REEL
-dict(date="2026-10-12", kind="reel", scenes=[
-  dict(t="photo", img=s("icones"), dur=3.0, kicker="Brosse à dents électrique", title="Quel mode choisir ?"),
-  dict(t="split", img=s("p090"), dur=3.6, kicker="Au quotidien", items=[("Sensible","Gencives fragiles, débuts à l'électrique"),("Nettoyage","Matin et soir, tous les jours")]),
-  dict(t="split", img=s("p019"), dur=3.6, kicker="En complément", items=[("Blanchiment","Taches de surface : café, thé"),("Polissage","Sensation de dents lisses")]),
-  dict(t="end", dur=2.8, title="Commence en mode Sensible les 2 premières semaines.", sub="pulsecarefrance.com"),
+dict(date="2026-10-12", kind="carousel", slides=[
+  dict(tpl="hero", img=s("icones"), kicker="Brosse à dents électrique", title="Quel mode choisir ?", swipe=True),
+  dict(tpl="list", img=s("p090"), title="Au quotidien", items=[("Sensible","Gencives fragiles, débuts à l'électrique."),("Nettoyage","Matin et soir, tous les jours.")], page="2/3"),
+  dict(tpl="list", img=s("p019"), title="En complément", items=[("Blanchiment","Taches de surface : café, thé."),("Polissage","Sensation de dents lisses.")], page="3/3", alt=True),
 ],
 caption="""4 modes sur ta brosse à dents électrique : lequel choisir ?
 
@@ -173,11 +171,10 @@ La bonne réponse : tous les 3 mois. C'est la recommandation des dentistes. Apr�
 #brosseadentselectrique #hygienebuccodentaire #routinedentaire #pulsecare"""),
 
 # ───────────────────────── 7 · REEL
-dict(date="2026-10-15", kind="reel", scenes=[
-  dict(t="photo", img="u:1646388478486-0996b6dcc2ac", dur=3.0, kicker="Brosse à dents électrique", title="5 erreurs de brossage"),
-  dict(t="list", dur=4.2, kicker="Le geste", items=[("1. Frotter","Pose la tête, les vibrations nettoient"),("2. Appuyer fort","Ça use l'émail"),("3. Oublier l'arrière","Face interne des dents")]),
-  dict(t="list", dur=3.4, kicker="La routine", items=[("4. Rincer juste après","Crache, ne rince pas"),("5. Garder la même tête","On la change tous les 3 mois")], theme="mint"),
-  dict(t="end", dur=2.6, title="Tu te reconnais dans laquelle ?", sub="Dis-le en commentaire"),
+dict(date="2026-10-15", kind="carousel", slides=[
+  dict(tpl="hero", img="u:1646388478486-0996b6dcc2ac", kicker="Brosse à dents électrique", title="5 erreurs de brossage à corriger", swipe=True),
+  dict(tpl="list", img="u:1654373535457-383a0a4d00f9", title="Les erreurs de geste", numbered=True, items=[("Frotter","Pose la tête, les vibrations nettoient."),("Appuyer fort","Ça use l'émail et irrite les gencives."),("Oublier l'arrière","La face interne des dents.")], page="2/3"),
+  dict(tpl="list", img="u:1609840113929-b130355987e1", title="Les erreurs de routine", numbered=True, start=4, items=[("Rincer juste après","Crache, ne rince pas : le fluor reste."),("Garder la même tête","On la change tous les 3 mois.")], page="3/3", alt=True),
 ],
 caption="""5 erreurs fréquentes avec une brosse à dents électrique.
 
@@ -231,12 +228,10 @@ Enregistre ce post pour ce soir.
 #brosseadentselectrique #routinedusoir #hygienebuccodentaire #pulsecare"""),
 
 # ───────────────────────── 10 · REEL
-dict(date="2026-10-18", kind="reel", scenes=[
-  dict(t="photo", img="u:1553691158-91a7f9183156", dur=3.0, kicker="Le match", title="Manuelle ou électrique ?"),
-  dict(t="compare", dur=4.4, left=("Manuelle", ["Technique parfaite exigée", "Pas de minuteur", "Pression mal dosée"]), right=("Électrique", ["41 000 vibrations/min", "Minuteur 2 min", "Mode Sensible"])),
-  dict(t="timer", dur=3.6, kicker="Le minuteur intégré", title="2 minutes", sub="Une pause toutes les 30 s pour changer de zone"),
-  dict(t="photo", img=s("bamboo_face"), dur=2.8, kicker="Pulse Care Bamboo+", title="59,90 €", sub="2 têtes, étui et câble inclus"),
-  dict(t="end", dur=2.4, title="Team manuelle ou team électrique ?", sub="pulsecarefrance.com"),
+dict(date="2026-10-18", kind="carousel", slides=[
+  dict(tpl="hero", img="u:1553691158-91a7f9183156", kicker="Le match", title="Manuelle ou électrique ?", swipe=True),
+  dict(tpl="list", img="u:1553691475-f38e4026275b", title="Ce que l'électrique change", items=[("41 000 vibrations par minute","Tu guides, elle nettoie."),("Minuteur 2 minutes","Plus de brossage bâclé."),("Mode Sensible","Pour les gencives fragiles.")], page="2/3"),
+  dict(tpl="product", img=s("bamboo_face"), kicker="Pulse Care Bamboo+", title="Prête à passer à l'électrique ?", sub="2 têtes, étui et câble USB-C inclus.", price="59,90 €", page="3/3"),
 ],
 caption="""Brosse à dents électrique ou manuelle : laquelle choisir ?
 
@@ -287,11 +282,10 @@ Pense juste à bien sécher le port USB-C avant de la recharger.
 #brosseadentselectrique #ipx7 #brosseadentsbambou #pulsecare"""),
 
 # ───────────────────────── 13 · REEL
-dict(date="2026-10-21", kind="reel", scenes=[
-  dict(t="photo", img=s("p121"), dur=3.2, kicker="Pack duo", title="Une brosse pour toi.\nUne pour l'autre."),
-  dict(t="split", img=s("duo_acc"), dur=3.4, kicker="Dans la boîte", items=[("2 manches Bamboo+","41 000 vibrations/min"),("Des têtes en bambou","Chacun les siennes")]),
-  dict(t="photo", img=s("p091"), dur=3.0, kicker="Pack duo", title="94,90 € les deux"),
-  dict(t="end", dur=2.6, title="Une routine pour toute la salle de bain.", sub="pulsecarefrance.com"),
+dict(date="2026-10-21", kind="carousel", slides=[
+  dict(tpl="hero", img=s("p121"), kicker="Pack duo", title="Une brosse pour toi.\nUne pour l'autre.", swipe=True),
+  dict(tpl="list", img=s("duo_acc"), title="Dans la boîte", items=[("2 manches Bamboo+","41 000 vibrations par minute."),("Des têtes en bambou","Chacun les siennes."),("Étuis de voyage","En bambou.")], page="2/3"),
+  dict(tpl="product", img=s("p091"), kicker="Pack duo", title="Une routine pour toute la salle de bain", price="94,90 €", page="3/3"),
 ],
 caption="""Le pack duo : deux brosses à dents électriques Pulse Care Bamboo+ pour la maison.
 
@@ -341,12 +335,10 @@ Swipe pour la bonne méthode.
 #brosseadentselectrique #vraioufaux #conseilsdentaires #pulsecare"""),
 
 # ───────────────────────── 16 · REEL
-dict(date="2026-10-24", kind="reel", scenes=[
-  dict(t="photo", img="u:1502301197179-65228ab57f78", dur=3.0, kicker="Vacances de la Toussaint", title="Laisse le chargeur à la maison"),
-  dict(t="counter", dur=3.0, value=30, label="jours d'autonomie", kicker="Une charge suffit", suffix=" j"),
-  dict(t="photo", img=s("etui"), dur=3.0, kicker="Inclus", title="Un étui de voyage en bambou"),
-  dict(t="photo", img="u:1764909262009-3dcd5691185c", dur=3.0, kicker="Étanche IPX7", title="Douche d'hôtel ? Aucun souci."),
-  dict(t="end", dur=2.6, title="Elle rentre dans toutes les trousses.", sub="pulsecarefrance.com"),
+dict(date="2026-10-24", kind="carousel", slides=[
+  dict(tpl="hero", img="u:1502301197179-65228ab57f78", kicker="Vacances de la Toussaint", title="Laisse le chargeur à la maison", swipe=True),
+  dict(tpl="product", img=s("etui"), kicker="Inclus", title="Un étui de voyage en bambou", sub="Pour protéger la tête dans ta trousse.", page="2/3"),
+  dict(tpl="stats", img="u:1764909262009-3dcd5691185c", title="En voyage", items=[("30 j","d'autonomie, pas besoin du chargeur"),("USB-C","le câble de ton téléphone"),("IPX7","douche d'hôtel ok"),("Étui","en bambou, inclus")], page="3/3"),
 ],
 caption="""Partir en vacances avec sa brosse à dents électrique, sans le chargeur.
 
@@ -399,11 +391,10 @@ Le geste : après tes 2 minutes, passe doucement la brosse de l'arrière vers l'
 #brosseadentselectrique #haleinefraiche #astucesante #pulsecare"""),
 
 # ───────────────────────── 19 · REEL
-dict(date="2026-10-27", kind="reel", scenes=[
-  dict(t="photo", img=s("ricin_fibres"), dur=3.0, kicker="Têtes de recharge", title="Ricin ou nylon ?"),
-  dict(t="split", img=s("ricin_face"), dur=3.4, kicker="Poils ricin", items=[("Fibre d'origine végétale",""),("Toucher très doux","Idéal gencives sensibles")]),
-  dict(t="split", img=s("nylon_face"), dur=3.4, kicker="Poils nylon", items=[("Brossage plus ferme",""),("Tu sens le nettoyage","Pour ceux qui aiment ça")]),
-  dict(t="end", dur=2.8, title="Pas sûr ? Teste une tête de chaque.", sub="pulsecarefrance.com"),
+dict(date="2026-10-27", kind="carousel", slides=[
+  dict(tpl="hero", img=s("ricin_fibres"), kicker="Têtes de recharge", title="Poils ricin ou poils nylon ?", swipe=True),
+  dict(tpl="list", img=s("ricin_face"), title="Poils ricin", items=[("Fibre d'origine végétale","À base d'huile de ricin."),("Toucher très doux","Idéal gencives sensibles.")], page="2/3"),
+  dict(tpl="list", img=s("nylon_face"), title="Poils nylon", items=[("Brossage plus ferme","Tu sens bien le nettoyage."),("Tête en bambou","Comme la version ricin.")], page="3/3", alt=True),
 ],
 caption="""Têtes de brosse à dents électrique : poils ricin ou poils nylon ?
 
@@ -455,11 +446,10 @@ Un manche sobre. Une tête en bambou. Rien de plus sur ton lavabo.
 #brosseadentselectrique #salledebain #brosseadentsbambou #pulsecare"""),
 
 # ───────────────────────── 22 · REEL
-dict(date="2026-10-30", kind="reel", scenes=[
-  dict(t="photo", img="u:1651146494264-1b3a54f71175", dur=3.0, kicker="Brosse à dents électrique", title="Une routine qui tient en famille"),
-  dict(t="split", img="u:1780327065542-80cc74036b04", dur=3.4, kicker="Astuces 1 et 2", items=[("Même heure chaque soir","Juste après le pyjama"),("Parents en même temps","Les enfants copient")]),
-  dict(t="split", img="u:1611690061822-b707a67bfebb", dur=3.4, kicker="Astuces 3 et 4", items=[("Le minuteur = un défi","Qui tient 2 minutes ?"),("Chacun sa tête","Un repère par personne")]),
-  dict(t="end", dur=2.8, title="Pour les enfants, demande conseil à ton dentiste.", sub="pulsecarefrance.com"),
+dict(date="2026-10-30", kind="carousel", slides=[
+  dict(tpl="hero", img="u:1651146494264-1b3a54f71175", kicker="Brosse à dents électrique", title="Une routine qui tient en famille", swipe=True),
+  dict(tpl="list", img="u:1780327065542-80cc74036b04", title="Astuces 1 et 2", numbered=True, items=[("Même heure chaque soir","Juste après le pyjama."),("Parents en même temps","Les enfants copient ce qu'ils voient.")], page="2/3"),
+  dict(tpl="list", img="u:1611690061822-b707a67bfebb", title="Astuces 3 et 4", numbered=True, start=3, items=[("Le minuteur = un défi","Qui tient les 2 minutes ?"),("Chacun sa tête","Un repère par personne.")], page="3/3", alt=True),
 ],
 caption="""Brosse à dents électrique : 4 astuces pour une routine qui tient en famille.
 
@@ -509,12 +499,10 @@ Sur la Bamboo+, le bambou est sur les têtes et l'étui de voyage. Le manche, lu
 #brosseadentsbambou #brosseadentselectrique #bambou #pulsecare"""),
 
 # ───────────────────────── 25 · REEL
-dict(date="2026-11-02", kind="reel", scenes=[
-  dict(t="photo", img=s("decouverte_main"), dur=3.0, kicker="Tuto", title="Bien utiliser ta brosse à dents électrique"),
-  dict(t="split", img=s("tete_main2"), dur=3.4, kicker="Étape 1", items=[("Dentifrice sur la tête","Une noisette suffit"),("Tête sur les dents, PUIS on allume","Zéro éclaboussure")]),
-  dict(t="split", img="u:1693692282136-2eeb24c11856", dur=3.4, kicker="Étape 2", items=[("Angle de 45°","Vers la gencive"),("Dent par dent","Tu glisses, tu ne frottes pas")]),
-  dict(t="timer", dur=3.6, kicker="Étape 3", title="30 s par zone", sub="La micro-pause te dit quand changer"),
-  dict(t="end", dur=2.4, title="Enregistre pour ne pas oublier.", sub="pulsecarefrance.com"),
+dict(date="2026-11-02", kind="carousel", slides=[
+  dict(tpl="hero", img=s("decouverte_main"), kicker="Tuto", title="Bien utiliser ta brosse à dents électrique", swipe=True),
+  dict(tpl="list", img=s("tete_main2"), title="Étape 1 : avant d'allumer", items=[("Dentifrice sur la tête","Une noisette suffit."),("Tête sur les dents, PUIS on allume","Zéro éclaboussure.")], page="2/3"),
+  dict(tpl="list", img="u:1693692282136-2eeb24c11856", title="Étapes 2 et 3 : pendant", items=[("Angle de 45°","Poils vers la gencive."),("Dent par dent","Tu glisses, tu ne frottes pas."),("30 s par zone","La micro-pause te dit quand changer.")], page="3/3", alt=True),
 ],
 caption="""Bien utiliser ta brosse à dents électrique en 3 étapes.
 
@@ -522,7 +510,7 @@ caption="""Bien utiliser ta brosse à dents électrique en 3 étapes.
 2. Angle de 45° vers la gencive. Tu glisses dent par dent, sans frotter.
 3. Suis le minuteur : 30 secondes par zone, la micro-pause te dit quand changer.
 
-Enregistre ce Reel pour l'avoir sous la main.
+Enregistre ce post pour l'avoir sous la main.
 
 [CTA]
 
@@ -567,12 +555,10 @@ Une autre question ? Pose-la en commentaire.
 #brosseadentselectrique #faq #brosseadentsbambou #pulsecare"""),
 
 # ───────────────────────── 28 · REEL
-dict(date="2026-11-05", kind="reel", scenes=[
-  dict(t="photo", img=s("ricin_pack4"), dur=3.0, kicker="Têtes de recharge", title="Prends un pack, oublie le sujet"),
-  dict(t="counter", dur=3.0, value=4, label="têtes = 1 an de brossage", kicker="Une tête tous les 3 mois"),
-  dict(t="split", img=s("nylon_pack4_noir"), dur=3.4, kicker="Au choix", items=[("Poils ricin ou nylon",""),("Têtes en bambou","Clip en une seconde")]),
-  dict(t="photo", img=s("ricin_pack4_vue"), dur=2.8, kicker="Pack de 4", title="14,90 €"),
-  dict(t="end", dur=2.4, title="Ton année de brossage, réglée.", sub="pulsecarefrance.com"),
+dict(date="2026-11-05", kind="carousel", slides=[
+  dict(tpl="hero", img=s("ricin_pack4"), kicker="Têtes de recharge", title="Prends un pack, oublie le sujet", swipe=True),
+  dict(tpl="statement", img="u:1609879937493-56540300d8cc", kicker="Une tête tous les 3 mois", title="4 têtes = 1 an de brossage", page="2/3"),
+  dict(tpl="product", img=s("ricin_pack4_vue"), kicker="Pack de 4", title="Poils ricin ou nylon", sub="Têtes en bambou, clip en une seconde.", price="14,90 €", page="3/3"),
 ],
 caption="""Têtes de recharge pour brosse à dents électrique : prends un pack, oublie le sujet.
 

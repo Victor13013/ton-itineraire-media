@@ -32,7 +32,7 @@ jobs:
           key: photos-${{ hashFiles('render/content.py') }}
           restore-keys: photos-
       - name: Rendu (visuels, Reels, planning)
-        run: python render/render.py --only 2026-10-09,2026-10-29,2026-11-07
+        run: python render/render.py --only 2026-10-09,2026-10-10,2026-10-15
       - name: Publication
         run: |
           git config user.name "pulse-care-bot"
