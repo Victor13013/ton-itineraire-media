@@ -10,6 +10,21 @@ T2 = "#brosseadentselectrique #routinedumatin #hygienebuccodentaire #pulsecare"
 T3 = "#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare"
 
 POSTS_AM = [
+dict(date="2026-10-15", kind="photo", slides=[
+  dict(tpl="hero", img="u:1567516364473-233c4b6fcfbe", kicker="Les oubliées", title="4 zones que tu *oublies souvent*", sub="Derrière les molaires · faces internes · ligne des gencives · langue."),
+], caption="""Même avec une brosse à dents électrique, ces 4 zones sont souvent oubliées.
+
+1. Derrière les dernières molaires
+2. Les faces internes, côté langue
+3. La ligne des gencives : incline la tête à 45°
+4. La langue
+
+Passe 2 secondes de plus sur chacune. C'est là que la plaque reste.
+
+[CTA]
+
+""" + T),
+
 dict(date="2026-10-09", kind="photo", slides=[
   dict(tpl="hero", img="u:1744970531102-27059b323df4", kicker="Question du matin", title="Avant ou après *le petit-déj* ?", sub="Avant : plus simple. Après : attends 30 minutes, surtout après un jus d'orange."),
 ], caption="""Brosse à dents électrique : avant ou après le petit-déjeuner ?
@@ -94,7 +109,7 @@ Chez Pulse Care, cette tête est en bambou, pas en plastique. Les poils sont à 
 
 #brosseadentsbambou #brosseadentselectrique #bambou #pulsecare"""),
 
-dict(date="2026-10-15", kind="photo", slides=[
+dict(date="test-2026-10-15", kind="photo", slides=[
   dict(tpl="hero", img="u:1676897296672-2bb21aacb342", kicker="La bonne dose", title="Une *noisette* de dentifrice suffit.", sub="Pas besoin de couvrir toute la tête de la brosse."),
 ], caption="""Combien de dentifrice sur ta brosse à dents électrique ?
 

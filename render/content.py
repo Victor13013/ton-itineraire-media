@@ -59,6 +59,25 @@ def s(k): return "s:" + S[k]
 TAGS = "#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare"
 
 POSTS = [
+# ───────────────────────── 18/10 18h (remplace le post publié en test le 08/10)
+dict(date="2026-10-18", kind="carousel", slides=[
+  dict(tpl="hero", img="u:1759563871375-d5b140f6646e", kicker="Pulse Care Bamboo+", title="Ce qu'il y a *dans la boîte*", swipe=True),
+  dict(tpl="list", img="u:1643274390061-cef676c273d7", title="Le contenu", numbered=True, items=[("1 manche Bamboo+","En plastique ASA, il reste."),("2 têtes en bambou","Une à utiliser, une d'avance."),("1 étui de voyage","En bambou."),("1 câble USB-C","Recharge en 2,5 h environ.")], page="2/3"),
+  dict(tpl="stats", img="u:1535295972055-1c762f4483e5", title="Pour 59,90 €", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie"),("IPX7","étanche")], page="3/3"),
+],
+caption="""Brosse à dents électrique Pulse Care Bamboo+ : ce qu'il y a dans la boîte.
+
+→ 1 manche Bamboo+, en plastique ASA
+→ 2 têtes en bambou
+→ 1 étui de voyage en bambou
+→ 1 câble USB-C
+
+Tout est inclus pour 59,90 €. Tu n'as rien d'autre à acheter avant 6 mois.
+
+[CTA]
+
+#brosseadentselectrique #brosseadentsbambou #unboxing #pulsecare"""),
+
 # ───────────────────────── 1 · REEL
 dict(date="2026-10-09", kind="carousel", slides=[
   dict(tpl="hero", img=s("p046"), kicker="Nouveau sur ton lavabo", title="Pulse Care *Bamboo+*", sub="La brosse à dents électrique sonique", swipe=True),
@@ -232,7 +251,7 @@ Enregistre ce post pour ce soir.
 #brosseadentselectrique #routinedusoir #hygienebuccodentaire #pulsecare"""),
 
 # ───────────────────────── 10 · REEL
-dict(date="2026-10-18", kind="carousel", slides=[
+dict(date="test-2026-10-18", kind="carousel", slides=[
   dict(tpl="hero", img="u:1553691158-91a7f9183156", kicker="Le match", title="Manuelle ou *électrique* ?", swipe=True),
   dict(tpl="list", img="u:1553691475-f38e4026275b", title="Ce que l'électrique change", items=[("41 000 vibrations par minute","Tu guides, elle nettoie."),("Minuteur 2 minutes","Plus de brossage bâclé."),("Mode Sensible","Pour les gencives fragiles.")], page="2/3"),
   dict(tpl="product", img=s("bamboo_face"), kicker="Pulse Care Bamboo+", title="Prête à passer à *l'électrique* ?", price="59,90 €", callouts=["Tête en bambou","41 000 vib/min","4 modes","USB-C · 30 j","IPX7"], page="3/3"),
