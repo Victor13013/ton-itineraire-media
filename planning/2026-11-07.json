@@ -1,0 +1,43 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-11-07-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-11-07-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-11-07-3.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-11-07-4.jpg"
+      }
+    ],
+    "caption": "Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap.\n\n→ 41 000 vibrations par minute\n→ 4 modes de brossage\n→ minuteur 2 min avec pause toutes les 30 s\n→ 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n→ têtes en bambou, poils ricin ou nylon\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap.\n\n→ 41 000 vibrations par minute\n→ 4 modes de brossage\n→ minuteur 2 min avec pause toutes les 30 s\n→ 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n→ têtes en bambou, poils ricin ou nylon\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-11-07-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-11-07-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-11-07-3.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/media/posts/2026-11-07-4.jpg"
+      }
+    ]
+  }
+}
