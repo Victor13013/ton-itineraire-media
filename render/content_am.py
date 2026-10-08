@@ -154,7 +154,7 @@ Simple. Et ta tête reste propre jusqu'au bout.
 """ + T3),
 
 dict(date="2026-10-19", kind="photo", slides=[
-  dict(tpl="hero", img="u:1685084844860-5d94e6c82939", kicker="Hygiène", title="Ta brosse sèche *à l'air libre* ?", sub="Range-la tête en haut. Évite le placard fermé juste après usage."),
+  dict(tpl="hero", img="u:1613849925352-96348d26bc51", kicker="Hygiène", title="Ta brosse sèche *à l'air libre* ?", sub="Range-la tête en haut. Évite le placard fermé juste après usage."),
 ], caption="""Où ranges-tu ta brosse à dents électrique après usage ?
 
 La bonne place : à l'air libre, tête en haut. Elle sèche plus vite.
@@ -266,7 +266,7 @@ Les têtes sont compatibles uniquement avec les manches Pulse Care.
 #brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare"""),
 
 dict(date="2026-10-27", kind="photo", slides=[
-  dict(tpl="hero", img="u:1598033594208-5b9d61d5df3c", kicker="Bain de bouche", title="Pas *juste après* le brossage.", sub="Sinon tu rinces le fluor du dentifrice. Utilise-le à un autre moment."),
+  dict(tpl="hero", img="u:1724581703390-ad15dd1a95d2", kicker="Bain de bouche", title="Pas *juste après* le brossage.", sub="Sinon tu rinces le fluor du dentifrice. Utilise-le à un autre moment."),
 ], caption="""Bain de bouche après ta brosse à dents électrique ? Pas tout de suite.
 
 Juste après le brossage, il rince le fluor du dentifrice.
