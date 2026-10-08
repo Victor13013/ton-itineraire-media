@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.join(ROOT, "render"))
 from content import POSTS, SHOP, CTA_IG, CTA_FB  # noqa: E402
 
 FAKE = "--fake" in sys.argv
-ONLY = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
+ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
 RAW = "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/"
 PAGES = "https://victor13013.github.io/pulse-care-media/"
 
@@ -512,7 +512,7 @@ def main():
     for d_ in ("media/posts", "media/reels", "planning"): os.makedirs(os.path.join(ROOT, d_), exist_ok=True)
     gallery = []
     for p in POSTS:
-        if ONLY and p["date"] != ONLY: continue
+        if ONLY and p["date"] not in ONLY: continue
         date = p["date"]; ig = p["caption"].replace("[CTA]", CTA_IG); fb = p["caption"].replace("[CTA]", CTA_FB)
         if p["kind"] == "reel":
             rel = f"media/reels/{date}.mp4"; t0 = time.time()
