@@ -2,7 +2,7 @@ name: Rendu des visuels Pulse Care
 
 on:
   push:
-    branches: [main]
+    branches: [pulse-care]
     paths: ["render/**", ".github/workflows/render.yml"]
   workflow_dispatch:
 

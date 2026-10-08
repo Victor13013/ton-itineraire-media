@@ -16,7 +16,7 @@ from content import POSTS, SHOP, CTA_IG, CTA_FB  # noqa: E402
 
 FAKE = "--fake" in sys.argv
 ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
-RAW = "https://raw.githubusercontent.com/Victor13013/pulse-care-media/main/"
+RAW = "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/"
 PAGES = "https://victor13013.github.io/pulse-care-media/"
 
 GREEN = (30, 58, 47); DEEP = (18, 36, 29); CREAM = (243, 238, 228)
