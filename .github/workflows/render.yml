@@ -1,0 +1,42 @@
+name: Rendu des visuels Pulse Care
+
+on:
+  push:
+    branches: [main]
+    paths: ["render/**", ".github/workflows/render.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dépendances
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q pillow numpy
+      - uses: actions/cache@v4
+        with:
+          path: render/.cache
+          key: photos-${{ hashFiles('render/content.py') }}
+          restore-keys: photos-
+      - name: Rendu (visuels, Reels, planning)
+        run: python render/render.py
+      - name: Publication
+        run: |
+          git config user.name "pulse-care-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add media planning index.html
+          git diff --cached --quiet || git commit -m "Rendu automatique des visuels et du planning"
+          git push
