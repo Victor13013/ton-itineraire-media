@@ -798,7 +798,11 @@ def render_reel(scenes_spec, out):
 
 # ───────────────────────────── contrôles + export
 FORBIDDEN = ["écologique", "éco-responsable", "biodégradable", "respectueux de l", "planète", "zéro déchet",
-             "40 000", "massage", "brosse en bambou", "manche en bambou", "dupont", "tynex", " vous ", " vos ", "votre"]
+             "40 000", "massage",
+             # marques concurrentes : jamais citées
+             "oral-b", "oral b", "philips", "sonicare", "colgate", "sensodyne", "elmex", "parodontax", "signal ",
+             "crest", "quip", "suri ", "hismile", "foreo", "waterpik", "listerine", "aquafresh", "fluocaril",
+             "meridol", "curaprox", "panasonic", "xiaomi", "oclean", "happybrush", "spotlight", "brosse en bambou", "manche en bambou", "dupont", "tynex", " vous ", " vos ", "votre"]
 
 def check():
     errs, used = [], Counter()

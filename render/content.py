@@ -100,7 +100,7 @@ Le principe est simple. Tu gardes le manche. Tu changes seulement la tête, en b
 
 # ───────────────────────── 2 · PHOTO
 dict(date="2026-10-10", kind="photo", slides=[
-  dict(tpl="hero", img="u:1693692273603-3b9e13789298", kicker="La règle de base", title="2 minutes.\n*2 fois par jour.*", sub="Le minuteur s'arrête seul à 2 min, avec une pause toutes les 30 s pour changer de zone."),
+  dict(tpl="hero", img="u:1675526607070-f5cbd71dde92", kicker="La règle de base", title="2 minutes.\n*2 fois par jour.*", sub="Le minuteur s'arrête seul à 2 min, avec une pause toutes les 30 s pour changer de zone."),
 ],
 caption="""2 minutes, 2 fois par jour. C'est la base avec une brosse à dents électrique comme avec une manuelle.
 
@@ -343,7 +343,7 @@ Ton dernier rendez-vous date de quand ?
 # ───────────────────────── 15 · CAROUSEL
 dict(date="2026-10-23", kind="carousel", slides=[
   dict(tpl="statement", img="u:1489278353717-f64c6ee8a4d2", kicker="Vrai ou faux", title="Appuyer fort =\n*dents plus propres ?*", swipe=True),
-  dict(tpl="list", img="u:1693692258834-74c62f467cb7", title="FAUX. Voilà la bonne méthode", items=[("Tête posée en douceur","Angle de 45° vers la gencive."),("Tu glisses lentement","D'une dent à l'autre."),("Aucune pression","Les vibrations nettoient, toi tu guides.")], page="2/2"),
+  dict(tpl="list", img="u:1663182245833-7dd667277043", title="FAUX. Voilà la bonne méthode", items=[("Tête posée en douceur","Angle de 45° vers la gencive."),("Tu glisses lentement","D'une dent à l'autre."),("Aucune pression","Les vibrations nettoient, toi tu guides.")], page="2/2"),
 ],
 caption="""Vrai ou faux : plus tu appuies fort avec ta brosse à dents électrique, plus tes dents sont propres ?
 
@@ -470,7 +470,7 @@ Un manche sobre. Une tête en bambou. Rien de plus sur ton lavabo.
 
 # ───────────────────────── 22 · REEL
 dict(date="2026-10-30", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1651146494264-1b3a54f71175", kicker="Brosse à dents électrique", title="Une routine qui tient en famille", swipe=True),
+  dict(tpl="hero", img="u:1780327065644-399075fb9e9b", kicker="Brosse à dents électrique", title="Une routine qui tient en famille", swipe=True),
   dict(tpl="list", img="u:1780327065542-80cc74036b04", title="Astuces 1 et 2", numbered=True, items=[("Même heure chaque soir","Juste après le pyjama."),("Parents en même temps","Les enfants copient ce qu'ils voient.")], page="2/3"),
   dict(tpl="list", img="u:1611690061822-b707a67bfebb", title="Astuces 3 et 4", numbered=True, start=3, items=[("Le minuteur = un défi","Qui tient les 2 minutes ?"),("Chacun sa tête","Un repère par personne.")], page="3/3", alt=True),
 ],
@@ -489,7 +489,7 @@ Pour les enfants, demande à ton dentiste le type de brosse adapté à leur âge
 
 # ───────────────────────── 23 · PHOTO
 dict(date="2026-10-31", kind="photo", slides=[
-  dict(tpl="statement", img="u:1612715623676-a68370d10596", kicker="Halloween", title="Bonbons ok.\n*Brossage obligatoire.*", sub="Mange-les d'un coup, bois de l'eau, 2 minutes de brossage avant de dormir."),
+  dict(tpl="statement", img="u:1588756264692-d396bca41fb1", kicker="Halloween", title="Bonbons ok.\n*Brossage obligatoire.*", sub="Mange-les d'un coup, bois de l'eau, 2 minutes de brossage avant de dormir."),
 ],
 caption="""Halloween et brosse à dents électrique : le plan de survie.
 

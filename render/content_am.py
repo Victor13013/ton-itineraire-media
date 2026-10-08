@@ -26,7 +26,7 @@ Passe 2 secondes de plus sur chacune. C'est là que la plaque reste.
 """ + T),
 
 dict(date="2026-10-09", kind="photo", slides=[
-  dict(tpl="hero", img="u:1744970531102-27059b323df4", kicker="Question du matin", title="Avant ou après *le petit-déj* ?", sub="Avant : plus simple. Après : attends 30 minutes, surtout après un jus d'orange."),
+  dict(tpl="hero", img="u:1640625488786-ac3975ac3bf4", kicker="Question du matin", title="Avant ou après *le petit-déj* ?", sub="Avant : plus simple. Après : attends 30 minutes, surtout après un jus d'orange."),
 ], caption="""Brosse à dents électrique : avant ou après le petit-déjeuner ?
 
 Les deux marchent. Ce qui compte :
@@ -54,8 +54,8 @@ Utilise-le 1 à 2 fois par semaine, à la place du mode Nettoyage. Le reste du t
 """ + T),
 
 dict(date="2026-10-11", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1772911141524-d3dc8b1cc97e", kicker="Brosse à dents électrique", title="Souple, medium *ou dure* ?", swipe=True),
-  dict(tpl="list", img="u:1590928192338-73e004fad28e", title="Ce qu'il faut savoir", items=[("Souple","La plus conseillée par les dentistes."),("Dure","Elle peut irriter les gencives et user l'émail."),("Avec une sonique","Ce sont les vibrations qui nettoient, pas la dureté.")], page="2/3"),
+  dict(tpl="hero", img="u:1720625922851-0cc03e1f65eb", kicker="Brosse à dents électrique", title="Souple, medium *ou dure* ?", swipe=True),
+  dict(tpl="list", img="u:1640295508767-bcb13183145b", title="Ce qu'il faut savoir", items=[("Souple","La plus conseillée par les dentistes."),("Dure","Elle peut irriter les gencives et user l'émail."),("Avec une sonique","Ce sont les vibrations qui nettoient, pas la dureté.")], page="2/3"),
   dict(tpl="product", img=s("nylon_pack4"), kicker="Têtes Pulse Care", title="Tête en bambou, *poils ricin ou nylon*", sub="Clip en une seconde sur ton manche Pulse Care.", page="3/3"),
 ], caption="""Brosse à dents électrique : poils souples, medium ou durs ?
 
@@ -253,7 +253,7 @@ Si la douleur revient souvent, parles-en à ton dentiste.
 
 dict(date="2026-10-25", kind="carousel", slides=[
   dict(tpl="hero", img="u:1497700003451-e1df943a194b", kicker="Budget", title="Une brosse électrique, *ça coûte combien* par an ?", swipe=True),
-  dict(tpl="stats", img="u:1608145264900-e9905d0d6de8", title="Le calcul", items=[("59,90 €","la Bamboo+, avec 2 têtes"),("14,90 €","le pack de 4 têtes"),("3 mois","par tête"),("30 j","par charge")], page="2/2"),
+  dict(tpl="stats", img="u:1558299244-f4bb4dd735b2", title="Le calcul", items=[("59,90 €","la Bamboo+, avec 2 têtes"),("14,90 €","le pack de 4 têtes"),("3 mois","par tête"),("30 j","par charge")], page="2/2"),
 ], caption="""Brosse à dents électrique Pulse Care : combien ça coûte vraiment ?
 
 → 59,90 € la Bamboo+, avec 2 têtes, l'étui et le câble
@@ -335,8 +335,8 @@ Résultat : une fibre d'origine végétale, au toucher très doux, montée sur u
 #brosseadentsbambou #brosseadentselectrique #ricin #pulsecare"""),
 
 dict(date="2026-10-31", kind="carousel", slides=[
-  dict(tpl="statement", img="u:1600721187850-c944924fd48a", kicker="Entre les dents", title="Fil dentaire ou brossettes ?", swipe=True),
-  dict(tpl="list", img="u:1643624050871-fcb133e45037", title="Comment choisir", items=[("Le fil","Pour les espaces serrés."),("Les brossettes","Pour les espaces plus larges."),("La bonne taille","Ton dentiste te la donne en 30 secondes.")], page="2/2"),
+  dict(tpl="statement", img="u:1613849925496-e6d683c091f1", kicker="Entre les dents", title="Fil dentaire ou brossettes ?", swipe=True),
+  dict(tpl="list", img="u:1595515770330-ceeea7d82cfd", title="Comment choisir", items=[("Le fil","Pour les espaces serrés."),("Les brossettes","Pour les espaces plus larges."),("La bonne taille","Ton dentiste te la donne en 30 secondes.")], page="2/2"),
 ], caption="""Ta brosse à dents électrique + quoi entre les dents : fil ou brossettes ?
 
 → fil dentaire : espaces serrés
