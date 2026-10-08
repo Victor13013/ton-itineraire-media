@@ -176,6 +176,16 @@
   ]
  },
  {
+  "date": "2026-10-09-b",
+  "topic": "cappadoce-montgolfieres",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "turquie-01.jpg",
+   "turquie-02.jpg"
+  ]
+ },
+ {
   "date": "2026-10-10",
   "topic": "ou-partir-novembre",
   "format": "carousel",
@@ -190,6 +200,20 @@
   ]
  },
  {
+  "date": "2026-10-10-b",
+  "topic": "valise-legere",
+  "format": "carousel",
+  "slides": 6,
+  "photos": [
+   "valise-05.jpg",
+   "valise-06.jpg",
+   "valise-07.jpg",
+   "valise-08.jpg",
+   "voyage-06.jpg",
+   "voyage-07.jpg"
+  ]
+ },
+ {
   "date": "2026-10-11",
   "topic": "teide-tenerife",
   "format": "photo",
@@ -197,6 +221,18 @@
   "photos": [
    "canaries-01.jpg",
    "canaries-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-11-b",
+  "topic": "prague-noel",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "prague-01.jpg",
+   "prague-02.jpg",
+   "prague-03.jpg",
+   "prague-04.jpg"
   ]
  }
 ]
