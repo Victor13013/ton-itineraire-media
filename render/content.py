@@ -49,6 +49,10 @@ S = {  # photos produit Shopify
  "duo_tete": "pulse-care-pack-duo-brosse-tete-bambou.webp",
  "duo_acc": "pulse-care-pack-duo-accessoires-bambou.webp",
  "etui": "pulse-care-etui-bambou-ferme-brosse-electrique.webp",
+ "nylon_gauche": "tete-brosse-electrique-bambou-nylon-pulsecare-profil-gauche.webp",
+ "nylon_pack2_profil": "tetes-rechange-brosse-electrique-bambou-nylon-pack2-profil.webp",
+ "nylon_pack4_profil": "tetes-rechange-brosse-electrique-bambou-nylon-pack4-vue-profil.webp",
+ "ricin_pack4_douce": "tetes-rechange-brosse-electrique-bambou-douce-pack4-pulsecare.webp",
 }
 def s(k): return "s:" + S[k]
 

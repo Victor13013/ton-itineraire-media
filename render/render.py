@@ -13,6 +13,9 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "render"))
 from content import POSTS, SHOP, CTA_IG, CTA_FB  # noqa: E402
+from content_am import POSTS_AM  # noqa: E402
+SLOTS = [("", POSTS, 0), ("-10h", POSTS_AM, 1)]   # 18h -> AAAA-MM-JJ.json · 10h -> AAAA-MM-JJ-10h.json
+ALL = [p for _, L, _ in SLOTS for p in L]
 
 FAKE = "--fake" in sys.argv
 ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
@@ -798,7 +801,7 @@ FORBIDDEN = ["écologique", "éco-responsable", "biodégradable", "respectueux d
 
 def check():
     errs, used = [], Counter()
-    for p in POSTS:
+    for p in ALL:
         refs = [x["img"] for x in p.get("slides", []) + p.get("scenes", []) if x.get("img")]
         for r in refs: used[r] += 1
         cap = p["caption"].replace("[CTA]", CTA_IG)
@@ -816,37 +819,38 @@ def main():
     errs, used = check()
     if errs:
         print("\n".join(errs)); sys.exit(1)
-    print(f"Contrôles OK · {len(POSTS)} posts · {len(used)} visuels sources uniques")
+    print(f"Contrôles OK · {len(ALL)} posts · {len(used)} visuels sources uniques")
     for d_ in ("media/posts", "media/reels", "planning"): os.makedirs(os.path.join(ROOT, d_), exist_ok=True)
     gallery = []
-    for p in POSTS:
-        if ONLY and p["date"] not in ONLY: continue
-        date = p["date"]; cap = p["caption"]
-        if p["kind"] == "carousel" and "swipe" not in cap.lower():
-            cap = cap.replace("[CTA]", "Swipe pour tout voir.\n\n[CTA]")
-        ig = cap.replace("[CTA]", CTA_IG); fb = cap.replace("[CTA]", CTA_FB)
-        if p["kind"] == "reel":
-            rel = f"media/reels/{date}.mp4"; t0 = time.time()
-            dur = render_reel(p["scenes"], os.path.join(ROOT, rel))
-            print(f"{date} reel {dur:.1f}s ({time.time() - t0:.0f}s de rendu)")
-            post = {"type": "reel", "video_url": PAGES + rel, "thumb_offset": 1600, "caption": ig, "fb_message": fb}
-            gallery.append((date, "reel", [rel.replace(".mp4", "-cover.jpg")], rel, ig))
-        else:
-            rels = []
-            for i, sl in enumerate(p["slides"], 1):
-                rel = f"media/posts/{date}-{i}.jpg"
-                sl = dict(sl, _n=POSTS.index(p) + i - 1)
-                TPL[sl["tpl"]](sl).save(os.path.join(ROOT, rel), "JPEG", quality=90, optimize=True, progressive=False)
-                rels.append(rel)
-            urls = [RAW + r for r in rels]
-            print(f"{date} {p['kind']} {len(rels)} visuel(s)")
-            if p["kind"] == "photo":
-                post = {"type": "photo", "image_url": urls[0]}
-            else:
-                post = {"type": "carousel", "media": [{"media_type": "IMAGE", "image_url": u} for u in urls]}
-            post.update({"caption": ig, "fb_message": fb, "fb_photos": [{"type": "url", "url": u} for u in urls]})
-            gallery.append((date, p["kind"], rels, None, ig))
-        json.dump({"post": post}, open(os.path.join(ROOT, "planning", date + ".json"), "w"), ensure_ascii=False, indent=2)
+    for suf, LIST, off in SLOTS:
+      for p in LIST:
+          if ONLY and p["date"] not in ONLY: continue
+          date = p["date"] + suf; cap = p["caption"]
+          if p["kind"] == "carousel" and "swipe" not in cap.lower():
+              cap = cap.replace("[CTA]", "Swipe pour tout voir.\n\n[CTA]")
+          ig = cap.replace("[CTA]", CTA_IG); fb = cap.replace("[CTA]", CTA_FB)
+          if p["kind"] == "reel":
+              rel = f"media/reels/{date}.mp4"; t0 = time.time()
+              dur = render_reel(p["scenes"], os.path.join(ROOT, rel))
+              print(f"{date} reel {dur:.1f}s ({time.time() - t0:.0f}s de rendu)")
+              post = {"type": "reel", "video_url": PAGES + rel, "thumb_offset": 1600, "caption": ig, "fb_message": fb}
+              gallery.append((date, "reel", [rel.replace(".mp4", "-cover.jpg")], rel, ig))
+          else:
+              rels = []
+              for i, sl in enumerate(p["slides"], 1):
+                  rel = f"media/posts/{date}-{i}.jpg"
+                  sl = dict(sl, _n=LIST.index(p) + i - 1 + off)
+                  TPL[sl["tpl"]](sl).save(os.path.join(ROOT, rel), "JPEG", quality=90, optimize=True, progressive=False)
+                  rels.append(rel)
+              urls = [RAW + r for r in rels]
+              print(f"{date} {p['kind']} {len(rels)} visuel(s)")
+              if p["kind"] == "photo":
+                  post = {"type": "photo", "image_url": urls[0]}
+              else:
+                  post = {"type": "carousel", "media": [{"media_type": "IMAGE", "image_url": u} for u in urls]}
+              post.update({"caption": ig, "fb_message": fb, "fb_photos": [{"type": "url", "url": u} for u in urls]})
+              gallery.append((date, p["kind"], rels, None, ig))
+          json.dump({"post": post}, open(os.path.join(ROOT, "planning", date + ".json"), "w"), ensure_ascii=False, indent=2)
     if not ONLY: write_index(gallery)
 
 def write_index(gallery):
