@@ -32,11 +32,11 @@ jobs:
           key: photos-${{ hashFiles('render/content.py') }}
           restore-keys: photos-
       - name: Rendu (visuels, Reels, planning)
-        run: python render/render.py --only 2026-10-09,2026-10-10,2026-10-15
+        run: python render/render.py --fetch-only
       - name: Publication
         run: |
           git config user.name "pulse-care-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add media planning
+          git add -f render/.cache
           git diff --cached --quiet || git commit -m "Rendu automatique des visuels et du planning"
           git push

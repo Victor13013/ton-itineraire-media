@@ -505,6 +505,10 @@ def check():
     return errs, used
 
 def main():
+    if "--fetch-only" in sys.argv:
+        refs = {x["img"] for p in POSTS for x in p.get("slides", []) + p.get("scenes", []) if x.get("img")}
+        for r in sorted(refs): load(r)
+        print(len(refs), "sources"); return
     errs, used = check()
     if errs:
         print("\n".join(errs)); sys.exit(1)
