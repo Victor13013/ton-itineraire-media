@@ -398,11 +398,8 @@ def swipe_btn(base, color, fg):
     tw = d.textlength("→", font=ARR(40)); d.text((cx - tw / 2, cy - 26), "→", font=ARR(40), fill=fg)
 
 def chrome(base, c, fg, dim, light_btn=True):
-    d = ImageDraw.Draw(base)
-    handle(d, M, H - 88, fg)
-    n, k = page_info(c)
+    """Seul élément d'interface gardé : le bouton swipe sur les couvertures."""
     if c.get("swipe"): swipe_btn(base, CREAM if light_btn else FOREST, INKV if light_btn else CREAM)
-    elif n: dots(d, n, k, fg, dim)
 
 def pill_box(d, x, y, text, fnt, bg, fg, padx=22, pady=12, r=None):
     tw = d.textlength(text, font=fnt); h = fnt.size + 2 * pady
