@@ -188,5 +188,15 @@
    "mexique-03.jpg",
    "thailande-04.jpg"
   ]
+ },
+ {
+  "date": "2026-10-11",
+  "topic": "teide-tenerife",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "canaries-01.jpg",
+   "canaries-04.jpg"
+  ]
  }
 ]
