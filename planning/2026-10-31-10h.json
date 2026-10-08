@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-31-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-31-10h-2.jpg"
+      }
+    ],
+    "caption": "Ta brosse à dents électrique + quoi entre les dents : fil ou brossettes ?\n\n→ fil dentaire : espaces serrés\n→ brossettes : espaces plus larges\n\nLes deux font le job. Demande la bonne taille de brossette à ton dentiste.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_message": "Ta brosse à dents électrique + quoi entre les dents : fil ou brossettes ?\n\n→ fil dentaire : espaces serrés\n→ brossettes : espaces plus larges\n\nLes deux font le job. Demande la bonne taille de brossette à ton dentiste.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-31-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-31-10h-2.jpg"
+      }
+    ]
+  }
+}

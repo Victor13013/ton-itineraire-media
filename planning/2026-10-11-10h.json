@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-10h-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-10h-3.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique : poils souples, medium ou durs ?\n\nPour la plupart des gens, souple suffit. C'est ce que conseillent les dentistes.\n\nUne brosse dure n'est pas plus efficace. Elle peut même irriter les gencives. Avec une brosse sonique, ce sont les vibrations qui font le travail.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "Brosse à dents électrique : poils souples, medium ou durs ?\n\nPour la plupart des gens, souple suffit. C'est ce que conseillent les dentistes.\n\nUne brosse dure n'est pas plus efficace. Elle peut même irriter les gencives. Avec une brosse sonique, ce sont les vibrations qui font le travail.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-10h-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-11-10h-3.jpg"
+      }
+    ]
+  }
+}

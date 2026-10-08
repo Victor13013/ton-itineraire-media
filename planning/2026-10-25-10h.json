@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-10h-2.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique Pulse Care : combien ça coûte vraiment ?\n\n→ 59,90 € la Bamboo+, avec 2 têtes, l'étui et le câble\n→ 14,90 € le pack de 4 têtes de recharge\n→ une tête tous les 3 mois\n\nLe manche, tu le gardes. Tu ne rachètes que les têtes.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "Brosse à dents électrique Pulse Care : combien ça coûte vraiment ?\n\n→ 59,90 € la Bamboo+, avec 2 têtes, l'étui et le câble\n→ 14,90 € le pack de 4 têtes de recharge\n→ une tête tous les 3 mois\n\nLe manche, tu le gardes. Tu ne rachètes que les têtes.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-25-10h-2.jpg"
+      }
+    ]
+  }
+}

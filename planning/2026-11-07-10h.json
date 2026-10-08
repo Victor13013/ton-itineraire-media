@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-07-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-07-10h-2.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique : les 5 astuces du mois à garder.\n\n1. 2 minutes, 2 fois par jour\n2. Fil ou brossettes une fois par jour\n3. Tu craches, tu ne rinces pas\n4. Une nouvelle tête tous les 3 mois\n5. Mode Sensible si tes gencives sont fragiles\n\nEnregistre ce post.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_message": "Brosse à dents électrique : les 5 astuces du mois à garder.\n\n1. 2 minutes, 2 fois par jour\n2. Fil ou brossettes une fois par jour\n3. Tu craches, tu ne rinces pas\n4. Une nouvelle tête tous les 3 mois\n5. Mode Sensible si tes gencives sont fragiles\n\nEnregistre ce post.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-07-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-07-10h-2.jpg"
+      }
+    ]
+  }
+}

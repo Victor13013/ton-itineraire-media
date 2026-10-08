@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-06-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-06-10h-2.jpg"
+      }
+    ],
+    "caption": "Gencives sensibles ? 3 réflexes avec ta brosse à dents électrique.\n\n1. Le mode Sensible tous les jours\n2. Des poils doux, comme nos têtes ricin\n3. Aucune pression sur la brosse\n\nSi l'inconfort dure, parles-en à ton dentiste.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_message": "Gencives sensibles ? 3 réflexes avec ta brosse à dents électrique.\n\n1. Le mode Sensible tous les jours\n2. Des poils doux, comme nos têtes ricin\n3. Aucune pression sur la brosse\n\nSi l'inconfort dure, parles-en à ton dentiste.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-06-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-06-10h-2.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-16-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-16-10h-2.jpg"
+      }
+    ],
+    "caption": "Mauvaise haleine malgré ta brosse à dents électrique ? Voici 4 causes courantes.\n\n1. La langue n'est pas brossée\n2. La bouche est sèche : bois de l'eau\n3. Des restes entre les dents : passe le fil\n4. La tête de brosse est trop vieille\n\nSi ça dure, parles-en à ton dentiste.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_message": "Mauvaise haleine malgré ta brosse à dents électrique ? Voici 4 causes courantes.\n\n1. La langue n'est pas brossée\n2. La bouche est sèche : bois de l'eau\n3. Des restes entre les dents : passe le fil\n4. La tête de brosse est trop vieille\n\nSi ça dure, parles-en à ton dentiste.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-16-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-16-10h-2.jpg"
+      }
+    ]
+  }
+}

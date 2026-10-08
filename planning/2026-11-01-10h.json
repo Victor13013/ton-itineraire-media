@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-01-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-01-10h-2.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique abîme-t-elle l'émail ?\n\nNon, si tu l'utilises bien.\n\nLe risque vient de la pression. Pose la tête, ne frotte pas, laisse les vibrations travailler. Et commence en mode Sensible si tu débutes.\n\nSwipe pour les bons réflexes.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_message": "Une brosse à dents électrique abîme-t-elle l'émail ?\n\nNon, si tu l'utilises bien.\n\nLe risque vient de la pression. Pose la tête, ne frotte pas, laisse les vibrations travailler. Et commence en mode Sensible si tu débutes.\n\nSwipe pour les bons réflexes.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #conseilsdentaires #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-01-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-01-10h-2.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-10h-2.jpg"
+      }
+    ],
+    "caption": "La tête en bambou de ta brosse à dents électrique : 3 gestes d'entretien.\n\n1. Rince-la à l'eau claire après chaque brossage\n2. Laisse-la sécher tête en haut, à l'air libre\n3. Change-la tous les 3 mois\n\nSimple. Et ta tête reste propre jusqu'au bout.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "La tête en bambou de ta brosse à dents électrique : 3 gestes d'entretien.\n\n1. Rince-la à l'eau claire après chaque brossage\n2. Laisse-la sécher tête en haut, à l'air libre\n3. Change-la tous les 3 mois\n\nSimple. Et ta tête reste propre jusqu'au bout.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-18-10h-2.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-10h-2.jpg"
+      }
+    ],
+    "caption": "La carie, comment elle se forme ? Et comment ta brosse à dents électrique t'aide à l'éviter.\n\n1. Le sucre nourrit les bactéries de la plaque\n2. Elles produisent de l'acide\n3. L'acide attaque l'émail, la carie se creuse\n\nCe qui protège : retirer la plaque 2 fois par jour avec un dentifrice fluoré, limiter le grignotage sucré, voir ton dentiste une fois par an.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
+    "fb_message": "La carie, comment elle se forme ? Et comment ta brosse à dents électrique t'aide à l'éviter.\n\n1. Le sucre nourrit les bactéries de la plaque\n2. Elles produisent de l'acide\n3. L'acide attaque l'émail, la carie se creuse\n\nCe qui protège : retirer la plaque 2 fois par jour avec un dentifrice fluoré, limiter le grignotage sucré, voir ton dentiste une fois par an.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-12-10h-2.jpg"
+      }
+    ]
+  }
+}

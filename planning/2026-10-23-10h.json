@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-23-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-23-10h-2.jpg"
+      }
+    ],
+    "caption": "Ta routine du matin avec ta brosse à dents électrique, en 3 étapes.\n\n1. Un verre d'eau au réveil\n2. 2 minutes de brossage, mode Nettoyage\n3. Tu craches le dentifrice, tu ne rinces pas\n\nMoins de 3 minutes. Tous les matins.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #routinedumatin #hygienebuccodentaire #pulsecare",
+    "fb_message": "Ta routine du matin avec ta brosse à dents électrique, en 3 étapes.\n\n1. Un verre d'eau au réveil\n2. 2 minutes de brossage, mode Nettoyage\n3. Tu craches le dentifrice, tu ne rinces pas\n\nMoins de 3 minutes. Tous les matins.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #routinedumatin #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-23-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-23-10h-2.jpg"
+      }
+    ]
+  }
+}

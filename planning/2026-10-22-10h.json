@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-22-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-22-10h-2.jpg"
+      }
+    ],
+    "caption": "Brosse manuelle ou brosse à dents électrique Pulse Care : ce que tu jettes tous les 3 mois.\n\n→ manuelle : toute la brosse, manche compris\n→ Pulse Care : seulement la tête, en bambou\n\nLe manche, tu le gardes.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "Brosse manuelle ou brosse à dents électrique Pulse Care : ce que tu jettes tous les 3 mois.\n\n→ manuelle : toute la brosse, manche compris\n→ Pulse Care : seulement la tête, en bambou\n\nLe manche, tu le gardes.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-22-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-10-22-10h-2.jpg"
+      }
+    ]
+  }
+}
