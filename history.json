@@ -234,5 +234,28 @@
    "prague-03.jpg",
    "prague-04.jpg"
   ]
+ },
+ {
+  "date": "2026-10-12",
+  "topic": "japon-idees-recues",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "japon-05.jpg",
+   "japon-06.jpg",
+   "japon-07.jpg",
+   "japon-08.jpg",
+   "voyage-05.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-12-b",
+  "topic": "madere-sentiers-payants",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "madere-02.jpg",
+   "madere-03.jpg"
+  ]
  }
 ]
