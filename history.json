@@ -257,5 +257,25 @@
    "madere-02.jpg",
    "madere-03.jpg"
   ]
+ },
+ {
+  "date": "2026-10-13",
+  "topic": "oman-novembre",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "oman-01.jpg",
+   "oman-02.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-13-b",
+  "topic": "ecosse-eta-royaume-uni",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "ecosse-02.jpg",
+   "ecosse-03.jpg"
+  ]
  }
 ]
