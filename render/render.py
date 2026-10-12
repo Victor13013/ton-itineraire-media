@@ -812,6 +812,230 @@ def t_versus(c):
 
 TPL = {"hero": t_hero, "statement": t_statement, "product": t_product, "list": t_list, "stats": t_stats, "versus": t_versus}
 
+# ───────────────────────────── DA B : « Gradient & verre » (variante de la DA principale)
+# Même palette et même typo. Fonds en dégradés doux, cartes en verre dépoli, photos
+# encadrées et inclinées, mots-clés en couleur soulignés d'une vague, widgets façon notification.
+TEAL = (34, 92, 78); MIST = (232, 243, 236)
+
+def mesh_bg(kind, seed=0):
+    pal = {"fresh": (MINTV, [(LIME, (0.85, 0.12), 520), (CREAM, (0.1, 0.9), 560), ((190, 228, 205), (0.2, 0.25), 420)]),
+           "sand":  (SANDV, [(HONEY, (0.9, 0.85), 560), (MINTV, (0.05, 0.1), 480), (CREAM, (0.6, 0.4), 420)]),
+           "forest": (FOREST, [(TEAL, (0.85, 0.15), 620), ((14, 36, 28), (0.1, 0.95), 560), ((60, 110, 70), (0.15, 0.3), 380)])}[kind]
+    base = Image.new("RGB", (W, H), pal[0])
+    for i, (col, (fx, fy), r) in enumerate(pal[1]):
+        if seed % 2 and i == 0: fx = 1 - fx
+        m = Image.new("L", (W, H), 0); ImageDraw.Draw(m).ellipse([fx * W - r, fy * H - r, fx * W + r, fy * H + r], fill=255)
+        base.paste(Image.new("RGB", (W, H), col), (0, 0), m.filter(ImageFilter.GaussianBlur(170)))
+    return grain(base.convert("RGBA"), 4)
+
+def glass(base, box, r=36, tint=(255, 255, 255), alpha=150, outline=110):
+    x0, y0, x1, y1 = [int(v) for v in box]
+    reg = base.crop((x0, y0, x1, y1)).filter(ImageFilter.GaussianBlur(22))
+    reg = Image.alpha_composite(reg.convert("RGBA"), Image.new("RGBA", reg.size, tint + (alpha,)))
+    m = Image.new("L", reg.size, 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, reg.width - 1, reg.height - 1], radius=r, fill=255)
+    base.paste(reg, (x0, y0), m)
+    ImageDraw.Draw(base).rounded_rectangle([x0, y0, x1, y1], radius=r, outline=(255, 255, 255, outline), width=2)
+
+def squiggle(d, x0, x1, y, color, amp=7, width=6):
+    pts = [(x, y + amp * math.sin((x - x0) / 15.0)) for x in range(int(x0), int(x1) + 1, 3)]
+    if len(pts) > 1: d.line(pts, fill=color, width=width, joint="curve")
+
+def title_b(base, x, y, lines, fnt, fill, accent, lh=1.04, wave=None):
+    """Titre ; les *mots* passent en couleur avec une vague dessous (au lieu du surlignage plein)."""
+    d = ImageDraw.Draw(base); sp = d.textlength(" ", font=fnt)
+    for ln in lines:
+        xx = x; run = None
+        for w, hl, ww, glue in ln:
+            if glue: xx -= sp
+            d.text((xx, y), w, font=fnt, fill=accent if hl else fill)
+            if hl: run = [run[0] if run else xx, xx + ww]
+            elif run: squiggle(d, run[0], run[1], y + fnt.size * 1.06, wave or accent); run = None
+            xx += ww + sp
+        if run: squiggle(d, run[0], run[1], y + fnt.size * 1.06, wave or accent)
+        y += fnt.size * lh
+    return y + fnt.size * 0.18
+
+def framed_photo(base, src, box, angle=-4, border=16, r=34, fy=0.5):
+    x0, y0, x1, y1 = box; w, h = x1 - x0, y1 - y0
+    im, _ = prep(src) if False else (src, False)
+    if (border_px(im).min(axis=1) > 238).mean() > 0.5:
+        ww, hh = im.size; k = 0.62
+        im = im.crop((int(ww * (1 - k) / 2), int(hh * (1 - k) / 2), int(ww * (1 + k) / 2), int(hh * (1 + k) / 2)))
+    ph = cover(im, w - 2 * border, h - 2 * border, 0.5, fy)
+    card = Image.new("RGBA", (w, h), (0, 0, 0, 0)); cd = ImageDraw.Draw(card)
+    cd.rounded_rectangle([0, 0, w - 1, h - 1], radius=r, fill=(255, 255, 255, 255))
+    m = Image.new("L", ph.size, 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, ph.width - 1, ph.height - 1], radius=r - 10, fill=255)
+    card.paste(ph, (border, border), m)
+    pad = 60; big = Image.new("RGBA", (w + 2 * pad, h + 2 * pad), (0, 0, 0, 0))
+    sh = Image.new("RGBA", big.size, (0, 0, 0, 0)); ImageDraw.Draw(sh).rounded_rectangle([pad + 10, pad + 24, pad + w + 10, pad + h + 24], radius=r, fill=(10, 24, 18, 90))
+    big.alpha_composite(sh.filter(ImageFilter.GaussianBlur(22))); big.alpha_composite(card, (pad, pad))
+    big = big.rotate(angle, resample=Image.BICUBIC, expand=True)
+    base.alpha_composite(big, (int(x0 + w / 2 - big.width / 2), int(y0 + h / 2 - big.height / 2)))
+
+def notif(base, x, y, w, text, icon="tooth", dark=False):
+    """Widget façon notification : icône d'appli, « PULSE CARE · maintenant », message."""
+    f = SB(30); lines = wrap(text, f, w - 150); h = 92 + f.size * 1.28 * len(lines)
+    glass(base, (x, y, x + w, y + h), 32, (255, 255, 255) if not dark else (20, 40, 32), 175 if not dark else 150)
+    d = ImageDraw.Draw(base)
+    d.rounded_rectangle([x + 26, y + 26, x + 92, y + 92], radius=18, fill=FOREST)
+    draw_icon(d, icon, x + 59, y + 59, 32, LIME)
+    fg = INKV if not dark else CREAM; sub = GREYV if not dark else (190, 210, 198)
+    d.text((x + 116, y + 26), "PULSE CARE  ·  maintenant", font=SB(20), fill=sub)
+    draw_lines(d, x + 116, y + 56, lines, f, fg, 1.28)
+    return y + h
+
+def pill_outline(base, x, y, text, color, center=False):
+    d = ImageDraw.Draw(base); f = SB(24); t = clean(text).upper(); tw = d.textlength(t, font=f); h = f.size + 24; w = tw + 44 + 34
+    if center: x = (W - w) / 2
+    d.rounded_rectangle([x, y, x + w, y + h], radius=h // 2, outline=color, width=3)
+    draw_icon(d, icon_for(text), x + 34, y + h / 2, 22, color)
+    d.text((x + 56, y + 12 - f.size * 0.08), t, font=f, fill=color)
+    return y + h
+
+def b_title_block(base, c, dark, x=M, y=110, maxw=W - 2 * M, start=104, maxlines=3):
+    fg = CREAM if dark else INKV; acc = LIME if dark else FOREST
+    if c.get("kicker"): y = pill_outline(base, x, y, c["kicker"], acc) + 30
+    f, tl = sans_fit(c["title"], BLACK, maxw, start, 58, maxlines)
+    return title_b(base, x, y, tl, f, fg, acc)
+
+def tb_hero(c):
+    src = load(c["img"])
+    if prep(src)[1]: return tb_product(c)
+    n = c.get("_n", 0); base = mesh_bg(["fresh", "sand"][n % 2], n)
+    y = b_title_block(base, c, False)
+    top = int(y + 30); bot = H - 120
+    framed_photo(base, src, (M + 40, top, W - M - 40, bot), angle=(-4 if n % 2 else 4), fy=c.get("fy", 0.45))
+    if c.get("sub"): notif(base, M - 10, bot - 190, W - 2 * M + 20, c["sub"], icon_for(c.get("kicker", ""), c["sub"]))
+    if c.get("price"): sticker_v4(base, c["price"], W - M - 60, top + 40, r=100)
+    sparkle(base, W - M - 20, top - 20, 26, FOREST); sparkle(base, W - M - 60, top + 30, 13, FOREST)
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+def tb_statement(c):
+    n = c.get("_n", 0); base = mesh_bg("forest", n)
+    framed_photo(base, load(c["img"]), (W - M - 330, 90, W - M - 10, 470), angle=6)
+    d = ImageDraw.Draw(base)
+    d.text((M - 6, 120), "“", font=BLACK(260), fill=LIME)
+    y = 520
+    if c.get("kicker"): y = pill_outline(base, M, y, c["kicker"], LIME) + 30
+    f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 96, 56, 4)
+    y = title_b(base, M, y, tl, f, CREAM, LIME)
+    if c.get("sub"): notif(base, M - 10, y + 30, W - 2 * M + 20, c["sub"], icon_for(c.get("kicker", ""), c["sub"]), dark=True)
+    chrome(base, c, CREAM, GREYV, light_btn=True)
+    return base.convert("RGB")
+
+def tb_product(c):
+    n = c.get("_n", 0); base = mesh_bg(["fresh", "sand"][n % 2], n + 1)
+    y = b_title_block(base, c, False, maxlines=2, start=96)
+    if c.get("sub"): y = draw_lines(ImageDraw.Draw(base), M, y, wrap(c["sub"], IM(30), W - 2 * M - 80), IM(30), GREYV, 1.4)
+    top = int(y + 30); bot = H - 130; src = load(c["img"])
+    cx, cy = W / 2, (top + bot) / 2; R = min(W - 2 * M, bot - top) / 2
+    disc = Image.new("L", (W, H), 0); ImageDraw.Draw(disc).ellipse([cx - R, cy - R, cx + R, cy + R], fill=255)
+    base.paste(Image.new("RGBA", (W, H), (255, 255, 255, 255)), (0, 0), disc.point(lambda v: v * 0.55).filter(ImageFilter.GaussianBlur(4)))
+    ImageDraw.Draw(base).ellipse([cx - R, cy - R, cx + R, cy + R], outline=(255, 255, 255), width=3)
+    cut, pk = product_cut(src, (255, 255, 255), int(R * 1.5), int((bot - top) * 0.92))
+    if pk:
+        px = int(cx - cut.width / 2); py = int(cy - cut.height / 2)
+        soft_shadow(base, (cx - cut.width * 0.35, py, cx + cut.width * 0.35, py + cut.height), 60, 20)
+        reg = base.crop((px, py, px + cut.width, py + cut.height)).convert("RGB"); base.paste(multiply_on(reg, cut), (px, py))
+    else:
+        framed_photo(base, src, (int(cx - R * 0.8), int(cy - R * 0.8), int(cx + R * 0.8), int(cy + R * 0.8)), angle=-3)
+    calls = c.get("callouts", [])
+    for i, txt in enumerate(calls):
+        left = i % 2 == 0; f2 = SB(28); tw = ImageDraw.Draw(base).textlength(txt, font=f2); w = tw + 100
+        span_end = bot - (300 if c.get("price") else 160)
+        yy = top + 50 + (span_end - top - 50) * (i // 2) / max(1, (len(calls) - 1) // 2)
+        x = M - 20 if left else W - M + 20 - w
+        glass(base, (x, yy, x + w, yy + 70), 35, (255, 255, 255), 185)
+        d = ImageDraw.Draw(base); icon_disc(d, icon_for(txt), x + 36, yy + 35, 23, FOREST, LIME)
+        d.text((x + 70, yy + 35 - f2.size * 0.62), txt, font=f2, fill=INKV)
+    if c.get("price"): sticker_v4(base, c["price"], W - M - 80, bot - 90, r=100, angle=8)
+    if not calls: sparkle(base, cx + R * 0.72, cy - R * 0.72, 28, FOREST); sparkle(base, cx - R * 0.8, cy + R * 0.55, 15, FOREST)
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+def tb_list(c):
+    n = c.get("_n", 0); base = mesh_bg(["sand", "fresh"][n % 2], n)
+    framed_photo(base, load(c["img"]), (W - M - 300, 80, W - M, 430), angle=5)
+    y = b_title_block(base, c, False, maxw=W - 2 * M - 330, start=80, maxlines=3, y=150)
+    y = max(y + 20, 490); items = c["items"]; k = len(items)
+    avail = H - 120 - y; gap = 20; ch = min((avail - gap * (k - 1)) / k, 200)
+    for i, (a_, b_) in enumerate(items):
+        glass(base, (M - 20, y, W - M + 20, y + ch), 30, (255, 255, 255), 170)
+        d = ImageDraw.Draw(base)
+        num = f"{c.get('start', 1) + i:02d}"
+        d.text((M + 6, y + ch / 2 - 44), num, font=BLACK(62), fill=FOREST)
+        fa = 36 if k <= 3 else 32; fb = 27 if k <= 3 else 25; mw = W - 2 * M - 220
+        la = wrap(a_, DB(fa), mw); lb = wrap(b_, IR(fb), mw) if b_ else []
+        th = fa * 1.15 * len(la) + (6 + fb * 1.3 * len(lb) if lb else 0)
+        ty = draw_lines(d, M + 120, y + (ch - th) / 2, la, DB(fa), INKV, 1.15)
+        if lb: draw_lines(d, M + 120, ty + 6, lb, IR(fb), GREYV, 1.3)
+        icon_disc(d, icon_for(a_, b_), W - M - 30, y + ch / 2, 30, FOREST, LIME)
+        y += ch + gap
+    if c.get("stamp"):
+        st = Image.new("RGBA", (330, 120), (0, 0, 0, 0)); sd = ImageDraw.Draw(st)
+        sd.rounded_rectangle([4, 4, 326, 116], radius=20, outline=CORAL, width=8)
+        fs = BLACK(66); tw = sd.textlength(c["stamp"], font=fs); sd.text(((330 - tw) / 2, 16), c["stamp"], font=fs, fill=CORAL)
+        st = st.rotate(10, resample=Image.BICUBIC, expand=True); base.alpha_composite(st, (W - M - 330, 360))
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+def tb_stats(c):
+    n = c.get("_n", 0); base = mesh_bg("forest", n)
+    y = b_title_block(base, dict(c, kicker=None), True, start=90, maxlines=2, y=100)
+    framed_photo(base, load(c["img"]), (M + 20, int(y + 10), W - M - 20, int(y + 330)), angle=-2, border=12)
+    y = int(y + 380); g = 22; tw_ = (W - 2 * M - g) // 2; th = (H - 120 - y - g) // 2
+    for i, (big, small) in enumerate(c["items"]):
+        x = M + (i % 2) * (tw_ + g); yy = y + (i // 2) * (th + g)
+        glass(base, (x, yy, x + tw_, yy + th), 32, (255, 255, 255), 28, 70)
+        d = ImageDraw.Draw(base)
+        fb_ = BLACK(100)
+        while d.textlength(nb(big), font=fb_) > tw_ - 120: fb_ = BLACK(fb_.size - 6)
+        d.text((x + 30, yy + 24), nb(big), font=fb_, fill=LIME)
+        icon_disc(d, icon_for(big, small), x + tw_ - 50, yy + 50, 28, LIME, FOREST)
+        ls = wrap(small, IM(28), tw_ - 64)
+        draw_lines(d, x + 32, yy + th - 34 - 28 * 1.3 * len(ls), ls, IM(28), CREAM, 1.3)
+        d.rounded_rectangle([x + 30, yy + th - 22, x + tw_ - 30, yy + th - 14], radius=4, fill=(255, 255, 255, 50))
+        d.rounded_rectangle([x + 30, yy + th - 22, x + 30 + (tw_ - 60) * [0.92, 0.7, 0.85, 0.6][i % 4], yy + th - 14], radius=4, fill=LIME)
+    chrome(base, c, CREAM, GREYV, light_btn=True)
+    return base.convert("RGB")
+
+def tb_versus(c):
+    base = Image.new("RGBA", (W, H), SANDV + (255,))
+    right = mesh_bg("forest", 1); base.paste(right.crop((W // 2, 0, W, H)), (W // 2, 0))
+    left = mesh_bg("sand", 0); base.paste(left.crop((0, 0, W // 2, H)), (0, 0))
+    d = ImageDraw.Draw(base)
+    if c.get("kicker"): kicker_pill(base, 0, 90, c["kicker"], LIME, INKV, center=True)
+    f, tl = sans_fit(clean(c["title"]), BLACK, W - 2 * M, 84, 52, 2)
+    y = 170
+    for ln in tl:
+        txt = " ".join(t[0] for t in ln).replace("  ", " "); tw = d.textlength(txt, font=f)
+        # moitié gauche en vert foncé, moitié droite en crème
+        t_img = Image.new("RGBA", (W, f.size + 30), (0, 0, 0, 0)); ImageDraw.Draw(t_img).text(((W - tw) / 2, 0), txt, font=f, fill=INKV)
+        t2 = Image.new("RGBA", (W, f.size + 30), (0, 0, 0, 0)); ImageDraw.Draw(t2).text(((W - tw) / 2, 0), txt, font=f, fill=CREAM)
+        base.alpha_composite(t_img.crop((0, 0, W // 2, t_img.height)), (0, int(y))); base.alpha_composite(t2.crop((W // 2, 0, W, t2.height)), (W // 2, int(y)))
+        y += f.size * 1.04
+    y = int(y + 60); fi = SB(40)
+    for side, (head, items) in enumerate([c["left"], c["right"]]):
+        x = M - 10 if side == 0 else W // 2 + 60; cw = W // 2 - M - 60; good = side == 1 or c.get("both_good")
+        fg = INKV if side == 0 else CREAM
+        hf = BLACK(60)
+        while d.textlength(head, font=hf) > cw - 10: hf = BLACK(hf.size - 4)
+        d.text((x, y), head, font=hf, fill=fg); squiggle(d, x, x + d.textlength(head, font=hf), y + hf.size * 1.12, FOREST if side == 0 else LIME)
+        iy = y + hf.size + 70
+        for it in items:
+            icon_disc(d, "check" if good else "xmark", x + 26, iy + 24, 26, (LIME if side else (FOREST if good else CORAL)), (INKV if side else WHITE_A))
+            iy = draw_lines(d, x + 70, iy, wrap(it, fi, cw - 70), fi, fg, 1.22) + 46
+    vy = y + (H - 140 - y) * 0.42; d.ellipse([W / 2 - 52, vy - 52, W / 2 + 52, vy + 52], fill=LIME, outline=INKV, width=5)
+    fv = BLACK(44); tw = d.textlength("VS", font=fv); d.text((W / 2 - tw / 2, vy - 29), "VS", font=fv, fill=INKV)
+    chrome(base, c, INKV, GREYV, light_btn=True)
+    return base.convert("RGB")
+
+TPL_B = {"hero": tb_hero, "statement": tb_statement, "product": tb_product, "list": tb_list, "stats": tb_stats, "versus": tb_versus}
+DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
+def pick_tpl(sl):
+    return (TPL_B if (DA_B_ALL or sl.get("da") == "b") else TPL)[sl["tpl"]]
+
 # ───────────────────────────── Reels 1080x1920
 RW, RH, FPS, XF = 1080, 1920, 30, 0.4
 
@@ -1077,7 +1301,7 @@ def main():
               for i, sl in enumerate(p["slides"], 1):
                   rel = f"media/posts/{date}-{i}.jpg"
                   sl = dict(sl, _n=LIST.index(p) + i - 1 + off)
-                  TPL[sl["tpl"]](sl).save(os.path.join(ROOT, rel), "JPEG", quality=90, optimize=True, progressive=False)
+                  pick_tpl(sl)(sl).save(os.path.join(ROOT, rel), "JPEG", quality=90, optimize=True, progressive=False)
                   rels.append(rel)
               urls = [RAW + r for r in rels]
               print(f"{date} {p['kind']} {len(rels)} visuel(s)")
