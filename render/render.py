@@ -1032,9 +1032,269 @@ def tb_versus(c):
     return base.convert("RGB")
 
 TPL_B = {"hero": tb_hero, "statement": tb_statement, "product": tb_product, "list": tb_list, "stats": tb_stats, "versus": tb_versus}
+# ───────────────────────────── DA C : « Carnet & tchat » (3e DA)
+# Formats natifs : conversation, note cochée, polaroids scotchés, post-it, annotations manuscrites.
+PAPER = (250, 246, 238); DOTC = (222, 214, 198); TAPE = (238, 214, 160, 175)
+POSTITS = [(232, 246, 178), (247, 222, 176), (214, 236, 222), (250, 216, 204)]
+def HAND(s): return F("Caveat-Bold.ttf", s)
+
+def paper_bg(seed=0):
+    base = Image.new("RGBA", (W, H), PAPER + (255,)); d = ImageDraw.Draw(base)
+    for yy in range(36, H, 40):
+        for xx in range(20 + (seed % 2) * 20, W, 40): d.ellipse([xx - 2, yy - 2, xx + 2, yy + 2], fill=DOTC)
+    return grain(base, 3)
+
+def paste_rot(base, layer, cx, cy, angle, shadow=90):
+    pad = 70; big = Image.new("RGBA", (layer.width + 2 * pad, layer.height + 2 * pad), (0, 0, 0, 0))
+    if shadow:
+        a = layer.split()[3].point(lambda v: shadow if v > 0 else 0)
+        sh = Image.new("RGBA", layer.size, (20, 30, 24, 0)); sh.putalpha(a)
+        big.alpha_composite(sh, (pad + 8, pad + 20)); big = big.filter(ImageFilter.GaussianBlur(18))
+    big.alpha_composite(layer, (pad, pad))
+    big = big.rotate(angle, resample=Image.BICUBIC, expand=True)
+    base.alpha_composite(big, (int(cx - big.width / 2), int(cy - big.height / 2)))
+
+def tape(base, cx, cy, w=170, angle=-6):
+    t = Image.new("RGBA", (w, 50), TAPE); td = ImageDraw.Draw(t)
+    for i in range(0, 50, 10):   # bords déchirés
+        td.polygon([(0, i), (6, i + 5), (0, i + 10)], fill=(0, 0, 0, 0)); td.polygon([(w, i), (w - 6, i + 5), (w, i + 10)], fill=(0, 0, 0, 0))
+    paste_rot(base, t, cx, cy, angle, shadow=0)
+
+def marker_title(base, x, y, lines, fnt, fill=None, mark=LIME, lh=1.04, center_w=None):
+    """Titre ; les *mots* sont passés au surligneur (trait irrégulier, légèrement penché)."""
+    fill = fill or INKV; d = ImageDraw.Draw(base); sp = d.textlength(" ", font=fnt); yy = y
+    for ln in lines:
+        lw = sum(t[2] for t in ln) + sp * sum(1 for t in ln[1:] if not t[3])
+        xx = x + ((center_w - lw) / 2 if center_w else 0); pos = []
+        for w, hl, ww, glue in ln:
+            if glue: xx -= sp
+            pos.append((w, hl, ww, xx)); xx += ww + sp
+        run = None
+        for w, hl, ww, px in pos + [("", False, 0, 0)]:
+            if hl and run is None: run = [px, px + ww]
+            elif hl: run[1] = px + ww
+            elif run is not None:
+                ov = Image.new("RGBA", base.size, (0, 0, 0, 0)); od = ImageDraw.Draw(ov)
+                t0, t1 = yy + fnt.size * 0.42, yy + fnt.size * 1.08
+                od.polygon([(run[0] - 14, t0 + 6), (run[1] + 12, t0 - 4), (run[1] + 18, t1 - 6), (run[0] - 8, t1 + 4)], fill=mark + (235,))
+                base.alpha_composite(ov); run = None
+        d = ImageDraw.Draw(base)
+        for w, hl, ww, px in pos: d.text((px, yy), w, font=fnt, fill=fill)
+        yy += fnt.size * lh
+    return yy + fnt.size * 0.14
+
+def hand_note(base, x, y, text, size=52, color=CORAL, angle=-3, maxw=W - 2 * M, center=False):
+    f = HAND(size); lines = wrap(clean(text), f, maxw)
+    w = int(max(ImageDraw.Draw(base).textlength(l, font=f) for l in lines)) + 20; h = int(f.size * 1.05 * len(lines)) + 24
+    lay = Image.new("RGBA", (w, h), (0, 0, 0, 0)); draw_lines(ImageDraw.Draw(lay), 10, 4, lines, f, color, 1.05)
+    lay = lay.rotate(angle, resample=Image.BICUBIC, expand=True)
+    if center: x = (W - lay.width) / 2
+    base.alpha_composite(lay, (int(x), int(y))); return y + lay.height, x + lay.width
+
+def c_title(base, c, x=M, y=100, maxw=W - 2 * M, start=100, maxlines=3, kicker=True, center=False):
+    if kicker and c.get("kicker"): y, _ = hand_note(base, x, y, c["kicker"], 54, CORAL, -2, maxw, center); y += 6
+    f, tl = sans_fit(c["title"], BLACK, maxw, start, 56, maxlines)
+    return marker_title(base, x, y, tl, f, center_w=maxw if center else None)
+
+def polaroid(src, w, h, caption=None, fy=0.5):
+    cap_lines = wrap(clean(caption), HAND(46), w - 60) if caption else []
+    bottom = 40 + (int(46 * 1.0 * len(cap_lines)) + 36 if cap_lines else 50)
+    im = src
+    if (border_px(im).min(axis=1) > 238).mean() > 0.5:
+        ww, hh = im.size; k = 0.66; im = im.crop((int(ww * (1 - k) / 2), int(hh * (1 - k) / 2), int(ww * (1 + k) / 2), int(hh * (1 + k) / 2)))
+    lay = Image.new("RGBA", (w, h), (255, 255, 255, 255)); ph_h = h - 28 - bottom
+    lay.paste(cover(im, w - 56, max(ph_h, 50), 0.5, fy), (28, 28))
+    if cap_lines: draw_lines(ImageDraw.Draw(lay), 30, h - bottom + 14, cap_lines, HAND(46), INKV, 1.0)
+    return lay
+
+def bubble(base, x, y, w, h, fill, tail="left", r=40):
+    d = ImageDraw.Draw(base); soft = Image.new("RGBA", base.size, (0, 0, 0, 0))
+    ImageDraw.Draw(soft).rounded_rectangle([x + 4, y + 10, x + w + 4, y + h + 10], radius=r, fill=(20, 30, 24, 40))
+    base.alpha_composite(soft.filter(ImageFilter.GaussianBlur(14))); d = ImageDraw.Draw(base)
+    d.rounded_rectangle([x, y, x + w, y + h], radius=r, fill=fill)
+    if tail == "left": d.polygon([(x + 6, y + h - 40), (x - 16, y + h + 2), (x + 44, y + h - 6)], fill=fill)
+    else: d.polygon([(x + w - 6, y + h - 40), (x + w + 16, y + h + 2), (x + w - 44, y + h - 6)], fill=fill)
+
+def hand_check(d, cx, cy, s, color, ok=True, width=7):
+    if ok: d.line([(cx - s, cy), (cx - s * 0.3, cy + s * 0.7), (cx + s, cy - s * 0.8)], fill=color, width=width, joint="curve")
+    else:
+        d.line([(cx - s * 0.8, cy - s * 0.8), (cx + s * 0.8, cy + s * 0.8)], fill=color, width=width)
+        d.line([(cx + s * 0.8, cy - s * 0.8), (cx - s * 0.8, cy + s * 0.8)], fill=color, width=width)
+
+def doodle_star(d, cx, cy, r, color, width=5):
+    pts = [(cx + (r if i % 2 == 0 else r * 0.45) * math.cos(-math.pi / 2 + i * math.pi / 5), cy + (r if i % 2 == 0 else r * 0.45) * math.sin(-math.pi / 2 + i * math.pi / 5)) for i in range(11)]
+    d.line(pts, fill=color, width=width, joint="curve")
+
+def tc_hero(c):
+    src = load(c["img"])
+    if prep(src)[1]: return tc_product(c)
+    n = c.get("_n", 0); base = paper_bg(n)
+    y = c_title(base, c, start=96, maxlines=3)
+    top = int(y + 50); bot = H - 110; ang = 3 if n % 2 else -3
+    w = W - 2 * M - 40; h = bot - top
+    paste_rot(base, polaroid(src, w, h, c.get("sub"), c.get("fy", 0.45)), W / 2, (top + bot) / 2, ang)
+    tape(base, W / 2, top + 4, 190, -4 if n % 2 else 5)
+    d = ImageDraw.Draw(base)
+    doodle_star(d, W - M + 10, top - 6, 30, CORAL); sparkle(base, M - 20, bot - 60, 22, FOREST)
+    if c.get("price"): sticker_v4(base, c["price"], W - M - 50, top + 90, r=96, bg=CORAL, fg=WHITE_A)
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+def tc_statement(c):
+    n = c.get("_n", 0); base = paper_bg(n); d = ImageDraw.Draw(base)
+    # en-tête de conversation
+    d.ellipse([M - 10, 70, M + 80, 160], fill=FOREST); draw_icon(d, "tooth", M + 35, 115, 40, LIME)
+    d.text((M + 104, 78), "Pulse Care", font=DB(36), fill=INKV)
+    d.ellipse([M + 106, 136, M + 120, 150], fill=(70, 190, 110)); d.text((M + 130, 126), "en ligne", font=IR(24), fill=GREYV)
+    d.line([(0, 190), (W, 190)], fill=(230, 222, 208), width=2)
+    y = 230
+    if c.get("kicker"):
+        f = SB(22); t = clean(c["kicker"]).upper(); tw = d.textlength(t, font=f)
+        d.rounded_rectangle([(W - tw) / 2 - 22, y, (W + tw) / 2 + 22, y + 46], radius=23, fill=(236, 229, 214)); d.text(((W - tw) / 2, y + 10), t, font=f, fill=GREYV)
+        y += 80
+    bw = W - 2 * M - 60
+    f, tl = sans_fit(c["title"], BLACK, bw - 80, 70, 46, 4)
+    th = f.size * 1.06 * len(tl) + 70
+    sub = c.get("sub") or ""; opts = [l for l in sub.split("\n") if re.match(r"^[A-D]\. ", l)]
+    fs = IM(32); sl = wrap(sub, fs, bw - 80) if sub and not opts else []
+    sh = fs.size * 1.32 * len(sl) + 60 if sl else 0
+    oh = len(opts) * 92 if opts else 0
+    swipe_h = 110 if c.get("swipe") else 0
+    free = H - 120 - y - th - (sh + 30 if sh else 0) - (oh + 20 if oh else 0) - swipe_h - 30
+    ph = min(int(free), 600) if free > 230 else 0
+    bubble(base, M - 10, y, bw, th, WHITE_A, "left")
+    marker_title(base, M + 30, y + 32, tl, f)
+    d = ImageDraw.Draw(base); d.ellipse([M - 10 + bw - 40, y + th - 26, M - 10 + bw + 20, y + th + 34], fill=WHITE_A, outline=(230, 222, 208), width=2)
+    draw_icon(d, "heart", M + bw - 20, y + th + 4, 28, CORAL)
+    y += th + 40
+    if ph:
+        pw = int(min(bw * 0.86, ph * 1.3)); mk = Image.new("L", (pw, ph), 0); ImageDraw.Draw(mk).rounded_rectangle([0, 0, pw - 1, ph - 1], radius=36, fill=255)
+        im = cover(load(c["img"]), pw, ph, 0.5, c.get("fy", 0.45)); base.paste(im, (M - 10, int(y)), mk); y += ph + 30
+    if sl:
+        bubble(base, M - 10, y, min(bw, max(d.textlength(l, font=fs) for l in sl) + 80), sh, WHITE_A, "left")
+        draw_lines(ImageDraw.Draw(base), M + 30, y + 28, sl, fs, INKV, 1.32); y += sh + 30
+    for o in opts:   # réponses rapides, côté utilisateur
+        d = ImageDraw.Draw(base); fo = SB(32); tw = d.textlength(o, font=fo); x1 = W - M + 10; x0 = x1 - tw - 64
+        d.rounded_rectangle([x0, y, x1, y + 72], radius=36, fill=FOREST); d.text((x0 + 32, y + 16), o, font=fo, fill=CREAM); y += 92
+    if c.get("swipe"):
+        y += 10; bubble(base, M - 10, y, 150, 74, WHITE_A, "left", 37); d = ImageDraw.Draw(base)
+        for i in range(3): d.ellipse([M + 25 + i * 34, y + 28, M + 43 + i * 34, y + 46], fill=(170, 180, 172) if i else GREYV)
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+def tc_list(c):
+    n = c.get("_n", 0); base = paper_bg(n)
+    card = (M - 40, 150, W - M + 40, H - 90)
+    sh = Image.new("RGBA", base.size, (0, 0, 0, 0)); ImageDraw.Draw(sh).rounded_rectangle([card[0] + 6, card[1] + 18, card[2] + 6, card[3] + 18], radius=40, fill=(20, 30, 24, 55))
+    base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(20))); d = ImageDraw.Draw(base)
+    d.rounded_rectangle(card, radius=40, fill=WHITE_A)
+    for i in range(6): d.ellipse([card[0] + 70 + i * 40 - 7, card[1] + 34, card[0] + 70 + i * 40 + 7, card[1] + 48], fill=(236, 229, 214) if i else CORAL)
+    paste_rot(base, polaroid(load(c["img"]), 280, 320), W - M - 110, 230, 7)
+    tape(base, W - M - 110, 76, 130, -8)
+    y = c_title(base, c, x=M, y=210, maxw=W - 2 * M - 300, start=78, maxlines=3)
+    y = max(y + 20, 470); items = c["items"]; k = len(items)
+    avail = card[3] - 60 - y; ch = min(avail / k, 250); y += (avail - ch * k) / 2; d = ImageDraw.Draw(base)
+    for i, (a_, b_) in enumerate(items):
+        cy = y + ch / 2
+        d.rounded_rectangle([M, cy - 26 - 8, M + 52, cy + 26 - 8], radius=14, fill=FOREST)
+        hand_check(d, M + 26, cy - 8, 14, LIME, True, 6)
+        fa = 44 if k <= 3 else 38; fb = 31 if k <= 3 else 28; mw = W - 2 * M - 110
+        la = wrap(a_, DB(fa), mw); lb = wrap(b_, IR(fb), mw) if b_ else []
+        th = fa * 1.15 * len(la) + (6 + fb * 1.3 * len(lb) if lb else 0)
+        ty = draw_lines(d, M + 86, cy - th / 2 - 8, la, DB(fa), INKV, 1.15)
+        if lb: draw_lines(d, M + 86, ty + 6, lb, IR(fb), GREYV, 1.3)
+        if i < k - 1:
+            for xx in range(M, W - M, 22): d.line([(xx, y + ch), (xx + 10, y + ch)], fill=(225, 216, 200), width=3)
+        y += ch
+    if c.get("stamp"):
+        st = Image.new("RGBA", (330, 120), (0, 0, 0, 0)); sd = ImageDraw.Draw(st)
+        sd.rounded_rectangle([4, 4, 326, 116], radius=20, outline=CORAL, width=8)
+        fs = BLACK(66); tw = sd.textlength(c["stamp"], font=fs); sd.text(((330 - tw) / 2, 16), c["stamp"], font=fs, fill=CORAL)
+        st = st.rotate(-9, resample=Image.BICUBIC, expand=True); base.alpha_composite(st, (W - M - 360, 400))
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+def tc_product(c):
+    n = c.get("_n", 0); base = paper_bg(n + 1)
+    y = c_title(base, c, start=92, maxlines=2)
+    if c.get("sub"): y = draw_lines(ImageDraw.Draw(base), M, y + 4, wrap(c["sub"], IM(30), W - 2 * M - 60), IM(30), GREYV, 1.4)
+    top = int(y + 40); bot = H - 110; src = load(c["img"]); calls = c.get("callouts", [])
+    pw = 430 if calls else W - 2 * M - 40; cx = W / 2 + (40 if calls else 0); cy = (top + bot) / 2
+    # tache de couleur organique derrière le produit
+    blob = Image.new("L", (W, H), 0); bd = ImageDraw.Draw(blob); R = min(pw * 0.62, (bot - top) * 0.48)
+    pts = [(cx + R * (1 + 0.07 * math.sin(3 * a + n)) * math.cos(a), cy + R * (1 + 0.07 * math.cos(2 * a + n)) * math.sin(a)) for a in [i * math.pi / 60 for i in range(120)]]
+    bd.polygon(pts, fill=255); base.paste(Image.new("RGBA", (W, H), (226, 243, 170, 255)), (0, 0), blob)
+    cut, pk = product_cut(src, (255, 255, 255), int(pw), int((bot - top) * 0.9))
+    if pk:
+        px = int(cx - cut.width / 2); py = int(cy - cut.height / 2)
+        soft_shadow(base, (cx - cut.width * 0.32, py, cx + cut.width * 0.32, py + cut.height), 55, 20)
+        reg = base.crop((px, py, px + cut.width, py + cut.height)).convert("RGB"); base.paste(multiply_on(reg, cut), (px, py)); pbox = (px, py, px + cut.width, py + cut.height)
+    else:
+        ww = int(min(pw, (bot - top) * 0.8)); hh = int(ww * 1.12)
+        paste_rot(base, polaroid(src, ww, hh), cx, cy, -3); tape(base, cx, cy - hh / 2 + 4, 150, 4)
+        pbox = (cx - ww / 2, cy - hh / 2, cx + ww / 2, cy + hh / 2)
+    for i, txt in enumerate(calls):   # annotations manuscrites + flèches
+        k = len(calls); ty = top + 30 + (bot - top - 160) * i / max(1, k - 1)
+        ye, xe = hand_note(base, M - 40, ty, txt, 44, FOREST, -2, 300)
+        doodle_arrow(base, (xe + 14, ty + 34), (pbox[0] + (pbox[2] - pbox[0]) * 0.28, min(max(ty + 40, pbox[1] + 60), pbox[3] - 60)), FOREST, 0.18 * (1 if i % 2 else -1), 5)
+    if c.get("price"): sticker_v4(base, c["price"], W - M - 50, bot - 70, r=100, bg=CORAL, fg=WHITE_A, angle=8)
+    if not calls: doodle_star(ImageDraw.Draw(base), cx + R * 0.85, cy - R * 0.8, 30, CORAL)
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+def tc_stats(c):
+    n = c.get("_n", 0); base = paper_bg(n)
+    y = c_title(base, dict(c, kicker=c.get("kicker") or "en bref"), start=92, maxlines=2)
+    y = int(y + 50); g = 40; tw_ = (W - 2 * M - g) // 2; th = (H - 110 - y - g) // 2
+    for i, (big, small) in enumerate(c["items"]):
+        lay = Image.new("RGBA", (tw_, th), POSTITS[i % 4] + (255,)); d = ImageDraw.Draw(lay)
+        d.polygon([(tw_ - 50, th), (tw_, th - 50), (tw_, th)], fill=tuple(int(v * 0.9) for v in POSTITS[i % 4]) + (255,))
+        fb_ = BLACK(132)
+        while d.textlength(nb(big), font=fb_) > tw_ - 60: fb_ = BLACK(fb_.size - 6)
+        d.text((30, 40), nb(big), font=fb_, fill=INKV)
+        ls = wrap(small, HAND(50), tw_ - 60); draw_lines(d, 30, th - 34 - 50 * 1.0 * len(ls), ls, HAND(50), FOREST, 1.0)
+        cxp = M + (i % 2) * (tw_ + g) + tw_ / 2; cyp = y + (i // 2) * (th + g) + th / 2
+        paste_rot(base, lay, cxp, cyp, [-2.5, 2, 1.5, -2][i % 4], 60)
+        tape(base, cxp, cyp - th / 2 + 2, 120, [5, -6, -4, 6][i % 4])
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+def tc_versus(c):
+    base = paper_bg(1)
+    y = c_title(base, c, start=84, maxlines=2, center=True)
+    y = int(y + 70); g = 34; cw = (W - 2 * M + 60 - g) // 2; fi = SB(38)
+    def items_h(items): return sum(fi.size * 1.22 * len(wrap(it, fi, cw - 120)) + 44 for it in items)
+    chh = int(min(H - 110 - y, max(0.82 * (H - 110 - y), 200 + max(items_h(c["left"][1]), items_h(c["right"][1])) + 30)))
+    y = int(y + (H - 110 - y - chh) * 0.5)
+    for side, (head, items) in enumerate([c["left"], c["right"]]):
+        good = side == 1 or c.get("both_good"); bg = WHITE_A if side == 0 else FOREST; fg = INKV if side == 0 else CREAM
+        lay = Image.new("RGBA", (cw, chh), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+        d.rounded_rectangle([0, 0, cw - 1, chh - 1], radius=30, fill=bg)
+        for yy in range(170, chh - 30, 70): d.line([(28, yy), (cw - 28, yy)], fill=(236, 229, 216) if side == 0 else (36, 68, 53), width=2)
+        hf = BLACK(60)
+        while d.textlength(head, font=hf) > cw - 70: hf = BLACK(hf.size - 4)
+        d.text((34, 56), head, font=hf, fill=fg)
+        squiggle(d, 34, 34 + d.textlength(head, font=hf), 56 + hf.size * 1.15, CORAL if side == 0 else LIME)
+        iy = 190
+        for it in items:
+            hand_check(d, 56, iy + 24, 17, (FOREST if good else CORAL) if side == 0 else LIME, good, 7)
+            iy = draw_lines(d, 98, iy, wrap(it, fi, cw - 120), fi, fg, 1.22) + 44
+        cx_ = M - 30 + cw / 2 if side == 0 else W - M + 30 - cw / 2
+        paste_rot(base, lay, cx_, y + chh / 2, -1.5 if side == 0 else 1.5, 70)
+    tape(base, M + 110, y + 2, 140, -10); tape(base, W - M - 110, y + 2, 140, 9)
+    d = ImageDraw.Draw(base); vy = y + 4
+    d.ellipse([W / 2 - 60, vy - 56, W / 2 + 60, vy + 56], fill=CORAL, outline=PAPER, width=6)
+    fv = HAND(80); tw = d.textlength("vs", font=fv); d.text((W / 2 - tw / 2, vy - 52), "vs", font=fv, fill=WHITE_A)
+    chrome(base, c, INKV, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+TPL_C = {"hero": tc_hero, "statement": tc_statement, "product": tc_product, "list": tc_list, "stats": tc_stats, "versus": tc_versus}
+
 SLOT_DA_10H = "b"                   # 10h en DA B « Gradient & verre », 18h en DA v5
 DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
+DA_C_ALL = "--da-c" in sys.argv     # aperçu : tout en DA C
 def pick_tpl(sl):
+    if DA_C_ALL or sl.get("da") == "c": return TPL_C[sl["tpl"]]
     return (TPL_B if (DA_B_ALL or sl.get("da") == "b") else TPL)[sl["tpl"]]
 
 # ───────────────────────────── Reels 1080x1920
