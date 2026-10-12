@@ -212,7 +212,7 @@ La plaque dentaire se forme chaque jour. Si elle n'est pas retirée, elle durcit
 
 dict(date="2026-10-22", kind="carousel", slides=[
   dict(tpl="hero", img="u:1607613009820-a29f7bb81c04", kicker="Brosse manuelle", title="Tous les 3 mois, *tu jettes tout.*", swipe=True),
-  dict(tpl="list", img="u:1634068966402-86a27b9d57c1", title="La différence", items=[("Brosse manuelle","Le manche entier part à la poubelle."),("Pulse Care","Seule la tête en bambou se change."),("Le manche","Tu le gardes.")], page="2/2"),
+  dict(tpl="versus", title="La *différence*", left=("Brosse manuelle", ["Toute la brosse part à la poubelle", "Pas de minuteur", "Tu rachètes tout tous les 3 mois"]), right=("Pulse Care", ["Seule la tête en bambou se change", "Minuteur 2 min intégré", "Le manche, tu le gardes"]), page="2/2"),
 ], caption="""Brosse manuelle ou brosse à dents électrique Pulse Care : ce que tu jettes tous les 3 mois.
 
 → manuelle : toute la brosse, manche compris
@@ -336,7 +336,7 @@ Résultat : une fibre d'origine végétale, au toucher très doux, montée sur u
 
 dict(date="2026-10-31", kind="carousel", slides=[
   dict(tpl="statement", img="u:1613849925496-e6d683c091f1", kicker="Entre les dents", title="Fil dentaire ou brossettes ?", swipe=True),
-  dict(tpl="list", img="u:1595515770330-ceeea7d82cfd", title="Comment choisir", items=[("Le fil","Pour les espaces serrés."),("Les brossettes","Pour les espaces plus larges."),("La bonne taille","Ton dentiste te la donne en 30 secondes.")], page="2/2"),
+  dict(tpl="versus", title="Comment *choisir*", both_good=True, left=("Le fil", ["Pour les espaces serrés", "Une fois par jour, le soir"]), right=("Brossettes", ["Pour les espaces plus larges", "Taille donnée par ton dentiste"]), page="2/2"),
 ], caption="""Ta brosse à dents électrique + quoi entre les dents : fil ou brossettes ?
 
 → fil dentaire : espaces serrés
@@ -350,7 +350,7 @@ Les deux font le job. Demande la bonne taille de brossette à ton dentiste.
 
 dict(date="2026-11-01", kind="carousel", slides=[
   dict(tpl="statement", img="u:1662850886700-4ec19bd30d11", kicker="Mythe ou réalité", title="Une brosse électrique abîme l'émail ?", swipe=True),
-  dict(tpl="list", img="u:1656404256001-2ddddacd050f", title="Non, si tu l'utilises bien", items=[("Tu n'appuies pas","Les vibrations nettoient seules."),("Mode Sensible au début","Le temps de t'habituer."),("Poils souples","Comme nos têtes ricin ou nylon.")], page="2/2"),
+  dict(tpl="list", img="u:1656404256001-2ddddacd050f", title="Non, si tu l'utilises bien", stamp="MYTHE", items=[("Tu n'appuies pas","Les vibrations nettoient seules."),("Mode Sensible au début","Le temps de t'habituer."),("Poils souples","Comme nos têtes ricin ou nylon.")], page="2/2"),
 ], caption="""Une brosse à dents électrique abîme-t-elle l'émail ?
 
 Non, si tu l'utilises bien.

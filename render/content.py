@@ -343,7 +343,7 @@ Ton dernier rendez-vous date de quand ?
 # ───────────────────────── 15 · CAROUSEL
 dict(date="2026-10-23", kind="carousel", slides=[
   dict(tpl="statement", img="u:1489278353717-f64c6ee8a4d2", kicker="Vrai ou faux", title="Appuyer fort =\n*dents plus propres ?*", swipe=True),
-  dict(tpl="list", img="u:1663182245833-7dd667277043", title="FAUX. Voilà la bonne méthode", items=[("Tête posée en douceur","Angle de 45° vers la gencive."),("Tu glisses lentement","D'une dent à l'autre."),("Aucune pression","Les vibrations nettoient, toi tu guides.")], page="2/2"),
+  dict(tpl="list", img="u:1663182245833-7dd667277043", title="La bonne méthode", stamp="FAUX", items=[("Tête posée en douceur","Angle de 45° vers la gencive."),("Tu glisses lentement","D'une dent à l'autre."),("Aucune pression","Les vibrations nettoient, toi tu guides.")], page="2/2"),
 ],
 caption="""Vrai ou faux : plus tu appuies fort avec ta brosse à dents électrique, plus tes dents sont propres ?
 
@@ -416,8 +416,7 @@ Le geste : après tes 2 minutes, passe doucement la brosse de l'arrière vers l'
 # ───────────────────────── 19 · REEL
 dict(date="2026-10-27", kind="carousel", slides=[
   dict(tpl="hero", img=s("ricin_fibres"), kicker="Têtes de recharge", title="Poils *ricin* ou poils *nylon* ?", swipe=True),
-  dict(tpl="list", img=s("ricin_face"), title="Poils ricin", items=[("Fibre d'origine végétale","À base d'huile de ricin."),("Toucher très doux","Idéal gencives sensibles.")], page="2/3"),
-  dict(tpl="list", img=s("nylon_face"), title="Poils nylon", items=[("Brossage plus ferme","Tu sens bien le nettoyage."),("Tête en bambou","Comme la version ricin.")], page="3/3", alt=True),
+  dict(tpl="versus", img=s("ricin_face"), kicker="Têtes Pulse Care", title="Lequel est *fait pour toi* ?", both_good=True, left=("Poils nylon", ["Brossage plus ferme", "Tu sens bien le nettoyage", "Tête en bambou"]), right=("Poils ricin", ["Fibre d'origine végétale", "Toucher très doux", "Idéal gencives sensibles"]), page="2/2"),
 ],
 caption="""Têtes de brosse à dents électrique : poils ricin ou poils nylon ?
 
