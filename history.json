@@ -277,5 +277,50 @@
    "ecosse-02.jpg",
    "ecosse-03.jpg"
   ]
+ },
+ {
+  "date": "2026-10-14",
+  "topic": "egypte-7-jours-nil",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "egypte-05.jpg",
+   "egypte-06.jpg",
+   "egypte-07.jpg",
+   "egypte-08.jpg",
+   "voyage-08.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-14-b",
+  "topic": "petra-jordan-pass",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "jordanie-01.jpg",
+   "jordanie-03.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-15",
+  "topic": "hoi-an-le-saviez-vous",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "vietnam-05.jpg",
+   "vietnam-06.jpg",
+   "vietnam-07.jpg",
+   "vietnam-08.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-15-b",
+  "topic": "zanzibar-assurance-obligatoire",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "zanzibar-01.jpg",
+   "zanzibar-03.jpg"
+  ]
  }
 ]
