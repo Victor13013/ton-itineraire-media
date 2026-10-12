@@ -359,7 +359,7 @@ def sans_fit(text, maker, maxw, start, minsize, maxlines):
 
 def sans_draw(base, x, y, lines, fnt, fill, hl_bg=None, hl_fg=None, lh=1.0, center_w=None):
     """Titre gras ; les *mots* consécutifs reçoivent un seul surlignage façon marqueur."""
-    d = ImageDraw.Draw(base); sp = d.textlength(" ", font=fnt); pad = fnt.size * 0.14
+    d = ImageDraw.Draw(base); sp = d.textlength(" ", font=fnt); pad = min(fnt.size * 0.14, sp * 0.42)
     for ln in lines:
         lw = sum(t[2] for t in ln) + sp * sum(1 for t in ln[1:] if not t[3])
         xx = x + ((center_w - lw) / 2 if center_w else 0)
@@ -582,16 +582,17 @@ def sans_draw_marks(base, x, y, lines, fnt, fill, hl_bg, hl_fg, lh=1.0, center_w
     for ln in lines:
         lw = sum(t[2] for t in ln) + sp * sum(1 for t in ln[1:] if not t[3])
         xx = x + ((center_w - lw) / 2 if center_w else 0)
-        for w, hl, ww, glue in ln:
+        for j, (w, hl, ww, glue) in enumerate(ln):
             if glue: xx -= sp
-            if hl: last = (xx + ww, yy)
+            if hl: last = (xx + ww, yy) if j == len(ln) - 1 else None
+            elif last and last[1] == yy: last = None
             xx += ww + sp
         yy += fnt.size * lh
     out = sans_draw(base, x, y, lines, fnt, fill, hl_bg, hl_fg, lh, center_w)
     if spark and last:
         lx, ly = last
         if lx + 60 < W - 20:
-            sparkle(base, lx + 34, ly + 4, 20, spark); sparkle(base, lx + 62, ly + 38, 11, spark)
+            sparkle(base, lx + 34, ly + fnt.size * 0.42, 18, spark); sparkle(base, lx + 60, ly + fnt.size * 0.82, 10, spark)
     return out
 
 def info_chip(base, x, y, text, icon, maxw=W - 2 * M, bg=WHITE_A, fg=INKV, ic_bg=FOREST, ic_fg=LIME):
@@ -612,7 +613,8 @@ def t_hero(c):
     base.alpha_composite(gradient(W, H, (8, 18, 12), 0.70, 1.0, 0, 170))
     y = 104
     if c.get("kicker"): y = kicker_pill(base, M, y, c["kicker"], LIME, INKV) + 26
-    f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 112, 64, 4)
+    tw_ = int((W - 2 * M) * c.get("tw", 1))
+    f, tl = sans_fit(c["title"], BLACK, tw_, 112, 64, 4)
     y = sans_draw_marks(base, M, y, tl, f, WHITE, LIME, INKV, 1.02, spark=LIME)
     if c.get("sub"):
         info_chip(base, M, y + 22, c["sub"], icon_for(c.get("kicker", ""), c["sub"], clean(c["title"])), maxw=W - 2 * M - 40)
@@ -664,11 +666,12 @@ def t_product(c):
         y = draw_lines(ImageDraw.Draw(base), 0, y + 10, wrap(c["sub"], IM(30), W - 2 * M - 80), IM(30), sub_on(bg), 1.4, anchor_center=True, W=W)
     top = int(y + 40); bottom = H - 150
     src = load(c["img"])
-    cut, pk = product_cut(src, (255, 255, 255), W - 300, bottom - top - 30)
+    room = W - 2 * M - 230 if c.get("price") else W - 300
+    cut, pk = product_cut(src, (255, 255, 255), room, bottom - top - 30)
     if pk:
-        px = (W - cut.width) // 2; py = top + (bottom - top - cut.height) // 2
+        px = (W - cut.width) // 2 if not c.get("price") else M + (room - cut.width) // 2; py = top + (bottom - top - cut.height) // 2
         # socle : disque clair + ombre
-        sd = ImageDraw.Draw(base); cxm = W / 2; ry = 26; rx = min(max(cut.width * 0.55, 150), 300)
+        sd = ImageDraw.Draw(base); cxm = px + cut.width / 2; ry = 26; rx = min(max(cut.width * 0.55, 150), 300)
         sd.ellipse([cxm - rx, py + cut.height - ry, cxm + rx, py + cut.height + ry], fill=tuple(int(v * 0.95) for v in bg))
         soft_shadow(base, (cxm - rx * 0.6, py + cut.height - 22, cxm + rx * 0.6, py + cut.height + 2), 55, 18)
         region = base.crop((px, py, px + cut.width, py + cut.height)).convert("RGB")
@@ -696,7 +699,8 @@ def t_product(c):
         if not calls and pk: doodle_arrow(base, (sx - 70, sy + 110), (pbox[2] - 10, sy + 230), FOREST, bend=-0.35)
     elif pk and not calls:
         doodle_arrow(base, (M + 30, top + 40), (pbox[0] - 14, top + 170), FOREST, bend=0.4)
-    sparkle(base, pbox[0] - 10 if pk else M + 30, pbox[1] + 20, 22, FOREST)
+    if pk and not calls and not c.get("price"): sparkle(base, pbox[2] + 20, pbox[1] + 30, 22, FOREST)
+    elif not c.get("price"): sparkle(base, pbox[0] - 10 if pk else M + 30, pbox[1] + 20, 22, FOREST)
     chrome(base, c, fg, sub_on(bg), light_btn=False)
     return base.convert("RGB")
 
@@ -707,19 +711,19 @@ def t_list(c):
     src = load(c["img"]); im, pk = prep(src); ph_h = 520
     if pk and touches_edge(im): pk = False
     if pk:
-        cut, _ = product_cut(src, (255, 255, 255), W - 300, ph_h - 120)
+        cut, _ = product_cut(src, (255, 255, 255), 380, ph_h - 90)
         band = multiply_on(Image.new("RGB", (W, ph_h), CREAM), Image.new("RGB", (W, ph_h), WHITE_A))
-        band.paste(multiply_on(Image.new("RGB", cut.size, CREAM), cut), ((W - cut.width) // 2, (ph_h - cut.height) // 2 + 30))
-        base.paste(band, (0, 0)); title_fg = INKV
+        band.paste(multiply_on(Image.new("RGB", cut.size, CREAM), cut), (W - M - cut.width + 10, (ph_h - cut.height) // 2 + 20))
+        base.paste(band, (0, 0)); title_fg = INKV; title_w = W - 2 * M - cut.width - 30
     else:
         ph = cover(im, W, ph_h).convert("RGBA"); ph.alpha_composite(gradient(W, ph_h, (8, 18, 12), 0.25, 1, 0, 210))
-        base.paste(ph, (0, 0)); title_fg = WHITE_A
+        base.paste(ph, (0, 0)); title_fg = WHITE_A; title_w = W - 2 * M
     if c.get("stamp"):                                   # tampon MYTHE / FAUX
         st = Image.new("RGBA", (360, 130), (0, 0, 0, 0)); sd = ImageDraw.Draw(st)
-        sd.rounded_rectangle([4, 4, 356, 126], radius=20, outline=CORAL, width=8)
+        sd.rounded_rectangle([4, 4, 356, 126], radius=20, fill=(255, 255, 255, 225), outline=CORAL, width=8)
         fs = BLACK(72); tw = sd.textlength(c["stamp"], font=fs); sd.text(((360 - tw) / 2, 18), c["stamp"], font=fs, fill=CORAL)
         st = st.rotate(-12, resample=Image.BICUBIC, expand=True); base.alpha_composite(st, (W - M - st.width + 20, 70))
-    f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 74, 50, 2)
+    f, tl = sans_fit(c["title"], BLACK, title_w, 74, 46, 3 if title_w < W - 2 * M else 2)
     sans_draw_marks(base, M, ph_h - 40 - f.size * 1.02 * len(tl), tl, f, title_fg, LIME, INKV, 1.02, spark=LIME if title_fg == WHITE_A else FOREST)
     d = ImageDraw.Draw(base)
     y = ph_h + 40; n = len(c["items"]); fa = 36 if n <= 3 else 32; fb = 27 if n <= 3 else 25
@@ -907,7 +911,6 @@ def tb_hero(c):
     framed_photo(base, src, (M + 40, top, W - M - 40, bot), angle=(-4 if n % 2 else 4), fy=c.get("fy", 0.45))
     if c.get("sub"): notif(base, M - 10, bot - 190, W - 2 * M + 20, c["sub"], icon_for(c.get("kicker", ""), c["sub"]))
     if c.get("price"): sticker_v4(base, c["price"], W - M - 60, top + 40, r=100)
-    sparkle(base, W - M - 20, top - 20, 26, FOREST); sparkle(base, W - M - 60, top + 30, 13, FOREST)
     chrome(base, c, INKV, GREYV, light_btn=False)
     return base.convert("RGB")
 
@@ -916,9 +919,11 @@ def tb_statement(c):
     framed_photo(base, load(c["img"]), (W - M - 330, 90, W - M - 10, 470), angle=6)
     d = ImageDraw.Draw(base)
     d.text((M - 6, 120), "“", font=BLACK(260), fill=LIME)
-    y = 520
-    if c.get("kicker"): y = pill_outline(base, M, y, c["kicker"], LIME) + 30
     f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 96, 56, 4)
+    bh = (78 if c.get("kicker") else 0) + f.size * (1.04 * len(tl) + 0.18)
+    if c.get("sub"): bh += 30 + 92 + 30 * 1.28 * len(wrap(c["sub"], SB(30), W - 2 * M + 20 - 150))
+    y = max(520, 520 + (H - 150 - 520 - bh) * 0.4)
+    if c.get("kicker"): y = pill_outline(base, M, y, c["kicker"], LIME) + 30
     y = title_b(base, M, y, tl, f, CREAM, LIME)
     if c.get("sub"): notif(base, M - 10, y + 30, W - 2 * M + 20, c["sub"], icon_for(c.get("kicker", ""), c["sub"]), dark=True)
     chrome(base, c, CREAM, GREYV, light_btn=True)
@@ -959,7 +964,10 @@ def tb_list(c):
     framed_photo(base, load(c["img"]), (W - M - 300, 80, W - M, 430), angle=5)
     y = b_title_block(base, c, False, maxw=W - 2 * M - 330, start=80, maxlines=3, y=150)
     y = max(y + 20, 490); items = c["items"]; k = len(items)
+    if c.get("stamp"): y += 130
     avail = H - 120 - y; gap = 20; ch = min((avail - gap * (k - 1)) / k, 200)
+    stamp_y = y - 150
+    y += (avail - (ch * k + gap * (k - 1))) * 0.35
     for i, (a_, b_) in enumerate(items):
         glass(base, (M - 20, y, W - M + 20, y + ch), 30, (255, 255, 255), 170)
         d = ImageDraw.Draw(base)
@@ -974,9 +982,9 @@ def tb_list(c):
         y += ch + gap
     if c.get("stamp"):
         st = Image.new("RGBA", (330, 120), (0, 0, 0, 0)); sd = ImageDraw.Draw(st)
-        sd.rounded_rectangle([4, 4, 326, 116], radius=20, outline=CORAL, width=8)
+        sd.rounded_rectangle([4, 4, 326, 116], radius=20, fill=(255, 255, 255, 225), outline=CORAL, width=8)
         fs = BLACK(66); tw = sd.textlength(c["stamp"], font=fs); sd.text(((330 - tw) / 2, 16), c["stamp"], font=fs, fill=CORAL)
-        st = st.rotate(10, resample=Image.BICUBIC, expand=True); base.alpha_composite(st, (W - M - 330, 360))
+        st = st.rotate(-6, resample=Image.BICUBIC, expand=True); base.alpha_composite(st, (M - 10, int(stamp_y)))
     chrome(base, c, INKV, GREYV, light_btn=False)
     return base.convert("RGB")
 
@@ -990,7 +998,7 @@ def tb_stats(c):
         glass(base, (x, yy, x + tw_, yy + th), 32, (255, 255, 255), 28, 70)
         d = ImageDraw.Draw(base)
         fb_ = BLACK(100)
-        while d.textlength(nb(big), font=fb_) > tw_ - 120: fb_ = BLACK(fb_.size - 6)
+        while d.textlength(nb(big), font=fb_) > tw_ - 150: fb_ = BLACK(fb_.size - 6)
         d.text((x + 30, yy + 24), nb(big), font=fb_, fill=LIME)
         icon_disc(d, icon_for(big, small), x + tw_ - 50, yy + 50, 28, LIME, FOREST)
         ls = wrap(small, IM(28), tw_ - 64)
@@ -1000,34 +1008,45 @@ def tb_stats(c):
     chrome(base, c, CREAM, GREYV, light_btn=True)
     return base.convert("RGB")
 
+def under_wave(d, x, y, text, fnt, color):
+    """Vague sous un texte, calée sur le bas réel des lettres."""
+    l, t, r, b = d.textbbox((x, y), text, font=fnt)
+    squiggle(d, l, r, b + 14, color)
+    return b + 14
+
 def tb_versus(c):
     base = Image.new("RGBA", (W, H), SANDV + (255,))
     right = mesh_bg("forest", 1); base.paste(right.crop((W // 2, 0, W, H)), (W // 2, 0))
     left = mesh_bg("sand", 0); base.paste(left.crop((0, 0, W // 2, H)), (0, 0))
-    d = ImageDraw.Draw(base)
-    if c.get("kicker"): kicker_pill(base, 0, 90, c["kicker"], LIME, INKV, center=True)
-    f, tl = sans_fit(clean(c["title"]), BLACK, W - 2 * M, 84, 52, 2)
-    y = 170
-    for ln in tl:
-        txt = " ".join(t[0] for t in ln).replace("  ", " "); tw = d.textlength(txt, font=f)
-        # moitié gauche en vert foncé, moitié droite en crème
-        t_img = Image.new("RGBA", (W, f.size + 30), (0, 0, 0, 0)); ImageDraw.Draw(t_img).text(((W - tw) / 2, 0), txt, font=f, fill=INKV)
-        t2 = Image.new("RGBA", (W, f.size + 30), (0, 0, 0, 0)); ImageDraw.Draw(t2).text(((W - tw) / 2, 0), txt, font=f, fill=CREAM)
-        base.alpha_composite(t_img.crop((0, 0, W // 2, t_img.height)), (0, int(y))); base.alpha_composite(t2.crop((W // 2, 0, W, t2.height)), (W // 2, int(y)))
-        y += f.size * 1.04
-    y = int(y + 60); fi = SB(40)
-    for side, (head, items) in enumerate([c["left"], c["right"]]):
-        x = M - 10 if side == 0 else W // 2 + 60; cw = W // 2 - M - 60; good = side == 1 or c.get("both_good")
-        fg = INKV if side == 0 else CREAM
-        hf = BLACK(60)
+    d = ImageDraw.Draw(base); fi = SB(42); cw = W // 2 - M - 60
+    f, tl = sans_fit(clean(c["title"]), BLACK, W - 2 * M - 80, 80, 50, 2)
+    hf = BLACK(60)
+    for head, _ in (c["left"], c["right"]):
         while d.textlength(head, font=hf) > cw - 10: hf = BLACK(hf.size - 4)
-        d.text((x, y), head, font=hf, fill=fg); squiggle(d, x, x + d.textlength(head, font=hf), y + hf.size * 1.12, FOREST if side == 0 else LIME)
-        iy = y + hf.size + 70
+    def col_h(items): return sum(fi.size * 1.22 * len(wrap(it, fi, cw - 70)) + 46 for it in items)
+    title_h = (60 if c.get("kicker") else 0) + f.size * 1.04 * len(tl) + 56
+    block = title_h + 140 + hf.size + 70 + max(col_h(c["left"][1]), col_h(c["right"][1]))
+    y = max(80, (H - 110 - block) / 2 + 50)
+    if c.get("kicker"): kicker_pill(base, 0, y, c["kicker"], LIME, INKV, center=True); y += 60
+    # titre sur une étiquette crème (lisible sur les deux moitiés)
+    lw = max(d.textlength(" ".join(t[0] for t in ln).replace("  ", " "), font=f) for ln in tl)
+    th = f.size * 1.04 * len(tl) + 36
+    d.rounded_rectangle([(W - lw) / 2 - 34, y, (W + lw) / 2 + 34, y + th], radius=28, fill=CREAM)
+    yy = y + 14
+    for ln in tl:
+        txt = " ".join(t[0] for t in ln).replace("  ", " "); tw = d.textlength(txt, font=f)
+        d.text(((W - tw) / 2, yy), txt, font=f, fill=INKV); yy += f.size * 1.04
+    y = int(y + th + 140)
+    for side, (head, items) in enumerate([c["left"], c["right"]]):
+        x = M - 10 if side == 0 else W // 2 + 60; good = side == 1 or c.get("both_good")
+        fg = INKV if side == 0 else CREAM
+        d.text((x, y), head, font=hf, fill=fg)
+        iy = under_wave(d, x, y, head, hf, FOREST if side == 0 else LIME) + 50
         for it in items:
             icon_disc(d, "check" if good else "xmark", x + 26, iy + 24, 26, (LIME if side else (FOREST if good else CORAL)), (INKV if side else WHITE_A))
             iy = draw_lines(d, x + 70, iy, wrap(it, fi, cw - 70), fi, fg, 1.22) + 46
-    vy = y + (H - 140 - y) * 0.42; d.ellipse([W / 2 - 52, vy - 52, W / 2 + 52, vy + 52], fill=LIME, outline=INKV, width=5)
-    fv = BLACK(44); tw = d.textlength("VS", font=fv); d.text((W / 2 - tw / 2, vy - 29), "VS", font=fv, fill=INKV)
+    vy = y - 72; d.ellipse([W / 2 - 50, vy - 50, W / 2 + 50, vy + 50], fill=LIME, outline=INKV, width=5)
+    fv = BLACK(42); l_, t_, r_, b_ = d.textbbox((0, 0), "VS", font=fv); d.text((W / 2 - (l_ + r_) / 2, vy - (t_ + b_) / 2), "VS", font=fv, fill=INKV)
     chrome(base, c, INKV, GREYV, light_btn=True)
     return base.convert("RGB")
 
@@ -1099,11 +1118,15 @@ def c_title(base, c, x=M, y=100, maxw=W - 2 * M, start=100, maxlines=3, kicker=T
 def polaroid(src, w, h, caption=None, fy=0.5):
     cap_lines = wrap(clean(caption), HAND(46), w - 60) if caption else []
     bottom = 40 + (int(46 * 1.0 * len(cap_lines)) + 36 if cap_lines else 50)
-    im = src
-    if (border_px(im).min(axis=1) > 238).mean() > 0.5:
-        ww, hh = im.size; k = 0.66; im = im.crop((int(ww * (1 - k) / 2), int(hh * (1 - k) / 2), int(ww * (1 + k) / 2), int(hh * (1 + k) / 2)))
-    lay = Image.new("RGBA", (w, h), (255, 255, 255, 255)); ph_h = h - 28 - bottom
-    lay.paste(cover(im, w - 56, max(ph_h, 50), 0.5, fy), (28, 28))
+    im = src; lay = Image.new("RGBA", (w, h), (255, 255, 255, 255)); ph_h = max(h - 28 - bottom, 50)
+    pim, pk = prep(src)
+    if pk:   # packshot : produit entier, centré sur le blanc du polaroid
+        prod = trim(pim); prod = prod.resize(fit_size(prod, int((w - 56) * 0.88), int(ph_h * 0.88)), Image.LANCZOS)
+        lay.paste(prod, (28 + (w - 56 - prod.width) // 2, 28 + (ph_h - prod.height) // 2))
+    else:
+        if (border_px(im).min(axis=1) > 238).mean() > 0.5:
+            ww, hh = im.size; k = 0.66; im = im.crop((int(ww * (1 - k) / 2), int(hh * (1 - k) / 2), int(ww * (1 + k) / 2), int(hh * (1 + k) / 2)))
+        lay.paste(cover(im, w - 56, ph_h, 0.5, fy), (28, 28))
     if cap_lines: draw_lines(ImageDraw.Draw(lay), 30, h - bottom + 14, cap_lines, HAND(46), INKV, 1.0)
     return lay
 
@@ -1135,7 +1158,7 @@ def tc_hero(c):
     paste_rot(base, polaroid(src, w, h, c.get("sub"), c.get("fy", 0.45)), W / 2, (top + bot) / 2, ang)
     tape(base, W / 2, top + 4, 190, -4 if n % 2 else 5)
     d = ImageDraw.Draw(base)
-    doodle_star(d, W - M + 10, top - 6, 30, CORAL); sparkle(base, M - 20, bot - 60, 22, FOREST)
+    doodle_star(d, W - 48, top - 34, 26, CORAL); sparkle(base, M - 20, bot - 60, 22, FOREST)
     if c.get("price"): sticker_v4(base, c["price"], W - M - 50, top + 90, r=96, bg=CORAL, fg=WHITE_A)
     chrome(base, c, INKV, GREYV, light_btn=False)
     return base.convert("RGB")
@@ -1192,8 +1215,9 @@ def tc_list(c):
     paste_rot(base, polaroid(load(c["img"]), 280, 320), W - M - 110, 230, 7)
     tape(base, W - M - 110, 76, 130, -8)
     y = c_title(base, c, x=M, y=210, maxw=W - 2 * M - 300, start=78, maxlines=3)
-    y = max(y + 20, 470); items = c["items"]; k = len(items)
-    avail = card[3] - 60 - y; ch = min(avail / k, 250); y += (avail - ch * k) / 2; d = ImageDraw.Draw(base)
+    y = max(y + 20, 470); items = c["items"]; k = len(items); stamp_y = y - 40
+    if c.get("stamp"): y += 120
+    avail = card[3] - 60 - y; ch = min(avail / k, 250); y += (avail - ch * k) * 0.3; d = ImageDraw.Draw(base)
     for i, (a_, b_) in enumerate(items):
         cy = y + ch / 2
         d.rounded_rectangle([M, cy - 26 - 8, M + 52, cy + 26 - 8], radius=14, fill=FOREST)
@@ -1208,9 +1232,9 @@ def tc_list(c):
         y += ch
     if c.get("stamp"):
         st = Image.new("RGBA", (330, 120), (0, 0, 0, 0)); sd = ImageDraw.Draw(st)
-        sd.rounded_rectangle([4, 4, 326, 116], radius=20, outline=CORAL, width=8)
+        sd.rounded_rectangle([4, 4, 326, 116], radius=20, fill=(255, 255, 255, 230), outline=CORAL, width=8)
         fs = BLACK(66); tw = sd.textlength(c["stamp"], font=fs); sd.text(((330 - tw) / 2, 16), c["stamp"], font=fs, fill=CORAL)
-        st = st.rotate(-9, resample=Image.BICUBIC, expand=True); base.alpha_composite(st, (W - M - 360, 400))
+        st = st.rotate(-5, resample=Image.BICUBIC, expand=True); base.alpha_composite(st, (M - 10, int(stamp_y)))
     chrome(base, c, INKV, GREYV, light_btn=False)
     return base.convert("RGB")
 
@@ -1224,7 +1248,7 @@ def tc_product(c):
     blob = Image.new("L", (W, H), 0); bd = ImageDraw.Draw(blob); R = min(pw * 0.62, (bot - top) * 0.48)
     pts = [(cx + R * (1 + 0.07 * math.sin(3 * a + n)) * math.cos(a), cy + R * (1 + 0.07 * math.cos(2 * a + n)) * math.sin(a)) for a in [i * math.pi / 60 for i in range(120)]]
     bd.polygon(pts, fill=255); base.paste(Image.new("RGBA", (W, H), (226, 243, 170, 255)), (0, 0), blob)
-    cut, pk = product_cut(src, (255, 255, 255), int(pw), int((bot - top) * 0.9))
+    cut, pk = None, False   # en DA C, le produit est toujours posé dans un polaroid
     if pk:
         px = int(cx - cut.width / 2); py = int(cy - cut.height / 2)
         soft_shadow(base, (cx - cut.width * 0.32, py, cx + cut.width * 0.32, py + cut.height), 55, 20)
@@ -1274,7 +1298,7 @@ def tc_versus(c):
         hf = BLACK(60)
         while d.textlength(head, font=hf) > cw - 70: hf = BLACK(hf.size - 4)
         d.text((34, 56), head, font=hf, fill=fg)
-        squiggle(d, 34, 34 + d.textlength(head, font=hf), 56 + hf.size * 1.15, CORAL if side == 0 else LIME)
+        under_wave(d, 34, 56, head, hf, CORAL if side == 0 else LIME)
         iy = 190
         for it in items:
             hand_check(d, 56, iy + 24, 17, (FOREST if good else CORAL) if side == 0 else LIME, good, 7)

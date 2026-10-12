@@ -415,7 +415,7 @@ Le geste : après tes 2 minutes, passe doucement la brosse de l'arrière vers l'
 
 # ───────────────────────── 19 · REEL
 dict(date="2026-10-27", kind="carousel", slides=[
-  dict(tpl="hero", img=s("ricin_fibres"), kicker="Têtes de recharge", title="Poils *ricin* ou poils *nylon* ?", swipe=True),
+  dict(tpl="product", img=s("ricin_fibres"), kicker="Têtes de recharge", title="Poils *ricin* ou poils *nylon* ?", swipe=True),
   dict(tpl="versus", kicker="Têtes Pulse Care", title="Lequel est *fait pour toi* ?", both_good=True, left=("Poils nylon", ["Brossage plus ferme", "Tu sens bien le nettoyage", "Tête en bambou"]), right=("Poils ricin", ["Fibre d'origine végétale", "Toucher très doux", "Idéal gencives sensibles"]), page="2/2"),
 ],
 caption="""Têtes de brosse à dents électrique : poils ricin ou poils nylon ?
@@ -453,7 +453,7 @@ Tu rinces, toi ? Sois honnête.
 
 # ───────────────────────── 21 · PHOTO
 dict(date="2026-10-29", kind="photo", slides=[
-  dict(tpl="hero", img=s("p095"), kicker="Pulse Care Bamboo+", title="Rien de plus sur ton lavabo.", sub="41 000 vibrations/min · 4 modes · 30 jours d'autonomie", price="59,90 €"),
+  dict(tpl="product", img=s("p095"), kicker="Pulse Care Bamboo+", title="Rien de plus sur ton lavabo.", sub="41 000 vibrations/min · 4 modes · 30 jours d'autonomie", price="59,90 €"),
 ],
 caption="""La brosse à dents électrique Pulse Care Bamboo+, version salle de bain.
 
@@ -540,7 +540,7 @@ Enregistre ce post pour l'avoir sous la main.
 
 # ───────────────────────── 26 · PHOTO
 dict(date="2026-11-03", kind="photo", slides=[
-  dict(tpl="hero", img=s("p087"), kicker="Pulse Care", title="Un manche qu'on garde.\n*Des têtes qu'on change.*"),
+  dict(tpl="product", img=s("p087"), kicker="Pulse Care", title="Un manche qu'on garde.\n*Des têtes qu'on change.*"),
 ],
 caption="""Une brosse à dents électrique. Un manche qu'on garde. Des têtes en bambou qu'on change.
 
@@ -614,7 +614,7 @@ Tu brosses déjà 2 fois par jour ? Oui ou non en commentaire.
 
 # ───────────────────────── 30 · CAROUSEL
 dict(date="2026-11-07", kind="carousel", slides=[
-  dict(tpl="hero", img=s("p088"), kicker="Le récap", title="Pourquoi la *Bamboo+* ?", swipe=True),
+  dict(tpl="hero", img=s("p088"), kicker="Le récap", title="Pourquoi la *Bamboo+* ?", swipe=True, tw=0.68),
   dict(tpl="stats", img=s("decouverte_contenu"), title="En résumé", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie, USB-C"),("IPX7","étanche")], page="2/4"),
   dict(tpl="list", img=s("duo_tete"), title="Et aussi", items=[("Minuteur 2 minutes","Pause toutes les 30 s."),("Têtes en bambou","Poils ricin ou nylon."),("Étui de voyage","En bambou, inclus.")], page="3/4", alt=True),
   dict(tpl="product", img=s("p097"), kicker="Pulse Care Bamboo+", title="Le manche reste.\n*La tête se change.*", sub="Avec 2 têtes, l'étui et le câble USB-C.", price="59,90 €", page="4/4"),
