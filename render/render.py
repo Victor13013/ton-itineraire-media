@@ -1032,6 +1032,7 @@ def tb_versus(c):
     return base.convert("RGB")
 
 TPL_B = {"hero": tb_hero, "statement": tb_statement, "product": tb_product, "list": tb_list, "stats": tb_stats, "versus": tb_versus}
+SLOT_DA_10H = "b"                   # 10h en DA B « Gradient & verre », 18h en DA v5
 DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
 def pick_tpl(sl):
     return (TPL_B if (DA_B_ALL or sl.get("da") == "b") else TPL)[sl["tpl"]]
@@ -1301,6 +1302,7 @@ def main():
               for i, sl in enumerate(p["slides"], 1):
                   rel = f"media/posts/{date}-{i}.jpg"
                   sl = dict(sl, _n=LIST.index(p) + i - 1 + off)
+                  if suf == "-10h" and not sl.get("da"): sl["da"] = SLOT_DA_10H
                   pick_tpl(sl)(sl).save(os.path.join(ROOT, rel), "JPEG", quality=90, optimize=True, progressive=False)
                   rels.append(rel)
               urls = [RAW + r for r in rels]
