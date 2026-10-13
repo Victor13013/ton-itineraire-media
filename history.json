@@ -322,5 +322,26 @@
    "zanzibar-01.jpg",
    "zanzibar-03.jpg"
   ]
+ },
+ {
+  "date": "2026-10-16",
+  "topic": "thailande-30-jours-sans-visa",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "reunion-03.jpg",
+   "thailande-01.jpg",
+   "thailande-02.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-16-b",
+  "topic": "seville-automne",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "andalousie-01.jpg",
+   "andalousie-04.jpg"
+  ]
  }
 ]
