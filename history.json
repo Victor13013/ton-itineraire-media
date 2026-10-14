@@ -343,5 +343,29 @@
    "andalousie-01.jpg",
    "andalousie-04.jpg"
   ]
+ },
+ {
+  "date": "2026-10-17",
+  "topic": "ou-partir-novembre",
+  "format": "carousel",
+  "slides": 6,
+  "photos": [
+   "canaries-03.jpg",
+   "mexique-02.jpg",
+   "patagonie-01.jpg",
+   "patagonie-02.jpg",
+   "patagonie-04.jpg",
+   "reunion-02.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-17-b",
+  "topic": "copenhague-toussaint",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "copenhague-01.jpg",
+   "copenhague-02.jpg"
+  ]
  }
 ]
