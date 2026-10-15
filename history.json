@@ -367,5 +367,25 @@
    "copenhague-01.jpg",
    "copenhague-02.jpg"
   ]
+ },
+ {
+  "date": "2026-10-18",
+  "topic": "islande-routes-automne",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "islande-01.jpg",
+   "islande-03.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-18-b",
+  "topic": "chefchaouen-ville-bleue",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "maroc-07.jpg",
+   "maroc-08.jpg"
+  ]
  }
 ]
