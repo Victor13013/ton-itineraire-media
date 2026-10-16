@@ -387,5 +387,28 @@
    "maroc-07.jpg",
    "maroc-08.jpg"
   ]
+ },
+ {
+  "date": "2026-10-19",
+  "topic": "papiers-identite-idees-recues",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "ecosse-01.jpg",
+   "ecosse-04.jpg",
+   "norvege-07.jpg",
+   "quebec-01.jpg",
+   "quebec-03.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-19-b",
+  "topic": "dolomites-intersaison",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "dolomites-01.jpg",
+   "dolomites-03.jpg"
+  ]
  }
 ]
