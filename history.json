@@ -410,5 +410,25 @@
    "dolomites-01.jpg",
    "dolomites-03.jpg"
   ]
+ },
+ {
+  "date": "2026-10-20",
+  "topic": "sri-lanka-hiver",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "srilanka-05.jpg",
+   "srilanka-07.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-20-b",
+  "topic": "new-york-hiver-conseil",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "newyork-05.jpg",
+   "newyork-07.jpg"
+  ]
  }
 ]
