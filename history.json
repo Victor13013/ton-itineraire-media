@@ -430,5 +430,29 @@
    "newyork-05.jpg",
    "newyork-07.jpg"
   ]
+ },
+ {
+  "date": "2026-10-21",
+  "topic": "sicile-7-jours",
+  "format": "carousel",
+  "slides": 6,
+  "photos": [
+   "sicile-01.jpg",
+   "sicile-02.jpg",
+   "sicile-03.jpg",
+   "sicile-04.jpg",
+   "voyage-09.jpg",
+   "voyage-12.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-21-b",
+  "topic": "cap-vert-soleil-hiver",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "capvert-03.jpg",
+   "capvert-04.jpg"
+  ]
  }
 ]
