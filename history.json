@@ -454,5 +454,28 @@
    "capvert-03.jpg",
    "capvert-04.jpg"
   ]
+ },
+ {
+  "date": "2026-10-22",
+  "topic": "laponie-le-saviez-vous",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "laponie-03.jpg",
+   "laponie-04.jpg",
+   "laponie-05.jpg",
+   "laponie-06.jpg",
+   "laponie-07.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-22-b",
+  "topic": "petra-ouverture-6h",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "jordanie-07.jpg",
+   "jordanie-08.jpg"
+  ]
  }
 ]
