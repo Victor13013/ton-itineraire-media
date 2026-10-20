@@ -477,5 +477,28 @@
    "jordanie-07.jpg",
    "jordanie-08.jpg"
   ]
+ },
+ {
+  "date": "2026-10-23",
+  "topic": "tendances-toussaint-2026",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "egypte-10.jpg",
+   "egypte-11.jpg",
+   "italie-03.jpg",
+   "italie-04.jpg",
+   "japon-11.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-23-b",
+  "topic": "canaries-novembre-conseil",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "canaries-02.jpg",
+   "canaries-08.jpg"
+  ]
  }
 ]
