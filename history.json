@@ -500,5 +500,28 @@
    "canaries-02.jpg",
    "canaries-08.jpg"
   ]
+ },
+ {
+  "date": "2026-10-24",
+  "topic": "ou-partir-decembre",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "costarica-01.jpg",
+   "costarica-02.jpg",
+   "mexique-05.jpg",
+   "mexique-06.jpg",
+   "prague-07.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-24-b",
+  "topic": "thailande-30-jours-sans-visa",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "thailande-05.jpg",
+   "thailande-06.jpg"
+  ]
  }
 ]
