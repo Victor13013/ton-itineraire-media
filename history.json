@@ -523,5 +523,25 @@
    "thailande-05.jpg",
    "thailande-06.jpg"
   ]
+ },
+ {
+  "date": "2026-10-25",
+  "topic": "edimbourg-heure-bleue",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "ecosse-05.jpg",
+   "ecosse-07.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-25-b",
+  "topic": "changement-heure-vols",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "voyage-10.jpg",
+   "voyage-11.jpg"
+  ]
  }
 ]
