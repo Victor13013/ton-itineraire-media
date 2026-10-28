@@ -566,5 +566,15 @@
    "seychelles-01.jpg",
    "seychelles-02.jpg"
   ]
+ },
+ {
+  "date": "2026-10-28-b",
+  "topic": "seville-automne",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "andalousie-02.jpg",
+   "andalousie-03.jpg"
+  ]
  }
 ]
