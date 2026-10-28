@@ -568,6 +568,19 @@
   ]
  },
  {
+  "date": "2026-10-28",
+  "topic": "philippines-palawan-10-jours",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "bali-ubud-1.jpg",
+   "philippines-01.jpg",
+   "philippines-02.jpg",
+   "philippines-03.jpg",
+   "philippines-04.jpg"
+  ]
+ },
+ {
   "date": "2026-10-28-b",
   "topic": "seville-automne",
   "format": "photo",
@@ -575,6 +588,72 @@
   "photos": [
    "andalousie-02.jpg",
    "andalousie-03.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-29",
+  "topic": "corse-le-saviez-vous",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "corse-01.jpg",
+   "corse-02.jpg",
+   "corse-03.jpg",
+   "corse-04.jpg",
+   "dolomites-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-29-b",
+  "topic": "santorin-hors-saison",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "grece-01.jpg",
+   "grece-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-30",
+  "topic": "sri-lanka-eta-gratuite",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "srilanka-06.jpg",
+   "srilanka-08.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-30-b",
+  "topic": "madere-randonnee-levadas",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "madere-01.jpg",
+   "madere-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-31",
+  "topic": "marches-de-noel-conseils",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "noel-01.jpg",
+   "noel-02.jpg",
+   "noel-03.jpg",
+   "noel-04.jpg",
+   "prague-05.jpg"
+  ]
+ },
+ {
+  "date": "2026-10-31-b",
+  "topic": "dubrovnik-hors-saison",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "croatie-03.jpg",
+   "croatie-04.jpg"
   ]
  }
 ]
