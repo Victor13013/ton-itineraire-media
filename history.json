@@ -655,5 +655,25 @@
    "croatie-03.jpg",
    "croatie-04.jpg"
   ]
+ },
+ {
+  "date": "2026-11-01",
+  "topic": "petra-jordan-pass",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "jordanie-05.jpg",
+   "jordanie-06.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-01-b",
+  "topic": "canaries-novembre-randonnee",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "canaries-05.jpg",
+   "canaries-06.jpg"
+  ]
  }
 ]
