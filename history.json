@@ -675,5 +675,29 @@
    "canaries-05.jpg",
    "canaries-06.jpg"
   ]
+ },
+ {
+  "date": "2026-11-02",
+  "topic": "maroc-idees-recues",
+  "format": "carousel",
+  "slides": 6,
+  "photos": [
+   "maroc-05.jpg",
+   "maroc-06.jpg",
+   "marrakech-01.jpg",
+   "marrakech-02.jpg",
+   "marrakech-03.jpg",
+   "marrakech-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-02-b",
+  "topic": "maurice-ete-austral",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "maurice-01.jpg",
+   "maurice-02.jpg"
+  ]
  }
 ]
