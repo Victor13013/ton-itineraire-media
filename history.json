@@ -699,5 +699,25 @@
    "maurice-01.jpg",
    "maurice-02.jpg"
   ]
+ },
+ {
+  "date": "2026-11-03",
+  "topic": "oman-novembre",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "oman-03.jpg",
+   "oman-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-03-b",
+  "topic": "noel-au-soleil-antilles",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "martinique-02.jpg",
+   "martinique-03.jpg"
+  ]
  }
 ]
