@@ -672,6 +672,20 @@
   ]
  },
  {
+  "date": "2026-10-31-d",
+  "topic": "ou-partir-janvier-petit-prix",
+  "format": "carousel",
+  "slides": 6,
+  "photos": [
+   "lisbonne-02.jpg",
+   "lisbonne-03.jpg",
+   "portugal-02.jpg",
+   "rome-01.jpg",
+   "rome-03.jpg",
+   "turquie-03.jpg"
+  ]
+ },
+ {
   "date": "2026-11-01",
   "topic": "petra-jordan-pass",
   "format": "photo",
