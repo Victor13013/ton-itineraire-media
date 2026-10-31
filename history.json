@@ -657,6 +657,21 @@
   ]
  },
  {
+  "date": "2026-10-31-c",
+  "topic": "ou-partir-janvier",
+  "format": "carousel",
+  "slides": 7,
+  "photos": [
+   "aurores-02.jpg",
+   "aurores-03.jpg",
+   "colombie-04.jpg",
+   "egypte-09.jpg",
+   "laponie-08.jpg",
+   "mexique-08.jpg",
+   "nouvellezelande-01.jpg"
+  ]
+ },
+ {
   "date": "2026-11-01",
   "topic": "petra-jordan-pass",
   "format": "photo",
