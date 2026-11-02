@@ -772,5 +772,28 @@
    "colombie-01.jpg",
    "colombie-03.jpg"
   ]
+ },
+ {
+  "date": "2026-11-05",
+  "topic": "vienne-le-saviez-vous",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "kenya-07.jpg",
+   "vienne-01.jpg",
+   "vienne-02.jpg",
+   "vienne-03.jpg",
+   "vienne-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-05-b",
+  "topic": "maldives-saison-seche",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "maldives-02.jpg",
+   "maldives-04.jpg"
+  ]
  }
 ]
