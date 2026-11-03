@@ -795,5 +795,25 @@
    "maldives-02.jpg",
    "maldives-04.jpg"
   ]
+ },
+ {
+  "date": "2026-11-06",
+  "topic": "usa-attestation-cdc",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "newyork-06.jpg",
+   "newyork-08.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-06-b",
+  "topic": "nouvelle-zelande-printemps-nzeta",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "nouvellezelande-02.jpg",
+   "nouvellezelande-03.jpg"
+  ]
  }
 ]
