@@ -815,5 +815,30 @@
    "nouvellezelande-02.jpg",
    "nouvellezelande-03.jpg"
   ]
+ },
+ {
+  "date": "2026-11-07",
+  "topic": "ou-partir-en-decembre",
+  "format": "carousel",
+  "slides": 7,
+  "photos": [
+   "alsace-01.jpg",
+   "alsace-04.jpg",
+   "aurores-01.jpg",
+   "mexique-07.jpg",
+   "tenerife-01.jpg",
+   "tenerife-03.jpg",
+   "thailande-07.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-07-b",
+  "topic": "rome-trevi-2-euros",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "rome-02.jpg",
+   "rome-04.jpg"
+  ]
  }
 ]
