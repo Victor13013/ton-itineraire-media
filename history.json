@@ -840,5 +840,25 @@
    "rome-02.jpg",
    "rome-04.jpg"
   ]
+ },
+ {
+  "date": "2026-11-08",
+  "topic": "lisbonne-tram-28-conseil",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "lisbonne-01.jpg",
+   "lisbonne-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-08-b",
+  "topic": "noel-2026-reserver-maintenant",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "prague-06.jpg",
+   "prague-08.jpg"
+  ]
  }
 ]
