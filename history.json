@@ -860,5 +860,28 @@
    "prague-06.jpg",
    "prague-08.jpg"
   ]
+ },
+ {
+  "date": "2026-11-09",
+  "topic": "tanzanie-idees-recues",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "tanzanie-01.jpg",
+   "tanzanie-02.jpg",
+   "tanzanie-03.jpg",
+   "tanzanie-04.jpg",
+   "zanzibar-02.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-09-b",
+  "topic": "coree-du-sud-k-eta-exemption",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "seoul-03.jpg",
+   "seoul-04.jpg"
+  ]
  }
 ]

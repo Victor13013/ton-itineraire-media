@@ -136,10 +136,10 @@ def slide_html(s, i, n):
 <div class="panel"><div class="kicker">{e(s['kicker'])}</div><h2>{e(s['title'])}</h2><p>{e(s['text'])}</p></div>"""
         top, _ = chrome(i, n, True)
     elif t == "fact":
-        body = f"""<div class="s fact"><div class="band"><img src="{photo(s['photo'])}"></div>
+        body = f"""<div class="s fact"><div class="band"><img src="{photo(s['photo'])}" style="object-position:{s.get('pos','center')}"></div>
 <div class="flow"><div class="big">{e(s['big'])}</div><h2>{e(s['title'])}</h2><p>{e(s['text'])}</p></div>"""
     elif t == "myth":
-        body = f"""<div class="s myth"><div class="band"><img src="{photo(s['photo'])}"></div>
+        body = f"""<div class="s myth"><div class="band"><img src="{photo(s['photo'])}" style="object-position:{s.get('pos','center')}"></div>
 <div class="flow"><div class="box m"><div class="lab">Mythe</div><h2>{e(s['myth'])}</h2></div>
 <div class="box r"><div class="lab">Réalité</div><h2>{e(s['title'])}</h2><p>{e(s['text'])}</p></div></div>"""
         top, _ = chrome(i, n, True)
