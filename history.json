@@ -883,5 +883,25 @@
    "seoul-03.jpg",
    "seoul-04.jpg"
   ]
+ },
+ {
+  "date": "2026-11-10",
+  "topic": "seville-novembre",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "seville-01.jpg",
+   "seville-03.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-10-b",
+  "topic": "malte-carte-identite",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "malte-01.jpg",
+   "malte-02.jpg"
+  ]
  }
 ]
