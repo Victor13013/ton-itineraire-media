@@ -903,5 +903,28 @@
    "malte-01.jpg",
    "malte-02.jpg"
   ]
+ },
+ {
+  "date": "2026-11-11",
+  "topic": "bruges-2-jours-automne",
+  "format": "carousel",
+  "slides": 5,
+  "photos": [
+   "amsterdam-02.jpg",
+   "bruges-01.jpg",
+   "bruges-02.jpg",
+   "bruges-03.jpg",
+   "bruges-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-11-b",
+  "topic": "budapest-marches-noel-2026",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "budapest-01.jpg",
+   "budapest-03.jpg"
+  ]
  }
 ]
