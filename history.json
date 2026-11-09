@@ -926,5 +926,27 @@
    "budapest-01.jpg",
    "budapest-03.jpg"
   ]
+ },
+ {
+  "date": "2026-11-12",
+  "topic": "namibie-le-saviez-vous",
+  "format": "carousel",
+  "slides": 4,
+  "photos": [
+   "namibie-01.jpg",
+   "namibie-02.jpg",
+   "namibie-03.jpg",
+   "namibie-04.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-12-b",
+  "topic": "guadeloupe-careme",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "guadeloupe-02.jpg",
+   "guadeloupe-03.jpg"
+  ]
  }
 ]
