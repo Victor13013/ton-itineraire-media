@@ -20,10 +20,11 @@ from datetime import date as _date, timedelta as _td
 REEL_DATES = {r["date"] for r in REELS}
 
 def _shift(posts, start):
-    """Le jour d'une vidéo, le post image de 18h passe au lendemain : on redate la file."""
-    d = _date.fromisoformat(start)
+    """Le jour d'une vidéo, le post image de 18h passe au lendemain : on redate la file.
+    Exception : le tout premier jour, qui sert au test de mise en route."""
+    d = _date.fromisoformat(start); skip = REEL_DATES - {start}
     for p in posts:
-        while d.isoformat() in REEL_DATES: d += _td(days=1)
+        while d.isoformat() in skip: d += _td(days=1)
         p["date"] = d.isoformat(); d += _td(days=1)
 
 _shift([p for p in POSTS if not p["date"].startswith("test")], "2026-11-10")
