@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-18-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-18-10h-2.jpg"
+      }
+    ],
+    "caption": "Entretenir sa brosse à dents électrique, c'est 10 secondes par jour.\n\n1. Rince la tête sous l'eau, moteur allumé deux secondes, pour chasser le dentifrice\n2. Essuie le manche, surtout autour du port USB-C\n3. Laisse sécher debout, à l'air libre\n\nLe point important : ne range jamais la brosse humide dans l'étui fermé. L'humidité enfermée favorise les bactéries. L'étui sert au transport, pas au rangement quotidien.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #entretien #hygienebuccodentaire #pulsecare",
+    "fb_message": "Entretenir sa brosse à dents électrique, c'est 10 secondes par jour.\n\n1. Rince la tête sous l'eau, moteur allumé deux secondes, pour chasser le dentifrice\n2. Essuie le manche, surtout autour du port USB-C\n3. Laisse sécher debout, à l'air libre\n\nLe point important : ne range jamais la brosse humide dans l'étui fermé. L'humidité enfermée favorise les bactéries. L'étui sert au transport, pas au rangement quotidien.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #entretien #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-18-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-18-10h-2.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-2.jpg"
+      }
+    ],
+    "caption": "Bien utiliser une brosse à dents électrique, c'est surtout une question d'ordre des gestes.\n\n1. Mets le dentifrice sur la tête\n2. Place la tête sur les dents AVANT d'allumer, sinon éclaboussures garanties\n3. Angle de 45° vers la gencive\n4. Tu glisses dent par dent, sans frotter, 30 secondes par zone\n\nC'est tout. Le reste, le minuteur s'en occupe.\n\nEnregistre ce post pour l'avoir sous la main.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tuto #hygienebuccodentaire #pulsecare",
+    "fb_message": "Bien utiliser une brosse à dents électrique, c'est surtout une question d'ordre des gestes.\n\n1. Mets le dentifrice sur la tête\n2. Place la tête sur les dents AVANT d'allumer, sinon éclaboussures garanties\n3. Angle de 45° vers la gencive\n4. Tu glisses dent par dent, sans frotter, 30 secondes par zone\n\nC'est tout. Le reste, le minuteur s'en occupe.\n\nEnregistre ce post pour l'avoir sous la main.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tuto #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-2.jpg"
+      }
+    ]
+  }
+}

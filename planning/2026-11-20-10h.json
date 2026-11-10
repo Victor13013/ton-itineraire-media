@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-20-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-20-10h-2.jpg"
+      }
+    ],
+    "caption": "L'abonnement têtes de brosse à dents électrique Pulse Care, concrètement.\n\n1. Tu choisis tes têtes : poils ricin ou poils nylon\n2. Tu choisis le rythme : tous les 1, 2 ou 3 mois\n3. Tu modifies, mets en pause ou arrêtes quand tu veux depuis ton compte\n\nPas d'engagement, pas de période minimum. Juste des têtes qui arrivent quand il faut les changer.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #abonnement #tetederechange #pulsecare",
+    "fb_message": "L'abonnement têtes de brosse à dents électrique Pulse Care, concrètement.\n\n1. Tu choisis tes têtes : poils ricin ou poils nylon\n2. Tu choisis le rythme : tous les 1, 2 ou 3 mois\n3. Tu modifies, mets en pause ou arrêtes quand tu veux depuis ton compte\n\nPas d'engagement, pas de période minimum. Juste des têtes qui arrivent quand il faut les changer.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #abonnement #tetederechange #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-20-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-20-10h-2.jpg"
+      }
+    ]
+  }
+}

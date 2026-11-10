@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-3.jpg"
+      }
+    ],
+    "caption": "L'abonnement têtes de brosse à dents électrique Pulse Care, en 3 points.\n\nUne tête tous les 3 mois, c'est 4 têtes par an. Le genre de chose qu'on oublie toujours.\n\n→ tu choisis tes têtes, poils ricin ou nylon\n→ elles arrivent chez toi au rythme choisi\n→ sans engagement, tu arrêtes quand tu veux depuis ton compte\n\nPlus besoin d'y penser.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #abonnement #tetederechange #pulsecare",
+    "fb_message": "L'abonnement têtes de brosse à dents électrique Pulse Care, en 3 points.\n\nUne tête tous les 3 mois, c'est 4 têtes par an. Le genre de chose qu'on oublie toujours.\n\n→ tu choisis tes têtes, poils ricin ou nylon\n→ elles arrivent chez toi au rythme choisi\n→ sans engagement, tu arrêtes quand tu veux depuis ton compte\n\nPlus besoin d'y penser.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #abonnement #tetederechange #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-3.jpg"
+      }
+    ]
+  }
+}

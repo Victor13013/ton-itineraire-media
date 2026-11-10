@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-23-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-23-2.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique, 2 minutes, 4 zones de 30 secondes. C'est toute la méthode.\n\nHaut gauche, haut droite, bas gauche, bas droite. La micro-pause du minuteur te dit quand changer.\n\nLes endroits que presque tout le monde oublie :\n→ derrière les dernières molaires\n→ les faces internes, côté langue\n→ la ligne des gencives\n→ la langue elle-même\n\nTu en oublies combien, honnêtement ?\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #techniquedebrossage #hygienebuccodentaire #pulsecare",
+    "fb_message": "Une brosse à dents électrique, 2 minutes, 4 zones de 30 secondes. C'est toute la méthode.\n\nHaut gauche, haut droite, bas gauche, bas droite. La micro-pause du minuteur te dit quand changer.\n\nLes endroits que presque tout le monde oublie :\n→ derrière les dernières molaires\n→ les faces internes, côté langue\n→ la ligne des gencives\n→ la langue elle-même\n\nTu en oublies combien, honnêtement ?\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #techniquedebrossage #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-23-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-23-2.jpg"
+      }
+    ]
+  }
+}

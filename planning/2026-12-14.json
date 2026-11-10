@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-3.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique en cadeau de Noël : l'idée bête qui fait mouche.\n\nParce que c'est un objet utilisé deux fois par jour, tous les jours, pendant des années. Peu de cadeaux peuvent en dire autant.\n\nTrois budgets :\n→ pack de 4 têtes en bambou : 14,90 €\n→ pack découverte : 64,90 €\n→ pack duo : 94,90 €\n\nTu offres à qui cette année ?\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #ideecadeau #cadeaunoel #pulsecare",
+    "fb_message": "Une brosse à dents électrique en cadeau de Noël : l'idée bête qui fait mouche.\n\nParce que c'est un objet utilisé deux fois par jour, tous les jours, pendant des années. Peu de cadeaux peuvent en dire autant.\n\nTrois budgets :\n→ pack de 4 têtes en bambou : 14,90 €\n→ pack découverte : 64,90 €\n→ pack duo : 94,90 €\n\nTu offres à qui cette année ?\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #ideecadeau #cadeaunoel #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-3.jpg"
+      }
+    ]
+  }
+}

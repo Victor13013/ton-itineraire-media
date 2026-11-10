@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-19-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-19-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-19-3.jpg"
+      }
+    ],
+    "caption": "5 erreurs fréquentes avec une brosse à dents électrique.\n\n1. Frotter comme avec une manuelle : pose la tête et laisse les vibrations travailler\n2. Appuyer trop fort : ça use l'émail et fait reculer les gencives\n3. Oublier les faces internes, côté langue\n4. Rincer juste après : crache le dentifrice, ne rince pas, le fluor agit plus longtemps\n5. Garder la même tête 6 mois\n\nTu te reconnais dans laquelle ? Sois honnête en commentaire.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #erreursbrossage #conseilsdentaires #pulsecare",
+    "fb_message": "5 erreurs fréquentes avec une brosse à dents électrique.\n\n1. Frotter comme avec une manuelle : pose la tête et laisse les vibrations travailler\n2. Appuyer trop fort : ça use l'émail et fait reculer les gencives\n3. Oublier les faces internes, côté langue\n4. Rincer juste après : crache le dentifrice, ne rince pas, le fluor agit plus longtemps\n5. Garder la même tête 6 mois\n\nTu te reconnais dans laquelle ? Sois honnête en commentaire.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #erreursbrossage #conseilsdentaires #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-19-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-19-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-19-3.jpg"
+      }
+    ]
+  }
+}

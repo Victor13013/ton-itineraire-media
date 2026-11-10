@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-27-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-27-10h-2.jpg"
+      }
+    ],
+    "caption": "Partir avec sa brosse à dents électrique sans emporter le chargeur, c'est possible avec 30 jours d'autonomie.\n\nDans la trousse :\n→ l'étui de voyage en bambou, qui protège la tête\n→ le manche, chargé avant de partir\n→ une tête d'avance si le séjour est long\n\nPetit rappel : à l'arrivée, sors la brosse de l'étui pour qu'elle sèche. L'étui sert au transport, pas au rangement.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #voyage #troussedetoilette #pulsecare",
+    "fb_message": "Partir avec sa brosse à dents électrique sans emporter le chargeur, c'est possible avec 30 jours d'autonomie.\n\nDans la trousse :\n→ l'étui de voyage en bambou, qui protège la tête\n→ le manche, chargé avant de partir\n→ une tête d'avance si le séjour est long\n\nPetit rappel : à l'arrivée, sors la brosse de l'étui pour qu'elle sèche. L'étui sert au transport, pas au rangement.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #voyage #troussedetoilette #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-27-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-27-10h-2.jpg"
+      }
+    ]
+  }
+}
