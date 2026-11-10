@@ -35,7 +35,10 @@ ALL = [p for _, L, _ in SLOTS for p in L]
 FAKE = "--fake" in sys.argv
 ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
 RAW = "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/"
-PAGES = "https://victor13013.github.io/ton-itineraire-media/"   # vidéos : type MIME correct, requis par Instagram
+PAGES = "https://victor13013.github.io/ton-itineraire-media/"
+# Hôte des vidéos. raw.githubusercontent sert du application/octet-stream ;
+# si Instagram le refuse, activer GitHub Pages et passer REEL_HOST à PAGES.
+REEL_HOST = RAW
 
 GREEN = (30, 58, 47); DEEP = (18, 36, 29); CREAM = (243, 238, 228)
 BAMBOO = (196, 158, 98); MINT = (221, 232, 223); WHITE = (255, 255, 255)
@@ -2212,7 +2215,7 @@ def main():
         if ONLY and r["date"] not in ONLY: continue
         ig = r["caption"].replace("[CTA]", CTA_IG); fb = r["caption"].replace("[CTA]", CTA_FB)
         rel = f"media/reels/{r['date']}.mp4"
-        post = {"type": "reel", "video_url": PAGES + rel, "thumb_offset": r.get("cover", 0), "caption": ig, "fb_message": fb}
+        post = {"type": "reel", "video_url": REEL_HOST + rel, "thumb_offset": r.get("cover", 0), "caption": ig, "fb_message": fb}
         json.dump({"post": post}, open(os.path.join(ROOT, "planning", r["date"] + "-reel.json"), "w"), ensure_ascii=False, indent=2)
         print(f"{r['date']} reel")
         cov = os.path.join(ROOT, f"media/reels/{r['date']}-cover.jpg")
