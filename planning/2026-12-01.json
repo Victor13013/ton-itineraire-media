@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-2.jpg"
+      }
+    ],
+    "caption": "Plaque et tartre sur une brosse à dents électrique : ce n'est pas la même chose.\n\nLa plaque, c'est un film de bactéries qui se dépose en permanence. Souple, elle part au brossage.\n\nSi elle reste, elle se minéralise en 24 à 72 heures et devient du tartre. Dur, accroché à la dent, impossible à retirer avec une brosse.\n\nD'où les 2 minutes, 2 fois par jour. Et le détartrage quand ton dentiste le juge utile.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tartre #plaquedentaire #pulsecare",
+    "fb_message": "Plaque et tartre sur une brosse à dents électrique : ce n'est pas la même chose.\n\nLa plaque, c'est un film de bactéries qui se dépose en permanence. Souple, elle part au brossage.\n\nSi elle reste, elle se minéralise en 24 à 72 heures et devient du tartre. Dur, accroché à la dent, impossible à retirer avec une brosse.\n\nD'où les 2 minutes, 2 fois par jour. Et le détartrage quand ton dentiste le juge utile.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tartre #plaquedentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-2.jpg"
+      }
+    ]
+  }
+}

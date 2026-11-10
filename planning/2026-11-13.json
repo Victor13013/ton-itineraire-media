@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-13-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-13-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-13-3.jpg"
+      }
+    ],
+    "caption": "Petite question sur ta brosse à dents électrique : tu changes la tête tous les combien ?\n\nA. Tous les 3 mois\nB. Quand les poils partent dans tous les sens\nC. Une fois par an\nD. Jamais, en fait\n\nRéponds en commentaire avant de swiper.\n\nLa bonne réponse : tous les 3 mois. Après, les poils s'écartent et retirent moins bien la plaque. Change-la aussi après une angine.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #hygienebuccodentaire #pulsecare",
+    "fb_message": "Petite question sur ta brosse à dents électrique : tu changes la tête tous les combien ?\n\nA. Tous les 3 mois\nB. Quand les poils partent dans tous les sens\nC. Une fois par an\nD. Jamais, en fait\n\nRéponds en commentaire avant de swiper.\n\nLa bonne réponse : tous les 3 mois. Après, les poils s'écartent et retirent moins bien la plaque. Change-la aussi après une angine.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #hygienebuccodentaire #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-13-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-13-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-13-3.jpg"
+      }
+    ]
+  }
+}

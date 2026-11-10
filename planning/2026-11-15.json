@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-1.jpg",
-    "caption": "Le pack découverte Pulse Care, pour passer à la brosse à dents électrique sans se poser de questions.\n\nDedans : le manche sonique, des têtes en bambou à poils de ricin et l'étui de voyage.\n\nC'est le point de départ si tu hésites encore. Ou l'idée cadeau pour quelqu'un qui galère avec sa brosse manuelle.\n\nPack découverte : 64,90 €.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #packdecouverte #brosseadentsbambou #pulsecare",
-    "fb_message": "Le pack découverte Pulse Care, pour passer à la brosse à dents électrique sans se poser de questions.\n\nDedans : le manche sonique, des têtes en bambou à poils de ricin et l'étui de voyage.\n\nC'est le point de départ si tu hésites encore. Ou l'idée cadeau pour quelqu'un qui galère avec sa brosse manuelle.\n\nPack découverte : 64,90 €.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #packdecouverte #brosseadentsbambou #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-2.jpg"
+      }
+    ],
+    "caption": "Avec une brosse à dents électrique comme avec une manuelle, le brossage du soir compte plus que celui du matin.\n\nLa nuit, tu produis moins de salive. Les bactéries sont tranquilles pendant 8 heures.\n\nL'ordre qui marche :\n→ fil dentaire ou brossettes\n→ 2 minutes de brossage\n→ tu craches, tu ne rinces pas\n→ plus rien à manger après\n\nEnregistre ce post pour ce soir.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #routinedusoir #hygienebuccodentaire #pulsecare",
+    "fb_message": "Avec une brosse à dents électrique comme avec une manuelle, le brossage du soir compte plus que celui du matin.\n\nLa nuit, tu produis moins de salive. Les bactéries sont tranquilles pendant 8 heures.\n\nL'ordre qui marche :\n→ fil dentaire ou brossettes\n→ 2 minutes de brossage\n→ tu craches, tu ne rinces pas\n→ plus rien à manger après\n\nEnregistre ce post pour ce soir.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #routinedusoir #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-2.jpg"
       }
     ]
   }

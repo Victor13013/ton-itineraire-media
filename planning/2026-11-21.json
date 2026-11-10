@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg",
-    "caption": "Une brosse à dents électrique qui se recharge une fois par mois, en USB-C.\n\n→ environ 2,5 heures pour une charge complète\n→ jusqu'à 30 jours d'autonomie, pour 2 brossages par jour\n→ batterie lithium 500 mAh\n→ le même câble que ton téléphone\n\nPas de socle qui traîne sur le lavabo. Et en voyage, tu peux laisser le chargeur à la maison.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #usbc #brosseadentsrechargeable #pulsecare",
-    "fb_message": "Une brosse à dents électrique qui se recharge une fois par mois, en USB-C.\n\n→ environ 2,5 heures pour une charge complète\n→ jusqu'à 30 jours d'autonomie, pour 2 brossages par jour\n→ batterie lithium 500 mAh\n→ le même câble que ton téléphone\n\nPas de socle qui traîne sur le lavabo. Et en voyage, tu peux laisser le chargeur à la maison.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #usbc #brosseadentsrechargeable #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-2.jpg"
+      }
+    ],
+    "caption": "Vrai ou faux : avec une brosse à dents électrique, plus tu appuies fort, plus tes dents sont propres ?\n\nFAUX. Et c'est même l'inverse.\n\nAppuyer use l'émail et fait reculer la gencive. Avec une sonique, le nettoyage vient des vibrations, pas de la force.\n\nLe bon geste : la tête posée à 45° vers la gencive, et tu glisses lentement d'une dent à l'autre.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #vraioufaux #conseilsdentaires #pulsecare",
+    "fb_message": "Vrai ou faux : avec une brosse à dents électrique, plus tu appuies fort, plus tes dents sont propres ?\n\nFAUX. Et c'est même l'inverse.\n\nAppuyer use l'émail et fait reculer la gencive. Avec une sonique, le nettoyage vient des vibrations, pas de la force.\n\nLe bon geste : la tête posée à 45° vers la gencive, et tu glisses lentement d'une dent à l'autre.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #vraioufaux #conseilsdentaires #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-2.jpg"
       }
     ]
   }
