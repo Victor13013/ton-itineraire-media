@@ -88,7 +88,7 @@ RET = "30 jours pour changer d'avis."
 POSTS = [
 # ── 0a · ANGLE : le coût caché des têtes de rechange (source Que Choisir)
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="bignum", kicker="Le coût qu'on oublie", big="4 à 15 €", title="la tête de rechange, *sur le marché*", sub="À changer tous les 3 mois. Que Choisir parle d'un coût d'usage « non négligeable ».", swipe=True),
+  dict(tpl="bignum", kicker="Le coût qu'on oublie", big="4 à 15 €", title="la tête de rechange, *ailleurs*", sub="À changer tous les 3 mois. Que Choisir parle d'un coût d'usage « non négligeable ».", swipe=True),
   dict(tpl="versus", kicker="Chez Pulse Care", title="Ce que tu paies *par tête*", both_good=True, left=("À l'unité", ["5,50 € la tête", "Pour tester une fibre", "Ricin ou nylon"]), right=("Pack de 4", ["3,73 € la tête", "Un an de brossage", "14,90 € le pack"])),
   dict(tpl="arch", img=s("ricin_pack4_vue"), kicker="Pack de 4 têtes", title="Un an, *14,90 €*", sub=LIV, price="14,90 €"),
 ],
