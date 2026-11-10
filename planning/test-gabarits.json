@@ -1,0 +1,43 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/test-gabarits-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/test-gabarits-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/test-gabarits-3.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/test-gabarits-4.jpg"
+      }
+    ],
+    "caption": "Aperçu de quatre nouveaux formats pour les posts brosse à dents électrique.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#pulsecare",
+    "fb_message": "Aperçu de quatre nouveaux formats pour les posts brosse à dents électrique.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/test-gabarits-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/test-gabarits-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/test-gabarits-3.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/test-gabarits-4.jpg"
+      }
+    ]
+  }
+}
