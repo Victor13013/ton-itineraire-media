@@ -105,3 +105,7 @@ s:chargeur-usb-c-pulse-care.webp
 s:tete-de-brosse-ricin.webp
 s:brosse-a-dents-electrique-pulse-care_4bcfc2e2-f44d-4d23-86b7-b5298d58a7cf.webp
 s:visuel_a_jour.webp
+s:pulse-care-tete-brosse-ricin-bambou.webp
+s:recharges-brosse-bambou-nylon-pack4-pulsecare-noir.webp
+s:tete-brosse-electrique-bambou-nylon-pulsecare-face.webp
+u:1606811841689-23dfddce3e95
