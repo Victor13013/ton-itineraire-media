@@ -14,6 +14,19 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "render"))
 from content import POSTS, SHOP, CTA_IG, CTA_FB  # noqa: E402
 from content_am import POSTS_AM  # noqa: E402
+from reels import REELS  # noqa: E402
+from datetime import date as _date, timedelta as _td
+
+REEL_DATES = {r["date"] for r in REELS}
+
+def _shift(posts, start):
+    """Le jour d'une vidéo, le post image de 18h passe au lendemain : on redate la file."""
+    d = _date.fromisoformat(start)
+    for p in posts:
+        while d.isoformat() in REEL_DATES: d += _td(days=1)
+        p["date"] = d.isoformat(); d += _td(days=1)
+
+_shift([p for p in POSTS if not p["date"].startswith("test")], "2026-11-10")
 SLOTS = [("", POSTS, 0), ("-10h", POSTS_AM, 1)]   # 18h -> AAAA-MM-JJ.json · 10h -> AAAA-MM-JJ-10h.json
 ALL = [p for _, L, _ in SLOTS for p in L]
 # Les posts publiés en test ont une date préfixée "test-" : leur fichier n'est lu par aucun scénario
@@ -1057,8 +1070,8 @@ PAPER = (250, 246, 238); DOTC = (222, 214, 198); TAPE = (238, 214, 160, 175)
 POSTITS = [(232, 246, 178), (247, 222, 176), (214, 236, 222), (250, 216, 204)]
 def HAND(s): return F("Caveat-Bold.ttf", s)
 
-def paper_bg(seed=0):
-    base = Image.new("RGBA", (W, H), PAPER + (255,)); d = ImageDraw.Draw(base)
+def paper_bg(seed=0, tint=None):
+    base = Image.new("RGBA", (W, H), (tint or PAPER) + (255,)); d = ImageDraw.Draw(base)
     for yy in range(36, H, 40):
         for xx in range(20 + (seed % 2) * 20, W, 40): d.ellipse([xx - 2, yy - 2, xx + 2, yy + 2], fill=DOTC)
     return grain(base, 3)
@@ -1314,10 +1327,597 @@ def tc_versus(c):
 
 TPL_C = {"hero": tc_hero, "statement": tc_statement, "product": tc_product, "list": tc_list, "stats": tc_stats, "versus": tc_versus}
 
-SLOT_DA_10H = "b"                   # 10h en DA B « Gradient & verre », 18h en DA v5
+# ───────────────────────────── Formats « mixtes » : un seul gabarit, habillé selon la DA du post
+# bignum · quiz · steps · mosaic · arch · tracker · poster
+class Th: pass
+C_TINTS = {"cream": PAPER, "blush": (252, 240, 234), "sage": (236, 243, 234)}
+
+def theme(c):
+    t = Th(); t.da = c.get("da") or "a"; n = c.get("_n", 0); tone = c.get("tone")
+    if t.da == "b":
+        kind = tone if tone in ("fresh", "sand", "forest") else ["fresh", "sand", "forest"][n % 3]
+        t.dark = kind == "forest"; t.base = mesh_bg(kind, n)
+        t.ink = CREAM if t.dark else INKV; t.sub = (200, 214, 204) if t.dark else GREYV
+        t.acc = LIME if t.dark else FOREST; t.acc_ink = INKV if t.dark else CREAM
+        t.card = None; t.card_ink = t.ink; t.card_sub = t.sub
+    elif t.da == "c":
+        t.dark = False; t.base = paper_bg(n, C_TINTS.get(tone) or list(C_TINTS.values())[n % 3])
+        t.ink = INKV; t.sub = GREYV; t.acc = CORAL; t.acc_ink = WHITE_A
+        t.card = WHITE_A; t.card_ink = INKV; t.card_sub = GREYV
+    else:
+        bg = {"mint": MINTV, "sand": SANDV, "honey": HONEY, "forest": FOREST}.get(tone) or BGS[n % 4]
+        t.dark = bg == FOREST; t.base = rich_bg(bg, n); t.ink = on(bg); t.sub = sub_on(bg)
+        t.acc = LIME if t.dark else FOREST; t.acc_ink = INKV if t.dark else CREAM
+        t.card = WHITE_A; t.card_ink = INKV; t.card_sub = GREYV
+    return t
+
+def th_kicker(t, x, y, text, center=False, maxw=W - 2 * M):
+    if not text: return y
+    if t.da == "b": return pill_outline(t.base, x, y, text, t.acc, center) + 28
+    if t.da == "c": return hand_note(t.base, x, y, text, 54, CORAL, -2, maxw, center)[0] + 6
+    return kicker_pill(t.base, x, y, text, t.acc, t.acc_ink, center=center) + 26
+
+def th_title(t, x, y, text, maxw=W - 2 * M, start=96, minsize=52, maxlines=3, center=False):
+    f, tl = sans_fit(text, BLACK, maxw, start, minsize, maxlines)
+    if t.da == "b":
+        if not center: return title_b(t.base, x, y, tl, f, t.ink, t.acc)
+        d = ImageDraw.Draw(t.base); sp = d.textlength(" ", font=f)
+        for ln in tl:
+            lw = sum(k[2] for k in ln) + sp * sum(1 for k in ln[1:] if not k[3])
+            title_b(t.base, x + (maxw - lw) / 2, y, [ln], f, t.ink, t.acc); y += f.size * 1.04
+        return y + f.size * 0.18
+    if t.da == "c": return marker_title(t.base, x, y, tl, f, t.ink, LIME, 1.04, maxw if center else None)
+    return sans_draw_marks(t.base, x, y, tl, f, t.ink, LIME if t.dark else FOREST, INKV if t.dark else CREAM, 1.02, maxw if center else None)
+
+def th_sub(t, x, y, text, maxw=W - 2 * M, size=32, center=False):
+    if not text: return y
+    f = IM(size); d = ImageDraw.Draw(t.base); lines = wrap(text, f, maxw)
+    for ln in lines:
+        d.text((x + ((maxw - d.textlength(ln, font=f)) / 2 if center else 0), y), ln, font=f, fill=t.sub); y += f.size * 1.36
+    return y
+
+def th_card(t, box, r=32, fill=None):
+    x0, y0, x1, y1 = [int(v) for v in box]
+    if fill is None and t.da == "b":
+        glass(t.base, (x0, y0, x1, y1), r, (255, 255, 255) if not t.dark else (20, 40, 32), 170 if not t.dark else 150); return
+    sh = Image.new("RGBA", t.base.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).rounded_rectangle([x0 + 4, y0 + 12, x1 + 4, y1 + 12], radius=r, fill=(20, 30, 24, 45))
+    t.base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(16)))
+    ImageDraw.Draw(t.base).rounded_rectangle([x0, y0, x1, y1], radius=r, fill=fill or t.card)
+
+def contain_card(base, im, box, r=40, bg=(255, 255, 255)):
+    """Packshot : produit entier, centré sur une carte blanche arrondie."""
+    x0, y0, x1, y1 = [int(v) for v in box]; w, h = x1 - x0, y1 - y0
+    card = Image.new("RGB", (w, h), bg); prod = trim(im); prod = prod.resize(fit_size(prod, int(w * 0.84), int(h * 0.84)), Image.LANCZOS)
+    card.paste(prod, ((w - prod.width) // 2, (h - prod.height) // 2))
+    m = Image.new("L", (w, h), 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, w - 1, h - 1], radius=r, fill=255)
+    base.paste(card, (x0, y0), m)
+
+def th_photo(t, ref, box, k=0, fy=0.5, caption=None, flat=False):
+    x0, y0, x1, y1 = [int(v) for v in box]; src = load(ref); im, pk = prep(src)
+    if t.da == "c":
+        paste_rot(t.base, polaroid(src, x1 - x0, y1 - y0, caption, fy), (x0 + x1) / 2, (y0 + y1) / 2, 0 if flat else [-3, 2.5, 3, -2][k % 4])
+        tape(t.base, (x0 + x1) / 2, y0 + 2, 150, [5, -6, -4, 6][k % 4])
+    elif pk:
+        soft = Image.new("RGBA", t.base.size, (0, 0, 0, 0))
+        ImageDraw.Draw(soft).rounded_rectangle([x0 + 6, y0 + 16, x1 + 6, y1 + 16], radius=40, fill=(20, 30, 24, 50))
+        t.base.alpha_composite(soft.filter(ImageFilter.GaussianBlur(18))); contain_card(t.base, im, (x0, y0, x1, y1))
+    elif t.da == "b": framed_photo(t.base, src, (x0, y0, x1, y1), angle=0 if flat else [-3, 3, 2, -2][k % 4], fy=fy)
+    else: rounded_photo(t.base, src, (x0, y0, x1, y1), 40, fy)
+
+def th_end(t, c):
+    chrome(t.base, c, t.ink, t.sub, light_btn=t.dark)
+    return t.base.convert("RGB")
+
+# ── chiffre géant
+def x_bignum(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    big = nb(c["big"]); f = BLACK(400); d = ImageDraw.Draw(base)
+    while d.textlength(big, font=f) > W - 2 * M: f = BLACK(f.size - 8)
+    l, tp, r, b = d.textbbox((0, 0), big, font=f); ty = y + 6
+    if t.da == "c":
+        ov = Image.new("RGBA", base.size, (0, 0, 0, 0))
+        ImageDraw.Draw(ov).polygon([(M - 20, ty + (b - tp) * 0.52), (M + r - l + 24, ty + (b - tp) * 0.46), (M + r - l + 30, ty + (b - tp) + 6), (M - 12, ty + (b - tp) + 14)], fill=LIME + (235,))
+        base.alpha_composite(ov); d = ImageDraw.Draw(base)
+    d.text((M - l, ty - tp), big, font=f, fill=t.ink if t.da == "c" else t.acc)
+    y = ty + (b - tp) + 22
+    if t.da == "b": squiggle(d, M, M + min(r - l, 420), y + 4, t.acc, 9, 8); y += 34
+    y = th_title(t, M, y + 10, c["title"], start=70, minsize=44, maxlines=3)
+    y = th_sub(t, M, y + 8, c.get("sub"), W - 2 * M - 40)
+    if c.get("img") and H - 120 - (y + 40) > 240:
+        th_photo(t, c["img"], (M + (30 if t.da != "a" else 0), y + 40, W - M - (30 if t.da != "a" else 0), H - 120), c.get("_n", 0), c.get("fy", 0.5))
+    return th_end(t, c)
+
+# ── quiz : question + réponses, la bonne est révélée si `answer` est donné
+def x_quiz(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=84, minsize=50, maxlines=4) + 34
+    opts = c["options"]; ans = c.get("answer"); note = c.get("note"); k = len(opts); gap = 24; fo = DB(40)
+    fn = IM(31); nl = wrap(note, fn, W - 2 * M - 110) if note else []
+    note_h = (60 + fn.size * 1.36 * len(nl) + 30) if nl else 0
+    avail = H - 130 - y - note_h; oh = min(200, (avail - gap * (k - 1)) / k)
+    y += max(0, (avail - (oh * k + gap * (k - 1))) * 0.45)
+    for i, o in enumerate(opts):
+        box = (M - 10, y, W - M + 10, y + oh); good = ans == i
+        th_card(t, box, 34, fill=(t.acc if t.da != "c" else FOREST) if good else None)
+        d = ImageDraw.Draw(base); cy = y + oh / 2
+        if good:
+            fg = t.acc_ink if t.da != "c" else CREAM
+            d.ellipse([M + 22, cy - 40, M + 102, cy + 40], fill=fg); draw_icon(d, "check", M + 62, cy, 40, t.acc if t.da != "c" else FOREST)
+        else:
+            fg = t.card_ink if ans is None else t.card_sub
+            d.ellipse([M + 22, cy - 40, M + 102, cy + 40], outline=fg, width=4)
+            fl = BLACK(40); lt = "ABCD"[i]; l_, t_, r_, b_ = d.textbbox((0, 0), lt, font=fl); d.text((M + 62 - (l_ + r_) / 2, cy - (t_ + b_) / 2), lt, font=fl, fill=fg)
+        ls = wrap(o, fo, W - 2 * M - 170)
+        draw_lines(d, M + 130, cy - fo.size * 1.16 * len(ls) / 2 - 4, ls, fo, fg, 1.16)
+        y += oh + gap
+    if nl:
+        y += 10; th_card(t, (M - 10, y, W - M + 10, y + note_h - 30), 28)
+        d = ImageDraw.Draw(base); icon_disc(d, "bulb", M + 44, y + (note_h - 30) / 2, 28, t.acc if t.da != "c" else CORAL, t.acc_ink)
+        draw_lines(d, M + 92, y + 28, nl, fn, t.card_ink, 1.36)
+    return th_end(t, c)
+
+# ── étapes en zigzag
+def x_steps(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=80, minsize=50, maxlines=3) + 30
+    items = c["items"]; k = len(items); gap = 26; avail = H - 120 - y
+    ch = min(290, (avail - gap * (k - 1)) / k); cw = int((W - 2 * M + 20) * 0.76); y += (avail - (ch * k + gap * (k - 1))) * 0.45
+    fa = DB(44 if k <= 3 else 38); fb = IR(31 if k <= 3 else 28); fnum = BLACK(int(min(170, ch * 0.9)))
+    for i, (a_, b_) in enumerate(items):
+        left = i % 2 == 0; x0 = M - 10 if left else W - M + 10 - cw
+        th_card(t, (x0, y, x0 + cw, y + ch), 34)
+        d = ImageDraw.Draw(base)
+        la = wrap(a_, fa, cw - 80); lb = wrap(b_, fb, cw - 80) if b_ else []
+        th_ = fa.size * 1.15 * len(la) + (8 + fb.size * 1.32 * len(lb) if lb else 0)
+        ty = draw_lines(d, x0 + 40, y + (ch - th_) / 2 - 4, la, fa, t.card_ink, 1.15)
+        if lb: draw_lines(d, x0 + 40, ty + 8, lb, fb, t.card_sub, 1.32)
+        num = str(c.get("start", 1) + i); ncx = (x0 + cw + W - M + 10) / 2 if left else (M - 10 + x0) / 2
+        l_, t_, r_, bb = d.textbbox((0, 0), num, font=fnum)
+        d.text((ncx - (l_ + r_) / 2, y + ch / 2 - (t_ + bb) / 2), num, font=fnum, fill=t.acc)
+        y += ch + gap
+    return th_end(t, c)
+
+# ── mosaïque de 2 à 4 photos légendées
+def x_mosaic(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=80, minsize=50, maxlines=2)
+    y = th_sub(t, M, y + 4, c.get("sub"), W - 2 * M - 40) + 30
+    imgs = c["imgs"]; n = len(imgs); g = 26 if t.da != "c" else (70 if n == 2 else 40); top = int(y); bot = H - (130 if c.get("swipe") else 100)
+    x0, x1 = M - 20, W - M + 20; w = x1 - x0; h = bot - top
+    if n == 2: boxes = [(x0, top, x0 + (w - g) // 2, bot), (x1 - (w - g) // 2, top, x1, bot)]
+    elif n == 3:
+        lw = int(w * 0.56); boxes = [(x0, top, x0 + lw, bot), (x0 + lw + g, top, x1, top + (h - g) // 2), (x0 + lw + g, bot - (h - g) // 2, x1, bot)]
+    else:
+        cw_ = (w - g) // 2; ch_ = (h - g) // 2
+        boxes = [(x0 + (i % 2) * (cw_ + g), top + (i // 2) * (ch_ + g), x0 + (i % 2) * (cw_ + g) + cw_, top + (i // 2) * (ch_ + g) + ch_) for i in range(4)]
+    for i, ((ref, label), bx) in enumerate(zip(imgs, boxes)):
+        th_photo(t, ref, bx, i, 0.45, caption=label, flat=t.da == "b")
+        if t.da != "c" and label:
+            d = ImageDraw.Draw(base); f = SB(26); tw = d.textlength(label, font=f)
+            d.rounded_rectangle([bx[0] + 22, bx[3] - 78, bx[0] + 22 + tw + 40, bx[3] - 24], radius=27, fill=LIME); d.text((bx[0] + 42, bx[3] - 68), label, font=f, fill=INKV)
+    return th_end(t, c)
+
+# ── photo dans une arche, titre centré
+def x_arch(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 96, c.get("kicker"), center=True)
+    y = th_title(t, M, y, c["title"], start=86, minsize=50, maxlines=3, center=True)
+    y = th_sub(t, M + 30, y + 6, c.get("sub"), W - 2 * M - 60, 31, center=True)
+    top = int(y + 44); bot = H - 96; h = bot - top; w = int(min(660, h * 0.86)); x0 = (W - w) // 2
+    d = ImageDraw.Draw(base); o = 20   # liseré décalé
+    d.arc([x0 - o, top - o, x0 + w + o, top - o + w + 2 * o], 180, 360, fill=t.acc, width=5)
+    d.line([(x0 - o, top + w // 2), (x0 - o, bot + 6)], fill=t.acc, width=5); d.line([(x0 + w + o, top + w // 2), (x0 + w + o, bot + 6)], fill=t.acc, width=5)
+    src = load(c["img"]); im, pk = prep(src)
+    if pk:
+        ph = Image.new("RGB", (w, h), (255, 255, 255)); prod = trim(im); prod = prod.resize(fit_size(prod, int(w * 0.8), int(h * 0.78)), Image.LANCZOS)
+        ph.paste(prod, ((w - prod.width) // 2, (h - prod.height) // 2 + 20))
+    else: ph = cover(src, w, h, 0.5, c.get("fy", 0.45))
+    base.paste(ph, (x0, top), arch_mask(w, h))
+    sparkle(base, x0 - 56, top + 90, 24, t.acc); sparkle(base, x0 + w + 58, bot - 150, 18, t.acc)
+    if c.get("price"): sticker_v4(base, c["price"], x0 + w - 10, top + w // 2 + 40, r=98, bg=CORAL if t.da == "c" else LIME, fg=WHITE_A if t.da == "c" else INKV)
+    return th_end(t, c)
+
+# ── grille de suivi sur 7 jours
+def x_tracker(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=84, minsize=50, maxlines=3)
+    y = th_sub(t, M, y + 6, c.get("sub"), W - 2 * M - 40) + 36
+    rows = c.get("rows", ["Matin", "Soir"]); done = c.get("done", 3)
+    x0, x1 = M - 30, W - M + 30; lab = 150; cw = (x1 - x0 - lab - 30) / 7; rh = 190; hh = 100
+    ch = hh + rh * len(rows) + 30; y += max(0, (H - 130 - y - ch) * 0.5)
+    th_card(t, (x0, y, x1, y + ch), 40); d = ImageDraw.Draw(base); fd = DB(34); fr = SB(32)
+    for j, dn in enumerate("LMMJVSD"):
+        cx = x0 + lab + cw * (j + 0.5); tw = d.textlength(dn, font=fd); d.text((cx - tw / 2, y + 30), dn, font=fd, fill=t.card_sub)
+    for i, rn in enumerate(rows):
+        cy = y + hh + rh * (i + 0.5)
+        d.text((x0 + 34, cy - 22), rn, font=fr, fill=t.card_ink)
+        for j in range(7):
+            cx = x0 + lab + cw * (j + 0.5); r = min(46, cw / 2 - 8)
+            if j < done:
+                d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=FOREST if not (t.da == "b" and t.dark) else LIME)
+                draw_icon(d, "check", cx, cy, int(r * 0.95), LIME if not (t.da == "b" and t.dark) else INKV)
+            else: d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=t.card_sub, width=4)
+    return th_end(t, c)
+
+# ── affiche illustrée : grand pictogramme entouré de satellites, sans photo
+def x_poster(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 96, c.get("kicker"), center=True)
+    y = th_title(t, M, y, c["title"], start=88, minsize=50, maxlines=3, center=True)
+    y = th_sub(t, M + 30, y + 6, c.get("sub"), W - 2 * M - 60, 31, center=True)
+    top = y + 30; bot = H - 110; cy = (top + bot) / 2; cx = W / 2; R = min(250, (bot - top) / 2 - 70)
+    ring = Image.new("RGBA", base.size, (0, 0, 0, 0)); rd = ImageDraw.Draw(ring)
+    for rr, a in ((R + 150, 26), (R + 75, 46)): rd.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], outline=t.acc + (a * 3,), width=3)
+    base.alpha_composite(ring); d = ImageDraw.Draw(base)
+    disc = FOREST if not t.dark else LIME; dfg = LIME if not t.dark else INKV
+    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=disc); draw_icon(d, c["icon"], cx, cy, int(R * 1.05), dfg)
+    sats = c.get("sats", []); cols = [LIME, HONEY, CORAL, MINTV, WHITE_A]
+    for i, ic in enumerate(sats):
+        ang = -math.pi / 2 + (i + 0.5) * 2 * math.pi / len(sats); rr = R + (150 if i % 2 else 75)
+        sx, sy = cx + rr * math.cos(ang), cy + rr * math.sin(ang) * 0.92; sr = 58 if i % 2 else 50
+        sx = min(max(sx, M + sr - 30), W - M - sr + 30)
+        col = cols[i % len(cols)]
+        if t.dark and col == LIME: col = HONEY
+        d.ellipse([sx - sr, sy - sr, sx + sr, sy + sr], fill=col, outline=t.base.getpixel((5, 5))[:3], width=6)
+        draw_icon(d, ic, sx, sy, int(sr * 0.9), WHITE_A if col == CORAL else INKV)
+    return th_end(t, c)
+
+TPLX = {"bignum": x_bignum, "quiz": x_quiz, "steps": x_steps, "mosaic": x_mosaic, "arch": x_arch, "tracker": x_tracker, "poster": x_poster}
+
+# ───────────────────────────── Formats « mixtes » (nov. 2026)
+# Un seul gabarit par format, habillé selon la DA du post : "a" (v5), "b" (Gradient & verre), "c" (Carnet).
+# Grand chiffre, quiz, étapes en zigzag, mosaïque de photos, arche, suivi de la semaine, schémas dessinés.
+class Th: pass
+C_TINTS = {"cream": PAPER, "blush": (252, 240, 234), "sage": (236, 243, 234)}
+A_TONES = {"mint": MINTV, "sand": SANDV, "honey": HONEY, "forest": FOREST}
+
+def theme(c):
+    t = Th(); t.da = c.get("da") or "a"; n = c.get("_n", 0); tone = c.get("tone")
+    if t.da == "b":
+        kind = tone if tone in ("fresh", "sand", "forest") else ["fresh", "sand", "forest"][n % 3]
+        t.dark = kind == "forest"; t.base = mesh_bg(kind, n)
+        t.card = None
+    elif t.da == "c":
+        t.dark = False; t.base = paper_bg(n, C_TINTS.get(tone) or list(C_TINTS.values())[n % 3]); t.card = WHITE_A
+    else:
+        bg = A_TONES.get(tone) or BGS[n % 4]
+        t.dark = bg == FOREST; t.base = rich_bg(bg, n); t.card = WHITE_A
+    t.ink = CREAM if t.dark else INKV; t.sub = (200, 214, 204) if t.dark else GREYV
+    t.acc = LIME if t.dark else (CORAL if t.da == "c" else FOREST); t.acc_ink = INKV if t.dark else (WHITE_A if t.da == "c" else CREAM)
+    t.card_ink = CREAM if (t.da == "b" and t.dark) else INKV
+    t.card_sub = (200, 214, 204) if (t.da == "b" and t.dark) else GREYV
+    return t
+
+def th_kicker(t, x, y, text, center=False, maxw=W - 2 * M):
+    if not text: return y
+    if t.da == "b": return pill_outline(t.base, x, y, text, t.acc, center) + 28
+    if t.da == "c": return hand_note(t.base, x, y, text, 54, CORAL, -2, maxw, center)[0] + 6
+    return kicker_pill(t.base, x, y, text, t.acc, t.acc_ink, center=center) + 26
+
+def th_title(t, x, y, text, maxw=W - 2 * M, start=96, minsize=50, maxlines=3, center=False):
+    f, tl = sans_fit(text, BLACK, maxw, start, minsize, maxlines)
+    if t.da == "b":
+        if not center: return title_b(t.base, x, y, tl, f, t.ink, t.acc)
+        d = ImageDraw.Draw(t.base); sp = d.textlength(" ", font=f)
+        for ln in tl:
+            lw = sum(k[2] for k in ln) + sp * sum(1 for k in ln[1:] if not k[3])
+            title_b(t.base, x + (maxw - lw) / 2, y, [ln], f, t.ink, t.acc); y += f.size * 1.04
+        return y + f.size * 0.18
+    if t.da == "c": return marker_title(t.base, x, y, tl, f, t.ink, LIME, 1.04, maxw if center else None)
+    return sans_draw_marks(t.base, x, y, tl, f, t.ink, LIME if t.dark else FOREST, INKV if t.dark else CREAM, 1.02, maxw if center else None)
+
+def th_sub(t, x, y, text, maxw=W - 2 * M, size=32, center=False):
+    if not text: return y
+    f = IM(size); ls = wrap(text, f, maxw); d = ImageDraw.Draw(t.base)
+    for l in ls:
+        d.text((x + ((maxw - d.textlength(l, font=f)) / 2 if center else 0), y), l, font=f, fill=t.sub); y += f.size * 1.36
+    return y
+
+def th_card(t, box, r=32, fill=None):
+    x0, y0, x1, y1 = [int(v) for v in box]
+    if fill is None and t.da == "b":
+        glass(t.base, (x0, y0, x1, y1), r, (255, 255, 255) if not t.dark else (20, 40, 32), 170 if not t.dark else 150); return
+    sh = Image.new("RGBA", t.base.size, (0, 0, 0, 0)); ImageDraw.Draw(sh).rounded_rectangle([x0 + 4, y0 + 12, x1 + 4, y1 + 12], radius=r, fill=(20, 30, 24, 42))
+    t.base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(16)))
+    ImageDraw.Draw(t.base).rounded_rectangle([x0, y0, x1, y1], radius=r, fill=fill or t.card)
+
+def contain_card(base, im, box, r=40, bg=WHITE_A):
+    """Packshot : produit entier, centré sur une carte blanche arrondie."""
+    x0, y0, x1, y1 = [int(v) for v in box]; w, h = x1 - x0, y1 - y0
+    card = Image.new("RGB", (w, h), bg); prod = trim(im); prod = prod.resize(fit_size(prod, int(w * 0.84), int(h * 0.84)), Image.LANCZOS)
+    card.paste(multiply_on(Image.new("RGB", prod.size, bg), prod), ((w - prod.width) // 2, (h - prod.height) // 2))
+    m = Image.new("L", (w, h), 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, w - 1, h - 1], radius=r, fill=255)
+    base.paste(card, (x0, y0), m)
+
+def th_photo(t, ref, box, k=0, fy=0.5, caption=None, tilt=True):
+    x0, y0, x1, y1 = [int(v) for v in box]; src = load(ref)
+    if t.da == "c":
+        paste_rot(t.base, polaroid(src, x1 - x0, y1 - y0, caption, fy), (x0 + x1) / 2, (y0 + y1) / 2, [-3, 2.5, 3, -2][k % 4] if tilt else [-1.2, 1, 1.2, -1][k % 4])
+        tape(t.base, (x0 + x1) / 2, y0 + 2, 150, [5, -6, -4, 6][k % 4]); return
+    im, pk = prep(src)
+    if pk: th_shadow(t, (x0, y0, x1, y1)); contain_card(t.base, im, (x0, y0, x1, y1)); return
+    if t.da == "b" and tilt: framed_photo(t.base, src, (x0, y0, x1, y1), angle=[-3, 3, 2, -2][k % 4], fy=fy)
+    elif t.da == "b": framed_photo(t.base, src, (x0, y0, x1, y1), angle=0, border=12, fy=fy)
+    else: th_shadow(t, (x0, y0, x1, y1)); rounded_photo(t.base, src, (x0, y0, x1, y1), 40, fy)
+
+def th_shadow(t, box, r=40):
+    x0, y0, x1, y1 = box
+    sh = Image.new("RGBA", t.base.size, (0, 0, 0, 0)); ImageDraw.Draw(sh).rounded_rectangle([x0 + 6, y0 + 16, x1 + 6, y1 + 16], radius=r, fill=(20, 30, 24, 50))
+    t.base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(18)))
+
+def th_end(t, c):
+    chrome(t.base, c, t.ink, t.sub, light_btn=t.dark)
+    return t.base.convert("RGB")
+
+# ── Grand chiffre
+def x_bignum(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    big = nb(c["big"]); f = BLACK(400); d = ImageDraw.Draw(base)
+    while d.textlength(big, font=f) > W - 2 * M: f = BLACK(f.size - 8)
+    l, tp, r, b = d.textbbox((0, 0), big, font=f); y += 6
+    if t.da == "c":
+        ov = Image.new("RGBA", base.size, (0, 0, 0, 0)); h0 = b - tp
+        ImageDraw.Draw(ov).polygon([(M - 20, y + h0 * 0.55), (M + r - l + 24, y + h0 * 0.48), (M + r - l + 30, y + h0 * 1.04), (M - 12, y + h0 * 1.1)], fill=LIME + (235,))
+        base.alpha_composite(ov); d = ImageDraw.Draw(base)
+    d.text((M - l, y - tp), big, font=f, fill=t.ink if t.da == "c" else t.acc)
+    y += b - tp + 18
+    if t.da == "b": squiggle(d, M, M + min(r - l, 420), y + 8, LIME if t.dark else HONEY, 9, 8); y += 34
+    y = th_title(t, M, y + 14, c["title"], start=70, minsize=44, maxlines=3)
+    y = th_sub(t, M, y + 6, c.get("sub"), W - 2 * M - 40)
+    if c.get("img") and H - 120 - y > 300:
+        th_photo(t, c["img"], (M + (30 if t.da != "a" else 0), y + 44, W - M - (30 if t.da != "a" else 0), H - 116), c.get("_n", 0), c.get("fy", 0.45))
+    return th_end(t, c)
+
+# ── Quiz : question + réponses (answer = indice de la bonne réponse, pour la slide de correction)
+def x_quiz(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=84, minsize=50, maxlines=4) + 34
+    opts = c["options"]; ans = c.get("answer"); note = c.get("note"); fo = DB(40); gap = 22
+    fn = IM(32); nl = wrap(note, fn, W - 2 * M - 110) if note else []
+    note_h = (60 + fn.size * 1.36 * len(nl) + 30) if nl else 0
+    oh = min(150, (H - 130 - y - note_h - gap * (len(opts) - 1)) / len(opts))
+    for i, o in enumerate(opts):
+        good = ans == i; box = (M - 10, y, W - M + 10, y + oh)
+        if good: th_card(t, box, 34, fill=LIME)
+        else: th_card(t, box, 34)
+        d = ImageDraw.Draw(base); cy = y + oh / 2
+        ink = INKV if good else (t.card_sub if ans is not None else t.card_ink)
+        if good: icon_disc(d, "check", M + 58, cy, 36, FOREST, LIME)
+        else:
+            d.ellipse([M + 22, cy - 36, M + 94, cy + 36], outline=ink, width=4)
+            fl = BLACK(36); ch = "ABCD"[i]; l_, t_, r_, b_ = d.textbbox((0, 0), ch, font=fl); d.text((M + 58 - (l_ + r_) / 2, cy - (t_ + b_) / 2), ch, font=fl, fill=ink)
+        ls = wrap(o, fo, W - 2 * M - 150)
+        draw_lines(d, M + 126, cy - fo.size * 1.16 * len(ls) / 2 - 4, ls, fo, ink, 1.16)
+        y += oh + gap
+    if nl:
+        y += 14; d = ImageDraw.Draw(base); icon_disc(d, "bulb", M + 30, y + 30, 30, t.acc, t.acc_ink)
+        draw_lines(d, M + 84, y + 6, nl, fn, t.ink, 1.36)
+    return th_end(t, c)
+
+# ── Étapes en zigzag
+def x_steps(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=84, minsize=50, maxlines=3) + 36
+    items = c["items"]; k = len(items); gap = 30
+    ch = min(250, (H - 130 - y - gap * (k - 1)) / k); cw = int((W - 2 * M + 20) * 0.76)
+    y += (H - 130 - y - (ch * k + gap * (k - 1))) * 0.4
+    fa = DB(42 if k <= 3 else 38); fb = IR(30 if k <= 3 else 27)
+    for i, (a_, b_) in enumerate(items):
+        left = i % 2 == 0; x0 = M - 10 if left else W - M + 10 - cw
+        th_card(t, (x0, y, x0 + cw, y + ch), 36)
+        d = ImageDraw.Draw(base); ncx = (x0 + cw + W - M + 10) / 2 if left else (M - 10 + x0) / 2
+        fnb = BLACK(int(min(190, ch * 0.9))); s_ = str(i + c.get("start", 1)); bb = d.textbbox((0, 0), s_, font=fnb)
+        d.text((ncx - (bb[0] + bb[2]) / 2, y + ch / 2 - (bb[1] + bb[3]) / 2), s_, font=fnb, fill=t.acc)
+        la = wrap(a_, fa, cw - 150); lb = wrap(b_, fb, cw - 150) if b_ else []
+        th_ = fa.size * 1.14 * len(la) + (8 + fb.size * 1.32 * len(lb) if lb else 0)
+        icon_disc(d, icon_for(a_, b_), x0 + 62, y + ch / 2, 34, FOREST if not (t.da == "b" and t.dark) else LIME, LIME if not (t.da == "b" and t.dark) else INKV)
+        ty = draw_lines(d, x0 + 118, y + ch / 2 - th_ / 2 - 4, la, fa, t.card_ink, 1.14)
+        if lb: draw_lines(d, x0 + 118, ty + 8, lb, fb, t.card_sub, 1.32)
+        y += ch + gap
+    return th_end(t, c)
+
+# ── Mosaïque : 2 à 4 photos légendées
+def x_mosaic(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=80, minsize=50, maxlines=2)
+    y = th_sub(t, M, y + 4, c.get("sub"), W - 2 * M - 40) + 30
+    imgs = c["imgs"]; n = len(imgs); g = 26 if t.da != "c" else 44; x0, x1 = M - 20, W - M + 20; top = int(y); bot = H - 116
+    w2 = (x1 - x0 - g) // 2; h2 = (bot - top - g) // 2
+    if n == 2: boxes = [(x0, top, x1, top + h2), (x0, top + h2 + g, x1, bot)]
+    elif n == 3: boxes = [(x0, top, x0 + w2, bot), (x0 + w2 + g, top, x1, top + h2), (x0 + w2 + g, top + h2 + g, x1, bot)]
+    else: boxes = [(x0 + (i % 2) * (w2 + g), top + (i // 2) * (h2 + g), x0 + (i % 2) * (w2 + g) + w2, top + (i // 2) * (h2 + g) + h2) for i in range(4)]
+    for i, ((ref, label), bx) in enumerate(zip(imgs, boxes)):
+        th_photo(t, ref, bx, i, 0.42, caption=label, tilt=False)
+        if t.da != "c" and label:
+            d = ImageDraw.Draw(base); pill_box(d, bx[0] + 26, bx[3] - 84, label, SB(28), FOREST, CREAM, 22, 13)
+    return th_end(t, c)
+
+# ── Arche : photo dans une arche, texte centré
+def x_arch(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 96, c.get("kicker"), center=True)
+    y = th_title(t, M, y, c["title"], start=86, minsize=50, maxlines=3, center=True)
+    y = th_sub(t, M + 40, y + 4, c.get("sub"), W - 2 * M - 80, 32, center=True)
+    top = int(y + 44); bot = H - 96; w = int(min(640, (bot - top) * 0.86)); h = bot - top; x0 = (W - w) // 2
+    d = ImageDraw.Draw(base); o = 20   # filet d'arche décalé
+    d.pieslice([x0 - o, top - o, x0 + w + o, top - o + w + 2 * o], 180, 360, outline=t.acc, width=5)
+    d.line([(x0 - o, top + w / 2), (x0 - o, bot)], fill=t.acc, width=5); d.line([(x0 + w + o, top + w / 2), (x0 + w + o, bot)], fill=t.acc, width=5)
+    src = load(c["img"]); im, pk = prep(src)
+    if pk:
+        ph = Image.new("RGB", (w, h), WHITE_A); prod = trim(im); prod = prod.resize(fit_size(prod, int(w * 0.8), int(h * 0.8)), Image.LANCZOS)
+        ph.paste(prod, ((w - prod.width) // 2, (h - prod.height) // 2 + 20))
+    else: ph = cover(src, w, h, 0.5, c.get("fy", 0.4))
+    base.paste(ph, (x0, top), arch_mask(w, h))
+    sparkle(base, x0 - 70, top + 120, 24, t.acc); sparkle(base, x0 + w + 74, top + 300, 16, t.acc)
+    if c.get("price"): sticker_v4(base, c["price"], x0 + w - 10, bot - 150, r=104, bg=LIME if t.da != "c" else CORAL, fg=INKV if t.da != "c" else WHITE_A, angle=8)
+    return th_end(t, c)
+
+# ── Suivi de la semaine : grille à cocher
+def x_tracker(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=84, minsize=50, maxlines=3) + 40
+    rows = c.get("rows", ["Matin", "Soir"]); done = c.get("done", 3); days = "LMMJVSD"
+    x0, x1 = M - 20, W - M + 20; lab = 150; cw = (x1 - x0 - lab - 30) / 7; rh = 150; hh = 90 + rh * len(rows) + 30
+    th_card(t, (x0, y, x1, y + hh), 40); d = ImageDraw.Draw(base)
+    for j, ch in enumerate(days):
+        cx = x0 + lab + cw * (j + 0.5); f = DB(34); tw = d.textlength(ch, font=f); d.text((cx - tw / 2, y + 34), ch, font=f, fill=t.card_sub)
+    for i, rname in enumerate(rows):
+        cy = y + 90 + rh * (i + 0.5)
+        draw_icon(d, icon_for(rname.lower()), x0 + 46, cy, 34, t.card_ink); d.text((x0 + 76, cy - 18), rname, font=SB(28), fill=t.card_ink)
+        for j in range(7):
+            cx = x0 + lab + cw * (j + 0.5); r = 40
+            if j < done: icon_disc(d, "check", cx, cy, r, FOREST if not (t.da == "b" and t.dark) else LIME, LIME if not (t.da == "b" and t.dark) else INKV)
+            else: d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=t.card_sub, width=4)
+    y += hh + 40
+    y = th_sub(t, M, y, c.get("sub"), W - 2 * M - 20, 34)
+    if c.get("img") and H - 120 - y > 240: th_photo(t, c["img"], (M + 20, y + 30, W - M - 20, H - 116), 1, c.get("fy", 0.45))
+    return th_end(t, c)
+
+# ── Schémas dessinés (visuels originaux)
+def _tooth_pts(cx, cy, s):
+    """Contour d'une molaire stylisée (couronne + 2 racines)."""
+    P = [(-0.50, -0.42), (-0.44, -0.62), (-0.24, -0.70), (0.0, -0.60), (0.24, -0.70), (0.44, -0.62), (0.50, -0.42),
+         (0.46, -0.08), (0.36, 0.22), (0.30, 0.62), (0.20, 0.78), (0.10, 0.60), (0.04, 0.24), (0.0, 0.16),
+         (-0.04, 0.24), (-0.10, 0.60), (-0.20, 0.78), (-0.30, 0.62), (-0.36, 0.22), (-0.46, -0.08)]
+    return [(cx + x * s, cy + y * s) for x, y in P]
+
+def _smooth(pts, it=3):
+    for _ in range(it):
+        out = []
+        for i in range(len(pts)):
+            a, b = pts[i], pts[(i + 1) % len(pts)]
+            out += [(0.75 * a[0] + 0.25 * b[0], 0.75 * a[1] + 0.25 * b[1]), (0.25 * a[0] + 0.75 * b[0], 0.25 * a[1] + 0.75 * b[1])]
+        pts = out
+    return pts
+
+def draw_tooth(base, cx, cy, s, fill=WHITE_A, outline=INKV, width=8, shadow=True):
+    pts = _smooth(_tooth_pts(cx, cy, s))
+    if shadow:
+        sh = Image.new("RGBA", base.size, (0, 0, 0, 0)); ImageDraw.Draw(sh).polygon([(x + 10, y + 22) for x, y in pts], fill=(20, 30, 24, 60))
+        base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(20)))
+    d = ImageDraw.Draw(base); d.polygon(pts, fill=fill)
+    d.line(pts + [pts[0]], fill=outline, width=width, joint="curve")
+    return d
+
+def label_line(base, p0, p1, text, t, size=34, align="l"):
+    d = ImageDraw.Draw(base); d.line([p0, p1], fill=t.ink, width=4); d.ellipse([p0[0] - 9, p0[1] - 9, p0[0] + 9, p0[1] + 9], fill=t.ink)
+    f = SB(size); ls = text.split("\n"); w = max(d.textlength(l, font=f) for l in ls); h = f.size * 1.2 * len(ls)
+    x = p1[0] + 14 if align == "l" else p1[0] - 14 - w
+    d.rounded_rectangle([x - 16, p1[1] - h / 2 - 12, x + w + 16, p1[1] + h / 2 + 12], radius=18, fill=WHITE_A)
+    draw_lines(d, x, p1[1] - h / 2 - 2, ls, f, INKV, 1.2)
+
+def x_schema(c):
+    t = theme(c); base = t.base; kind = c["kind"]
+    y = th_kicker(t, M, 100, c.get("kicker"))
+    y = th_title(t, M, y, c["title"], start=84, minsize=50, maxlines=3)
+    y = th_sub(t, M, y + 4, c.get("sub"), W - 2 * M - 40)
+    top = y + 30; bot = H - 120; cx = W / 2; cy = (top + bot) / 2; S = min(bot - top, W - 2 * M)
+    d = ImageDraw.Draw(base); line = t.ink
+    if kind == "tooth":      # coupe d'une dent : émail, dentine, pulpe, gencive
+        s = min((bot - top) * 0.62, 480); ty = top + (bot - top) * 0.52; gum = (242, 168, 158)
+        d.rounded_rectangle([M - 20, ty + s * 0.12, W - M + 20, ty + s * 0.62], radius=70, fill=gum)
+        draw_tooth(base, cx, ty, s)
+        d = ImageDraw.Draw(base)
+        d.polygon(_smooth(_tooth_pts(cx, ty, s * 0.76)), fill=(250, 228, 182))
+        d.polygon(_smooth([(cx + x * s, ty + y_ * s) for x, y_ in [(-0.15, -0.28), (0.0, -0.34), (0.15, -0.28), (0.13, 0.0), (0.19, 0.5), (0.13, 0.52), (0.0, 0.06), (-0.13, 0.52), (-0.19, 0.5), (-0.13, 0.0)]]), fill=CORAL)
+        label_line(base, (cx - s * 0.44, ty - s * 0.3), (M + 190, ty - s * 0.62), "Émail", t, align="r")
+        label_line(base, (cx + s * 0.3, ty - s * 0.22), (W - M - 200, ty - s * 0.62), "Dentine", t)
+        label_line(base, (cx + s * 0.05, ty - s * 0.1), (W - M - 200, ty + s * 0.06), "Pulpe", t)
+        label_line(base, (M + 120, ty + s * 0.36), (M + 190, ty + s * 0.92), "Gencive", t)
+    elif kind == "angle":    # tête de brosse inclinée à 45° vers la gencive
+        s = min((bot - top) * 0.46, 330); ty = top + (bot - top) * 0.46; gum = (242, 168, 158)
+        d.rounded_rectangle([M - 20, ty + s * 0.3, W - M + 20, bot], radius=70, fill=gum)
+        for k_, off in enumerate((-1.02, 0.0, 1.02)): draw_tooth(base, cx - s * 0.35 + off * s * 0.92, ty, s, width=7, shadow=k_ == 1)
+        d = ImageDraw.Draw(base)
+        gx, gy = cx - s * 0.35 + s * 0.5, ty + s * 0.3      # jonction dent / gencive
+        d.line([(gx, gy - s * 1.05), (gx, gy + 70)], fill=t.sub, width=4)   # axe vertical de la dent
+        br = Image.new("RGBA", (760, 300), (0, 0, 0, 0)); bd = ImageDraw.Draw(br)
+        bd.rounded_rectangle([250, 120, 750, 220], radius=50, fill=(214, 178, 122), outline=INKV, width=7)
+        bd.rounded_rectangle([250, 120, 420, 220], radius=50, fill=(236, 214, 176), outline=INKV, width=7)
+        for i2 in range(6): bd.rounded_rectangle([268 + i2 * 32, 34, 294 + i2 * 32, 126], radius=12, fill=WHITE_A, outline=INKV, width=5)
+        br = br.rotate(45, resample=Image.BICUBIC, expand=True)
+        base.alpha_composite(br, (int(gx - 236), int(gy - br.height + 250)))
+        d = ImageDraw.Draw(base)
+        r2 = 230; d.arc([gx - r2, gy - r2, gx + r2, gy + r2], 225, 270, fill=CORAL, width=9)
+        fb_ = BLACK(72); lab = "45°"; tw = d.textlength(lab, font=fb_)
+        lx, ly = gx - 300, gy - 330
+        d.rounded_rectangle([lx - 24, ly - 10, lx + tw + 24, ly + fb_.size + 18], radius=26, fill=WHITE_A)
+        d.text((lx, ly), lab, font=fb_, fill=CORAL)
+    elif kind == "plaque":   # plaque -> tartre, 3 dents
+        s = min((bot - top) * 0.34, 250); ty = top + (bot - top) * 0.42
+        stages = c.get("labels", ["Dent propre", "Plaque", "Tartre"]); cols = [None, (246, 222, 140), (198, 162, 96)]
+        for i in range(3):
+            tx = M + 20 + (W - 2 * M - 40) * (i + 0.5) / 3
+            draw_tooth(base, tx, ty, s, width=7); d = ImageDraw.Draw(base)
+            if cols[i]:
+                for k_ in range(7 + 6 * i):
+                    a_ = k_ * 2.4 + i; px = tx + s * 0.34 * math.cos(a_); py = ty - s * 0.1 + s * 0.3 * math.sin(a_ * 1.7); rr = 15 + 6 * i + (k_ % 3) * 5
+                    d.ellipse([px - rr, py - rr, px + rr, py + rr], fill=cols[i], outline=INKV, width=3)
+            f = DB(34); tw = d.textlength(stages[i], font=f)
+            by = ty + s * 0.74
+            d.rounded_rectangle([tx - tw / 2 - 22, by, tx + tw / 2 + 22, by + 64], radius=32, fill=WHITE_A); d.text((tx - tw / 2, by + 12), stages[i], font=f, fill=INKV)
+            if i < 2: doodle_arrow(base, (tx + s * 0.6, ty - s * 0.78), (tx + s * 1.05, ty - s * 0.78), t.acc, -0.5, 6)
+    elif kind == "zones":    # 4 zones de brossage, 30 s chacune
+        r = S * 0.46; cols = [LIME, MINTV, HONEY, (250, 216, 204)]; names = c.get("labels", ["Haut gauche", "Haut droite", "Bas droite", "Bas gauche"])
+        for i, a0 in enumerate([180, 270, 0, 90]):
+            d.pieslice([cx - r, cy - r, cx + r, cy + r], a0, a0 + 90, fill=cols[i], outline=INKV, width=6)
+            am = math.radians(a0 + 45); px, py = cx + r * 0.58 * math.cos(am), cy + r * 0.58 * math.sin(am)
+            f1 = BLACK(64); s1 = "30 s"; tw = d.textlength(nb(s1), font=f1); d.text((px - tw / 2, py - 56), nb(s1), font=f1, fill=INKV)
+            f2 = SB(27); tw = d.textlength(names[i], font=f2); d.text((px - tw / 2, py + 18), names[i], font=f2, fill=INKV)
+        d.ellipse([cx - 78, cy - 78, cx + 78, cy + 78], fill=FOREST, outline=INKV, width=6); draw_icon(d, "stopwatch", cx, cy, 64, LIME)
+    elif kind == "angle":    # tête de brosse inclinée à 45° vers la gencive
+        s = S * 0.62; tx, ty = cx - s * 0.32, cy + s * 0.12; gum = (240, 150, 140)
+        d.rounded_rectangle([M - 20, ty - s * 0.2, W - M + 20, ty - s * 0.2 + 120], radius=60, fill=gum)
+        draw_tooth(base, tx, ty + s * 0.42, s * 0.9); d = ImageDraw.Draw(base)
+        gx, gy = tx + s * 0.4, ty + s * 0.12     # point de contact dent / gencive
+        br = Image.new("RGBA", (int(s * 1.5), 260), (0, 0, 0, 0)); bd = ImageDraw.Draw(br)
+        bd.rounded_rectangle([110, 100, br.width - 10, 190], radius=45, fill=(214, 178, 122), outline=INKV, width=6)
+        for i in range(7): bd.rounded_rectangle([130 + i * 34, 20, 154 + i * 34, 106], radius=10, fill=WHITE_A, outline=INKV, width=4)
+        br = br.rotate(-45, resample=Image.BICUBIC, expand=True)
+        base.alpha_composite(br, (int(gx - 20), int(gy - br.height + 150))); d = ImageDraw.Draw(base)
+        d.arc([gx - 170, gy - 170, gx + 170, gy + 170], 315, 360, fill=CORAL, width=8)
+        d.line([(gx, gy), (gx + 250, gy)], fill=CORAL, width=5)
+        fb_ = BLACK(84); d.text((gx + 196, gy - 128), "45°", font=fb_, fill=CORAL if not t.dark else LIME)
+    elif kind == "plaque":   # plaque -> tartre, 3 dents
+        s = S * 0.34; stages = c.get("labels", ["Dent propre", "Plaque", "Tartre"]); cols = [None, (246, 226, 150), (196, 160, 96)]
+        for i in range(3):
+            tx = M + 40 + (W - 2 * M - 80) * (i + 0.5) / 3; ty = cy - 30
+            draw_tooth(base, tx, ty, s * 1.9, width=7); d = ImageDraw.Draw(base)
+            if cols[i]:
+                for k_ in range(6 + 5 * i):
+                    a_ = k_ * 2.4 + i; px = tx + s * 0.62 * math.cos(a_) * 0.9; py = ty - s * 0.2 + s * 0.42 * math.sin(a_ * 1.7); rr = 20 + 10 * i + (k_ % 3) * 6
+                    d.ellipse([px - rr, py - rr, px + rr, py + rr], fill=cols[i], outline=INKV, width=3)
+            f = DB(36); tw = d.textlength(stages[i], font=f)
+            d.rounded_rectangle([tx - tw / 2 - 22, ty + s * 1.7, tx + tw / 2 + 22, ty + s * 1.7 + 64], radius=32, fill=WHITE_A); d.text((tx - tw / 2, ty + s * 1.7 + 10), stages[i], font=f, fill=INKV)
+            if i < 2: doodle_arrow(base, (tx + s * 1.05, ty - s * 1.3), (tx + s * 1.7, ty - s * 1.3), t.acc, -0.35, 6)
+    elif kind == "calendar": # 12 mois, un changement de tête tous les 3 mois
+        months = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]; g = 20; cw = (W - 2 * M + 40 - 3 * g) / 4; chh = min(190, (bot - top - 2 * g) / 3)
+        y0 = cy - (3 * chh + 2 * g) / 2
+        for i, m_ in enumerate(months):
+            x = M - 20 + (i % 4) * (cw + g); yy = y0 + (i // 4) * (chh + g); hit = i % 3 == 0
+            th_card(t, (x, yy, x + cw, yy + chh), 30, fill=LIME if hit else None); d = ImageDraw.Draw(base)
+            d.text((x + 24, yy + 16), m_, font=BLACK(54), fill=INKV if hit else t.card_ink)
+            if hit: draw_icon(d, "rotate", x + cw - 62, yy + chh - 62, 60, FOREST)
+    return th_end(t, c)
+
+TPLX = {"bignum": x_bignum, "quiz": x_quiz, "steps": x_steps, "mosaic": x_mosaic, "arch": x_arch, "tracker": x_tracker, "schema": x_schema}
+
 DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
 DA_C_ALL = "--da-c" in sys.argv     # aperçu : tout en DA C
 def pick_tpl(sl):
+    """La DA vient du post (da = "a" v5, "b", "c") ; les formats mixtes s'habillent selon la DA."""
+    if sl["tpl"] in TPLX: return TPLX[sl["tpl"]]
     if DA_C_ALL or sl.get("da") == "c": return TPL_C[sl["tpl"]]
     return (TPL_B if (DA_B_ALL or sl.get("da") == "b") else TPL)[sl["tpl"]]
 
@@ -1545,6 +2145,7 @@ def check():
     errs, used = [], Counter()
     for p in ALL:
         refs = [x["img"] for x in p.get("slides", []) + p.get("scenes", []) if x.get("img")]
+        refs += [r for x in p.get("slides", []) for r, _ in x.get("imgs", [])]
         for r in refs: used[r] += 1
         cap = p["caption"].replace("[CTA]", CTA_IG)
         first = cap.split("\n")[0].lower()
@@ -1555,11 +2156,18 @@ def check():
                 errs.append(f"{p['date']} mot interdit « {w.strip()} »")
         if p["kind"] == "carousel" and not 2 <= len(p["slides"]) <= 10: errs.append(p["date"] + " carrousel taille")
     errs += [f"visuel réutilisé : {k}" for k, v in used.items() if v > 1]
+    for r in REELS:
+        cap = r["caption"].replace("[CTA]", CTA_IG)
+        if len(re.findall(r"#\w+", cap)) > 5: errs.append(r["date"] + " reel >5 hashtags")
+        if len(cap) > 2200: errs.append(r["date"] + " reel légende trop longue")
+        if not os.path.exists(os.path.join(ROOT, "media", "reels", r["date"] + ".mp4")): errs.append(r["date"] + " vidéo absente")
+        for w in FORBIDDEN:
+            if w in cap.lower(): errs.append(f"{r['date']} reel mot interdit « {w.strip()} »")
     return errs, used
 
 def main():
     if "--fetch-only" in sys.argv:   # télécharge les photos sources (utile hors GitHub Actions)
-        refs = sorted({x["img"] for p in ALL for x in p.get("slides", []) if x.get("img")})
+        refs = sorted({x["img"] for p in ALL for x in p.get("slides", []) if x.get("img")} | {r_ for p in ALL for x in p.get("slides", []) for r_, _ in x.get("imgs", [])})
         for r in refs: load(r)
         print(len(refs), "sources"); return
     errs, used = check()
@@ -1586,7 +2194,8 @@ def main():
               for i, sl in enumerate(p["slides"], 1):
                   rel = f"media/posts/{date}-{i}.jpg"
                   sl = dict(sl, _n=LIST.index(p) + i - 1 + off)
-                  if suf == "-10h" and not sl.get("da"): sl["da"] = SLOT_DA_10H
+                  for k_ in ("da", "tone"):
+                      if p.get(k_) and not sl.get(k_): sl[k_] = p[k_]
                   pick_tpl(sl)(sl).save(os.path.join(ROOT, rel), "JPEG", quality=90, optimize=True, progressive=False)
                   rels.append(rel)
               urls = [RAW + r for r in rels]
@@ -1598,6 +2207,19 @@ def main():
               post.update({"caption": ig, "fb_message": fb, "fb_photos": [{"type": "url", "url": u} for u in urls]})
               gallery.append((date, p["kind"], rels, None, ig))
           json.dump({"post": post}, open(os.path.join(ROOT, "planning", date + ".json"), "w"), ensure_ascii=False, indent=2)
+    for r in REELS:
+        if ONLY and r["date"] not in ONLY: continue
+        ig = r["caption"].replace("[CTA]", CTA_IG); fb = r["caption"].replace("[CTA]", CTA_FB)
+        rel = f"media/reels/{r['date']}.mp4"
+        post = {"type": "reel", "video_url": RAW + rel, "thumb_offset": r.get("cover", 0), "caption": ig, "fb_message": fb}
+        json.dump({"post": post}, open(os.path.join(ROOT, "planning", r["date"] + "-reel.json"), "w"), ensure_ascii=False, indent=2)
+        print(f"{r['date']} reel")
+        cov = os.path.join(ROOT, f"media/reels/{r['date']}-cover.jpg")
+        if not os.path.exists(cov):
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(r.get("cover", 0) / 1000), "-i", os.path.join(ROOT, rel),
+                            "-frames:v", "1", "-vf", "scale=540:-1", cov], check=False)
+        gallery.append((r["date"] + " · vidéo", "reel", [f"media/reels/{r['date']}-cover.jpg"], rel, ig))
+    gallery.sort(key=lambda g: g[0])
     if not ONLY: write_index(gallery)
 
 def write_index(gallery):

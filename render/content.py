@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Pulse Care — calendrier Instagram + Facebook, 30 jours (09/10 → 07/11/2026).
+"""Pulse Care — posts de 18h, 30 jours (10/11 → 09/12/2026).
 
 Formats :
   photo    -> 1 visuel 1080x1350
   carousel -> 2 à 10 visuels 1080x1350
-  reel     -> vidéo motion design 1080x1920, 30 i/s
+
+Gabarits : hero, statement, product, list, stats, versus (habillés par la DA du post)
+           + bignum, quiz, steps, mosaic, arch, tracker, schema (formats mixtes).
+DA du post : "a" (aplats v5), "b" (dégradés & verre), "c" (carnet & tchat).
 
 Sources d'images (une seule utilisation par visuel sur tout le calendrier) :
   "s:<fichier>"  photo produit Shopify (cdn.shopify.com)
@@ -22,6 +25,12 @@ S = {  # photos produit Shopify
  "p083": "Pulsecare-083.webp", "p097": "Pulsecare-097.webp", "p095": "Pulsecare-095.webp",
  "p087": "Pulsecare-087.webp", "p121": "Pulsecare-121.webp", "p091": "Pulsecare-091.webp",
  "p090": "Pulsecare-090.webp", "p056": "Pulsecare-056.webp",
+ "p002": "Pulsecare-002.png", "p004": "Pulsecare-004.png", "p005": "Pulsecare-005.png",
+ "p006": "Pulsecare-006.png", "p011": "Pulsecare-011.webp", "p012": "Pulsecare-012.png",
+ "p014": "Pulsecare-014.png", "p016": "Pulsecare-016.png", "p017": "Pulsecare-017.png",
+ "p018": "Pulsecare-018.webp", "p021": "Pulsecare-021.webp", "p029": "Pulsecare-029.webp",
+ "p055": "Pulsecare-055.webp", "p084": "Pulsecare-084.png", "p085": "Pulsecare-085.png",
+ "p092": "Pulsecare-092.webp",
  "usb": "pulse-care-port-charge-usb-c-brosse-electrique.webp",
  "tete_main": "tete-rechange-brosse-dents-electrique-bambou-pulsecare.webp",
  "tete_main2": "tete-rechange-brosse-dents-electrique-bambou.webp",
@@ -48,7 +57,17 @@ S = {  # photos produit Shopify
  "modes_main": "pulse-care-brosse-electrique-modes-brossage.webp",
  "duo_tete": "pulse-care-pack-duo-brosse-tete-bambou.webp",
  "duo_acc": "pulse-care-pack-duo-accessoires-bambou.webp",
+ "duo_etuis": "pulse-care-pack-duo-brosses-etuis.webp",
+ "duo_coffret": "pulse-care-pack-duo-coffret-vue-ensemble.webp",
+ "deux_brosses": "deux-brosses-a-dents-pulse-care.webp",
+ "dec_etui_tetes": "pulse-care-pack-decouverte-brosse-etui-tetes.webp",
  "etui": "pulse-care-etui-bambou-ferme-brosse-electrique.webp",
+ "etui_ouvert": "pulse-care-etui-bambou-ouvert-tetes-rechange.webp",
+ "etui_voyage": "etui-de-voyage.webp",
+ "etui_plat": "pulse-care-brosse-etui-bambou-tete-rechange.webp",
+ "boite_bambou": "boite-bambou-brosse-a-dents.webp",
+ "chargeur": "chargeur-usb-c-pulse-care.webp",
+ "tete_ricin2": "tete-de-brosse-ricin.webp",
  "nylon_gauche": "tete-brosse-electrique-bambou-nylon-pulsecare-profil-gauche.webp",
  "nylon_pack2_profil": "tetes-rechange-brosse-electrique-bambou-nylon-pack2-profil.webp",
  "nylon_pack4_profil": "tetes-rechange-brosse-electrique-bambou-nylon-pack4-vue-profil.webp",
@@ -59,189 +78,112 @@ def s(k): return "s:" + S[k]
 TAGS = "#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare"
 
 POSTS = [
-# ───────────────────────── 18/10 18h (remplace le post publié en test le 08/10)
-dict(date="2026-10-18", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1668463876833-339717e58c4c", kicker="Pulse Care Bamboo+", title="Ce qu'il y a *dans la boîte*", swipe=True),
-  dict(tpl="list", img="u:1643274390061-cef676c273d7", title="Le contenu", numbered=True, items=[("1 manche Bamboo+","En plastique ASA, il reste."),("2 têtes en bambou","Une à utiliser, une d'avance."),("1 étui de voyage","En bambou."),("1 câble USB-C","Recharge en 2,5 h environ.")], page="2/3"),
-  dict(tpl="stats", img="u:1535295972055-1c762f4483e5", title="Pour 59,90 €", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie"),("IPX7","étanche")], page="3/3"),
+# ───────────────────────── 1 · 10/11 · le chiffre
+dict(date="2026-11-10", kind="photo", da="a", tone="mint", slides=[
+  dict(tpl="bignum", kicker="Le chiffre du jour", big="41 000", title="vibrations *par minute*",
+       sub="La technologie sonique fait le nettoyage. Toi, tu guides la tête, dent par dent.", img=s("p016")),
 ],
-caption="""Brosse à dents électrique Pulse Care Bamboo+ : ce qu'il y a dans la boîte.
+caption="""41 000 vibrations par minute : c'est ce que fait une brosse à dents électrique sonique Pulse Care pendant que tu guides.
 
-→ 1 manche Bamboo+, en plastique ASA
-→ 2 têtes en bambou
-→ 1 étui de voyage en bambou
-→ 1 câble USB-C
+Concrètement, tu ne frottes plus. Tu poses la tête sur la dent, tu glisses lentement, et le mouvement fait le travail à ta place.
 
-Tout est inclus pour 59,90 €. Tu n'as rien d'autre à acheter avant 6 mois.
-
-[CTA]
-
-#brosseadentselectrique #brosseadentsbambou #unboxing #pulsecare"""),
-
-# ───────────────────────── 1 · REEL
-dict(date="2026-10-09", kind="carousel", slides=[
-  dict(tpl="hero", img=s("p046"), kicker="Nouveau sur ton lavabo", title="Pulse Care *Bamboo+*", sub="La brosse à dents électrique sonique", swipe=True),
-  dict(tpl="stats", img=s("modes_main"), title="Les chiffres clés", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie"),("IPX7","étanche, même sous la douche")], page="2/4"),
-  dict(tpl="hero", img=s("p083"), kicker="Recharge USB-C", title="Jusqu'à 30 jours d'autonomie", page="3/4"),
-  dict(tpl="product", img=s("decouverte_tetes"), kicker="Le principe", title="Tu gardes le manche.\n*Tu changes la tête.*", sub="Têtes en bambou, poils ricin ou nylon.", page="4/4"),
-],
-caption="""Brosse à dents électrique Pulse Care Bamboo+ : on te la présente.
-
-Le principe est simple. Tu gardes le manche. Tu changes seulement la tête, en bambou.
-
-→ 41 000 vibrations par minute (technologie sonique)
-→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage
-→ Jusqu'à 30 jours d'autonomie, recharge USB-C
-→ Étanche IPX7
+C'est aussi pour ça qu'appuyer fort ne sert à rien.
 
 [CTA]
 
 """ + TAGS),
 
-# ───────────────────────── 2 · PHOTO
-dict(date="2026-10-10", kind="photo", slides=[
-  dict(tpl="hero", img="u:1675526607070-f5cbd71dde92", kicker="La règle de base", title="2 minutes.\n*2 fois par jour.*", sub="Le minuteur s'arrête seul à 2 min, avec une pause toutes les 30 s pour changer de zone."),
+# ───────────────────────── 2 · 11/11 · unboxing
+dict(date="2026-11-11", kind="carousel", da="b", slides=[
+  dict(tpl="hero", img=s("p029"), kicker="Pulse Care Bamboo+", title="Ce qu'il y a *dans la boîte*", swipe=True),
+  dict(tpl="mosaic", kicker="Le contenu", title="4 choses, rien de plus", imgs=[(s("bamboo_face"), "Le manche"), (s("ricin_pack2"), "2 têtes en bambou"), (s("etui_voyage"), "L'étui"), (s("boite_bambou"), "Le câble USB-C")]),
+  dict(tpl="arch", kicker="Tout compris", title="Rien d'autre *à racheter* avant 6 mois", img=s("dec_etui_tetes"), price="59,90 €"),
 ],
-caption="""2 minutes, 2 fois par jour. C'est la base avec une brosse à dents électrique comme avec une manuelle.
+caption="""Brosse à dents électrique Pulse Care Bamboo+ : voilà ce qu'il y a dans la boîte.
 
-Le problème : à l'œil, on brosse souvent moins d'une minute.
+→ 1 manche sonique
+→ 2 têtes en bambou
+→ 1 étui de voyage en bambou
+→ 1 câble USB-C
 
-Sur la Bamboo+, le minuteur fait le travail :
-→ arrêt automatique à 2 minutes
-→ une micro-pause toutes les 30 secondes pour passer à la zone suivante
+Tout est inclus pour 59,90 €. Avec deux têtes, tu tiens environ 6 mois avant la première recharge.
 
-4 zones x 30 secondes. Haut gauche, haut droite, bas gauche, bas droite.
-
-Tu brosses combien de temps, honnêtement ? Dis-le en commentaire.
+Swipe pour voir le détail.
 
 [CTA]
 
-#brosseadentselectrique #routinedentaire #hygienebuccodentaire #pulsecare"""),
+#brosseadentselectrique #brosseadentsbambou #unboxing #pulsecare"""),
 
-# ───────────────────────── 3 · CAROUSEL
-dict(date="2026-10-11", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1586061968253-7bf5724aab7b", kicker="Brosse à dents électrique", title="Pourquoi une tête *en bambou* ?", swipe=True),
-  dict(tpl="list", img=s("ricin_profil"), title="Ce qui compose ta brosse", items=[("Tête en bambou","La partie que tu changes tous les 3 mois."),("Poils à base de ricin","Une fibre d'origine végétale."),("Manche en plastique ASA","Conçu pour durer des années.")], page="2/3"),
-  dict(tpl="statement", img="u:1761311554695-68cfca1f3140", kicker="Le concept", title="Moins de plastique dans la partie que tu jettes.", page="3/3"),
+# ───────────────────────── 3 · 12/11 · schéma dent
+dict(date="2026-11-12", kind="photo", da="a", tone="mint", slides=[
+  dict(tpl="schema", kind="tooth", kicker="Anatomie", title="Ce qu'il y a *sous l'émail*",
+       sub="Et pourquoi l'émail ne repousse jamais."),
 ],
-caption="""Pourquoi une tête de brosse à dents électrique en bambou ?
+caption="""Pourquoi on répète de ne pas appuyer fort avec une brosse à dents électrique ? Regarde la coupe d'une dent.
 
-Parce que la tête, c'est la partie que tu jettes tous les 3 mois. Le manche, lui, reste.
+→ L'émail est la couche extérieure. C'est le tissu le plus dur du corps, mais il ne se régénère pas.
+→ Dessous, la dentine est plus tendre et plus sensible.
+→ Au centre, la pulpe contient le nerf.
 
-Chez Pulse Care :
-→ la tête est en bambou
-→ les poils sont à base d'huile de ricin, d'origine végétale
-→ le manche est en plastique ASA, conçu pour durer des années
-
-Swipe pour le détail.
+Quand l'émail s'use, la dentine se découvre. C'est là que le froid commence à piquer.
 
 [CTA]
 
-#brosseadentsbambou #brosseadentselectrique #bambou #pulsecare"""),
+#brosseadentselectrique #email #hygienebuccodentaire #pulsecare"""),
 
-# ───────────────────────── 4 · REEL
-dict(date="2026-10-12", kind="carousel", slides=[
-  dict(tpl="hero", img=s("icones"), kicker="Brosse à dents électrique", title="Quel mode *choisir* ?", swipe=True),
-  dict(tpl="list", img=s("p090"), title="Au quotidien", items=[("Sensible","Gencives fragiles, débuts à l'électrique."),("Nettoyage","Matin et soir, tous les jours.")], page="2/3"),
-  dict(tpl="list", img=s("p019"), title="En complément", items=[("Blanchiment","Taches de surface : café, thé."),("Polissage","Sensation de dents lisses.")], page="3/3", alt=True),
+# ───────────────────────── 4 · 13/11 · quiz tête
+dict(date="2026-11-13", kind="carousel", da="c", slides=[
+  dict(tpl="quiz", kicker="Question du jour", title="Tu changes ta tête *tous les combien* ?",
+       options=["Tous les 3 mois", "Quand les poils s'écartent", "Une fois par an", "Jamais, en fait"], swipe=True),
+  dict(tpl="quiz", kicker="La réponse", title="Tous les *3 mois*",
+       options=["Tous les 3 mois", "Quand les poils s'écartent", "Une fois par an", "Jamais, en fait"], answer=0,
+       note="Et aussi après une angine ou un gros rhume."),
+  dict(tpl="product", img=s("tete_main"), kicker="Têtes de recharge", title="Clip en *une seconde*", sub="Têtes en bambou, poils ricin ou nylon."),
 ],
-caption="""4 modes sur ta brosse à dents électrique : lequel choisir ?
-
-→ Sensible : vibrations adoucies, pour les gencives qui saignent ou les dents sensibles
-→ Nettoyage : le mode de tous les jours
-→ Blanchiment : pour aider à retirer les taches de surface (café, thé)
-→ Polissage : pour finir avec une sensation de dents lisses
-
-Astuce : commence 1 à 2 semaines en mode Sensible si tu passes d'une brosse manuelle à l'électrique.
-
-[CTA]
-
-#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare"""),
-
-# ───────────────────────── 5 · PHOTO
-dict(date="2026-10-13", kind="photo", slides=[
-  dict(tpl="product", img=s("ricin_gp"), kicker="Gros plan", title="Des poils à base *de ricin*", sub="Fibre d'origine végétale, douce pour l'émail et les gencives."),
-],
-caption="""Gros plan sur les poils de nos têtes de brosse à dents électrique.
-
-Ils sont fabriqués à base d'huile de ricin. Une fibre d'origine végétale, à la place des poils 100 % pétrole.
-
-Au brossage, ils sont doux pour l'émail et les gencives sensibles. Et ils retirent la plaque comme il faut.
-
-Monté sur une tête en bambou. Compatible uniquement avec les manches Pulse Care.
-
-[CTA]
-
-#brosseadentselectrique #brosseadentsbambou #gencivessensibles #pulsecare"""),
-
-# ───────────────────────── 6 · CAROUSEL
-dict(date="2026-10-14", kind="carousel", slides=[
-  dict(tpl="statement", img="u:1563635707334-5ce91b375ea6", kicker="Question du jour", title="Tu changes ta tête de brosse tous les combien ?", sub="A. Tous les 3 mois\nB. Quand les poils s'écartent\nC. Euh... jamais", swipe=True),
-  dict(tpl="product", img=s("tete_main"), kicker="La réponse", title="Tous les *3 mois*", sub="Et après un rhume ou une angine.", page="2/2"),
-],
-caption="""Question rapide sur ta brosse à dents électrique : tu changes ta tête tous les combien ?
+caption="""Petite question sur ta brosse à dents électrique : tu changes la tête tous les combien ?
 
 A. Tous les 3 mois
 B. Quand les poils partent dans tous les sens
-C. Euh... jamais ?
+C. Une fois par an
+D. Jamais, en fait
 
-Réponds en commentaire avant de swiper. On ne juge pas.
+Réponds en commentaire avant de swiper.
 
-La bonne réponse : tous les 3 mois. C'est la recommandation des dentistes. Après ça, les poils s'écartent et retirent moins bien la plaque.
-
-[CTA]
-
-#brosseadentselectrique #hygienebuccodentaire #routinedentaire #pulsecare"""),
-
-# ───────────────────────── 7 · REEL
-dict(date="2026-10-15", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1646388478486-0996b6dcc2ac", kicker="Brosse à dents électrique", title="5 erreurs de brossage à corriger", swipe=True),
-  dict(tpl="list", img="u:1654373535457-383a0a4d00f9", title="Les erreurs de geste", numbered=True, items=[("Frotter","Pose la tête, les vibrations nettoient."),("Appuyer fort","Ça use l'émail et irrite les gencives."),("Oublier l'arrière","La face interne des dents.")], page="2/3"),
-  dict(tpl="list", img="u:1609840113929-b130355987e1", title="Les erreurs de routine", numbered=True, start=4, items=[("Rincer juste après","Crache, ne rince pas : le fluor reste."),("Garder la même tête","On la change tous les 3 mois.")], page="3/3", alt=True),
-],
-caption="""5 erreurs fréquentes avec une brosse à dents électrique.
-
-1. Frotter comme avec une manuelle. Pose la tête et laisse les vibrations bosser.
-2. Appuyer trop fort. Ça abîme les gencives.
-3. Oublier l'arrière des dents.
-4. Rincer juste après. Crache le dentifrice, ne rince pas : le fluor agit plus longtemps.
-5. Garder la même tête 6 mois.
-
-Tu te reconnais dans laquelle ?
+La bonne réponse : tous les 3 mois. Après, les poils s'écartent et retirent moins bien la plaque. Change-la aussi après une angine.
 
 [CTA]
 
-#brosseadentselectrique #conseilsdentaires #hygienebuccodentaire #pulsecare"""),
+#brosseadentselectrique #tetederechange #hygienebuccodentaire #pulsecare"""),
 
-# ───────────────────────── 8 · PHOTO
-dict(date="2026-10-16", kind="photo", slides=[
-  dict(tpl="product", img=s("decouverte_neutre"), kicker="Pack découverte", title="Ton kit pour passer *à l'électrique*", price="64,90 €", callouts=["Manche Bamboo+","Têtes en bambou","Poils ricin","Étui de voyage"]),
+# ───────────────────────── 5 · 14/11 · pack découverte
+dict(date="2026-11-14", kind="photo", da="b", tone="sand", slides=[
+  dict(tpl="arch", kicker="Pack découverte", title="Ton kit *pour commencer*", sub="Le manche, les têtes en bambou, l'étui.", img=s("decouverte_neutre"), price="64,90 €"),
 ],
-caption="""Le pack découverte Pulse Care, pour passer à la brosse à dents électrique en bambou.
+caption="""Le pack découverte Pulse Care, pour passer à la brosse à dents électrique sans se poser de questions.
 
-Dedans : le manche Bamboo+ et des têtes en bambou à poils de ricin pour tenir plusieurs mois.
+Dedans : le manche sonique, des têtes en bambou à poils de ricin et l'étui de voyage.
 
-Une bonne idée pour te lancer. Ou pour offrir à quelqu'un qui galère encore avec sa brosse manuelle.
+C'est le point de départ si tu hésites encore. Ou l'idée cadeau pour quelqu'un qui galère avec sa brosse manuelle.
 
 Pack découverte : 64,90 €.
 
 [CTA]
 
-#brosseadentselectrique #brosseadentsbambou #ideecadeau #pulsecare"""),
+#brosseadentselectrique #packdecouverte #brosseadentsbambou #pulsecare"""),
 
-# ───────────────────────── 9 · CAROUSEL
-dict(date="2026-10-17", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1635286771551-9d7241ce7811", kicker="Brosse à dents électrique", title="La routine du soir compte plus que celle du matin", swipe=True),
-  dict(tpl="list", img="u:1693693476268-867d0e6eda85", title="Ta routine en 4 étapes", numbered=True, items=[("Fil dentaire","Ou brossettes entre les dents."),("2 minutes de brossage","Mode Nettoyage."),("Tu craches, tu ne rinces pas","Le fluor reste sur les dents."),("Plus rien à manger","Jusqu'au lendemain matin.")], page="2/2"),
+# ───────────────────────── 6 · 15/11 · routine du soir
+dict(date="2026-11-15", kind="carousel", da="a", slides=[
+  dict(tpl="hero", img="u:1552650272-b8a34e21bc4b", kicker="Routine du soir", title="Le brossage du soir compte *plus que celui du matin*", swipe=True),
+  dict(tpl="steps", tone="mint", kicker="L'ordre qui marche", title="4 étapes, dans cet ordre", items=[("Fil dentaire", "Ou brossettes entre les dents."), ("2 minutes de brossage", "Mode Nettoyage, le minuteur gère."), ("Tu craches", "Sans rincer à l'eau."), ("Plus rien à manger", "Jusqu'au lendemain matin.")]),
 ],
-caption="""La routine du soir compte plus que celle du matin pour ta brosse à dents électrique.
+caption="""Avec une brosse à dents électrique comme avec une manuelle, le brossage du soir compte plus que celui du matin.
 
-Pourquoi ? La nuit, tu produis moins de salive. Les bactéries ont le champ libre.
+La nuit, tu produis moins de salive. Les bactéries sont tranquilles pendant 8 heures.
 
-Ta routine en 4 étapes :
+L'ordre qui marche :
 → fil dentaire ou brossettes
-→ 2 minutes de brossage, mode Nettoyage
-→ crache, ne rince pas
+→ 2 minutes de brossage
+→ tu craches, tu ne rinces pas
 → plus rien à manger après
 
 Enregistre ce post pour ce soir.
@@ -250,17 +192,34 @@ Enregistre ce post pour ce soir.
 
 #brosseadentselectrique #routinedusoir #hygienebuccodentaire #pulsecare"""),
 
-# ───────────────────────── 10 · REEL
-dict(date="test-2026-10-18", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1553691158-91a7f9183156", kicker="Le match", title="Manuelle ou *électrique* ?", swipe=True),
-  dict(tpl="list", img="u:1553691475-f38e4026275b", title="Ce que l'électrique change", items=[("41 000 vibrations par minute","Tu guides, elle nettoie."),("Minuteur 2 minutes","Plus de brossage bâclé."),("Mode Sensible","Pour les gencives fragiles.")], page="2/3"),
-  dict(tpl="product", img=s("bamboo_face"), kicker="Pulse Care Bamboo+", title="Prête à passer à *l'électrique* ?", price="59,90 €", callouts=["Tête en bambou","41 000 vib/min","4 modes","USB-C · 30 j","IPX7"], page="3/3"),
+# ───────────────────────── 7 · 16/11 · dentiste
+dict(date="2026-11-16", kind="photo", da="c", slides=[
+  dict(tpl="statement", img="u:1777331903190-341a3dd0441b", kicker="Rappel", title="Ta brosse ne remplace pas *ton dentiste.*",
+       sub="Un contrôle par an. Le tartre installé, seul un pro peut l'enlever."),
+],
+caption="""Une bonne brosse à dents électrique ne remplace pas le rendez-vous chez le dentiste.
+
+Elle retire la plaque au quotidien. Mais une fois que la plaque a durci en tartre, le brossage n'y peut plus rien : il faut un détartrage.
+
+Le rythme conseillé : un contrôle par an, plus souvent si ton dentiste te le demande.
+
+Ton dernier rendez-vous date de quand ?
+
+[CTA]
+
+#brosseadentselectrique #dentiste #detartrage #pulsecare"""),
+
+# ───────────────────────── 8 · 17/11 · manuelle ou électrique
+dict(date="2026-11-17", kind="carousel", da="b", slides=[
+  dict(tpl="hero", img="u:1693692273603-3b9e13789298", kicker="Le match", title="Manuelle ou *électrique* ?", swipe=True),
+  dict(tpl="versus", kicker="Ce qui change", title="Lequel est *fait pour toi* ?", left=("Brosse manuelle", ["Technique à soigner", "Pas de minuteur", "Tout part à la poubelle"]), right=("Pulse Care", ["Les vibrations nettoient", "Minuteur 2 min intégré", "Seule la tête se change"])),
+  dict(tpl="arch", kicker="Pulse Care Bamboo+", title="Prête à passer *à l'électrique* ?", img=s("p017"), price="59,90 €"),
 ],
 caption="""Brosse à dents électrique ou manuelle : laquelle choisir ?
 
-La manuelle marche si ta technique est parfaite. Bon angle, bon mouvement, 2 minutes pile.
+La manuelle fait le travail si ta technique est parfaite : bon angle, bon mouvement, 2 minutes pile. Dans la vraie vie, c'est rare.
 
-La brosse à dents électrique sonique te facilite la vie :
+La sonique facilite les choses :
 → 41 000 vibrations par minute, tu n'as qu'à guider
 → minuteur intégré, plus de brossage bâclé
 → un mode Sensible pour les gencives fragiles
@@ -271,48 +230,140 @@ Team manuelle ou team électrique ?
 
 #brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare"""),
 
-# ───────────────────────── 11 · PHOTO
-dict(date="2026-10-19", kind="photo", slides=[
-  dict(tpl="stats", img=s("usb"), title="Recharge USB-C", items=[("2,5 h","de charge environ"),("30 j","d'autonomie"),("500","mAh, batterie lithium"),("USB-C","le câble de ton téléphone")]),
+# ───────────────────────── 9 · 18/11 · autonomie
+dict(date="2026-11-18", kind="photo", da="c", slides=[
+  dict(tpl="bignum", kicker="Autonomie", big="30 j", title="sans toucher *au chargeur*", sub="Environ 2,5 h de charge, en USB-C.", img=s("chargeur")),
 ],
-caption="""Une brosse à dents électrique qui se recharge en USB-C. Le même câble que ton téléphone.
+caption="""Une brosse à dents électrique qui se recharge une fois par mois, en USB-C.
 
-→ environ 2,5 heures de charge
-→ jusqu'à 30 jours d'autonomie
+→ environ 2,5 heures pour une charge complète
+→ jusqu'à 30 jours d'autonomie, pour 2 brossages par jour
 → batterie lithium 500 mAh
+→ le même câble que ton téléphone
 
-Une charge par mois. Pas de socle encombrant sur le lavabo.
+Pas de socle qui traîne sur le lavabo. Et en voyage, tu peux laisser le chargeur à la maison.
 
 [CTA]
 
 #brosseadentselectrique #usbc #brosseadentsrechargeable #pulsecare"""),
 
-# ───────────────────────── 12 · PHOTO
-dict(date="2026-10-20", kind="photo", slides=[
-  dict(tpl="hero", img="u:1620626011761-996317b8d101", kicker="Étanche IPX7", title="Sous la douche ?\n*Aucun problème.*", sub="Ta brosse résiste à l'immersion. Sèche juste le port USB-C avant de la recharger."),
+# ───────────────────────── 10 · 19/11 · les 4 zones
+dict(date="2026-11-19", kind="carousel", da="a", slides=[
+  dict(tpl="schema", kind="zones", tone="sand", kicker="Le minuteur", title="4 zones, *30 secondes chacune*", swipe=True),
+  dict(tpl="list", img="u:1758521539597-c774ddffba24", title="Les oubliées", numbered=True, items=[("Derrière les molaires", "Le fond, tout au bout."), ("Les faces internes", "Côté langue."), ("La ligne des gencives", "Là où la plaque s'accumule."), ("La langue", "3 passages doux suffisent.")]),
 ],
-caption="""IPX7 sur ta brosse à dents électrique, ça veut dire quoi ?
+caption="""Une brosse à dents électrique, 2 minutes, 4 zones de 30 secondes. C'est toute la méthode.
 
-Elle résiste à l'immersion dans l'eau. Concrètement :
-→ tu peux te brosser les dents sous la douche
-→ tu la rinces sous le robinet sans stress
-→ les éclaboussures du lavabo ne posent aucun problème
+Haut gauche, haut droite, bas gauche, bas droite. La micro-pause du minuteur te dit quand changer.
 
-Pense juste à bien sécher le port USB-C avant de la recharger.
+Les endroits que presque tout le monde oublie :
+→ derrière les dernières molaires
+→ les faces internes, côté langue
+→ la ligne des gencives
+→ la langue elle-même
+
+Tu en oublies combien, honnêtement ?
 
 [CTA]
 
-#brosseadentselectrique #ipx7 #brosseadentsbambou #pulsecare"""),
+#brosseadentselectrique #techniquedebrossage #hygienebuccodentaire #pulsecare"""),
 
-# ───────────────────────── 13 · REEL
-dict(date="2026-10-21", kind="carousel", slides=[
+# ───────────────────────── 11 · 20/11 · les 4 modes
+dict(date="2026-11-20", kind="photo", da="b", tone="fresh", slides=[
+  dict(tpl="mosaic", kicker="4 modes", title="Lequel choisir ?", sub="Un mode par besoin, un bouton pour passer de l'un à l'autre.",
+       imgs=[(s("modes_main"), "Sensible"), (s("icones"), "Nettoyage"), (s("p019"), "Blanchiment"), (s("p090"), "Polissage")]),
+],
+caption="""4 modes sur ta brosse à dents électrique Pulse Care : lequel utiliser et quand ?
+
+→ Sensible : vibrations adoucies, pour les gencives qui saignent ou les dents réactives
+→ Nettoyage : le mode de tous les jours, matin et soir
+→ Blanchiment : pour aider à retirer les taches de surface (café, thé)
+→ Polissage : pour finir avec une sensation de dents lisses
+
+Astuce : si tu passes du manuel à l'électrique, reste 1 à 2 semaines en mode Sensible.
+
+[CTA]
+
+#brosseadentselectrique #brosseadentssonique #modesdebrossage #pulsecare"""),
+
+# ───────────────────────── 12 · 21/11 · vrai ou faux
+dict(date="2026-11-21", kind="carousel", da="c", slides=[
+  dict(tpl="statement", img="u:1593183230686-69876b0cb240", kicker="Vrai ou faux", title="Appuyer fort =\n*dents plus propres ?*", swipe=True),
+  dict(tpl="schema", kind="angle", kicker="Le bon geste", title="Un angle *de 45°*", sub="Les poils orientés vers la gencive, aucune pression."),
+],
+caption="""Vrai ou faux : avec une brosse à dents électrique, plus tu appuies fort, plus tes dents sont propres ?
+
+FAUX. Et c'est même l'inverse.
+
+Appuyer use l'émail et fait reculer la gencive. Avec une sonique, le nettoyage vient des vibrations, pas de la force.
+
+Le bon geste : la tête posée à 45° vers la gencive, et tu glisses lentement d'une dent à l'autre.
+
+[CTA]
+
+#brosseadentselectrique #vraioufaux #conseilsdentaires #pulsecare"""),
+
+# ───────────────────────── 13 · 22/11 · poils ricin
+dict(date="2026-11-22", kind="photo", da="a", tone="honey", slides=[
+  dict(tpl="product", img=s("ricin_gp"), kicker="Gros plan", title="Des poils à base *de ricin*", sub="Fibre d'origine végétale, douce pour l'émail et les gencives."),
+],
+caption="""Gros plan sur les poils des têtes de brosse à dents électrique Pulse Care.
+
+Ils sont fabriqués à base d'huile de ricin, une fibre d'origine végétale, à la place des poils 100 % pétrole.
+
+Au brossage, le toucher est doux, pour l'émail comme pour les gencives sensibles. Et la plaque part comme il faut.
+
+Montés sur une tête en bambou, compatibles uniquement avec les manches Pulse Care.
+
+[CTA]
+
+#brosseadentselectrique #poilsricin #gencivessensibles #pulsecare"""),
+
+# ───────────────────────── 14 · 23/11 · tuto
+dict(date="2026-11-23", kind="carousel", da="b", slides=[
+  dict(tpl="hero", img=s("decouverte_main"), kicker="Tuto", title="Bien utiliser ta brosse *dès le premier jour*", swipe=True),
+  dict(tpl="steps", tone="fresh", kicker="Avant d'allumer", title="L'ordre des gestes", items=[("Dentifrice sur la tête", "Une noisette suffit."), ("Tête sur les dents", "Puis seulement, tu allumes."), ("Angle de 45°", "Poils vers la gencive."), ("Tu glisses, tu ne frottes pas", "30 secondes par zone.")]),
+],
+caption="""Bien utiliser une brosse à dents électrique, c'est surtout une question d'ordre des gestes.
+
+1. Mets le dentifrice sur la tête
+2. Place la tête sur les dents AVANT d'allumer, sinon éclaboussures garanties
+3. Angle de 45° vers la gencive
+4. Tu glisses dent par dent, sans frotter, 30 secondes par zone
+
+C'est tout. Le reste, le minuteur s'en occupe.
+
+Enregistre ce post pour l'avoir sous la main.
+
+[CTA]
+
+#brosseadentselectrique #tuto #hygienebuccodentaire #pulsecare"""),
+
+# ───────────────────────── 15 · 24/11 · défi 7 jours
+dict(date="2026-11-24", kind="photo", da="c", slides=[
+  dict(tpl="tracker", kicker="Le défi", title="7 jours, *2 brossages par jour*", sub="Capture ce post et coche tes cases chaque soir.", rows=["Matin", "Soir"], done=3),
+],
+caption="""Un défi simple avec ta brosse à dents électrique : 7 jours, 2 brossages de 2 minutes par jour.
+
+Pas de nouveau matériel, pas de méthode compliquée. Juste la régularité, qui est le vrai facteur d'un sourire en bonne santé.
+
+Capture ce post, coche une case matin et soir. Au bout de 7 jours, l'habitude commence à tenir toute seule.
+
+Tu relèves ?
+
+[CTA]
+
+#brosseadentselectrique #defi7jours #routinedentaire #pulsecare"""),
+
+# ───────────────────────── 16 · 25/11 · pack duo
+dict(date="2026-11-25", kind="carousel", da="a", slides=[
   dict(tpl="hero", img=s("p121"), kicker="Pack duo", title="Une brosse pour toi.\n*Une pour l'autre.*", swipe=True),
-  dict(tpl="list", img=s("duo_acc"), title="Dans la boîte", items=[("2 manches Bamboo+","41 000 vibrations par minute."),("Des têtes en bambou","Chacun les siennes."),("Étuis de voyage","En bambou.")], page="2/3"),
-  dict(tpl="product", img=s("p091"), kicker="Pack duo", title="Une routine pour toute la salle de bain", price="94,90 €", page="3/3"),
+  dict(tpl="mosaic", tone="sand", kicker="Dans le coffret", title="Deux routines, un seul lavabo", imgs=[(s("duo_etuis"), "2 manches"), (s("duo_acc"), "Les accessoires"), (s("duo_coffret"), "2 étuis")]),
+  dict(tpl="arch", kicker="Pack duo", title="Pour deux, *d'un coup*", img=s("p091"), price="94,90 €"),
 ],
 caption="""Le pack duo : deux brosses à dents électriques Pulse Care Bamboo+ pour la maison.
 
-Pour le couple. Pour les colocs. Pour toi et ton ado.
+Pour le couple, les colocs, ou toi et ton ado.
 
 Chacun son manche. Chacun ses têtes en bambou. Une seule routine pour toute la salle de bain.
 
@@ -324,250 +375,75 @@ Identifie la personne avec qui tu partages ton lavabo.
 
 #brosseadentselectrique #packduo #brosseadentsbambou #pulsecare"""),
 
-# ───────────────────────── 14 · PHOTO
-dict(date="2026-10-22", kind="photo", slides=[
-  dict(tpl="hero", img="u:1629909613654-28e377c37b09", kicker="Rappel", title="Ta brosse ne remplace pas ton dentiste.", sub="Un contrôle par an. Le tartre, seul un pro peut l'enlever."),
+# ───────────────────────── 17 · 26/11 · régularité
+dict(date="2026-11-26", kind="photo", da="b", tone="forest", slides=[
+  dict(tpl="statement", img="u:1706951413911-a4477e18ccd5", kicker="Le vrai secret", title="*La régularité.*", sub="Matin et soir. 2 minutes. Tous les jours. Rien de plus."),
 ],
-caption="""Une bonne brosse à dents électrique ne remplace pas le dentiste.
+caption="""Un sourire en bonne santé ne se joue pas sur un brossage parfait, avec ou sans brosse à dents électrique. Il se joue sur la régularité.
 
-Le rythme conseillé : un contrôle par an, et un détartrage selon ce que ton dentiste recommande.
+Matin et soir. 2 minutes. Tous les jours.
 
-Ta brosse retire la plaque au quotidien. Le tartre, une fois installé, seul un pro peut l'enlever.
+C'est moins une question de matériel que d'habitude. La brosse aide juste à tenir le rythme : le minuteur s'arrête seul, et tu n'as plus à compter.
 
-Ton dernier rendez-vous date de quand ?
+Tu brosses déjà 2 fois par jour ? Oui ou non en commentaire.
 
 [CTA]
 
-#brosseadentselectrique #dentiste #hygienebuccodentaire #pulsecare"""),
+#brosseadentselectrique #routinedentaire #sourire #pulsecare"""),
 
-# ───────────────────────── 15 · CAROUSEL
-dict(date="2026-10-23", kind="carousel", slides=[
-  dict(tpl="statement", img="u:1489278353717-f64c6ee8a4d2", kicker="Vrai ou faux", title="Appuyer fort =\n*dents plus propres ?*", swipe=True),
-  dict(tpl="list", img="u:1663182245833-7dd667277043", title="La bonne méthode", stamp="FAUX", items=[("Tête posée en douceur","Angle de 45° vers la gencive."),("Tu glisses lentement","D'une dent à l'autre."),("Aucune pression","Les vibrations nettoient, toi tu guides.")], page="2/2"),
+# ───────────────────────── 18 · 27/11 · abonnement
+dict(date="2026-11-27", kind="carousel", da="c", slides=[
+  dict(tpl="hero", img="u:1481708426686-bad08e28e1c2", kicker="Abonnement Pulse Care", title="Oublier de changer ta tête ?\n*Plus possible.*", swipe=True),
+  dict(tpl="schema", kind="calendar", kicker="Sur un an", title="4 changements *par an*"),
+  dict(tpl="steps", kicker="Comment ça marche", title="En 3 points", items=[("Tu choisis tes têtes", "Poils ricin ou nylon."), ("Elles arrivent chez toi", "Au rythme choisi, sans commande à repasser."), ("Sans engagement", "Tu arrêtes quand tu veux depuis ton compte.")]),
 ],
-caption="""Vrai ou faux : plus tu appuies fort avec ta brosse à dents électrique, plus tes dents sont propres ?
+caption="""L'abonnement têtes de brosse à dents électrique Pulse Care, en 3 points.
 
-FAUX.
+Une tête tous les 3 mois, c'est 4 têtes par an. Le genre de chose qu'on oublie toujours.
 
-Appuyer fort use l'émail et fait reculer les gencives. Avec une brosse sonique, ce sont les vibrations qui nettoient.
+→ tu choisis tes têtes, poils ricin ou nylon
+→ elles arrivent chez toi au rythme choisi
+→ sans engagement, tu arrêtes quand tu veux depuis ton compte
 
-Swipe pour la bonne méthode.
+Plus besoin d'y penser.
 
 [CTA]
 
-#brosseadentselectrique #vraioufaux #conseilsdentaires #pulsecare"""),
+#brosseadentselectrique #abonnement #tetederechange #pulsecare"""),
 
-# ───────────────────────── 16 · REEL
-dict(date="2026-10-24", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1502301197179-65228ab57f78", kicker="Vacances de la Toussaint", title="Laisse le chargeur *à la maison*", swipe=True),
-  dict(tpl="product", img=s("etui"), kicker="Inclus", title="Un étui de voyage en bambou", sub="Pour protéger la tête dans ta trousse.", page="2/3"),
-  dict(tpl="stats", img="u:1764909262009-3dcd5691185c", title="En voyage", items=[("30 j","d'autonomie, pas besoin du chargeur"),("USB-C","le câble de ton téléphone"),("IPX7","douche d'hôtel ok"),("Étui","en bambou, inclus")], page="3/3"),
+# ───────────────────────── 19 · 28/11 · 3 mois
+dict(date="2026-11-28", kind="photo", da="a", tone="forest", slides=[
+  dict(tpl="bignum", kicker="Le rappel", big="3 mois", title="la durée de vie *d'une tête*", sub="Après, les poils s'écartent et nettoient moins bien.", img=s("ricin_pack4_vue")),
 ],
-caption="""Partir en vacances avec sa brosse à dents électrique, sans le chargeur.
+caption="""3 mois : c'est la durée de vie d'une tête de brosse à dents électrique.
 
-Avec 30 jours d'autonomie, la Bamboo+ tient tout ton séjour.
+Passé ce délai, les poils s'écartent vers l'extérieur. Ils ne suivent plus la forme de la dent et retirent moins bien la plaque, même si la tête a l'air propre.
 
-Dans la boîte :
-→ un étui de voyage en bambou pour protéger la tête
-→ un câble USB-C si tu pars longtemps
-
-Vacances de la Toussaint, week-end, déplacement pro : elle rentre dans toutes les trousses.
-
-[CTA]
-
-#brosseadentselectrique #voyage #troussedetoilette #pulsecare"""),
-
-# ───────────────────────── 17 · CAROUSEL
-dict(date="2026-10-25", kind="carousel", slides=[
-  dict(tpl="hero", img=s("ricin_arriere"), kicker="Brosse à dents électrique", title="3 signes qu'il faut changer ta tête", swipe=True),
-  dict(tpl="list", img=s("nylon_profil"), title="Change-la si...", items=[("Les poils s'écartent","Ils nettoient moins bien."),("La couleur a changé","Signe d'usure."),("Ça fait plus de 3 mois","Même si elle a l'air propre.")], page="2/3"),
-  dict(tpl="product", img=s("ricin_pack2"), kicker="Têtes de recharge", title="Clip en une seconde", sub="Têtes en bambou, poils ricin ou nylon.", page="3/3"),
-],
-caption="""3 signes qu'il est temps de changer la tête de ta brosse à dents électrique :
-
-→ les poils s'écartent vers l'extérieur
-→ la couleur des poils a changé
+Les 3 signes qu'il est temps :
+→ les poils partent sur les côtés
+→ la couleur a changé
 → ça fait plus de 3 mois
 
-Change-la aussi après une angine ou un gros rhume.
-
-Nos têtes de recharge sont en bambou, avec poils ricin ou nylon. Elles se clipsent en une seconde sur le manche Pulse Care.
-
 [CTA]
 
-#brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare"""),
+#brosseadentselectrique #tetederechange #hygienebuccodentaire #pulsecare"""),
 
-# ───────────────────────── 18 · PHOTO
-dict(date="2026-10-26", kind="photo", slides=[
-  dict(tpl="hero", img="u:1494790108377-be9c29b29330", kicker="Astuce haleine fraîche", title="Et ta langue,\n*tu la brosses ?*", sub="3 ou 4 passages doux, de l'arrière vers l'avant."),
+# ───────────────────────── 20 · 29/11 · FAQ
+dict(date="2026-11-29", kind="carousel", da="b", slides=[
+  dict(tpl="hero", img=s("p055"), kicker="FAQ Pulse Care", title="Tes questions, *nos réponses*", swipe=True),
+  dict(tpl="product", img=s("nylon_pack2"), kicker="Compatibilité", title="Compatible avec *d'autres manches* ?", sub="Non. Les têtes sont conçues uniquement pour les manches Pulse Care."),
+  dict(tpl="hero", img="u:1610178169668-530baa052915", kicker="Étanchéité", title="Sous la douche ?", sub="Oui, la brosse est étanche IPX7. Sèche le port USB-C avant de recharger."),
+  dict(tpl="product", img=s("p056"), kicker="Autonomie", title="La batterie tient *combien de temps* ?", sub="Jusqu'à 30 jours, pour 2 brossages par jour."),
 ],
-caption="""Ta brosse à dents électrique fait le boulot sur les dents. Mais tu brosses ta langue ?
+caption="""FAQ brosse à dents électrique Pulse Care : les 3 questions qui reviennent le plus.
 
-Une grande partie des bactéries responsables de la mauvaise haleine vit sur la langue.
-
-Le geste : après tes 2 minutes, passe doucement la brosse de l'arrière vers l'avant de la langue, 3 ou 4 fois. Moteur coupé ou mode Sensible.
-
-10 secondes de plus. Haleine plus fraîche.
-
-[CTA]
-
-#brosseadentselectrique #haleinefraiche #astucesante #pulsecare"""),
-
-# ───────────────────────── 19 · REEL
-dict(date="2026-10-27", kind="carousel", slides=[
-  dict(tpl="product", img=s("ricin_fibres"), kicker="Têtes de recharge", title="Poils *ricin* ou poils *nylon* ?", swipe=True),
-  dict(tpl="versus", kicker="Têtes Pulse Care", title="Lequel est *fait pour toi* ?", both_good=True, left=("Poils nylon", ["Brossage plus ferme", "Tu sens bien le nettoyage", "Tête en bambou"]), right=("Poils ricin", ["Fibre d'origine végétale", "Toucher très doux", "Idéal gencives sensibles"]), page="2/2"),
-],
-caption="""Têtes de brosse à dents électrique : poils ricin ou poils nylon ?
-
-Les deux sont montés sur une tête en bambou. La différence, c'est la fibre.
-
-→ Ricin : fibre d'origine végétale, toucher très doux. Idéal gencives sensibles.
-→ Nylon : sensation de brossage plus ferme, pour ceux qui aiment sentir le nettoyage.
-
-Pas sûr ? Prends une tête de chaque et compare.
-
-[CTA]
-
-#brosseadentselectrique #brosseadentsbambou #tetederechange #pulsecare"""),
-
-# ───────────────────────── 20 · CAROUSEL
-dict(date="2026-10-28", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1676897288522-e8a081e71430", kicker="Brosse à dents électrique", title="Dans quel ordre faire les choses ?", swipe=True),
-  dict(tpl="list", img="u:1631048499052-e6d9f305d2c0", title="L'ordre qui compte", numbered=True, items=[("Fil dentaire","Ou brossettes."),("Brossage 2 minutes","Le minuteur gère le temps."),("Tu craches",""),("Tu ne rinces PAS","Le fluor reste sur les dents.")], page="2/2"),
-],
-caption="""Brosse à dents électrique : dans quel ordre faire les choses ?
-
-1. Fil dentaire ou brossettes
-2. Brossage 2 minutes
-3. Tu craches le dentifrice
-4. Tu ne rinces PAS à l'eau
-
-Rincer enlève le fluor du dentifrice. En ne rinçant pas, il reste sur les dents plus longtemps.
-
-Tu rinces, toi ? Sois honnête.
-
-[CTA]
-
-#brosseadentselectrique #conseilsdentaires #routinedentaire #pulsecare"""),
-
-# ───────────────────────── 21 · PHOTO
-dict(date="2026-10-29", kind="photo", slides=[
-  dict(tpl="product", img=s("p095"), kicker="Pulse Care Bamboo+", title="Rien de plus sur ton lavabo.", sub="41 000 vibrations/min · 4 modes · 30 jours d'autonomie", price="59,90 €"),
-],
-caption="""La brosse à dents électrique Pulse Care Bamboo+, version salle de bain.
-
-Un manche sobre. Une tête en bambou. Rien de plus sur ton lavabo.
-
-41 000 vibrations par minute, 4 modes, 30 jours d'autonomie.
-
-59,90 € avec 2 têtes en bambou, l'étui de voyage et le câble USB-C.
-
-[CTA]
-
-#brosseadentselectrique #salledebain #brosseadentsbambou #pulsecare"""),
-
-# ───────────────────────── 22 · REEL
-dict(date="2026-10-30", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1780327065644-399075fb9e9b", kicker="Brosse à dents électrique", title="Une routine qui tient en famille", swipe=True),
-  dict(tpl="list", img="u:1780327065542-80cc74036b04", title="Astuces 1 et 2", numbered=True, items=[("Même heure chaque soir","Juste après le pyjama."),("Parents en même temps","Les enfants copient ce qu'ils voient.")], page="2/3"),
-  dict(tpl="list", img="u:1611690061822-b707a67bfebb", title="Astuces 3 et 4", numbered=True, start=3, items=[("Le minuteur = un défi","Qui tient les 2 minutes ?"),("Chacun sa tête","Un repère par personne.")], page="3/3", alt=True),
-],
-caption="""Brosse à dents électrique : 4 astuces pour une routine qui tient en famille.
-
-1. Même heure tous les soirs, juste après le pyjama
-2. Les parents se brossent en même temps que les enfants
-3. Le minuteur de 2 minutes devient un défi
-4. Chacun son repère pour ne pas mélanger les têtes
-
-Pour les enfants, demande à ton dentiste le type de brosse adapté à leur âge.
-
-[CTA]
-
-#brosseadentselectrique #routinefamille #parents #pulsecare"""),
-
-# ───────────────────────── 23 · PHOTO
-dict(date="2026-10-31", kind="photo", slides=[
-  dict(tpl="statement", img="u:1588756264692-d396bca41fb1", kicker="Halloween", title="Bonbons ok.\n*Brossage obligatoire.*", sub="Mange-les d'un coup, bois de l'eau, 2 minutes de brossage avant de dormir."),
-],
-caption="""Halloween et brosse à dents électrique : le plan de survie.
-
-Les bonbons, ce n'est pas le problème. C'est le grignotage toute la soirée.
-
-→ mange-les d'un coup plutôt qu'en continu
-→ bois de l'eau après
-→ brossage de 2 minutes avant de dormir, sans exception
-
-Et toi, team bonbons acides ou team chocolat ?
-
-[CTA]
-
-#brosseadentselectrique #halloween #hygienebuccodentaire #pulsecare"""),
-
-# ───────────────────────── 24 · PHOTO
-dict(date="2026-11-01", kind="photo", slides=[
-  dict(tpl="hero", img="u:1525124480298-565f20ea00ae", kicker="Pourquoi le bambou ?", title="Il pousse vite.\n*Il résiste à l'eau.*", sub="Sur la Bamboo+, il est sur les têtes et l'étui. Le manche est en plastique ASA."),
-],
-caption="""Le bambou dans ta brosse à dents électrique, pourquoi ce matériau ?
-
-→ il pousse vite, sans besoin de replanter
-→ il est léger et résiste à l'eau
-→ il remplace le plastique sur la tête, la partie que tu jettes le plus souvent
-
-Sur la Bamboo+, le bambou est sur les têtes et l'étui de voyage. Le manche, lui, est en plastique ASA pour résister à l'eau et aux chocs.
-
-[CTA]
-
-#brosseadentsbambou #brosseadentselectrique #bambou #pulsecare"""),
-
-# ───────────────────────── 25 · REEL
-dict(date="2026-11-02", kind="carousel", slides=[
-  dict(tpl="hero", img=s("decouverte_main"), kicker="Tuto", title="Bien utiliser ta brosse à dents électrique", swipe=True),
-  dict(tpl="list", img=s("tete_main2"), title="Étape 1 : avant d'allumer", items=[("Dentifrice sur la tête","Une noisette suffit."),("Tête sur les dents, PUIS on allume","Zéro éclaboussure.")], page="2/3"),
-  dict(tpl="list", img="u:1693692282136-2eeb24c11856", title="Étapes 2 et 3 : pendant", items=[("Angle de 45°","Poils vers la gencive."),("Dent par dent","Tu glisses, tu ne frottes pas."),("30 s par zone","La micro-pause te dit quand changer.")], page="3/3", alt=True),
-],
-caption="""Bien utiliser ta brosse à dents électrique en 3 étapes.
-
-1. Mets le dentifrice sur la tête, place-la sur les dents AVANT d'allumer. Sinon, éclaboussures garanties.
-2. Angle de 45° vers la gencive. Tu glisses dent par dent, sans frotter.
-3. Suis le minuteur : 30 secondes par zone, la micro-pause te dit quand changer.
-
-Enregistre ce post pour l'avoir sous la main.
-
-[CTA]
-
-#brosseadentselectrique #tuto #hygienebuccodentaire #pulsecare"""),
-
-# ───────────────────────── 26 · PHOTO
-dict(date="2026-11-03", kind="photo", slides=[
-  dict(tpl="product", img=s("p087"), kicker="Pulse Care", title="Un manche qu'on garde.\n*Des têtes qu'on change.*"),
-],
-caption="""Une brosse à dents électrique. Un manche qu'on garde. Des têtes en bambou qu'on change.
-
-C'est notre façon de voir l'hygiène bucco-dentaire chez Pulse Care.
-
-Tu veux qu'on parle de quoi dans les prochains posts ? Dis-le en commentaire.
-
-[CTA]
-
-#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare"""),
-
-# ───────────────────────── 27 · CAROUSEL
-dict(date="2026-11-04", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1733425992462-0f674e744ead", kicker="FAQ Pulse Care", title="Tes questions, nos réponses", swipe=True),
-  dict(tpl="product", img=s("nylon_pack2"), kicker="Compatibilité", title="Têtes compatibles avec d'autres marques ?", sub="Non. Elles sont conçues uniquement pour les manches Pulse Care.", page="2/4"),
-  dict(tpl="hero", img="u:1631889993959-41b4e9c6e3c5", kicker="Étanchéité", title="Sous la douche ?", sub="Oui. La brosse est étanche IPX7.", page="3/4"),
-  dict(tpl="product", img=s("p056"), kicker="Autonomie", title="Combien de temps tient la batterie ?", sub="Jusqu'à 30 jours, pour 2 brossages par jour.", page="4/4"),
-],
-caption="""FAQ brosse à dents électrique Pulse Care : on répond à tes questions.
-
-Les têtes sont-elles compatibles avec d'autres marques ?
+Les têtes sont-elles compatibles avec d'autres manches ?
 Non. Elles sont conçues uniquement pour les manches Pulse Care.
 
 Je peux l'utiliser sous la douche ?
-Oui, elle est étanche IPX7.
+Oui, elle est étanche IPX7. Pense juste à sécher le port USB-C avant de la recharger.
 
-Combien de temps dure la batterie ?
+Combien de temps tient la batterie ?
 Jusqu'à 30 jours, pour 2 brossages par jour.
 
 Une autre question ? Pose-la en commentaire.
@@ -576,19 +452,164 @@ Une autre question ? Pose-la en commentaire.
 
 #brosseadentselectrique #faq #brosseadentsbambou #pulsecare"""),
 
-# ───────────────────────── 28 · REEL
-dict(date="2026-11-05", kind="carousel", slides=[
-  dict(tpl="hero", img=s("ricin_pack4"), kicker="Têtes de recharge", title="Prends un pack, oublie le sujet", swipe=True),
-  dict(tpl="statement", img="u:1609879937493-56540300d8cc", kicker="Une tête tous les 3 mois", title="4 têtes =\n*1 an de brossage*", page="2/3"),
-  dict(tpl="product", img=s("ricin_pack4_vue"), kicker="Pack de 4", title="Poils ricin ou nylon", sub="Têtes en bambou, clip en une seconde.", price="14,90 €", page="3/3"),
+# ───────────────────────── 21 · 30/11 · bambou
+dict(date="2026-11-30", kind="photo", da="c", slides=[
+  dict(tpl="hero", img="u:1768593049340-6e50351b4b2f", kicker="Pourquoi le bambou ?", title="Il pousse vite.\n*Il résiste à l'eau.*",
+       sub="Sur la Bamboo+, il est sur les têtes et sur l'étui. Le manche, lui, est en plastique ASA."),
 ],
-caption="""Têtes de recharge pour brosse à dents électrique : prends un pack, oublie le sujet.
+caption="""Le bambou sur une brosse à dents électrique, pourquoi ce matériau ?
 
-Une tête tous les 3 mois. Un pack de 4, c'est un an de brossage.
+→ il pousse vite, sans replantation
+→ il est léger et supporte bien l'humidité de la salle de bain
+→ il remplace le plastique sur la tête, la partie qu'on jette le plus souvent
 
-→ en poils ricin ou en poils nylon
+Sur la Bamboo+, le bambou est sur les têtes et sur l'étui de voyage. Le manche est en plastique ASA, choisi pour résister à l'eau et aux chocs pendant des années.
+
+[CTA]
+
+#brosseadentsbambou #brosseadentselectrique #bambou #pulsecare"""),
+
+# ───────────────────────── 22 · 01/12 · plaque et tartre
+dict(date="2026-12-01", kind="carousel", da="a", slides=[
+  dict(tpl="schema", kind="plaque", tone="forest", kicker="Hygiène dentaire", title="De la plaque *au tartre*", swipe=True),
+  dict(tpl="list", img="u:1606811841689-23dfddce3e95", title="Ce qu'il faut retenir", items=[("La plaque, tu l'enlèves", "Avec un brossage de 2 minutes, 2 fois par jour."), ("Le tartre, non", "Il durcit en 24 à 72 h et reste collé."), ("Le détartrage", "Seul un pro peut le retirer.")]),
+],
+caption="""Plaque et tartre sur une brosse à dents électrique : ce n'est pas la même chose.
+
+La plaque, c'est un film de bactéries qui se dépose en permanence. Souple, elle part au brossage.
+
+Si elle reste, elle se minéralise en 24 à 72 heures et devient du tartre. Dur, accroché à la dent, impossible à retirer avec une brosse.
+
+D'où les 2 minutes, 2 fois par jour. Et le détartrage quand ton dentiste le juge utile.
+
+[CTA]
+
+#brosseadentselectrique #tartre #plaquedentaire #pulsecare"""),
+
+# ───────────────────────── 23 · 02/12 · la brosse
+dict(date="2026-12-02", kind="photo", da="c", slides=[
+  dict(tpl="arch", kicker="Pulse Care Bamboo+", title="Le manche reste.\n*La tête se change.*", sub="41 000 vibrations/min · 4 modes · 30 jours d'autonomie", img=s("p084"), price="59,90 €"),
+],
+caption="""La brosse à dents électrique Pulse Care Bamboo+, en une phrase : un manche qu'on garde, des têtes en bambou qu'on change.
+
+→ 41 000 vibrations par minute
+→ 4 modes de brossage
+→ minuteur 2 minutes, pause toutes les 30 s
+→ 30 jours d'autonomie, recharge USB-C
+→ étanche IPX7
+
+59,90 € avec 2 têtes, l'étui de voyage et le câble.
+
+[CTA]
+
+""" + TAGS),
+
+# ───────────────────────── 24 · 03/12 · idée cadeau
+dict(date="2026-12-03", kind="carousel", da="b", slides=[
+  dict(tpl="hero", img="u:1545608444-f045a6db6133", kicker="Idée cadeau", title="Un cadeau *qui sert tous les jours*", swipe=True),
+  dict(tpl="mosaic", tone="sand", kicker="Trois budgets", title="Pour qui, à quel prix", imgs=[(s("nylon_pack4_noir"), "Pack de 4 têtes · 14,90 €"), (s("decouverte_contenu"), "Pack découverte · 64,90 €"), (s("deux_brosses"), "Pack duo · 94,90 €")]),
+  dict(tpl="statement", img="u:1512909006721-3d6018887383", kicker="Le bon argument", title="Il ne finira pas *au fond d'un tiroir.*", sub="Deux fois par jour, tous les jours, pendant des années."),
+],
+caption="""Une brosse à dents électrique en cadeau de Noël : l'idée bête qui fait mouche.
+
+Parce que c'est un objet utilisé deux fois par jour, tous les jours, pendant des années. Peu de cadeaux peuvent en dire autant.
+
+Trois budgets :
+→ pack de 4 têtes en bambou : 14,90 €
+→ pack découverte : 64,90 €
+→ pack duo : 94,90 €
+
+Tu offres à qui cette année ?
+
+[CTA]
+
+#brosseadentselectrique #ideecadeau #cadeaunoel #pulsecare"""),
+
+# ───────────────────────── 25 · 04/12 · quiz durée
+dict(date="2026-12-04", kind="photo", da="a", tone="mint", slides=[
+  dict(tpl="quiz", kicker="Sois honnête", title="Tu brosses *combien de temps* ?",
+       options=["Moins d'une minute", "Environ 1 minute", "2 minutes pile", "Plus de 3 minutes"], answer=2,
+       note="Le minuteur s'arrête seul à 2 minutes. Plus besoin de compter."),
+],
+caption="""Avec ou sans brosse à dents électrique : tu brosses combien de temps, honnêtement ?
+
+À l'œil, la plupart des gens s'arrêtent avant une minute, en pensant en avoir fait deux. C'est le biais classique.
+
+La recommandation reste 2 minutes, 2 fois par jour. Sur la Bamboo+, le minuteur s'arrête seul à 2 minutes, avec une pause toutes les 30 secondes pour changer de zone.
+
+Tu es dans quelle case ? Dis-le en commentaire.
+
+[CTA]
+
+#brosseadentselectrique #minuteur #routinedentaire #pulsecare"""),
+
+# ───────────────────────── 26 · 05/12 · ricin ou nylon
+dict(date="2026-12-05", kind="carousel", da="c", slides=[
+  dict(tpl="product", img=s("ricin_fibres"), kicker="Têtes de recharge", title="Poils *ricin* ou poils *nylon* ?", swipe=True),
+  dict(tpl="versus", kicker="Têtes Pulse Care", title="Lequel est *fait pour toi* ?", both_good=True, left=("Poils nylon", ["Brossage plus ferme", "Tu sens bien le nettoyage", "Tête en bambou"]), right=("Poils ricin", ["Fibre d'origine végétale", "Toucher très doux", "Idéal gencives sensibles"])),
+  dict(tpl="arch", kicker="Pack de 4", title="Un an *de brossage*", img=s("nylon_pack4"), price="14,90 €"),
+],
+caption="""Têtes de brosse à dents électrique : poils ricin ou poils nylon ?
+
+Les deux sont montées sur une tête en bambou et se clipsent en une seconde. La différence, c'est la fibre.
+
+→ Ricin : fibre d'origine végétale, toucher très doux, idéal si tes gencives sont sensibles
+→ Nylon : brossage plus ferme, pour ceux qui aiment sentir le nettoyage
+
+Pas sûr ? Prends une tête de chaque et compare sur deux semaines.
+
+[CTA]
+
+#brosseadentselectrique #tetederechange #poilsricin #pulsecare"""),
+
+# ───────────────────────── 27 · 06/12 · récap chiffres
+dict(date="2026-12-06", kind="photo", da="b", tone="forest", slides=[
+  dict(tpl="stats", img=s("p085"), title="La Bamboo+ *en chiffres*", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("30 j", "d'autonomie, USB-C"), ("IPX7", "étanche, même sous la douche")]),
+],
+caption="""La brosse à dents électrique Pulse Care Bamboo+ en 4 chiffres.
+
+→ 41 000 vibrations par minute, technologie sonique
+→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage
+→ jusqu'à 30 jours d'autonomie, recharge USB-C
+→ étanche IPX7, tu peux te brosser sous la douche
+
+Et toujours le même principe : le manche reste, la tête en bambou se change.
+
+[CTA]
+
+""" + TAGS),
+
+# ───────────────────────── 28 · 07/12 · 5 erreurs
+dict(date="2026-12-07", kind="carousel", da="a", slides=[
+  dict(tpl="hero", img="u:1676897288522-e8a081e71430", kicker="Brosse à dents électrique", title="5 erreurs *à corriger ce soir*", swipe=True),
+  dict(tpl="steps", tone="honey", kicker="Les gestes", title="Les 3 premières", items=[("Frotter comme avec une manuelle", "Pose la tête, laisse les vibrations faire."), ("Appuyer fort", "Ça use l'émail et irrite la gencive."), ("Oublier les faces internes", "Le côté langue compte autant.")]),
+  dict(tpl="steps", tone="mint", start=4, kicker="La routine", title="Et les 2 dernières", items=[("Rincer juste après", "Crache, ne rince pas : le fluor reste."), ("Garder la même tête 6 mois", "On la change tous les 3 mois.")]),
+],
+caption="""5 erreurs fréquentes avec une brosse à dents électrique.
+
+1. Frotter comme avec une manuelle : pose la tête et laisse les vibrations travailler
+2. Appuyer trop fort : ça use l'émail et fait reculer les gencives
+3. Oublier les faces internes, côté langue
+4. Rincer juste après : crache le dentifrice, ne rince pas, le fluor agit plus longtemps
+5. Garder la même tête 6 mois
+
+Tu te reconnais dans laquelle ? Sois honnête en commentaire.
+
+[CTA]
+
+#brosseadentselectrique #erreursbrossage #conseilsdentaires #pulsecare"""),
+
+# ───────────────────────── 29 · 08/12 · pack de 4
+dict(date="2026-12-08", kind="photo", da="c", slides=[
+  dict(tpl="product", img=s("ricin_pack4_douce"), kicker="Pack de 4 têtes", title="Prends un pack, *oublie le sujet*", sub="Une tête tous les 3 mois : 4 têtes, c'est un an.", price="14,90 €"),
+],
+caption="""Têtes de recharge pour brosse à dents électrique : prends un pack de 4 et oublie le sujet pour un an.
+
+Une tête tous les 3 mois. Quatre têtes, douze mois de brossage.
+
 → têtes en bambou
-→ clip en une seconde sur ton manche Pulse Care
+→ poils ricin ou poils nylon
+→ clip en une seconde sur le manche Pulse Care
 
 Pack de 4 : 14,90 €.
 
@@ -596,30 +617,14 @@ Pack de 4 : 14,90 €.
 
 #brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare"""),
 
-# ───────────────────────── 29 · PHOTO
-dict(date="2026-11-06", kind="photo", slides=[
-  dict(tpl="hero", img="u:1617812191081-2a24e3f30e45", kicker="Le vrai secret", title="*La régularité.*", sub="Matin et soir. 2 minutes. Tous les jours."),
+# ───────────────────────── 30 · 09/12 · récap
+dict(date="2026-12-09", kind="carousel", da="b", slides=[
+  dict(tpl="hero", img=s("p004"), kicker="Le récap", title="Pourquoi la *Bamboo+* ?", swipe=True, tw=0.68),
+  dict(tpl="bignum", tone="sand", kicker="Le principe", big="1", title="manche, *des têtes à changer*", sub="Le manche dure des années. Seule la tête en bambou se remplace.", img=s("p092")),
+  dict(tpl="stats", tone="forest", img=s("etui_plat"), title="En résumé", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("2 min", "de minuteur intégré"), ("30 j", "d'autonomie")]),
+  dict(tpl="arch", tone="fresh", kicker="Pulse Care Bamboo+", title="Avec 2 têtes, *l'étui et le câble*", img=s("p014"), price="59,90 €"),
 ],
-caption="""Un beau sourire, ça ne se joue pas sur un brossage. Ça se joue sur la régularité, avec ou sans brosse à dents électrique.
-
-Matin et soir. 2 minutes. Tous les jours.
-
-C'est moins une question de matériel que d'habitude. La brosse t'aide juste à tenir le rythme.
-
-Tu brosses déjà 2 fois par jour ? Oui ou non en commentaire.
-
-[CTA]
-
-#brosseadentselectrique #sourire #routinedentaire #pulsecare"""),
-
-# ───────────────────────── 30 · CAROUSEL
-dict(date="2026-11-07", kind="carousel", slides=[
-  dict(tpl="hero", img=s("p088"), kicker="Le récap", title="Pourquoi la *Bamboo+* ?", swipe=True, tw=0.68),
-  dict(tpl="stats", img=s("decouverte_contenu"), title="En résumé", items=[("41 000","vibrations par minute"),("4","modes de brossage"),("30 j","d'autonomie, USB-C"),("IPX7","étanche")], page="2/4"),
-  dict(tpl="list", img=s("duo_tete"), title="Et aussi", items=[("Minuteur 2 minutes","Pause toutes les 30 s."),("Têtes en bambou","Poils ricin ou nylon."),("Étui de voyage","En bambou, inclus.")], page="3/4", alt=True),
-  dict(tpl="product", img=s("p097"), kicker="Pulse Care Bamboo+", title="Le manche reste.\n*La tête se change.*", sub="Avec 2 têtes, l'étui et le câble USB-C.", price="59,90 €", page="4/4"),
-],
-caption="""Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap.
+caption="""Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap complet.
 
 → 41 000 vibrations par minute
 → 4 modes de brossage
@@ -628,9 +633,11 @@ caption="""Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? 
 → étanche IPX7
 → têtes en bambou, poils ricin ou nylon
 
+Le manche reste des années. Seule la tête se change, tous les 3 mois.
+
 Swipe pour tout voir.
 
 [CTA]
 
-#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare"""),
+""" + TAGS),
 ]
