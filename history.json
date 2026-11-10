@@ -948,5 +948,25 @@
    "guadeloupe-02.jpg",
    "guadeloupe-03.jpg"
   ]
+ },
+ {
+  "date": "2026-11-13",
+  "topic": "royaume-uni-eta-ecosse",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "ecosse-06.jpg",
+   "ecosse-08.jpg"
+  ]
+ },
+ {
+  "date": "2026-11-13-b",
+  "topic": "tenerife-teide-hiver",
+  "format": "photo",
+  "slides": 1,
+  "photos": [
+   "tenerife-02.jpg",
+   "tenerife-04.jpg"
+  ]
  }
 ]
