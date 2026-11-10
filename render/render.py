@@ -1779,6 +1779,10 @@ def x_note(c):
             bx, by = W - M - prod.width, H - 130 - prod.height
             soft_shadow(base, (bx + 20, by + prod.height - 40, bx + prod.width - 20, by + prod.height), 55, 26)
             base.paste(prod, (bx, by))
+        else:   # photo d'ambiance : vignette arrondie, jamais de blanc collé
+            pw, ph = int(W * 0.42), int(H * 0.26); bx, by = W - M - pw, H - 140 - ph
+            soft_shadow(base, (bx + 14, by + ph - 34, bx + pw - 14, by + ph), 50, 24)
+            rounded_photo(base, load(c["img"]), (bx, by, bx + pw, by + ph), 32, c.get("fy", 0.45))
     return base.convert("RGB")
 
 def theme_on(base, c):
@@ -1833,8 +1837,11 @@ def x_editorial(c):
         d.line([M, y, W - M, y], fill=(206, 214, 206), width=2); y += 34
     t = theme_on(base, c); y = th_title(t, M, y, c["title"], start=86, minsize=48, maxlines=3)
     if c.get("sub"):
-        f2 = IM(32)
-        for ln in wrap(c["sub"], f2, W - 2 * M - 30):
+        maxw = W - 2 * M - (150 if c.get("swipe") else 30); f2 = IM(32)
+        ls = wrap(c["sub"], f2, maxw)
+        while len(ls) * f2.size * 1.36 + y + 16 > H - 150 and f2.size > 24:
+            f2 = IM(f2.size - 2); ls = wrap(c["sub"], f2, maxw)
+        for ln in ls:
             d.text((M, y + 16), ln, font=f2, fill=GREYV); y += f2.size * 1.36
     chrome(base, c, INKV, GREYV)
     return base.convert("RGB")
