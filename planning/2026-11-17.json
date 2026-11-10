@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-17-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-17-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-17-3.jpg"
-      }
-    ],
-    "caption": "Brosse à dents électrique ou manuelle : laquelle choisir ?\n\nLa manuelle fait le travail si ta technique est parfaite : bon angle, bon mouvement, 2 minutes pile. Dans la vraie vie, c'est rare.\n\nLa sonique facilite les choses :\n→ 41 000 vibrations par minute, tu n'as qu'à guider\n→ minuteur intégré, plus de brossage bâclé\n→ un mode Sensible pour les gencives fragiles\n\nTeam manuelle ou team électrique ?\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare",
-    "fb_message": "Brosse à dents électrique ou manuelle : laquelle choisir ?\n\nLa manuelle fait le travail si ta technique est parfaite : bon angle, bon mouvement, 2 minutes pile. Dans la vraie vie, c'est rare.\n\nLa sonique facilite les choses :\n→ 41 000 vibrations par minute, tu n'as qu'à guider\n→ minuteur intégré, plus de brossage bâclé\n→ un mode Sensible pour les gencives fragiles\n\nTeam manuelle ou team électrique ?\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-17-1.jpg",
+    "caption": "Le compliment qui revient le plus sur notre brosse à dents électrique ? Pas la puissance. Le design.\n\n« Elle est stylée », « ça change du design de celle en plastique », « le design naturel en bambou » : ce sont des avis clients, mot pour mot.\n\nLa Bamboo+ reste posée sur le lavabo toute la journée. Autant qu'elle soit belle.\n\n→ manche sobre, finition bambou\n→ pas de socle encombrant, recharge USB-C une fois par mois\n→ 59,90 € avec 2 têtes, l'étui et le câble\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #salledebain #pulsecare",
+    "fb_message": "Le compliment qui revient le plus sur notre brosse à dents électrique ? Pas la puissance. Le design.\n\n« Elle est stylée », « ça change du design de celle en plastique », « le design naturel en bambou » : ce sont des avis clients, mot pour mot.\n\nLa Bamboo+ reste posée sur le lavabo toute la journée. Autant qu'elle soit belle.\n\n→ manche sobre, finition bambou\n→ pas de socle encombrant, recharge USB-C une fois par mois\n→ 59,90 € avec 2 têtes, l'étui et le câble\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #salledebain #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-17-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-17-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-17-3.jpg"
       }
     ]
   }

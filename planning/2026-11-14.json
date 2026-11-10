@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-1.jpg",
-    "caption": "Le pack découverte Pulse Care, pour passer à la brosse à dents électrique sans se poser de questions.\n\nDedans : le manche sonique, des têtes en bambou à poils de ricin et l'étui de voyage.\n\nC'est le point de départ si tu hésites encore. Ou l'idée cadeau pour quelqu'un qui galère avec sa brosse manuelle.\n\nPack découverte : 64,90 €.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #packdecouverte #brosseadentsbambou #pulsecare",
-    "fb_message": "Le pack découverte Pulse Care, pour passer à la brosse à dents électrique sans se poser de questions.\n\nDedans : le manche sonique, des têtes en bambou à poils de ricin et l'étui de voyage.\n\nC'est le point de départ si tu hésites encore. Ou l'idée cadeau pour quelqu'un qui galère avec sa brosse manuelle.\n\nPack découverte : 64,90 €.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #packdecouverte #brosseadentsbambou #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-3.jpg"
+      }
+    ],
+    "caption": "On publie tous les avis sur notre brosse à dents électrique, y compris les critiques. Voici les deux qui reviennent.\n\n1. « Le manche est un peu plus épais que ce que j'imaginais, ce qui peut gêner au début. » C'est vrai. La prise en main est large, et l'habitude vient en quelques jours.\n\n2. « Elle vibre un peu plus fort que ma précédente brosse électrique. » Vrai aussi, surtout en mode Nettoyage. Le mode Sensible adoucit nettement.\n\nLes deux clients concernés ont quand même gardé la brosse et laissé un avis positif.\n\nOn préfère que tu saches avant d'acheter. 30 jours pour changer d'avis, dans tous les cas.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "On publie tous les avis sur notre brosse à dents électrique, y compris les critiques. Voici les deux qui reviennent.\n\n1. « Le manche est un peu plus épais que ce que j'imaginais, ce qui peut gêner au début. » C'est vrai. La prise en main est large, et l'habitude vient en quelques jours.\n\n2. « Elle vibre un peu plus fort que ma précédente brosse électrique. » Vrai aussi, surtout en mode Nettoyage. Le mode Sensible adoucit nettement.\n\nLes deux clients concernés ont quand même gardé la brosse et laissé un avis positif.\n\nOn préfère que tu saches avant d'acheter. 30 jours pour changer d'avis, dans tous les cas.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-3.jpg"
       }
     ]
   }

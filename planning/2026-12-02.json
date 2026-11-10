@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-1.jpg",
-    "caption": "La brosse à dents électrique Pulse Care Bamboo+, en une phrase : un manche qu'on garde, des têtes en bambou qu'on change.\n\n→ 41 000 vibrations par minute\n→ 4 modes de brossage\n→ minuteur 2 minutes, pause toutes les 30 s\n→ 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n\n59,90 € avec 2 têtes, l'étui de voyage et le câble.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "La brosse à dents électrique Pulse Care Bamboo+, en une phrase : un manche qu'on garde, des têtes en bambou qu'on change.\n\n→ 41 000 vibrations par minute\n→ 4 modes de brossage\n→ minuteur 2 minutes, pause toutes les 30 s\n→ 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n\n59,90 € avec 2 têtes, l'étui de voyage et le câble.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-3.jpg"
+      }
+    ],
+    "caption": "Têtes de brosse à dents électrique : ricin ou nylon ? La question qu'on nous pose le plus avant l'achat.\n\nLes deux sont montées sur une tête en bambou et se clipsent en une seconde. La différence tient à la fibre.\n\n→ Ricin : fibre d'origine végétale, toucher très doux. Le bon choix si tes gencives sont sensibles.\n→ Nylon : brossage plus ferme, pour ceux qui aiment sentir le nettoyage.\n\nPas sûr ? Prends une tête de chaque à 5,50 € et compare sur deux semaines.\n\nPack de 4 : 14,90 €.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #poilsricin #pulsecare",
+    "fb_message": "Têtes de brosse à dents électrique : ricin ou nylon ? La question qu'on nous pose le plus avant l'achat.\n\nLes deux sont montées sur une tête en bambou et se clipsent en une seconde. La différence tient à la fibre.\n\n→ Ricin : fibre d'origine végétale, toucher très doux. Le bon choix si tes gencives sont sensibles.\n→ Nylon : brossage plus ferme, pour ceux qui aiment sentir le nettoyage.\n\nPas sûr ? Prends une tête de chaque à 5,50 € et compare sur deux semaines.\n\nPack de 4 : 14,90 €.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #poilsricin #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-3.jpg"
       }
     ]
   }

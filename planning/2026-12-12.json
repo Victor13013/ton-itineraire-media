@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-1.jpg",
-    "caption": "La brosse à dents électrique Pulse Care Bamboo+, en une phrase : un manche qu'on garde, des têtes en bambou qu'on change.\n\n→ 41 000 vibrations par minute\n→ 4 modes de brossage\n→ minuteur 2 minutes, pause toutes les 30 s\n→ 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n\n59,90 € avec 2 têtes, l'étui de voyage et le câble.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "La brosse à dents électrique Pulse Care Bamboo+, en une phrase : un manche qu'on garde, des têtes en bambou qu'on change.\n\n→ 41 000 vibrations par minute\n→ 4 modes de brossage\n→ minuteur 2 minutes, pause toutes les 30 s\n→ 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n\n59,90 € avec 2 têtes, l'étui de voyage et le câble.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-2.jpg"
+      }
+    ],
+    "caption": "Commander une brosse à dents électrique chez Pulse Care : les 3 choses à savoir avant de cliquer.\n\n→ Livraison gratuite en point relais dès 20 € d'achat\n→ 30 jours pour changer d'avis, au-delà des 14 jours légaux\n→ Exception : les têtes de recharge déjà ouvertes ne sont pas reprises, pour raison d'hygiène\n\nUne question avant d'acheter ? Écris-nous, on répond sous 24 à 48 h.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "Commander une brosse à dents électrique chez Pulse Care : les 3 choses à savoir avant de cliquer.\n\n→ Livraison gratuite en point relais dès 20 € d'achat\n→ 30 jours pour changer d'avis, au-delà des 14 jours légaux\n→ Exception : les têtes de recharge déjà ouvertes ne sont pas reprises, pour raison d'hygiène\n\nUne question avant d'acheter ? Écris-nous, on répond sous 24 à 48 h.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-2.jpg"
       }
     ]
   }

@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-1.jpg",
-    "caption": "Pourquoi on répète de ne pas appuyer fort avec une brosse à dents électrique ? Regarde la coupe d'une dent.\n\n→ L'émail est la couche extérieure. C'est le tissu le plus dur du corps, mais il ne se régénère pas.\n→ Dessous, la dentine est plus tendre et plus sensible.\n→ Au centre, la pulpe contient le nerf.\n\nQuand l'émail s'use, la dentine se découvre. C'est là que le froid commence à piquer.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #email #hygienebuccodentaire #pulsecare",
-    "fb_message": "Pourquoi on répète de ne pas appuyer fort avec une brosse à dents électrique ? Regarde la coupe d'une dent.\n\n→ L'émail est la couche extérieure. C'est le tissu le plus dur du corps, mais il ne se régénère pas.\n→ Dessous, la dentine est plus tendre et plus sensible.\n→ Au centre, la pulpe contient le nerf.\n\nQuand l'émail s'use, la dentine se découvre. C'est là que le froid commence à piquer.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #email #hygienebuccodentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-3.jpg"
+      }
+    ],
+    "caption": "« Une brosse à dents électrique, c'est vraiment mieux ? » La réponse honnête existe, et elle est chiffrée.\n\nLa revue Cochrane, qui compile des dizaines d'essais cliniques, a comparé brosses électriques et manuelles :\n→ environ 11 % de plaque en moins entre 1 et 3 mois\n→ environ 21 % en moins au-delà de 3 mois\n→ environ 6 % puis 11 % de gingivite en moins\n\nLes auteurs classent ces preuves en qualité modérée et rappellent que la portée clinique reste à préciser.\n\nTraduction : l'écart est réel et il grandit avec le temps. Mais le geste reste décisif.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #cochrane #hygienebuccodentaire #pulsecare",
+    "fb_message": "« Une brosse à dents électrique, c'est vraiment mieux ? » La réponse honnête existe, et elle est chiffrée.\n\nLa revue Cochrane, qui compile des dizaines d'essais cliniques, a comparé brosses électriques et manuelles :\n→ environ 11 % de plaque en moins entre 1 et 3 mois\n→ environ 21 % en moins au-delà de 3 mois\n→ environ 6 % puis 11 % de gingivite en moins\n\nLes auteurs classent ces preuves en qualité modérée et rappellent que la portée clinique reste à préciser.\n\nTraduction : l'écart est réel et il grandit avec le temps. Mais le geste reste décisif.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #cochrane #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-3.jpg"
       }
     ]
   }

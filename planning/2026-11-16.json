@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-1.jpg",
-    "caption": "Une bonne brosse à dents électrique ne remplace pas le rendez-vous chez le dentiste.\n\nElle retire la plaque au quotidien. Mais une fois que la plaque a durci en tartre, le brossage n'y peut plus rien : il faut un détartrage.\n\nLe rythme conseillé : un contrôle par an, plus souvent si ton dentiste te le demande.\n\nTon dernier rendez-vous date de quand ?\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #dentiste #detartrage #pulsecare",
-    "fb_message": "Une bonne brosse à dents électrique ne remplace pas le rendez-vous chez le dentiste.\n\nElle retire la plaque au quotidien. Mais une fois que la plaque a durci en tartre, le brossage n'y peut plus rien : il faut un détartrage.\n\nLe rythme conseillé : un contrôle par an, plus souvent si ton dentiste te le demande.\n\nTon dernier rendez-vous date de quand ?\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #dentiste #detartrage #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-3.jpg"
+      }
+    ],
+    "caption": "« J'étais sceptique au début. » C'est ce qu'on lit le plus souvent dans les avis sur notre brosse à dents électrique.\n\nNormal. 59,90 €, une marque que tu ne connais pas, et une tête en bambou : ça interroge.\n\nCe qui revient juste après, dans les mêmes avis : la qualité de la matière, la prise en main, l'autonomie, le design.\n\nPour décider sans te tromper :\n→ 2 têtes, l'étui de voyage et le câble sont inclus\n→ 30 jours pour changer d'avis\n→ les avis clients sont publics sur la fiche produit\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "fb_message": "« J'étais sceptique au début. » C'est ce qu'on lit le plus souvent dans les avis sur notre brosse à dents électrique.\n\nNormal. 59,90 €, une marque que tu ne connais pas, et une tête en bambou : ça interroge.\n\nCe qui revient juste après, dans les mêmes avis : la qualité de la matière, la prise en main, l'autonomie, le design.\n\nPour décider sans te tromper :\n→ 2 têtes, l'étui de voyage et le câble sont inclus\n→ 30 jours pour changer d'avis\n→ les avis clients sont publics sur la fiche produit\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-3.jpg"
       }
     ]
   }
