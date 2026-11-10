@@ -51,7 +51,7 @@ Si tu as des enfants, le prochain courrier mérite d'être ouvert.
 #mtdents #brosseadentselectrique #preventiondentaire #pulsecare"""),
 # ───────────────────────── 1 · 11/11 · petit-déj
 dict(date="2026-11-11", kind="photo", da="b", tone="sand", slides=[
-  dict(tpl="statement", kicker="Le matin", title="Avant ou après *le petit-déj* ?",
+  dict(tpl="statement", img="u:1474859569645-e0def92b02bc", kicker="Le matin", title="Avant ou après *le petit-déj* ?", sub="Avant. Et après un jus ou un fruit acide, attends 30 minutes.",
        options=["Avant, au réveil", "Après avoir mangé", "Les deux, au choix"], answer=0,
        note="Après un jus ou un fruit acide, attends 30 minutes."),
 ],
