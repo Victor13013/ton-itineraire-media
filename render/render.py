@@ -1849,8 +1849,106 @@ def x_editorial(c):
     chrome(base, c, INKV, GREYV)
     return base.convert("RGB")
 
+# ── Ticket de caisse : le détail d'un prix, ligne par ligne
+def x_ticket(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 96, c.get("kicker"))
+    y = th_title(t, M, y + 6, c["title"], start=76, minsize=46, maxlines=2) + 26
+    lines = c["lines"]; tot = c.get("total")
+    tw, pad = W - 2 * M - 40, 42
+    fN = IM(26); note_l = wrap(c["note"], fN, tw - 2 * pad) if c.get("note") else []
+    th_ = pad * 2 + 54 + len(lines) * 58 + (104 if tot else 0) + int(len(note_l) * fN.size * 1.3)
+    tx = M + 20; ty = int(y + max(0, (H - 150 - y - th_) * 0.40))
+    tick = Image.new("RGBA", (tw, th_), (255, 255, 255, 255)); td = ImageDraw.Draw(tick)
+    fL, fV, fS = IM(31), BOLD(31), BOLD(25)
+    td.text((pad, pad - 6), (c.get("head") or "PULSE CARE").upper(), font=fS, fill=GREYV)
+    yy = pad + 44
+    for lab, val in lines:
+        td.text((pad, yy), lab, font=fL, fill=INKV)
+        vw = td.textlength(val, font=fV)
+        for dx in range(int(pad + td.textlength(lab, font=fL)) + 16, int(tw - pad - vw) - 12, 11):
+            td.ellipse([dx, yy + 20, dx + 3, yy + 23], fill=(190, 198, 192))
+        td.text((tw - pad - vw, yy), val, font=fV, fill=INKV); yy += 58
+    if tot:
+        for dx in range(pad, tw - pad, 14): td.line([dx, yy + 10, dx + 7, yy + 10], fill=(176, 186, 178), width=3)
+        yy += 36; fT = BLACK(58)
+        td.text((pad, yy), tot[0].upper(), font=BOLD(30), fill=GREYV)
+        td.text((tw - pad - td.textlength(nb(tot[1]), font=fT), yy - 16), nb(tot[1]), font=fT, fill=INKV); yy += 76
+    for j, ln in enumerate(note_l): td.text((pad, yy - 10 + j * fN.size * 1.3), ln, font=fN, fill=GREYV)
+    # bord bas dentelé, comme un vrai ticket
+    m = Image.new("L", (tw, th_), 255); md = ImageDraw.Draw(m)
+    for i in range(0, tw, 26): md.ellipse([i - 2, th_ - 13, i + 24, th_ + 13], fill=0)
+    tick.putalpha(m)
+    lay = tick.rotate(-1.4, resample=Image.BICUBIC, expand=True)
+    sh = Image.new("RGBA", base.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).rectangle([tx + 6, ty + 16, tx + lay.width, ty + lay.height + 10], fill=(18, 30, 24, 60))
+    base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(18)))
+    base.alpha_composite(lay, (tx, ty))
+    return th_end(t, c)
+
+# ── Écran coupé : la photo d'un côté, l'argument de l'autre
+def x_split(c):
+    t = theme(c); base = t.base; left = c.get("side") != "right"
+    cx = int(W * 0.46)
+    bx0, bx1 = (0, cx) if left else (W - cx, W)
+    rounded_photo(base, load(c["img"]), (bx0 - 40 if left else bx0, 0, bx1 if left else bx1 + 40, H), 0, c.get("fy", 0.5))
+    pan = Image.new("RGBA", (W - cx, H), (FOREST if t.dark or c.get("dark") else CREAM) + (242,))
+    base.alpha_composite(pan, (cx if left else 0, 0))
+    ink = CREAM if (t.dark or c.get("dark")) else INKV
+    sub = (198, 214, 204) if ink == CREAM else GREYV
+    x = cx + 54 if left else 54; w = W - cx - 100
+    d = ImageDraw.Draw(base); y = 130
+    if c.get("kicker"):
+        f0 = BOLD(26); d.text((x, y), " ".join(c["kicker"].upper()), font=f0, fill=LIME if ink == CREAM else CORAL); y += 54
+    f, tl = sans_fit(c["title"], BLACK, w, 68, 40, 4)
+    for ln in tl:
+        d.text((x, y), " ".join(k[0] for k in ln), font=f, fill=ink); y += f.size * 1.04
+    y += 18
+    for it in c.get("items", [])[:4]:
+        icon_disc(d, icon_for(it), x + 20, y + 20, 20, LIME if ink == CREAM else FOREST, INKV if ink == CREAM else CREAM)
+        f2 = IM(29)
+        for j, ln in enumerate(wrap(it, f2, w - 58)):
+            d.text((x + 56, y + j * f2.size * 1.26), ln, font=f2, fill=ink);
+        y += max(50, len(wrap(it, f2, w - 58)) * f2.size * 1.26 + 16)
+    if c.get("price"):
+        f3 = BLACK(62); d.text((x, H - 230), nb(c["price"]), font=f3, fill=LIME if ink == CREAM else FOREST)
+        if c.get("sub"):
+            f4 = IM(27)
+            for j, ln in enumerate(wrap(c["sub"], f4, w)):
+                d.text((x, H - 152 + j * f4.size * 1.3), ln, font=f4, fill=sub)
+    return th_end(t, c)
+
+# ── Clôture : le produit en grand, le prix, trois garanties
+def x_offer(c):
+    t = theme(c); base = t.base
+    y = th_kicker(t, M, 92, c.get("kicker"), center=True)
+    y = th_title(t, M, y + 4, c["title"], start=76, minsize=44, maxlines=2, center=True) + 10
+    bg = base.convert("RGB").getpixel((W // 2, int(H * 0.52)))
+    top, bot = int(y) + 10, H - 262          # bande photo, bornée par la rangée de garanties
+    prod, ok = product_cut(load(c["img"]), bg, int(W * 0.62), bot - top)
+    if ok:
+        px = (W - prod.width) // 2; py = top + (bot - top - prod.height) // 2
+        soft_shadow(base, (px + 40, py + prod.height - 50, px + prod.width - 40, py + prod.height), 60, 30)
+        base.paste(prod, (px, py))
+    else:
+        px0, px1 = M + 30, W - M - 30
+        th_shadow(t, (px0, top, px1, bot)); rounded_photo(base, load(c["img"]), (px0, top, px1, bot), 40, c.get("fy", 0.45))
+    if c.get("price"):
+        sticker_v4(base, nb(c["price"]), W - M - 4, top + 72, 92, LIME, INKV, -12)
+    d = ImageDraw.Draw(base); perks = c.get("perks", [])[:3]
+    if perks:
+        cw = (W - 2 * M) / len(perks); yy = H - 188
+        for i, p_ in enumerate(perks):
+            cxp = M + cw * (i + 0.5)
+            icon_disc(d, icon_for(p_), cxp, yy, 26, t.acc, t.acc_ink)
+            f = IM(26); ls = wrap(p_, f, cw - 24)
+            for j, ln in enumerate(ls):
+                d.text((cxp - d.textlength(ln, font=f) / 2, yy + 40 + j * f.size * 1.24), ln, font=f, fill=t.ink)
+    return th_end(t, c)
+
 TPLX = {"bignum": x_bignum, "quiz": x_quiz, "steps": x_steps, "mosaic": x_mosaic, "arch": x_arch, "tracker": x_tracker, "schema": x_schema,
-        "callout": x_callout, "note": x_note, "fear": x_fear, "editorial": x_editorial}
+        "callout": x_callout, "note": x_note, "fear": x_fear, "editorial": x_editorial,
+        "ticket": x_ticket, "split": x_split, "offer": x_offer}
 
 DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
 DA_C_ALL = "--da-c" in sys.argv     # aperçu : tout en DA C

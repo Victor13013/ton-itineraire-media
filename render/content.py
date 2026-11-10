@@ -131,7 +131,7 @@ Traduction : l'écart est réel et il grandit avec le temps. Mais le geste reste
 dict(date="x", kind="carousel", slides=[
   dict(tpl="statement", img="u:1583642037383-861ac716c3f0", kicker="Transparence", title="On ne va pas te dire *que c'est sans impact.*", swipe=True),
   dict(tpl="steps", kicker="Ce qui est vrai", title="Les faits, sans enrobage", items=[("La tête est en bambou", "C'est la partie remplacée tous les 3 mois."), ("Les poils viennent du ricin", "Une fibre végétale, à la place du pétrole."), ("Le manche est en plastique ASA", "Choisi pour durer des années, pas pour être joli à dire.")]),
-  dict(tpl="arch", img=s("p006"), kicker="Notre parti pris", title="Réduire la partie *qu'on jette*", sub="Pas de label inventé, pas de promesse invérifiable.", price="59,90 €"),
+  dict(tpl="offer", img=s("p006"), kicker="Notre parti pris", title="Réduire la partie *qu'on jette*", price="59,90 €", perks=["Tête en bambou", "Poils en ricin", "Manche gardé des années"]),
 ],
 caption="""Beaucoup de marques de brosse à dents électrique à tête en bambou promettent beaucoup. On préfère être clairs sur ce que fait la nôtre, et sur ce qu'elle ne fait pas.
 
@@ -191,7 +191,7 @@ Livraison gratuite en point relais dès 20 € d'achat.
 dict(date="x", kind="carousel", slides=[
   dict(tpl="fear", kicker="Ta crainte", fear="Une marque que je connais pas, à 59,90 €, je le sens moyen.", kicker2="Ce qu'on a mis en face", answer="*30 jours* pour changer d'avis", sub="« J'étais sceptique au début » est l'avis le plus fréquent qu'on reçoit. La suite est toujours la même.", swipe=True),
   dict(tpl="mosaic", kicker="Ce qui arrive chez toi", title="Pour 59,90 €", imgs=[(s("bamboo_face"), "Le manche sonique"), (s("ricin_pack2"), "2 têtes en bambou"), (s("etui_voyage"), "L'étui de voyage"), (s("chargeur"), "Le câble USB-C")]),
-  dict(tpl="arch", img=s("p014"), kicker="Sans risque", title="30 jours *pour changer d'avis*", sub="Et des avis clients vérifiés sur la fiche produit.", price="59,90 €"),
+  dict(tpl="offer", img=s("p014"), kicker="Sans risque", title="30 jours *pour changer d'avis*", price="59,90 €", perks=[RET, LIV, "Avis publics sur la fiche"]),
 ],
 caption="""« J'étais sceptique au début. » C'est ce qu'on lit le plus souvent dans les avis sur notre brosse à dents électrique.
 
@@ -251,7 +251,7 @@ Tête poils ricin : 5,50 €. Pack de 4 : 14,90 €.
 dict(date="x", kind="carousel", slides=[
   dict(tpl="editorial", img="u:1758687126877-b37052a20a4d", over="Le soir, 20h40", kicker="Parents", title="« Encore 30 secondes ! » *tous les soirs*", sub="Le minuteur vibre toutes les 30 secondes. L'enfant change de zone tout seul, tu arrêtes de compter à voix haute.", swipe=True),
   dict(tpl="schema", kind="zones", kicker="Ce qui débloque", title="4 zones, *30 secondes chacune*", sub="Le minuteur décide à ta place. Plus de négociation."),
-  dict(tpl="arch", img=s("p092"), kicker="Pack duo", title="Une brosse chacun, *une seule routine*", sub=LIV, price="94,90 €"),
+  dict(tpl="split", img=s("p092"), kicker="Pack duo", title="Une brosse chacun, *une seule routine*", items=["Deux manches, deux étuis", "Minuteur sur les deux", "Têtes interchangeables"], price="94,90 €", sub=LIV, dark=True),
 ],
 caption="""Le brossage du soir avec les enfants, c'est souvent une négociation. Une brosse à dents électrique règle une partie du problème.
 
@@ -290,7 +290,7 @@ Avec la Bamboo+ :
 dict(date="x", kind="carousel", slides=[
   dict(tpl="bignum", kicker="Avis client", big="30 j", title="« emmenée en voyage *sans même recharger* »", sub="Un avis publié sur la fiche produit. L'autonomie est l'argument n°2 après le design.", swipe=True),
   dict(tpl="mosaic", kicker="Dans la trousse", title="Ce que tu emportes", imgs=[(s("etui_plat"), "L'étui en bambou"), (s("p085"), "Le manche"), (s("nylon_gauche"), "Une tête d'avance")]),
-  dict(tpl="arch", img=s("boite_bambou"), kicker="Inclus dans la boîte", title="L'étui de voyage, *sans supplément*", sub=LIV, price="59,90 €"),
+  dict(tpl="offer", img=s("boite_bambou"), kicker="Inclus dans la boîte", title="L'étui de voyage, *sans supplément*", price="59,90 €", perks=["Étui en bambou", "30 jours d'autonomie", LIV]),
 ],
 caption="""« Je l'ai emmenée en voyage sans même recharger. » C'est un avis client sur notre brosse à dents électrique, et c'est exactement l'idée.
 
@@ -375,7 +375,7 @@ Tu offres à qui cette année ?
 dict(date="x", kind="carousel", slides=[
   dict(tpl="hero", img="u:1676897288522-e8a081e71430", kicker="Le match", title="Manuelle ou *électrique* ?", swipe=True),
   dict(tpl="versus", kicker="Ce qui change au quotidien", title="Lequel est *fait pour toi* ?", left=("Brosse manuelle", ["Technique à soigner", "Pas de minuteur", "Tout part à la poubelle"]), right=("Pulse Care", ["Les vibrations nettoient", "Minuteur 2 min intégré", "Seule la tête se change"])),
-  dict(tpl="arch", img="u:1552650272-b8a34e21bc4b", kicker="Pulse Care Bamboo+", title="Prête à passer *à l'électrique* ?", sub=RET, price="59,90 €"),
+  dict(tpl="split", img="u:1552650272-b8a34e21bc4b", side="right", kicker="Bamboo+", title="Prête à passer *à l'électrique* ?", items=["41 000 vibrations par minute", "Minuteur 2 min intégré", "2 têtes en bambou incluses"], price="59,90 €", sub=RET),
 ],
 caption="""Brosse à dents électrique ou manuelle : la vraie différence n'est pas la puissance, c'est la régularité.
 
@@ -414,7 +414,7 @@ Pack de 4 têtes : 14,90 €. La brosse : 59,90 €.
 dict(date="x", kind="carousel", slides=[
   dict(tpl="hero", img=s("decouverte_main"), kicker="Pack découverte", title="Tu veux tester *avant de t'engager* ?", swipe=True),
   dict(tpl="mosaic", kicker="Dans le pack", title="Tout pour démarrer", imgs=[(s("decouverte_contenu"), "Le manche"), (s("decouverte_tetes"), "Les têtes ricin"), (s("dec_etui_tetes"), "L'étui")]),
-  dict(tpl="arch", img=s("p046"), kicker="Pack découverte", title="Le point de départ, *64,90 €*", sub=RET, price="64,90 €"),
+  dict(tpl="offer", img=s("p046"), kicker="Pack découverte", title="Le point de départ", price="64,90 €", perks=["Le manche sonique", "Têtes poils ricin", "L'étui de voyage"]),
 ],
 caption="""Passer à la brosse à dents électrique sans se tromper : c'est à ça que sert le pack découverte Pulse Care.
 
@@ -434,7 +434,7 @@ C'est aussi le pack à offrir à quelqu'un qui hésite depuis des mois.
 dict(date="x", kind="carousel", slides=[
   dict(tpl="statement", img=s("p121"), kicker="Pack duo", title="Deux brosses. *Un seul lavabo.*", swipe=True),
   dict(tpl="mosaic", kicker="Dans le coffret", title="Chacun la sienne", imgs=[(s("duo_etuis"), "2 manches"), (s("duo_acc"), "Les accessoires"), (s("deux_brosses"), "2 étuis")]),
-  dict(tpl="arch", img=s("p091"), kicker="Pack duo", title="Les deux, *94,90 €*", sub="Soit 47,45 € la brosse.", price="94,90 €"),
+  dict(tpl="ticket", kicker="Pack duo", title="Le détail, *ligne par ligne*", head="Pulse Care · pack duo", lines=[("2 manches sonique", "—"), ("4 têtes en bambou", "incluses"), ("2 étuis de voyage", "inclus"), ("Câble USB-C", "inclus")], total=("À payer", "94,90 €"), note="Soit 47,45 € la brosse. " + LIV),
 ],
 caption="""Deux brosses à dents électriques pour la maison : le pack duo Pulse Care.
 
@@ -454,7 +454,7 @@ Identifie la personne avec qui tu partages ton lavabo.
 dict(date="x", kind="carousel", slides=[
   dict(tpl="statement", img=s("p055"), kicker="Avis clients", title="« Le minuteur est *hyper pratique.* »", swipe=True),
   dict(tpl="statement", img=s("p021"), kicker="Avis clients", title="« Elle est stylée, légère *et tient hyper bien la charge.* »"),
-  dict(tpl="arch", img="u:1595428774752-c87f23e7fcee", kicker="Avis vérifiés", title="Lis-les *avant d'acheter*", sub="Tous les avis sont publics sur la fiche produit.", price="59,90 €"),
+  dict(tpl="offer", img="u:1595428774752-c87f23e7fcee", kicker="Avis vérifiés", title="Lis-les *avant d'acheter*", price="59,90 €", perks=["Avis publics", "Critiques comprises", RET]),
 ],
 caption="""Ce que les clients disent de la brosse à dents électrique Pulse Care, dans leurs mots.
 
@@ -515,7 +515,7 @@ Le minuteur de la Bamboo+ s'occupe du temps. Toi, tu suis l'ordre.
 dict(date="x", kind="carousel", slides=[
   dict(tpl="product", img=s("ricin_fibres"), kicker="Avant d'acheter", title="Poils *ricin* ou poils *nylon* ?", swipe=True),
   dict(tpl="versus", kicker="Têtes Pulse Care", title="Lequel est *fait pour toi* ?", both_good=True, left=("Poils nylon", ["Brossage plus ferme", "Tu sens bien le nettoyage", "Tête en bambou"]), right=("Poils ricin", ["Fibre d'origine végétale", "Toucher très doux", "Idéal gencives sensibles"])),
-  dict(tpl="arch", img=s("nylon_pack4"), kicker="Pack de 4", title="Un an de brossage, *14,90 €*", sub="Ricin ou nylon, au choix.", price="14,90 €"),
+  dict(tpl="split", img=s("nylon_pack4"), kicker="Pack de 4", title="Un an de *brossage*", items=["3,73 € la tête", "Ricin ou nylon, au choix", "Une tête tous les 3 mois"], price="14,90 €", sub=LIV),
 ],
 caption="""Têtes de brosse à dents électrique : ricin ou nylon ? La question qu'on nous pose le plus avant l'achat.
 
@@ -555,7 +555,7 @@ Le seul réflexe à garder : bien sécher le port USB-C avant de la brancher.
 dict(date="x", kind="carousel", slides=[
   dict(tpl="statement", img=s("p095"), kicker="Le moment du changement", title="Ton ancienne brosse *ne tient plus la charge* ?", swipe=True),
   dict(tpl="bignum", kicker="Batterie", big="500", title="mAh, *30 jours d'autonomie*", sub="Une charge d'environ 2,5 h, en USB-C."),
-  dict(tpl="arch", img="u:1667550177726-96da7c257853", kicker="Pulse Care Bamboo+", title="Le câble que *tu as déjà*", sub=RET, price="59,90 €"),
+  dict(tpl="offer", img="u:1667550177726-96da7c257853", kicker="Bamboo+", title="Le câble que *tu as déjà*", price="59,90 €", perks=["Recharge USB-C", "2,5 h de charge", "30 jours d'autonomie"]),
 ],
 caption="""Une brosse à dents électrique qui ne tient plus la charge, c'est le signe qu'il est temps de changer.
 
@@ -595,7 +595,7 @@ Tout se joue donc sur la régularité, pas sur la force.
 
 # ── 22 · ANGLE : offrir à ses parents
 dict(date="x", kind="photo", slides=[
-  dict(tpl="arch", img="u:1627130595904-ebeeb6540a93", kicker="Idée cadeau", title="Le cadeau qui *fait vraiment plaisir* à tes parents", sub="Simple à utiliser, un seul bouton, et l'étui pour les déplacements.", price="59,90 €"),
+  dict(tpl="split", img="u:1627130595904-ebeeb6540a93", side="right", kicker="Idée cadeau", title="Le cadeau qui *fait vraiment plaisir*", items=["Un seul bouton", "L'étui pour les déplacements", "Deux têtes dans la boîte"], price="59,90 €", sub=LIV, dark=True),
 ],
 caption="""Offrir une brosse à dents électrique à ses parents, c'est un cadeau utile qu'ils n'achèteront jamais pour eux.
 
@@ -725,7 +725,7 @@ dict(date="x", kind="carousel", slides=[
   dict(tpl="hero", img=s("p004"), kicker="Le récap", title="Pourquoi la *Bamboo+* ?", swipe=True, tw=0.68),
   dict(tpl="stats", img=s("etui"), title="En résumé", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("2 min", "de minuteur intégré"), ("30 j", "d'autonomie")]),
   dict(tpl="steps", kicker="Et le reste", title="Ce que tu ne paies qu'une fois", items=[("Le manche", "Gardé pendant des années."), ("L'étui de voyage", "En bambou, inclus."), ("Le câble USB-C", "Inclus aussi.")]),
-  dict(tpl="arch", img="u:1519645480282-2bcc997ba3b0", kicker="Pulse Care Bamboo+", title="Tout compris, *59,90 €*", sub=LIV + " " + RET, price="59,90 €"),
+  dict(tpl="ticket", kicker="Récapitulatif", title="Ce que tu reçois *pour 59,90 €*", head="Pulse Care · Bamboo+", lines=[("Manche sonique bambou", "—"), ("2 têtes en bambou", "incluses"), ("Étui de voyage", "inclus"), ("Câble USB-C", "inclus")], total=("À payer", "59,90 €"), note=LIV + " " + RET),
 ],
 caption="""Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap complet, pour décider.
 
