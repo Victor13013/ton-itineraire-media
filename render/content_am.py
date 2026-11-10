@@ -10,7 +10,7 @@ from content import s, S, TAGS  # noqa: F401
 POSTS_AM = [
 # ───────────────────────── ACTU · Mois sans tabac (novembre 2026)
 dict(date="2026-11-11", kind="carousel", da="b", slides=[
-  dict(tpl="hero", img="u:1580489944761-15a19d654956", kicker="Mois sans tabac", title="Ce que ta bouche *y gagne*", swipe=True),
+  dict(tpl="statement", img="u:1580489944761-15a19d654956", kicker="Mois sans tabac", title="Ce que ta bouche *y gagne*", swipe=True),
   dict(tpl="steps", tone="forest", kicker="En arrêtant", title="4 effets sur les dents", items=[("L'haleine change", "Souvent en quelques jours."), ("Les colorations s'arrêtent", "Le goudron ne se dépose plus sur l'émail."), ("Les gencives cicatrisent mieux", "Le tabac réduit l'irrigation des tissus."), ("Le risque de parodontite baisse", "Le tabac est un de ses premiers facteurs.")]),
   dict(tpl="statement", img="u:1544507888-56d73eb6046e", kicker="Si tu te lances", title="Tu n'es pas *tout seul.*", sub="Tabac info service au 39 89, ou mois-sans-tabac.fr. Kits gratuits en pharmacie."),
 ],
@@ -51,7 +51,7 @@ Si tu as des enfants, le prochain courrier mérite d'être ouvert.
 #mtdents #brosseadentselectrique #preventiondentaire #pulsecare"""),
 # ───────────────────────── 1 · 11/11 · petit-déj
 dict(date="2026-11-11", kind="photo", da="b", tone="sand", slides=[
-  dict(tpl="quiz", kicker="Le matin", title="Avant ou après *le petit-déj* ?",
+  dict(tpl="statement", kicker="Le matin", title="Avant ou après *le petit-déj* ?",
        options=["Avant, au réveil", "Après avoir mangé", "Les deux, au choix"], answer=0,
        note="Après un jus ou un fruit acide, attends 30 minutes."),
 ],
@@ -86,7 +86,7 @@ C'est pour ça que grignoter toute la journée est pire que manger sucré d'un c
 
 # ───────────────────────── 3 · 13/11 · souple medium dure
 dict(date="2026-11-13", kind="photo", da="c", slides=[
-  dict(tpl="hero", img=s("ricin_face"), kicker="Souple, medium ou dure ?", title="Les dentistes recommandent *le souple.*",
+  dict(tpl="statement", img=s("ricin_face"), kicker="Souple, medium ou dure ?", title="Les dentistes recommandent *le souple.*",
        sub="Une brosse dure n'enlève pas plus de plaque. Elle abîme juste l'émail et la gencive."),
 ],
 caption="""Souple, medium ou dure : quelle dureté de poils pour une brosse à dents électrique ?
@@ -135,7 +135,7 @@ La tête de brosse est le truc qu'on oublie toujours de racheter. Problème rég
 
 # ───────────────────────── 6 · 16/11 · mauvaise haleine
 dict(date="2026-11-16", kind="carousel", da="c", slides=[
-  dict(tpl="hero", img="u:1599566219227-2efe0c9b7f5f", kicker="Haleine", title="Mauvaise haleine : *4 causes* courantes", swipe=True),
+  dict(tpl="arch", img="u:1599566219227-2efe0c9b7f5f", kicker="Haleine", title="Mauvaise haleine : *4 causes* courantes", swipe=True),
   dict(tpl="list", img="u:1595514535316-b8c85bf9bbf9", title="Les coupables", numbered=True, items=[("La langue", "Elle héberge une grande part des bactéries."), ("La bouche sèche", "Moins de salive, plus d'odeurs."), ("Les espaces entre les dents", "Là où la brosse ne passe pas."), ("Le tabac et le café", "Ils s'ajoutent au reste.")]),
 ],
 caption="""Une brosse à dents électrique ne règle pas tout : 4 causes fréquentes de mauvaise haleine.
@@ -167,7 +167,7 @@ Résultat : tu la branches une fois par mois, avec le câble que tu as déjà. P
 
 # ───────────────────────── 8 · 18/11 · entretien
 dict(date="2026-11-18", kind="carousel", da="b", slides=[
-  dict(tpl="hero", img=s("p011"), kicker="Entretien", title="3 gestes pour *qu'elle dure*", swipe=True),
+  dict(tpl="arch", img=s("p011"), kicker="Entretien", title="3 gestes pour *qu'elle dure*", swipe=True),
   dict(tpl="steps", tone="fresh", kicker="Après chaque brossage", title="Les 3 gestes", items=[("Rince la tête", "Moteur allumé, 2 secondes sous l'eau."), ("Essuie le manche", "Surtout autour du port USB-C."), ("Laisse sécher debout", "À l'air libre, jamais dans l'étui fermé.")]),
 ],
 caption="""Entretenir sa brosse à dents électrique, c'est 10 secondes par jour.
@@ -184,7 +184,7 @@ Le point important : ne range jamais la brosse humide dans l'étui fermé. L'hum
 
 # ───────────────────────── 9 · 19/11 · gencives qui saignent
 dict(date="2026-11-19", kind="photo", da="c", slides=[
-  dict(tpl="statement", img="u:1580465446361-8aae5321522b", kicker="Gingivite", title="Des gencives qui saignent, *ce n'est pas normal.*",
+  dict(tpl="hero", img="u:1580465446361-8aae5321522b", kicker="Gingivite", title="Des gencives qui saignent, *ce n'est pas normal.*",
        sub="C'est souvent le premier signe d'une gingivite. Brosse en douceur et parles-en à ton dentiste."),
 ],
 caption="""Tes gencives saignent quand tu passes la brosse à dents électrique ? Ce n'est pas un signe que tu brosses bien.
@@ -203,7 +203,7 @@ Ce qu'on fait :
 
 # ───────────────────────── 10 · 20/11 · abonnement concret
 dict(date="2026-11-20", kind="carousel", da="a", slides=[
-  dict(tpl="hero", img=s("nylon_pack4_profil"), kicker="Abonnement Pulse Care", title="Comment ça marche, *en 3 points*", swipe=True),
+  dict(tpl="arch", img=s("nylon_pack4_profil"), kicker="Abonnement Pulse Care", title="Comment ça marche, *en 3 points*", swipe=True),
   dict(tpl="steps", tone="sand", kicker="L'abonnement", title="Trois étapes", items=[("Tu choisis tes têtes", "Ricin ou nylon, la quantité que tu veux."), ("Tu choisis le rythme", "Tous les 1, 2 ou 3 mois."), ("Tu modifies quand tu veux", "Depuis ton compte client, sans engagement.")]),
 ],
 caption="""L'abonnement têtes de brosse à dents électrique Pulse Care, concrètement.
@@ -250,7 +250,7 @@ C'est la logique de la marque depuis le départ : réduire la partie qu'on jette
 
 # ───────────────────────── 13 · 23/11 · routine du matin
 dict(date="2026-11-23", kind="carousel", da="a", slides=[
-  dict(tpl="hero", img="u:1610352992666-61acb68b6ad6", kicker="Routine du matin", title="3 étapes, *4 minutes chrono*", swipe=True),
+  dict(tpl="arch", img="u:1610352992666-61acb68b6ad6", kicker="Routine du matin", title="3 étapes, *4 minutes chrono*", swipe=True),
   dict(tpl="steps", tone="mint", kicker="Le matin", title="Dans cet ordre", items=[("Un verre d'eau", "Pour réhydrater la bouche au réveil."), ("2 minutes de brossage", "Mode Nettoyage, le minuteur gère."), ("Tu craches, tu ne rinces pas", "Le fluor reste sur les dents.")]),
 ],
 caption="""Ta routine du matin avec une brosse à dents électrique, en 3 étapes.
@@ -284,7 +284,7 @@ Ce que tu peux faire : mode Sensible, poils souples, aucune pression. Et un avis
 
 # ───────────────────────── 15 · 25/11 · ricin
 dict(date="2026-11-25", kind="photo", da="c", slides=[
-  dict(tpl="hero", img="u:1601385304565-9a38a051a1a0", kicker="Le ricin", title="C'est *une plante.*",
+  dict(tpl="arch", img="u:1601385304565-9a38a051a1a0", kicker="Le ricin", title="C'est *une plante.*",
        sub="L'huile de ses graines sert à fabriquer une fibre souple, utilisée à la place du pétrole."),
 ],
 caption="""Les poils de ricin sur une brosse à dents électrique, ça vient d'où ?
@@ -337,7 +337,7 @@ Petit rappel : à l'arrivée, sors la brosse de l'étui pour qu'elle sèche. L'�
 
 # ───────────────────────── 18 · 28/11 · parodontite
 dict(date="2026-11-28", kind="photo", da="a", tone="forest", slides=[
-  dict(tpl="hero", img="u:1598256989800-fe5f95da9787", kicker="Maladies dentaires", title="La parodontite *commence aux gencives.*",
+  dict(tpl="statement", img="u:1598256989800-fe5f95da9787", kicker="Maladies dentaires", title="La parodontite *commence aux gencives.*",
        sub="Une gingivite non traitée peut atteindre l'os qui tient la dent. Un contrôle régulier évite d'en arriver là."),
 ],
 caption="""Après la gingivite vient la parodontite. C'est la raison pour laquelle on insiste autant sur la ligne des gencives avec une brosse à dents électrique.
@@ -493,7 +493,7 @@ Trois réflexes :
 
 # ───────────────────────── 27 · 07/12 · gencives qui reculent
 dict(date="2026-12-07", kind="photo", da="a", tone="sand", slides=[
-  dict(tpl="hero", img="u:1771442873038-dda05b6ca447", kicker="Gencives", title="Une gencive qui recule *ne revient pas.*",
+  dict(tpl="arch", img="u:1771442873038-dda05b6ca447", kicker="Gencives", title="Une gencive qui recule *ne revient pas.*",
        sub="D'où l'intérêt d'un brossage sans pression, dès maintenant."),
 ],
 caption="""Un point que peu de gens savent sur le brossage, avec ou sans brosse à dents électrique : une gencive qui a reculé ne repousse pas.
@@ -527,7 +527,7 @@ C'est le cadeau qu'on n'achète jamais pour soi et qui sert tous les jours. Parf
 
 # ───────────────────────── 29 · 09/12 · 3 réflexes
 dict(date="2026-12-09", kind="carousel", da="b", slides=[
-  dict(tpl="hero", img=s("p002"), kicker="Les bases", title="3 réflexes *qui changent tout*", swipe=True),
+  dict(tpl="arch", img=s("p002"), kicker="Les bases", title="3 réflexes *qui changent tout*", swipe=True),
   dict(tpl="steps", tone="fresh", kicker="À garder", title="Le minimum qui marche", items=[("2 minutes, 2 fois par jour", "Le minuteur s'en occupe."), ("Zéro pression", "Tu poses, tu guides, c'est tout."), ("Une tête tous les 3 mois", "Même si elle a l'air propre.")]),
 ],
 caption="""Si tu ne devais retenir que 3 choses sur la brosse à dents électrique, ce serait celles-là.

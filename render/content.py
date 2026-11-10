@@ -78,21 +78,6 @@ def s(k): return "s:" + S[k]
 TAGS = "#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare"
 
 POSTS = [
-# ───────────────────────── 1 · 10/11 · le chiffre
-dict(date="2026-11-10", kind="photo", da="a", tone="mint", slides=[
-  dict(tpl="bignum", kicker="Le chiffre du jour", big="41 000", title="vibrations *par minute*",
-       sub="La technologie sonique fait le nettoyage. Toi, tu guides la tête, dent par dent.", img=s("p016")),
-],
-caption="""41 000 vibrations par minute : c'est ce que fait une brosse à dents électrique sonique Pulse Care pendant que tu guides.
-
-Concrètement, tu ne frottes plus. Tu poses la tête sur la dent, tu glisses lentement, et le mouvement fait le travail à ta place.
-
-C'est aussi pour ça qu'appuyer fort ne sert à rien.
-
-[CTA]
-
-""" + TAGS),
-
 # ───────────────────────── 2 · 11/11 · unboxing
 dict(date="2026-11-11", kind="carousel", da="b", slides=[
   dict(tpl="hero", img=s("p029"), kicker="Pulse Care Bamboo+", title="Ce qu'il y a *dans la boîte*", swipe=True),
@@ -430,7 +415,7 @@ Les 3 signes qu'il est temps :
 
 # ───────────────────────── 20 · 29/11 · FAQ
 dict(date="2026-11-29", kind="carousel", da="b", slides=[
-  dict(tpl="hero", img=s("p055"), kicker="FAQ Pulse Care", title="Tes questions, *nos réponses*", swipe=True),
+  dict(tpl="arch", img=s("p055"), kicker="FAQ Pulse Care", title="Tes questions, *nos réponses*", swipe=True),
   dict(tpl="product", img=s("nylon_pack2"), kicker="Compatibilité", title="Compatible avec *d'autres manches* ?", sub="Non. Les têtes sont conçues uniquement pour les manches Pulse Care."),
   dict(tpl="hero", img="u:1610178169668-530baa052915", kicker="Étanchéité", title="Sous la douche ?", sub="Oui, la brosse est étanche IPX7. Sèche le port USB-C avant de recharger."),
   dict(tpl="product", img=s("p056"), kicker="Autonomie", title="La batterie tient *combien de temps* ?", sub="Jusqu'à 30 jours, pour 2 brossages par jour."),
@@ -564,7 +549,7 @@ Pas sûr ? Prends une tête de chaque et compare sur deux semaines.
 
 # ───────────────────────── 27 · 06/12 · récap chiffres
 dict(date="2026-12-06", kind="photo", da="b", tone="forest", slides=[
-  dict(tpl="stats", img=s("p085"), title="La Bamboo+ *en chiffres*", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("30 j", "d'autonomie, USB-C"), ("IPX7", "étanche, même sous la douche")]),
+  dict(tpl="bignum", big="41 000", title="vibrations par minute, *et tout le reste*", sub="4 modes · minuteur 2 min · 30 jours d'autonomie · étanche IPX7", img=s("p085")),
 ],
 caption="""La brosse à dents électrique Pulse Care Bamboo+ en 4 chiffres.
 
@@ -581,7 +566,7 @@ Et toujours le même principe : le manche reste, la tête en bambou se change.
 
 # ───────────────────────── 28 · 07/12 · 5 erreurs
 dict(date="2026-12-07", kind="carousel", da="a", slides=[
-  dict(tpl="hero", img="u:1676897288522-e8a081e71430", kicker="Brosse à dents électrique", title="5 erreurs *à corriger ce soir*", swipe=True),
+  dict(tpl="arch", img="u:1676897288522-e8a081e71430", kicker="Brosse à dents électrique", title="5 erreurs *à corriger ce soir*", swipe=True),
   dict(tpl="steps", tone="honey", kicker="Les gestes", title="Les 3 premières", items=[("Frotter comme avec une manuelle", "Pose la tête, laisse les vibrations faire."), ("Appuyer fort", "Ça use l'émail et irrite la gencive."), ("Oublier les faces internes", "Le côté langue compte autant.")]),
   dict(tpl="steps", tone="mint", start=4, kicker="La routine", title="Et les 2 dernières", items=[("Rincer juste après", "Crache, ne rince pas : le fluor reste."), ("Garder la même tête 6 mois", "On la change tous les 3 mois.")]),
 ],

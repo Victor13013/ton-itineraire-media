@@ -19,16 +19,15 @@ from datetime import date as _date, timedelta as _td
 
 REEL_DATES = {r["date"] for r in REELS}
 
-def _shift(posts, start, skip_reels=True):
-    """Le jour d'une vidéo, le post image de 18h passe au lendemain : on redate la file.
-    Exception : le tout premier jour, qui sert au test de mise en route."""
-    d = _date.fromisoformat(start); skip = (REEL_DATES - {start}) if skip_reels else set()
-    for p in posts:
-        while d.isoformat() in skip: d += _td(days=1)
-        p["date"] = d.isoformat(); d += _td(days=1)
+def _shift(posts, start, offset=0):
+    """Redate la file (un post par jour) et fait tourner la DA : jamais deux jours
+    de suite dans la même DA, ni la même DA le matin et le soir du même jour."""
+    d = _date.fromisoformat(start)
+    for i, p in enumerate(posts):
+        p["date"] = d.isoformat(); p["da"] = "abc"[(i + offset) % 3]; d += _td(days=1)
 
-_shift([p for p in POSTS if not p["date"].startswith("test")], "2026-11-10")
-_shift([p for p in POSTS_AM if not p["date"].startswith("test")], "2026-11-11", skip_reels=False)
+_shift([p for p in POSTS if not p["date"].startswith("test")], "2026-11-11", 0)
+_shift([p for p in POSTS_AM if not p["date"].startswith("test")], "2026-11-11", 1)
 SLOTS = [("", POSTS, 0), ("-10h", POSTS_AM, 1)]   # 18h -> AAAA-MM-JJ.json · 10h -> AAAA-MM-JJ-10h.json
 ALL = [p for _, L, _ in SLOTS for p in L]
 # Les posts publiés en test ont une date préfixée "test-" : leur fichier n'est lu par aucun scénario

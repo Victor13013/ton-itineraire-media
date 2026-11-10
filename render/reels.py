@@ -7,18 +7,6 @@ Le jour d'une vidéo, le post image de 18h est décalé au jour suivant (voir re
 """
 
 REELS = [
-dict(date="2026-11-10", cover=1200, caption="""5 000 ans d'histoire de la brosse à dents, résumés en 40 secondes.
-
-Des brindilles mâchées de l'Antiquité aux premières brosses à poils de l'empire chinois, puis au nylon des années 1930 et aux soies synthétiques d'aujourd'hui.
-
-Le manche a changé de matériau une dizaine de fois. Le geste, lui, n'a jamais bougé : frotter pour retirer ce qui s'accroche aux dents.
-
-Chez Pulse Care, on garde le bois sur la partie qu'on jette : des têtes en bambou, un manche qui reste.
-
-[CTA]
-
-#brosseadentselectrique #histoire #brosseadentsbambou #pulsecare"""),
-
 dict(date="2026-11-13", cover=1500, caption="""Ce qu'il y a à l'intérieur d'une dent, et pourquoi ta brosse à dents électrique ne doit jamais appuyer.
 
 → L'émail : la couche extérieure, le tissu le plus dur du corps. Il ne se régénère pas.
