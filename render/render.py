@@ -1768,21 +1768,24 @@ def x_note(c):
         strike_line(d, M, y, w, CORAL, f.size); y += f.size * 1.08
     y, _ = hand_note(base, M + 30, y + 4, c.get("hand", "en vrai :"), 72, CORAL, -4)
     y = th_title(theme_on(base, c), M, y + 10, c["good"], start=92, minsize=52, maxlines=3)
-    if c.get("sub"):
-        f2 = IM(32); d = ImageDraw.Draw(base)
-        for ln in wrap(c["sub"], f2, W - 2 * M - 60):
-            d.text((M, y + 14), ln, font=f2, fill=GREYV); y += f2.size * 1.36
+    top = H - 120   # haut de la vignette, calculé avant d'écrire le sous-titre
     if c.get("img"):
         bg = base.convert("RGB").getpixel((W - 200, H - 300))
-        prod, ok = product_cut(load(c["img"]), bg, int(W * 0.42), int(H * 0.30))
+        prod, ok = product_cut(load(c["img"]), bg, int(W * 0.40), int(H * 0.28))
         if ok:
-            bx, by = W - M - prod.width, H - 130 - prod.height
+            bx, by = W - M - prod.width, H - 120 - prod.height
             soft_shadow(base, (bx + 20, by + prod.height - 40, bx + prod.width - 20, by + prod.height), 55, 26)
-            base.paste(prod, (bx, by))
+            base.paste(prod, (bx, by)); top = by
         else:   # photo d'ambiance : vignette arrondie, jamais de blanc collé
-            pw, ph = int(W * 0.42), int(H * 0.26); bx, by = W - M - pw, H - 140 - ph
+            pw, ph = int(W * 0.40), int(H * 0.24); bx, by = W - M - pw, H - 120 - ph
             soft_shadow(base, (bx + 14, by + ph - 34, bx + pw - 14, by + ph), 50, 24)
-            rounded_photo(base, load(c["img"]), (bx, by, bx + pw, by + ph), 32, c.get("fy", 0.45))
+            rounded_photo(base, load(c["img"]), (bx, by, bx + pw, by + ph), 32, c.get("fy", 0.45)); top = by
+    if c.get("sub"):
+        d = ImageDraw.Draw(base); f2 = IM(32); ls = wrap(c["sub"], f2, W - 2 * M - 60)
+        while y + 14 + len(ls) * f2.size * 1.36 > top - 26 and f2.size > 23:
+            f2 = IM(f2.size - 2); ls = wrap(c["sub"], f2, W - 2 * M - 60)
+        for ln in ls:
+            d.text((M, y + 14), ln, font=f2, fill=GREYV); y += f2.size * 1.36
     return base.convert("RGB")
 
 def theme_on(base, c):
