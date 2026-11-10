@@ -1678,7 +1678,168 @@ def x_schema(c):
             if hit: draw_icon(d, "rotate", x + cw - 62, yy + chh - 62, 60, FOREST)
     return th_end(t, c)
 
-TPLX = {"bignum": x_bignum, "quiz": x_quiz, "steps": x_steps, "mosaic": x_mosaic, "arch": x_arch, "tracker": x_tracker, "schema": x_schema}
+# ───────────────────────────── Gabarits « réponse au client » (nov. 2026)
+# Quatre mises en page qui cassent l'habitude carte + titre : produit annoté,
+# mot barré corrigé à la main, crainte/réponse en deux blocs, mise en page magazine.
+
+def light_bg(c):
+    """Fond très clair, légèrement teinté selon la DA. Sert de studio photo."""
+    n = c.get("_n", 0); da = c.get("da") or "a"
+    tints = {"a": (238, 246, 240), "b": (240, 243, 248), "c": PAPER}
+    base = Image.new("RGB", (W, H), tints.get(da, tints["a"])).convert("RGBA")
+    if da == "c": base = paper_bg(n, PAPER).convert("RGBA")
+    else:
+        g = Image.new("L", (W, H))
+        ImageDraw.Draw(g).rectangle([0, 0, W, H], fill=0)
+        v = Image.linear_gradient("L").resize((W, H)).rotate(0)
+        base = Image.composite(Image.new("RGB", (W, H), (255, 255, 255)).convert("RGBA"), base, v.point(lambda p: 255 - p))
+    return base.convert("RGBA")
+
+def leader(d, x0, y0, x1, y1, color, r=11):
+    """Pastille + trait de rappel vers un détail du produit."""
+    d.ellipse([x0 - r, y0 - r, x0 + r, y0 + r], fill=WHITE_A, outline=color, width=4)
+    d.ellipse([x0 - 4, y0 - 4, x0 + 4, y0 + 4], fill=color)
+    d.line([x0 + r, y0, x1, y1], fill=color, width=3)
+
+def strike_line(d, x, y, w, color, h):
+    d.line([x - 8, y + h * 0.54, x + w + 8, y + h * 0.46], fill=color, width=max(6, int(h * 0.09)))
+
+# ── Produit annoté : le produit en grand, des rappels vers les détails qui comptent
+def x_callout(c):
+    base = light_bg(c); d = ImageDraw.Draw(base)
+    acc = CORAL if (c.get("da") == "c") else FOREST
+    y = 92
+    if c.get("kicker"):
+        if c.get("da") == "c": y, _ = hand_note(base, M, y, c["kicker"], 52, CORAL, -2); y += 4
+        else: y = kicker_pill(base, M, y, c["kicker"], acc, CREAM) + 22
+    pw_max, ph_max = int(W * 0.40), int(H * 0.37)
+    px, py = M - 10, int(H * 0.15)
+    prod, ok = product_cut(load(c["img"]), (255, 255, 255), pw_max, ph_max)
+    if ok:
+        pw, ph = prod.size
+        soft_shadow(base, (px + 30, py + ph - 50, px + pw - 30, py + ph), 60, 28)
+        base.paste(prod, (px, py))
+    else:
+        pw, ph = pw_max, ph_max; rounded_photo(base, load(c["img"]), (px, py, px + pw, py + ph), 36, c.get("fy", 0.45))
+    d = ImageDraw.Draw(base)
+    # rappels : (libellé, fraction horizontale, fraction verticale du produit)
+    notes = c.get("notes", [])[:2]; tx = px + pw + 54; f = IM(30)
+    rows = [py + ph * k for k in ([0.26] if len(notes) == 1 else [0.16, 0.66])]
+    for (lab, fx, fy), ry in zip(notes, rows):
+        ax, ay = px + pw * fx, py + ph * fy
+        leader(d, ax, ay, tx - 16, ry, acc)
+        for j, ln in enumerate(wrap(lab, f, W - M - tx)):
+            d.text((tx, ry - f.size * 0.62 + j * f.size * 1.3), ln, font=f, fill=INKV)
+    # correction manuscrite : le mot rayé, et le bon mot au-dessus
+    ty = max(int(H * 0.57), int(py + ph + 46))
+    if c.get("strike"):
+        bad, good = c["strike"]; f = BLACK(72)
+        while d.textlength(bad.upper(), font=f) > W - 2 * M - 260: f = BLACK(f.size - 4)
+        hand_note(base, M + 16, ty - 70, good, 64, CORAL, -7)
+        d = ImageDraw.Draw(base); d.text((M, ty), bad.upper(), font=f, fill=(150, 162, 154))
+        strike_line(d, M, ty, d.textlength(bad.upper(), font=f), CORAL, f.size); ty += f.size * 1.18
+    f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 72, 42, 2)
+    ty = sans_draw_marks(base, M, ty, tl, f, INKV, acc, CREAM, 1.02)
+    if c.get("sub"):
+        f2 = IM(29); d = ImageDraw.Draw(base)
+        for ln in wrap(c["sub"], f2, W - 2 * M - 40):
+            d.text((M, ty + 10), ln, font=f2, fill=GREYV); ty += f2.size * 1.32
+    if c.get("cta"):
+        f3 = BOLD(29); d = ImageDraw.Draw(base)
+        tw = d.textlength(c["cta"].upper(), font=f3); bw = tw + 134
+        bx, by = M, H - 178
+        d.rounded_rectangle([bx, by, bx + bw, by + 80], radius=40, outline=INKV, width=3)
+        d.text((bx + 38, by + 25), c["cta"].upper(), font=f3, fill=INKV)
+        d.ellipse([bx + bw - 72, by + 13, bx + bw - 12, by + 73], fill=INKV)
+        d.text((bx + bw - 55, by + 22), "→", font=ARR(32), fill=CREAM)
+    return base.convert("RGB")
+
+# ── Mot barré : on corrige à voix haute ce que le client croit
+def x_note(c):
+    base = light_bg(c); d = ImageDraw.Draw(base); y = 120
+    if c.get("kicker"):
+        if c.get("da") == "c": y, _ = hand_note(base, M, y, c["kicker"], 54, CORAL, -2); y += 10
+        else: y = kicker_pill(base, M, y, c["kicker"], FOREST, CREAM) + 34
+    f, tl = sans_fit(c["bad"], BLACK, W - 2 * M, 84, 48, 3); d = ImageDraw.Draw(base)
+    sp = d.textlength(" ", font=f)
+    for ln in tl:
+        txt = " ".join(k[0] for k in ln); w = d.textlength(txt, font=f)
+        d.text((M, y), txt, font=f, fill=(154, 166, 158))
+        strike_line(d, M, y, w, CORAL, f.size); y += f.size * 1.08
+    y, _ = hand_note(base, M + 30, y + 4, c.get("hand", "en vrai :"), 72, CORAL, -4)
+    y = th_title(theme_on(base, c), M, y + 10, c["good"], start=92, minsize=52, maxlines=3)
+    if c.get("sub"):
+        f2 = IM(32); d = ImageDraw.Draw(base)
+        for ln in wrap(c["sub"], f2, W - 2 * M - 60):
+            d.text((M, y + 14), ln, font=f2, fill=GREYV); y += f2.size * 1.36
+    if c.get("img"):
+        prod, ok = product_cut(load(c["img"]), (255, 255, 255), int(W * 0.40), int(H * 0.26))
+        if ok:
+            bx, by = W - M - prod.width, H - 150 - prod.height
+            soft_shadow(base, (bx + 20, by + prod.height - 40, bx + prod.width - 20, by + prod.height), 55, 26)
+            base.paste(prod, (bx, by))
+    return base.convert("RGB")
+
+def theme_on(base, c):
+    """Réutilise les helpers de titre sur un fond déjà dessiné."""
+    t = Th(); t.da = "a" if c.get("da") != "c" else "c"; t.base = base; t.dark = False
+    t.ink = INKV; t.sub = GREYV; t.acc = CORAL if t.da == "c" else FOREST
+    t.acc_ink = WHITE_A if t.da == "c" else CREAM; t.card = WHITE_A
+    t.card_ink = INKV; t.card_sub = GREYV
+    return t
+
+# ── Crainte / réponse : deux blocs pleine largeur, rien d'autre
+def x_fear(c):
+    base = Image.new("RGBA", (W, H), FOREST); cut = int(H * 0.47)
+    low = rich_bg(MINTV if (c.get("da") != "c") else SANDV, c.get("_n", 0)).convert("RGBA")
+    base.alpha_composite(mesh_bg("forest", c.get("_n", 0)).convert("RGBA"), (0, 0))
+    base.paste(low.crop((0, cut, W, H)), (0, cut))
+    d = ImageDraw.Draw(base)
+    d.line([0, cut, W, cut], fill=LIME, width=5)
+    f0 = BOLD(28); f, tl = sans_fit("« " + c["fear"] + " »", BLACK, W - 2 * M, 72, 42, 4)
+    blk = 56 + f.size * 1.06 * len(tl)
+    y = max(104, (cut - blk) / 2)
+    d.text((M, y), (c.get("kicker") or "TU TE DIS").upper(), font=f0, fill=LIME); y += 56
+    for ln in tl:
+        d.text((M, y), " ".join(k[0] for k in ln), font=f, fill=CREAM); y += f.size * 1.06
+    # bloc du bas mesuré d'abord, pour le centrer dans sa bande
+    t = theme_on(base, c); probe = Th(); probe.__dict__.update(t.__dict__); probe.base = base.copy()
+    end = th_title(probe, M, cut + 118, c["answer"], start=68, minsize=40, maxlines=3)
+    f2 = IM(30); subl = wrap(c["sub"], f2, W - 2 * M - 40) if c.get("sub") else []
+    end += 12 + f2.size * 1.34 * len(subl)
+    yy = cut + 60 + max(0, (H - 120 - end) * 0.45)
+    f1 = BOLD(28); d.text((M, yy), (c.get("kicker2") or "EN VRAI").upper(), font=f1, fill=FOREST); yy += 54
+    yy = th_title(t, M, yy, c["answer"], start=68, minsize=40, maxlines=3)
+    for ln in subl:
+        d.text((M, yy + 12), ln, font=f2, fill=GREYV); yy += f2.size * 1.34
+    chrome(base, c, CREAM, GREYV, light_btn=False)
+    return base.convert("RGB")
+
+# ── Magazine : photo bord à bord, titre en bas, aucune carte
+def x_editorial(c):
+    base = light_bg(c); ph = int(H * 0.56)
+    im = cover(load(c["img"]), W, ph, 0.5, c.get("fy", 0.45))
+    base.paste(im.convert("RGBA"), (0, 0))
+    d = ImageDraw.Draw(base)
+    if c.get("over"):
+        f0 = BOLD(27); tw = d.textlength(c["over"].upper(), font=f0)
+        d.rounded_rectangle([M, ph - 96, M + tw + 56, ph - 28], radius=34, fill=CREAM)
+        d.text((M + 28, ph - 82), c["over"].upper(), font=f0, fill=INKV)
+    y = ph + 54
+    if c.get("kicker"):
+        f0 = BOLD(26); txt = " ".join(c["kicker"].upper())
+        d.text((M, y), txt, font=f0, fill=CORAL if c.get("da") == "c" else FOREST); y += 52
+        d.line([M, y, W - M, y], fill=(206, 214, 206), width=2); y += 34
+    t = theme_on(base, c); y = th_title(t, M, y, c["title"], start=86, minsize=48, maxlines=3)
+    if c.get("sub"):
+        f2 = IM(32)
+        for ln in wrap(c["sub"], f2, W - 2 * M - 30):
+            d.text((M, y + 16), ln, font=f2, fill=GREYV); y += f2.size * 1.36
+    chrome(base, c, INKV, GREYV)
+    return base.convert("RGB")
+
+TPLX = {"bignum": x_bignum, "quiz": x_quiz, "steps": x_steps, "mosaic": x_mosaic, "arch": x_arch, "tracker": x_tracker, "schema": x_schema,
+        "callout": x_callout, "note": x_note, "fear": x_fear, "editorial": x_editorial}
 
 DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
 DA_C_ALL = "--da-c" in sys.argv     # aperçu : tout en DA C

@@ -744,3 +744,27 @@ Livraison gratuite en point relais dès 20 € d'achat. 30 jours pour changer d'
 
 """ + TAGS),
 ]
+
+# ── Aperçus des nouveaux gabarits (date "test-" : aucun scénario ne la lit)
+POSTS += [
+  dict(date="test-gabarits", kind="carousel", tone="mint", da="a", slides=[
+    dict(tpl="callout", img=s("tete_main"), kicker="Ce qu'on regarde jamais", da="a",
+         notes=[("Poils en ricin, pas en pétrole", 0.52, 0.22), ("Tête en bambou, seule pièce jetée", 0.46, 0.72)],
+         strike=("toute la brosse", "la tête"), title="C'est la seule chose *que tu jettes*",
+         sub="Le manche reste des années. Tous les 3 mois, tu changes 4 grammes.", cta="Voir la recharge"),
+    dict(tpl="note", img=s("nylon_profil"), kicker="Ce qu'on nous dit souvent", da="c", tone="cream",
+         bad="Une électrique, ça agresse les gencives.",
+         hand="en vrai :", good="C'est la *pression* qui agresse, pas les vibrations.",
+         sub="Le minuteur découpe le brossage en 4 zones de 30 secondes. Tu poses la brosse, tu ne frottes pas."),
+    dict(tpl="fear", kicker="Ta crainte", da="b", fear="Le manche est pas cher, et après je paie les têtes une fortune.",
+         kicker2="Ce qu'on a fait", answer="*3,73 €* la tête en pack de 4",
+         sub="Soit 14,90 € pour un an de brossage. Le prix est sur la fiche, pas caché dans un abonnement."),
+    dict(tpl="editorial", img=s("p083"), over="Le matin, 7h12", kicker="Sans bagarre", da="a",
+         title="Deux minutes *qui ne se négocient plus*",
+         sub="Le minuteur vibre toutes les 30 secondes. L'enfant change de zone tout seul, tu arrêtes de compter à voix haute."),
+  ], caption="""Aperçu de quatre nouveaux formats pour les posts brosse à dents électrique.
+
+[CTA]
+
+#pulsecare"""),
+]
