@@ -472,7 +472,7 @@ On préfère que tu les lises avant d'acheter.
 
 # ── 16 · ANGLE : le prix d'entrée
 dict(date="x", kind="photo", slides=[
-  dict(tpl="stats", img="s:brosse-a-dents-electrique-pulse-care_4bcfc2e2-f44d-4d23-86b7-b5298d58a7cf.webp", title="Ce que tu as *pour 59,90 €*", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("30 j", "d'autonomie, USB-C"), ("2", "têtes en bambou incluses")]),
+  dict(tpl="stats", img=s("duo_tete"), title="Ce que tu as *pour 59,90 €*", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("30 j", "d'autonomie, USB-C"), ("2", "têtes en bambou incluses")]),
 ],
 caption="""59,90 € pour une brosse à dents électrique sonique : voilà exactement ce que ça comprend.
 
