@@ -1714,7 +1714,7 @@ def x_callout(c):
         else: y = kicker_pill(base, M, y, c["kicker"], acc, CREAM) + 22
     pw_max, ph_max = int(W * 0.40), int(H * 0.37)
     px, py = M - 10, int(H * 0.15)
-    prod, ok = product_cut(load(c["img"]), (255, 255, 255), pw_max, ph_max)
+    prod, ok = product_cut(load(c["img"]), base.convert("RGB").getpixel((200, int(H * 0.3))), pw_max, ph_max)
     if ok:
         pw, ph = prod.size
         soft_shadow(base, (px + 30, py + ph - 50, px + pw - 30, py + ph), 60, 28)
@@ -1735,7 +1735,7 @@ def x_callout(c):
     if c.get("strike"):
         bad, good = c["strike"]; f = BLACK(72)
         while d.textlength(bad.upper(), font=f) > W - 2 * M - 260: f = BLACK(f.size - 4)
-        hand_note(base, M + 16, ty - 70, good, 64, CORAL, -7)
+        hand_note(base, M + 16, ty - 86, good, 64, CORAL, -7)
         d = ImageDraw.Draw(base); d.text((M, ty), bad.upper(), font=f, fill=(150, 162, 154))
         strike_line(d, M, ty, d.textlength(bad.upper(), font=f), CORAL, f.size); ty += f.size * 1.18
     f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 72, 42, 2)
@@ -1773,9 +1773,10 @@ def x_note(c):
         for ln in wrap(c["sub"], f2, W - 2 * M - 60):
             d.text((M, y + 14), ln, font=f2, fill=GREYV); y += f2.size * 1.36
     if c.get("img"):
-        prod, ok = product_cut(load(c["img"]), (255, 255, 255), int(W * 0.40), int(H * 0.26))
+        bg = base.convert("RGB").getpixel((W - 200, H - 300))
+        prod, ok = product_cut(load(c["img"]), bg, int(W * 0.42), int(H * 0.30))
         if ok:
-            bx, by = W - M - prod.width, H - 150 - prod.height
+            bx, by = W - M - prod.width, H - 130 - prod.height
             soft_shadow(base, (bx + 20, by + prod.height - 40, bx + prod.width - 20, by + prod.height), 55, 26)
             base.paste(prod, (bx, by))
     return base.convert("RGB")

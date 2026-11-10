@@ -69,7 +69,7 @@ Team avant ou team après ?
 
 # ───────────────────────── 2 · 12/11 · carie
 dict(date="2026-11-12", kind="carousel", da="a", slides=[
-  dict(tpl="hero", img="u:1606811971618-4486d14f3f99", kicker="Maladies dentaires", title="La carie : *comment elle se forme*", swipe=True),
+  dict(tpl="editorial", img="u:1606811971618-4486d14f3f99", over="En 4 étapes", kicker="La carie", title="Comment elle *se forme vraiment*", sub="Ce n'est pas le sucre qui perce la dent. C'est l'acide que les bactéries fabriquent avec.", swipe=True),
   dict(tpl="steps", tone="honey", kicker="En 3 étapes", title="Le mécanisme", items=[("Tu manges du sucre", "Les bactéries de la plaque s'en nourrissent."), ("Elles produisent de l'acide", "Pendant environ 20 minutes."), ("L'acide attaque l'émail", "À force, il perce : c'est la carie.")]),
 ],
 caption="""Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.
@@ -184,7 +184,7 @@ Le point important : ne range jamais la brosse humide dans l'étui fermé. L'hum
 
 # ───────────────────────── 9 · 19/11 · gencives qui saignent
 dict(date="2026-11-19", kind="photo", da="c", slides=[
-  dict(tpl="hero", img="u:1580465446361-8aae5321522b", kicker="Gingivite", title="Des gencives qui saignent, *ce n'est pas normal.*",
+  dict(tpl="note", img=s("ricin_gp"), kicker="Ce qu'on entend", bad="Ça saigne, donc je brosse trop fort.", hand="en vrai :", good="Ça saigne parce que la gencive *est enflammée.*",
        sub="C'est souvent le premier signe d'une gingivite. Brosse en douceur et parles-en à ton dentiste."),
 ],
 caption="""Tes gencives saignent quand tu passes la brosse à dents électrique ? Ce n'est pas un signe que tu brosses bien.
@@ -267,7 +267,7 @@ Quatre minutes montre en main, café compris.
 
 # ───────────────────────── 14 · 24/11 · dents sensibles
 dict(date="2026-11-24", kind="photo", da="b", tone="fresh", slides=[
-  dict(tpl="hero", img="u:1626200949108-510618c118c3", kicker="Dents sensibles", title="Une boisson glacée *et ça pique* ?",
+  dict(tpl="editorial", img="u:1626200949108-510618c118c3", over="Le froid", kicker="Dents sensibles", title="Une boisson glacée *et ça pique*",
        sub="Souvent le signe que la dentine est à nu. Mode Sensible, poils souples, et un avis du dentiste."),
 ],
 caption="""Une gorgée glacée et une douleur brève : la sensibilité dentaire touche beaucoup de monde, et la brosse à dents électrique y est parfois pour quelque chose.
@@ -372,7 +372,7 @@ Mieux : utilise-le à un autre moment de la journée, si ton dentiste te l'a con
 
 # ───────────────────────── 20 · 30/11 · famille
 dict(date="2026-11-30", kind="carousel", da="b", slides=[
-  dict(tpl="hero", img="u:1758687126227-48c2fa04b653", kicker="En famille", title="Une routine qui tient *avec des enfants*", swipe=True),
+  dict(tpl="editorial", img="u:1758687126227-48c2fa04b653", over="Le soir, en famille", kicker="Routine", title="Une routine qui tient *avec des enfants*", sub="Même heure, même ordre, même durée. Ce sont les trois seules règles qui tiennent sur la durée.", swipe=True),
   dict(tpl="steps", tone="fresh", kicker="4 astuces", title="Ce qui marche vraiment", items=[("Même heure chaque soir", "Juste après le pyjama."), ("Les parents en même temps", "Les enfants copient ce qu'ils voient."), ("Le minuteur devient un jeu", "Qui tient les 2 minutes ?"), ("Chacun sa tête", "Un repère de couleur par personne.")]),
 ],
 caption="""Tenir une routine de brosse à dents électrique avec des enfants : 4 astuces qui marchent.

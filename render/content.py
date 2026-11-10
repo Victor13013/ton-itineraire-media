@@ -108,7 +108,7 @@ Une tête tous les 3 mois, donc 14,90 € pour l'année. Et le manche, tu le gar
 
 # ── 0b · ANGLE : est-ce vraiment plus efficace ? (revue Cochrane)
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="statement", img="u:1562337404-3044c84ac061", kicker="La vraie question", title="C'est vraiment plus efficace *qu'une manuelle* ?", swipe=True),
+  dict(tpl="fear", kicker="Ce que tu te dis", fear="Je brosse bien à la main, je vois pas ce que ça changerait.", kicker2="Ce que disent les essais", answer="L'écart se creuse *avec le temps*", sub="11 % de plaque en moins à 3 mois. 21 % au-delà. Revue Cochrane, des dizaines d'essais.", swipe=True),
   dict(tpl="bignum", kicker="Revue Cochrane", big="- 21 %", title="de plaque dentaire *au-delà de 3 mois*", sub="Et environ 11 % de gingivite en moins. Preuves de qualité modérée, sur des dizaines d'essais."),
   dict(tpl="steps", kicker="Ce que ça veut dire", title="À retenir", items=[("L'écart est réel", "Mesuré sur des milliers de participants."), ("Il grandit avec le temps", "11 % de plaque à 3 mois, 21 % après."), ("Le geste compte toujours", "2 minutes, zéro pression, tous les jours.")]),
 ],
@@ -150,7 +150,7 @@ Notre parti pris tient en une phrase : réduire la partie qu'on jette, pas l'obj
 
 # ── 0d · ANGLE : assumer les défauts
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="statement", img=s("p017"), kicker="Avis clients", title="Les 2 reproches *qui reviennent*", swipe=True),
+  dict(tpl="note", img=s("p017"), kicker="Ce qu'on pense des marques", bad="Elles ne montrent que les bons avis.", hand="chez nous :", good="Les *deux reproches* sont sur la fiche produit.", sub="On ne masque rien, tu lis tout avant de payer.", swipe=True),
   dict(tpl="versus", kicker="Ce qu'on nous dit", title="Les critiques, *telles quelles*", both_good=True, left=("Le manche", ["« Un peu plus épais que prévu »", "Gênant les premiers jours", "On s'y habitue vite"]), right=("Les vibrations", ["« Vibre un peu plus fort »", "Surtout si tu viens d'une autre brosse", "Le mode Sensible les adoucit"])),
   dict(tpl="arch", img="u:1706951413911-a4477e18ccd5", kicker="Avis vérifiés", title="Tout est public *sur la fiche produit*", sub=RET, price="59,90 €"),
 ],
@@ -189,7 +189,7 @@ Livraison gratuite en point relais dès 20 € d'achat.
 
 # ── 2 · ANGLE : le scepticisme avant achat
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="statement", img=s("p016"), kicker="On le lit souvent", title="« J'étais sceptique *au début.* »", sub="C'est l'avis le plus fréquent qu'on reçoit. Et la suite est toujours la même.", swipe=True),
+  dict(tpl="fear", kicker="Ta crainte", fear="Une marque que je connais pas, à 59,90 €, je le sens moyen.", kicker2="Ce qu'on a mis en face", answer="*30 jours* pour changer d'avis", sub="« J'étais sceptique au début » est l'avis le plus fréquent qu'on reçoit. La suite est toujours la même.", swipe=True),
   dict(tpl="mosaic", kicker="Ce qui arrive chez toi", title="Pour 59,90 €", imgs=[(s("bamboo_face"), "Le manche sonique"), (s("ricin_pack2"), "2 têtes en bambou"), (s("etui_voyage"), "L'étui de voyage"), (s("chargeur"), "Le câble USB-C")]),
   dict(tpl="arch", img=s("p014"), kicker="Sans risque", title="30 jours *pour changer d'avis*", sub="Et des avis clients vérifiés sur la fiche produit.", price="59,90 €"),
 ],
@@ -210,7 +210,7 @@ Pour décider sans te tromper :
 
 # ── 3 · ANGLE : le design sur le lavabo
 dict(date="x", kind="photo", slides=[
-  dict(tpl="arch", img=s("p084"), kicker="Pulse Care Bamboo+", title="Ta salle de bain mérite mieux *qu'un bloc de plastique blanc.*", sub="Bambou, lignes sobres, pas de socle à brancher en permanence.", price="59,90 €"),
+  dict(tpl="editorial", img=s("p084"), over="Sur le lavabo", kicker="Design", title="Mieux qu'un *bloc de plastique blanc*", sub="Bambou, lignes sobres, pas de socle branché en permanence. C'est le compliment n°1 dans les avis."),
 ],
 caption="""Le compliment qui revient le plus sur notre brosse à dents électrique ? Pas la puissance. Le design.
 
@@ -228,7 +228,7 @@ La Bamboo+ reste posée sur le lavabo toute la journée. Autant qu'elle soit bel
 
 # ── 4 · ANGLE : les gencives sensibles
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1567516364473-233c4b6fcfbe", kicker="Gencives sensibles", title="Tu évites certaines zones *en te brossant* ?", swipe=True),
+  dict(tpl="fear", kicker="Ta crainte", fear="Mes gencives saignent déjà, une électrique va empirer ça.", kicker2="Ce qui change", answer="C'est la *pression* qui blesse, pas les vibrations", sub="Mode Sensible, poils ricin, et aucune force à appliquer : tu guides, la brosse travaille.", swipe=True),
   dict(tpl="steps", kicker="Ce qui change", title="Deux réglages, une tête", items=[("Mode Sensible", "Vibrations adoucies, dès le premier jour."), ("Zéro pression à appliquer", "Les vibrations nettoient, tu guides."), ("Poils ricin", "Fibre végétale, toucher très doux.")]),
   dict(tpl="arch", img=s("ricin_profil"), kicker="Têtes poils ricin", title="La plus douce *de la gamme*", sub=LIV, price="5,50 €"),
 ],
@@ -249,7 +249,7 @@ Tête poils ricin : 5,50 €. Pack de 4 : 14,90 €.
 
 # ── 5 · ANGLE : la bagarre du brossage avec les enfants
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="statement", img="u:1758687126877-b37052a20a4d", kicker="Parents", title="« Encore 30 secondes ! »\n*Tous les soirs.*", swipe=True),
+  dict(tpl="editorial", img="u:1758687126877-b37052a20a4d", over="Le soir, 20h40", kicker="Parents", title="« Encore 30 secondes ! » *tous les soirs*", sub="Le minuteur vibre toutes les 30 secondes. L'enfant change de zone tout seul, tu arrêtes de compter à voix haute.", swipe=True),
   dict(tpl="schema", kind="zones", kicker="Ce qui débloque", title="4 zones, *30 secondes chacune*", sub="Le minuteur décide à ta place. Plus de négociation."),
   dict(tpl="arch", img=s("p092"), kicker="Pack duo", title="Une brosse chacun, *une seule routine*", sub=LIV, price="94,90 €"),
 ],
@@ -332,7 +332,7 @@ Pack de 4 : 14,90 €.
 
 # ── 9 · ANGLE : le café et les taches
 dict(date="x", kind="photo", slides=[
-  dict(tpl="arch", img="u:1652594286350-47f2213f5c92", kicker="Mode Blanchiment", title="3 cafés par jour, *ça se voit.*", sub="Le mode Blanchiment agit sur les taches de surface : café, thé, vin."),
+  dict(tpl="editorial", img="u:1652594286350-47f2213f5c92", over="3 cafés par jour", kicker="Taches de surface", title="Le café *se voit sur l'émail*", sub="Le mode Blanchiment travaille les taches de surface : café, thé, vin. Pas un blanchiment chimique, un polissage quotidien."),
 ],
 caption="""Le café laisse des taches sur l'émail. Une brosse à dents électrique ne les efface pas d'un coup, mais elle évite qu'elles s'installent.
 
@@ -394,7 +394,7 @@ La sonique corrige ça :
 
 # ── 12 · ANGLE : le plastique qu'on jette
 dict(date="x", kind="photo", slides=[
-  dict(tpl="bignum", kicker="Le principe", big="1", title="manche gardé, *la tête se change*", sub="La partie qu'on remplace tous les 3 mois est en bambou.", img=s("p087")),
+  dict(tpl="callout", img=s("p087"), kicker="Le principe", notes=[("Le manche : gardé des années", 0.5, 0.62), ("La tête : changée tous les 3 mois", 0.5, 0.12)], strike=("toute la brosse", "la tête"), title="Un seul manche, *une tête à changer*", sub="C'est la seule pièce qui part à la poubelle, et elle est en bambou.", cta="Voir la recharge"),
 ],
 caption="""La partie d'une brosse à dents électrique qu'on jette le plus souvent, c'est la tête. C'est là que Pulse Care a mis le bambou.
 
