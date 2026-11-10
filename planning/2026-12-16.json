@@ -1,0 +1,35 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-3.jpg"
+      }
+    ],
+    "caption": "Têtes de brosse à dents électrique : poils ricin ou poils nylon ?\n\nLes deux sont montées sur une tête en bambou et se clipsent en une seconde. La différence, c'est la fibre.\n\n→ Ricin : fibre d'origine végétale, toucher très doux, idéal si tes gencives sont sensibles\n→ Nylon : brossage plus ferme, pour ceux qui aiment sentir le nettoyage\n\nPas sûr ? Prends une tête de chaque et compare sur deux semaines.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #poilsricin #pulsecare",
+    "fb_message": "Têtes de brosse à dents électrique : poils ricin ou poils nylon ?\n\nLes deux sont montées sur une tête en bambou et se clipsent en une seconde. La différence, c'est la fibre.\n\n→ Ricin : fibre d'origine végétale, toucher très doux, idéal si tes gencives sont sensibles\n→ Nylon : brossage plus ferme, pour ceux qui aiment sentir le nettoyage\n\nPas sûr ? Prends une tête de chaque et compare sur deux semaines.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #poilsricin #pulsecare",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-3.jpg"
+      }
+    ]
+  }
+}
