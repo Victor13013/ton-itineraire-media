@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-11-10h-1.jpg",
-    "caption": "Brosse à dents électrique le matin : avant ou après le petit-déjeuner ?\n\nAvant. Au réveil, tu retires la plaque formée pendant la nuit, et le fluor protège l'émail avant le repas.\n\nSi tu préfères brosser après avoir mangé, attends 30 minutes quand il y a eu du jus d'orange, du café ou un fruit acide : l'émail est ramolli juste après, et le brossage l'abîme.\n\nTeam avant ou team après ?\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #routinedumatin #hygienebuccodentaire #pulsecare",
-    "fb_message": "Brosse à dents électrique le matin : avant ou après le petit-déjeuner ?\n\nAvant. Au réveil, tu retires la plaque formée pendant la nuit, et le fluor protège l'émail avant le repas.\n\nSi tu préfères brosser après avoir mangé, attends 30 minutes quand il y a eu du jus d'orange, du café ou un fruit acide : l'émail est ramolli juste après, et le brossage l'abîme.\n\nTeam avant ou team après ?\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #routinedumatin #hygienebuccodentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-11-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-11-10h-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-11-10h-3.jpg"
+      }
+    ],
+    "caption": "Aucune brosse à dents électrique ne compense le tabac. Mais novembre, c'est le Mois sans tabac, et c'est le bon moment pour en parler.\n\nCe que le tabac fait à la bouche :\n→ il colore l'émail, et les taches reviennent vite\n→ il réduit l'irrigation des gencives, donc la cicatrisation\n→ il est l'un des premiers facteurs de parodontite\n→ il masque les saignements, ce qui retarde le diagnostic\n\nEn arrêtant, l'haleine change souvent en quelques jours.\n\nPour se faire aider : 39 89 (gratuit) ou mois-sans-tabac.fr. Kits gratuits en pharmacie.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#moissanstabac #brosseadentselectrique #gencives #pulsecare",
+    "fb_message": "Aucune brosse à dents électrique ne compense le tabac. Mais novembre, c'est le Mois sans tabac, et c'est le bon moment pour en parler.\n\nCe que le tabac fait à la bouche :\n→ il colore l'émail, et les taches reviennent vite\n→ il réduit l'irrigation des gencives, donc la cicatrisation\n→ il est l'un des premiers facteurs de parodontite\n→ il masque les saignements, ce qui retarde le diagnostic\n\nEn arrêtant, l'haleine change souvent en quelques jours.\n\nPour se faire aider : 39 89 (gratuit) ou mois-sans-tabac.fr. Kits gratuits en pharmacie.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#moissanstabac #brosseadentselectrique #gencives #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-11-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-11-10h-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-11-10h-3.jpg"
       }
     ]
   }

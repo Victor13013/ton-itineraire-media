@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-10h-2.jpg"
-      }
-    ],
-    "caption": "Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.\n\n1. Tu manges du sucre. Les bactéries de la plaque s'en nourrissent.\n2. Elles produisent de l'acide pendant une vingtaine de minutes.\n3. Cet acide dissout l'émail. Répété chaque jour, il finit par percer.\n\nC'est pour ça que grignoter toute la journée est pire que manger sucré d'un coup : chaque prise relance l'attaque acide.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
-    "fb_message": "Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.\n\n1. Tu manges du sucre. Les bactéries de la plaque s'en nourrissent.\n2. Elles produisent de l'acide pendant une vingtaine de minutes.\n3. Cet acide dissout l'émail. Répété chaque jour, il finit par percer.\n\nC'est pour ça que grignoter toute la journée est pire que manger sucré d'un coup : chaque prise relance l'attaque acide.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-10h-1.jpg",
+    "caption": "Une brosse à dents électrique ne remplace pas le contrôle annuel. Et de 3 à 24 ans, ce contrôle est gratuit.\n\nC'est le dispositif M'T dents de l'Assurance Maladie :\n→ un examen de prévention par an, de 3 à 24 ans inclus\n→ pris en charge à 100 %, sans avance de frais\n→ les soins qui en découlent (carie, détartrage) sont aussi couverts\n→ la CPAM envoie un courrier environ un mois avant la date\n\nLes soins doivent commencer dans les 3 mois suivant l'examen.\n\nSi tu as des enfants, le prochain courrier mérite d'être ouvert.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#mtdents #brosseadentselectrique #preventiondentaire #pulsecare",
+    "fb_message": "Une brosse à dents électrique ne remplace pas le contrôle annuel. Et de 3 à 24 ans, ce contrôle est gratuit.\n\nC'est le dispositif M'T dents de l'Assurance Maladie :\n→ un examen de prévention par an, de 3 à 24 ans inclus\n→ pris en charge à 100 %, sans avance de frais\n→ les soins qui en découlent (carie, détartrage) sont aussi couverts\n→ la CPAM envoie un courrier environ un mois avant la date\n\nLes soins doivent commencer dans les 3 mois suivant l'examen.\n\nSi tu as des enfants, le prochain courrier mérite d'être ouvert.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#mtdents #brosseadentselectrique #preventiondentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-12-10h-2.jpg"
       }
     ]
   }

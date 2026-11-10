@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-10h-2.jpg"
-      }
-    ],
-    "caption": "Si tu ne devais retenir que 3 choses sur la brosse à dents électrique, ce serait celles-là.\n\n1. 2 minutes, 2 fois par jour. Le minuteur s'arrête seul, tu n'as pas à compter.\n2. Zéro pression. Tu poses la tête, tu guides, les vibrations font le reste.\n3. Une tête tous les 3 mois, même si elle paraît en bon état.\n\nLe reste (modes, accessoires, astuces) vient après. Ces trois-là font 90 % du résultat.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "Si tu ne devais retenir que 3 choses sur la brosse à dents électrique, ce serait celles-là.\n\n1. 2 minutes, 2 fois par jour. Le minuteur s'arrête seul, tu n'as pas à compter.\n2. Zéro pression. Tu poses la tête, tu guides, les vibrations font le reste.\n3. Une tête tous les 3 mois, même si elle paraît en bon état.\n\nLe reste (modes, accessoires, astuces) vient après. Ces trois-là font 90 % du résultat.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-10h-1.jpg",
+    "caption": "Un point que peu de gens savent sur le brossage, avec ou sans brosse à dents électrique : une gencive qui a reculé ne repousse pas.\n\nLes deux causes principales : un brossage trop appuyé pendant des années, et la maladie parodontale.\n\nCe que ça provoque : la racine se découvre, la dent devient sensible au froid, et la zone retient plus de plaque.\n\nLa bonne nouvelle : on peut stopper le recul. Zéro pression, poils souples, et un suivi chez le dentiste.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #gencives #recessiongingivale #pulsecare",
+    "fb_message": "Un point que peu de gens savent sur le brossage, avec ou sans brosse à dents électrique : une gencive qui a reculé ne repousse pas.\n\nLes deux causes principales : un brossage trop appuyé pendant des années, et la maladie parodontale.\n\nCe que ça provoque : la racine se découvre, la dent devient sensible au froid, et la zone retient plus de plaque.\n\nLa bonne nouvelle : on peut stopper le recul. Zéro pression, poils souples, et un suivi chez le dentiste.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #gencives #recessiongingivale #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-10h-2.jpg"
       }
     ]
   }

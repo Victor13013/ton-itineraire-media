@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-10h-2.jpg"
-      }
-    ],
-    "caption": "Le récap du mois sur la brosse à dents électrique, en 5 points.\n\n1. Brosse avant le petit-déjeuner, ou 30 minutes après s'il y avait du jus ou du café\n2. Zéro pression : ce sont les vibrations qui nettoient\n3. Fil ou brossettes chaque soir : 40 % des surfaces sont entre les dents\n4. Une tête tous les 3 mois, et après une angine\n5. Un contrôle chez le dentiste par an\n\nEnregistre ce post, il résume tout le mois.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "Le récap du mois sur la brosse à dents électrique, en 5 points.\n\n1. Brosse avant le petit-déjeuner, ou 30 minutes après s'il y avait du jus ou du café\n2. Zéro pression : ce sont les vibrations qui nettoient\n3. Fil ou brossettes chaque soir : 40 % des surfaces sont entre les dents\n4. Une tête tous les 3 mois, et après une angine\n5. Un contrôle chez le dentiste par an\n\nEnregistre ce post, il résume tout le mois.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-10h-1.jpg",
+    "caption": "Pour quelqu'un qui a déjà sa brosse à dents électrique Pulse Care, le cadeau utile existe : un pack de têtes.\n\n→ 4 têtes en bambou\n→ poils ricin ou poils nylon\n→ un an de brossage\n→ 14,90 €\n\nC'est le cadeau qu'on n'achète jamais pour soi et qui sert tous les jours. Parfait pour un petit budget ou un calendrier de l'avent.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #ideecadeau #tetederechange #pulsecare",
+    "fb_message": "Pour quelqu'un qui a déjà sa brosse à dents électrique Pulse Care, le cadeau utile existe : un pack de têtes.\n\n→ 4 têtes en bambou\n→ poils ricin ou poils nylon\n→ un an de brossage\n→ 14,90 €\n\nC'est le cadeau qu'on n'achète jamais pour soi et qui sert tous les jours. Parfait pour un petit budget ou un calendrier de l'avent.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #ideecadeau #tetederechange #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-10h-2.jpg"
       }
     ]
   }

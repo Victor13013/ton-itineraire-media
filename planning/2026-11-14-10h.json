@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-1.jpg",
-    "caption": "Sur une brosse à dents électrique, une noisette de dentifrice suffit. Pas le boudin des publicités.\n\nTrop de dentifrice crée de la mousse. La mousse donne la sensation que c'est propre, et on s'arrête avant les 2 minutes.\n\nPour les enfants, la quantité est encore plus petite : un grain de riz avant 3 ans, un petit pois ensuite. Demande à ton dentiste le dosage de fluor adapté à leur âge.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #dentifrice #hygienebuccodentaire #pulsecare",
-    "fb_message": "Sur une brosse à dents électrique, une noisette de dentifrice suffit. Pas le boudin des publicités.\n\nTrop de dentifrice crée de la mousse. La mousse donne la sensation que c'est propre, et on s'arrête avant les 2 minutes.\n\nPour les enfants, la quantité est encore plus petite : un grain de riz avant 3 ans, un petit pois ensuite. Demande à ton dentiste le dosage de fluor adapté à leur âge.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #dentifrice #hygienebuccodentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-2.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.\n\n1. Tu manges du sucre. Les bactéries de la plaque s'en nourrissent.\n2. Elles produisent de l'acide pendant une vingtaine de minutes.\n3. Cet acide dissout l'émail. Répété chaque jour, il finit par percer.\n\nC'est pour ça que grignoter toute la journée est pire que manger sucré d'un coup : chaque prise relance l'attaque acide.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
+    "fb_message": "Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.\n\n1. Tu manges du sucre. Les bactéries de la plaque s'en nourrissent.\n2. Elles produisent de l'acide pendant une vingtaine de minutes.\n3. Cet acide dissout l'émail. Répété chaque jour, il finit par percer.\n\nC'est pour ça que grignoter toute la journée est pire que manger sucré d'un coup : chaque prise relance l'attaque acide.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-2.jpg"
       }
     ]
   }

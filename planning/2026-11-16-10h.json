@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-10h-2.jpg"
-      }
-    ],
-    "caption": "Une brosse à dents électrique ne règle pas tout : 4 causes fréquentes de mauvaise haleine.\n\n1. La langue. Elle héberge une bonne partie des bactéries responsables.\n2. La bouche sèche. Moins de salive, c'est moins de nettoyage naturel.\n3. Les espaces entre les dents, là où aucune brosse ne passe. D'où le fil ou les brossettes.\n4. Le tabac et le café, qui s'ajoutent au reste.\n\nLe geste en plus : 3 ou 4 passages doux sur la langue, de l'arrière vers l'avant.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #haleinefraiche #hygienebuccodentaire #pulsecare",
-    "fb_message": "Une brosse à dents électrique ne règle pas tout : 4 causes fréquentes de mauvaise haleine.\n\n1. La langue. Elle héberge une bonne partie des bactéries responsables.\n2. La bouche sèche. Moins de salive, c'est moins de nettoyage naturel.\n3. Les espaces entre les dents, là où aucune brosse ne passe. D'où le fil ou les brossettes.\n4. Le tabac et le café, qui s'ajoutent au reste.\n\nLe geste en plus : 3 ou 4 passages doux sur la langue, de l'arrière vers l'avant.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #haleinefraiche #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-10h-1.jpg",
+    "caption": "Sur une brosse à dents électrique, une noisette de dentifrice suffit. Pas le boudin des publicités.\n\nTrop de dentifrice crée de la mousse. La mousse donne la sensation que c'est propre, et on s'arrête avant les 2 minutes.\n\nPour les enfants, la quantité est encore plus petite : un grain de riz avant 3 ans, un petit pois ensuite. Demande à ton dentiste le dosage de fluor adapté à leur âge.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #dentifrice #hygienebuccodentaire #pulsecare",
+    "fb_message": "Sur une brosse à dents électrique, une noisette de dentifrice suffit. Pas le boudin des publicités.\n\nTrop de dentifrice crée de la mousse. La mousse donne la sensation que c'est propre, et on s'arrête avant les 2 minutes.\n\nPour les enfants, la quantité est encore plus petite : un grain de riz avant 3 ans, un petit pois ensuite. Demande à ton dentiste le dosage de fluor adapté à leur âge.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #dentifrice #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-10h-2.jpg"
       }
     ]
   }

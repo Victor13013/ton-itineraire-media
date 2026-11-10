@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-2.jpg"
-      }
-    ],
-    "caption": "Face au sucre, une brosse à dents électrique ne peut pas tout. Et le vrai problème n'est pas celui qu'on croit.\n\nCe n'est pas la quantité, c'est la fréquence. Chaque prise de sucre déclenche une attaque acide d'environ 20 minutes. Dix bonbons d'un coup : une attaque. Dix bonbons étalés sur la journée : dix attaques.\n\nTrois réflexes :\n→ regroupe le sucré en fin de repas\n→ bois un verre d'eau après\n→ attends 30 minutes avant de brosser si c'était acide\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #sucre #carie #pulsecare",
-    "fb_message": "Face au sucre, une brosse à dents électrique ne peut pas tout. Et le vrai problème n'est pas celui qu'on croit.\n\nCe n'est pas la quantité, c'est la fréquence. Chaque prise de sucre déclenche une attaque acide d'environ 20 minutes. Dix bonbons d'un coup : une attaque. Dix bonbons étalés sur la journée : dix attaques.\n\nTrois réflexes :\n→ regroupe le sucré en fin de repas\n→ bois un verre d'eau après\n→ attends 30 minutes avant de brosser si c'était acide\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #sucre #carie #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-1.jpg",
+    "caption": "Une brosse à dents électrique, ça coûte combien par an ? Faisons le calcul pour la Bamboo+.\n\n→ La brosse : 59,90 €, avec 2 têtes incluses. Le manche se garde des années.\n→ Les têtes : 14,90 € le pack de 4, soit une année complète.\n\nLa première année, tu paies le manche. Les suivantes, ce sont uniquement les têtes.\n\nC'est précisément le principe : le durable d'un côté, le consommable de l'autre.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
+    "fb_message": "Une brosse à dents électrique, ça coûte combien par an ? Faisons le calcul pour la Bamboo+.\n\n→ La brosse : 59,90 €, avec 2 têtes incluses. Le manche se garde des années.\n→ Les têtes : 14,90 € le pack de 4, soit une année complète.\n\nLa première année, tu paies le manche. Les suivantes, ce sont uniquement les têtes.\n\nC'est précisément le principe : le durable d'un côté, le consommable de l'autre.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-2.jpg"
       }
     ]
   }

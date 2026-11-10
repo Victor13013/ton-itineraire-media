@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-10h-1.jpg",
-    "caption": "Entre deux passages de brosse à dents électrique, c'est la salive qui protège tes dents.\n\nUn adulte en produit environ 1 à 1,5 litre par jour. Elle rince les résidus, neutralise les acides et apporte des minéraux à l'émail.\n\nLa nuit, la production chute. C'est pour ça que le brossage du soir compte autant, et qu'il vaut mieux ne rien manger après.\n\nSi tu as souvent la bouche sèche, bois de l'eau régulièrement et parles-en à ton dentiste.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #salive #hygienebuccodentaire #pulsecare",
-    "fb_message": "Entre deux passages de brosse à dents électrique, c'est la salive qui protège tes dents.\n\nUn adulte en produit environ 1 à 1,5 litre par jour. Elle rince les résidus, neutralise les acides et apporte des minéraux à l'émail.\n\nLa nuit, la production chute. C'est pour ça que le brossage du soir compte autant, et qu'il vaut mieux ne rien manger après.\n\nSi tu as souvent la bouche sèche, bois de l'eau régulièrement et parles-en à ton dentiste.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #salive #hygienebuccodentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-10h-2.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique abîme-t-elle l'émail ? C'est la question qui revient le plus souvent.\n\nNon, à trois conditions.\n\n1. Tu n'appuies pas. La force est inutile : ce sont les vibrations qui nettoient.\n2. Tu commences en mode Sensible, une à deux semaines, le temps de prendre le geste.\n3. Tu utilises des poils souples.\n\nCe qui abîme l'émail, c'est la pression et les poils durs. Pas la technologie.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #email #ideerecue #pulsecare",
+    "fb_message": "Une brosse à dents électrique abîme-t-elle l'émail ? C'est la question qui revient le plus souvent.\n\nNon, à trois conditions.\n\n1. Tu n'appuies pas. La force est inutile : ce sont les vibrations qui nettoient.\n2. Tu commences en mode Sensible, une à deux semaines, le temps de prendre le geste.\n3. Tu utilises des poils souples.\n\nCe qui abîme l'émail, c'est la pression et les poils durs. Pas la technologie.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #email #ideerecue #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-10h-2.jpg"
       }
     ]
   }
