@@ -8,6 +8,47 @@ Mêmes gabarits et mêmes DA que le créneau de 18h (voir content.py).
 from content import s, S, TAGS  # noqa: F401
 
 POSTS_AM = [
+# ───────────────────────── ACTU · Mois sans tabac (novembre 2026)
+dict(date="2026-11-11", kind="carousel", da="b", slides=[
+  dict(tpl="hero", img="u:1580489944761-15a19d654956", kicker="Mois sans tabac", title="Ce que ta bouche *y gagne*", swipe=True),
+  dict(tpl="steps", tone="forest", kicker="En arrêtant", title="4 effets sur les dents", items=[("L'haleine change", "Souvent en quelques jours."), ("Les colorations s'arrêtent", "Le goudron ne se dépose plus sur l'émail."), ("Les gencives cicatrisent mieux", "Le tabac réduit l'irrigation des tissus."), ("Le risque de parodontite baisse", "Le tabac est un de ses premiers facteurs.")]),
+  dict(tpl="statement", img="u:1544507888-56d73eb6046e", kicker="Si tu te lances", title="Tu n'es pas *tout seul.*", sub="Tabac info service au 39 89, ou mois-sans-tabac.fr. Kits gratuits en pharmacie."),
+],
+caption="""Aucune brosse à dents électrique ne compense le tabac. Mais novembre, c'est le Mois sans tabac, et c'est le bon moment pour en parler.
+
+Ce que le tabac fait à la bouche :
+→ il colore l'émail, et les taches reviennent vite
+→ il réduit l'irrigation des gencives, donc la cicatrisation
+→ il est l'un des premiers facteurs de parodontite
+→ il masque les saignements, ce qui retarde le diagnostic
+
+En arrêtant, l'haleine change souvent en quelques jours.
+
+Pour se faire aider : 39 89 (gratuit) ou mois-sans-tabac.fr. Kits gratuits en pharmacie.
+
+[CTA]
+
+#moissanstabac #brosseadentselectrique #gencives #pulsecare"""),
+
+# ───────────────────────── ACTU · M'T dents
+dict(date="2026-11-13", kind="photo", da="a", tone="mint", slides=[
+  dict(tpl="bignum", kicker="M'T dents", big="100 %", title="de 3 à 24 ans, *le contrôle est pris en charge*", sub="Un rendez-vous par an, sans avance de frais. La CPAM envoie un courrier avant chaque date.", img="u:1770871821382-60ea99b0a941"),
+],
+caption="""Une brosse à dents électrique ne remplace pas le contrôle annuel. Et de 3 à 24 ans, ce contrôle est gratuit.
+
+C'est le dispositif M'T dents de l'Assurance Maladie :
+→ un examen de prévention par an, de 3 à 24 ans inclus
+→ pris en charge à 100 %, sans avance de frais
+→ les soins qui en découlent (carie, détartrage) sont aussi couverts
+→ la CPAM envoie un courrier environ un mois avant la date
+
+Les soins doivent commencer dans les 3 mois suivant l'examen.
+
+Si tu as des enfants, le prochain courrier mérite d'être ouvert.
+
+[CTA]
+
+#mtdents #brosseadentselectrique #preventiondentaire #pulsecare"""),
 # ───────────────────────── 1 · 11/11 · petit-déj
 dict(date="2026-11-11", kind="photo", da="b", tone="sand", slides=[
   dict(tpl="quiz", kicker="Le matin", title="Avant ou après *le petit-déj* ?",
