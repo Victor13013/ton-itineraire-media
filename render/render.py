@@ -1934,7 +1934,7 @@ def x_offer(c):
         px0, px1 = M + 30, W - M - 30
         th_shadow(t, (px0, top, px1, bot)); rounded_photo(base, load(c["img"]), (px0, top, px1, bot), 40, c.get("fy", 0.45))
     if c.get("price"):
-        sticker_v4(base, nb(c["price"]), W - M - 4, top + 72, 92, LIME, INKV, -12)
+        sticker_v4(base, nb(c["price"]), W - M - 22, top + 78, 90, LIME, INKV, -12)
     d = ImageDraw.Draw(base); perks = c.get("perks", [])[:3]
     if perks:
         cw = (W - 2 * M) / len(perks); yy = H - 188

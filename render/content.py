@@ -129,7 +129,7 @@ Traduction : l'écart est réel et il grandit avec le temps. Mais le geste reste
 
 # ── 0c · ANGLE : transparence, ce qu'on ne te dira pas
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="statement", img="u:1583642037383-861ac716c3f0", kicker="Transparence", title="On ne va pas te dire *que c'est sans impact.*", swipe=True),
+  dict(tpl="editorial", img="u:1583642037383-861ac716c3f0", over="Notre parti pris", kicker="Transparence", title="On réduit *la partie qu'on jette*", sub="Pas de label inventé, pas de promesse invérifiable. Un manche gardé des années, et 4 grammes de bambou tous les 3 mois.", swipe=True),
   dict(tpl="steps", kicker="Ce qui est vrai", title="Les faits, sans enrobage", items=[("La tête est en bambou", "C'est la partie remplacée tous les 3 mois."), ("Les poils viennent du ricin", "Une fibre végétale, à la place du pétrole."), ("Le manche est en plastique ASA", "Choisi pour durer des années, pas pour être joli à dire.")]),
   dict(tpl="offer", img=s("p006"), kicker="Notre parti pris", title="Réduire la partie *qu'on jette*", price="59,90 €", perks=["Tête en bambou", "Poils en ricin", "Manche gardé des années"]),
 ],
@@ -269,7 +269,7 @@ Pour les plus jeunes, demande à ton dentiste le modèle adapté à leur âge.
 
 # ── 6 · ANGLE : après le rendez-vous chez le dentiste
 dict(date="x", kind="photo", slides=[
-  dict(tpl="statement", img="u:1606811841689-23dfddce3e95", kicker="Après le détartrage", title="« Il faudrait mieux brosser. »\n*D'accord, mais comment ?*", sub="41 000 vibrations par minute, un minuteur, un mode Sensible. La technique, c'est elle qui l'applique."),
+  dict(tpl="fear", kicker="Chez le dentiste", fear="« Il faudrait mieux brosser. » D'accord, mais comment ?", kicker2="Ce qui s'en charge", answer="La *technique*, c'est la brosse qui l'applique", sub="41 000 vibrations par minute, un minuteur qui découpe les 4 zones, un mode Sensible. Toi, tu guides."),
 ],
 caption="""Ton dentiste t'a dit de mieux brosser. Une brosse à dents électrique sonique fait une bonne partie du travail à ta place.
 
@@ -350,7 +350,7 @@ Le réflexe qui aide : un verre d'eau après le café, pour ne pas laisser le pi
 
 # ── 10 · ANGLE : idée cadeau, petit budget
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1512909006721-3d6018887383", kicker="Idée cadeau", title="Un cadeau utilisé *deux fois par jour*", swipe=True),
+  dict(tpl="split", img="u:1512909006721-3d6018887383", kicker="Idée cadeau", title="Utilisé *deux fois par jour*", items=["Pas un gadget qu'on range", "Un seul bouton, 4 modes", "L'étui dans la boîte"], price="59,90 €", sub="Livraison gratuite en point relais dès 20 € d'achat.", dark=True, swipe=True),
   dict(tpl="mosaic", kicker="Trois budgets", title="Pour qui, à quel prix", imgs=[(s("ricin_pack4_douce"), "Pack de 4 têtes · 14,90 €"), (s("decouverte_neutre"), "Pack découverte · 64,90 €"), (s("duo_coffret"), "Pack duo · 94,90 €")]),
   dict(tpl="statement", img="u:1545608444-f045a6db6133", kicker="L'argument", title="Il ne finira pas *au fond d'un tiroir.*", sub=LIV),
 ],
@@ -412,7 +412,7 @@ Pack de 4 têtes : 14,90 €. La brosse : 59,90 €.
 
 # ── 13 · ANGLE : le pack découverte pour tester
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="hero", img=s("decouverte_main"), kicker="Pack découverte", title="Tu veux tester *avant de t'engager* ?", swipe=True),
+  dict(tpl="editorial", img=s("decouverte_main"), over="Le point de départ", kicker="Pack découverte", title="Tester *avant de t'engager*", sub="Le manche, les têtes, l'étui. Tout ce qu'il faut pour démarrer, et 30 jours pour changer d'avis.", swipe=True),
   dict(tpl="mosaic", kicker="Dans le pack", title="Tout pour démarrer", imgs=[(s("decouverte_contenu"), "Le manche"), (s("decouverte_tetes"), "Les têtes ricin"), (s("dec_etui_tetes"), "L'étui")]),
   dict(tpl="offer", img=s("p046"), kicker="Pack découverte", title="Le point de départ", price="64,90 €", perks=["Le manche sonique", "Têtes poils ricin", "L'étui de voyage"]),
 ],
@@ -432,7 +432,7 @@ C'est aussi le pack à offrir à quelqu'un qui hésite depuis des mois.
 
 # ── 14 · ANGLE : deux personnes, un lavabo
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="statement", img=s("p121"), kicker="Pack duo", title="Deux brosses. *Un seul lavabo.*", swipe=True),
+  dict(tpl="callout", img=s("p121"), kicker="Pack duo", notes=[("Deux manches, deux couleurs", 0.5, 0.22), ("Têtes interchangeables", 0.5, 0.72)], title="Deux brosses, *un seul lavabo*", sub="Chacun la sienne, et les têtes se changent sur n'importe quel manche.", cta="Voir le duo", swipe=True),
   dict(tpl="mosaic", kicker="Dans le coffret", title="Chacun la sienne", imgs=[(s("duo_etuis"), "2 manches"), (s("duo_acc"), "Les accessoires"), (s("deux_brosses"), "2 étuis")]),
   dict(tpl="ticket", kicker="Pack duo", title="Le détail, *ligne par ligne*", head="Pulse Care · pack duo", lines=[("2 manches sonique", "—"), ("4 têtes en bambou", "incluses"), ("2 étuis de voyage", "inclus"), ("Câble USB-C", "inclus")], total=("À payer", "94,90 €"), note="Soit 47,45 € la brosse. " + LIV),
 ],
@@ -452,7 +452,7 @@ Identifie la personne avec qui tu partages ton lavabo.
 
 # ── 15 · ANGLE : ce que disent les clients
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="statement", img=s("p055"), kicker="Avis clients", title="« Le minuteur est *hyper pratique.* »", swipe=True),
+  dict(tpl="note", img=s("p055"), kicker="Ce qu'on imagine", bad="Le minuteur, c'est un gadget.", hand="les clients disent :", good="« Le minuteur est *hyper pratique.* »", sub="C'est la fonction qui revient le plus dans les avis, devant l'autonomie.", swipe=True),
   dict(tpl="statement", img=s("p021"), kicker="Avis clients", title="« Elle est stylée, légère *et tient hyper bien la charge.* »"),
   dict(tpl="offer", img="u:1595428774752-c87f23e7fcee", kicker="Avis vérifiés", title="Lis-les *avant d'acheter*", price="59,90 €", perks=["Avis publics", "Critiques comprises", RET]),
 ],
@@ -491,7 +491,7 @@ Pas d'accessoire à racheter avant 6 mois. Et 30 jours pour changer d'avis.
 
 # ── 17 · ANGLE : haleine du matin
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="hero", img="u:1611695434369-a8f5d76ceb7b", kicker="Haleine", title="Le brossage du soir *décide de ton réveil*", swipe=True),
+  dict(tpl="editorial", img="u:1611695434369-a8f5d76ceb7b", over="Au réveil", kicker="Haleine", title="Le brossage du soir *décide de ton réveil*", sub="La nuit, la salive baisse et les bactéries travaillent sans frein. Ce que tu laisses le soir, tu le retrouves le matin.", swipe=True),
   dict(tpl="steps", kicker="Le soir", title="L'ordre qui marche", items=[("Fil dentaire", "Ou brossettes entre les dents."), ("2 minutes, mode Nettoyage", "Le minuteur gère le temps."), ("La langue", "3 passages doux, de l'arrière vers l'avant."), ("Plus rien à manger", "Jusqu'au lendemain.")]),
   dict(tpl="arch", img="u:1564540579594-0930edb6de43", kicker="Pulse Care Bamboo+", title="Le minuteur fait *le travail ingrat*", sub=LIV, price="59,90 €"),
 ],
@@ -534,7 +534,7 @@ Pack de 4 : 14,90 €.
 
 # ── 19 · ANGLE : la douche
 dict(date="x", kind="photo", slides=[
-  dict(tpl="hero", img="u:1719782758766-f0a4a3808afe", kicker="Étanche IPX7", title="Tu te brosses *sous la douche* ?", sub="Aucun problème. Sèche juste le port USB-C avant de recharger."),
+  dict(tpl="fear", kicker="Ta crainte", fear="Si je la prends sous la douche, je vais la griller.", kicker2="Ce qu'elle supporte", answer="Étanche *IPX7*", sub="Elle encaisse l'eau de la douche sans broncher. Sèche juste le port USB-C avant de la recharger."),
 ],
 caption="""Se brosser les dents sous la douche : une brosse à dents électrique le supporte, à condition d'être étanche.
 
@@ -553,7 +553,7 @@ Le seul réflexe à garder : bien sécher le port USB-C avant de la brancher.
 
 # ── 20 · ANGLE : la panne de l'ancienne brosse
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="statement", img=s("p095"), kicker="Le moment du changement", title="Ton ancienne brosse *ne tient plus la charge* ?", swipe=True),
+  dict(tpl="note", img=s("p095"), kicker="Le moment du changement", bad="Elle tient encore, je la garde.", hand="le vrai signe :", good="Si tu la recharges *toutes les semaines*, elle est finie.", sub="Une batterie en fin de vie perd d'abord son autonomie, puis sa puissance de brossage.", swipe=True),
   dict(tpl="bignum", kicker="Batterie", big="500", title="mAh, *30 jours d'autonomie*", sub="Une charge d'environ 2,5 h, en USB-C."),
   dict(tpl="offer", img="u:1667550177726-96da7c257853", kicker="Bamboo+", title="Le câble que *tu as déjà*", price="59,90 €", perks=["Recharge USB-C", "2,5 h de charge", "30 jours d'autonomie"]),
 ],
@@ -705,7 +705,7 @@ Tu relèves ?
 
 # ── 28 · ANGLE : la livraison et la garantie
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="hero", img=s("p029"), kicker="Avant de commander", title="Ce qu'il faut savoir *sur la commande*", swipe=True),
+  dict(tpl="split", img=s("p029"), side="right", kicker="Avant de commander", title="Ce qu'il faut savoir *sur la commande*", items=["Livraison gratuite dès 20 €", "30 jours pour changer d'avis", "Suivi par e-mail"], swipe=True),
   dict(tpl="steps", kicker="Les 3 points", title="Simple et sans piège", items=[("Livraison gratuite", "En point relais, dès 20 € d'achat."), ("30 jours pour changer d'avis", "Hors têtes déjà ouvertes, pour raison d'hygiène."), ("Une question ?", "Par mail, réponse sous 24 à 48 h.")]),
 ],
 caption="""Commander une brosse à dents électrique chez Pulse Care : les 3 choses à savoir avant de cliquer.
@@ -722,7 +722,7 @@ Une question avant d'acheter ? Écris-nous, on répond sous 24 à 48 h.
 
 # ── 29 · ANGLE : le récap, dernier appel
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="hero", img=s("p004"), kicker="Le récap", title="Pourquoi la *Bamboo+* ?", swipe=True, tw=0.68),
+  dict(tpl="editorial", img=s("p004"), over="Le récap", kicker="Bamboo+", title="Pourquoi *celle-là* ?", sub="Un mois d'arguments, remis dans l'ordre : ce qu'elle fait, ce qu'elle coûte, ce qu'elle ne promet pas.", swipe=True),
   dict(tpl="stats", img=s("etui"), title="En résumé", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("2 min", "de minuteur intégré"), ("30 j", "d'autonomie")]),
   dict(tpl="steps", kicker="Et le reste", title="Ce que tu ne paies qu'une fois", items=[("Le manche", "Gardé pendant des années."), ("L'étui de voyage", "En bambou, inclus."), ("Le câble USB-C", "Inclus aussi.")]),
   dict(tpl="ticket", kicker="Récapitulatif", title="Ce que tu reçois *pour 59,90 €*", head="Pulse Care · Bamboo+", lines=[("Manche sonique bambou", "—"), ("2 têtes en bambou", "incluses"), ("Étui de voyage", "inclus"), ("Câble USB-C", "inclus")], total=("À payer", "59,90 €"), note=LIV + " " + RET),
