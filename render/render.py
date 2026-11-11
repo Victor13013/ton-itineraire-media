@@ -2851,6 +2851,20 @@ def render_videos():
     for v in VIDEOS:
         if ONLY and v["date"] not in ONLY: continue
         vo = os.path.join(ROOT, "media", "vo", v["id"] + ".mp3")
+        mus = music_path(v.get("music"))
+        if not os.path.exists(vo) and mus:
+            # Pas de voix mais une musique : format texte + musique, programmé. Re-rendu tout seul si la voix arrive.
+            rel = f"media/reels/{v['date']}.mp4"; out = os.path.join(ROOT, rel)
+            sig = hashlib.sha1((json.dumps(v["scenes"], ensure_ascii=False) + str(v.get("pal")) + "musique:" + os.path.basename(mus) + SCENE_V).encode()).hexdigest()
+            stamp = out.replace(".mp4", ".sig")
+            if not (os.path.exists(out) and os.path.exists(stamp) and open(stamp).read() == sig):
+                est = sum(len(sc.get("say", "")) for sc in v["scenes"]) / 15.5 + 0.9
+                t0 = time.time(); dur = render_reel(fit_scenes(v["scenes"], est), out, pal=v.get("pal"), music=mus)
+                open(stamp, "w").write(sig); print(f"{v['date']} vidéo {v['id']} (musique seule) {dur:.1f}s ({time.time() - t0:.0f}s)")
+            ig = v["caption"].replace("[CTA]", CTA_IG); fb = v["caption"].replace("[CTA]", CTA_FB)
+            post = {"type": "reel", "video_url": REEL_HOST + rel, "thumb_offset": 1200, "caption": ig, "fb_message": fb}
+            json.dump({"post": post}, open(os.path.join(ROOT, "planning", v["date"] + "-reel.json"), "w"), ensure_ascii=False, indent=2)
+            continue
         if not os.path.exists(vo):
             # Pas encore de voix : aperçu muet (durées estimées sur le texte), jamais programmé.
             prev = os.path.join(ROOT, "media", "previews", v["id"] + ".mp4"); os.makedirs(os.path.dirname(prev), exist_ok=True)
