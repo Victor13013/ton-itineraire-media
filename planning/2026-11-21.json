@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-3.jpg"
-      }
-    ],
-    "caption": "« Je l'ai emmenée en voyage sans même recharger. » C'est un avis client sur notre brosse à dents électrique, et c'est exactement l'idée.\n\n30 jours d'autonomie pour 2 brossages par jour. Sur un week-end, une semaine, ou trois, tu ne touches pas au chargeur.\n\nEt l'étui de voyage en bambou est inclus dans la boîte, pas vendu à part.\n\n→ recharge en USB-C, le câble du téléphone suffit\n→ étanche IPX7, la douche d'hôtel ne pose aucun problème\n\n59,90 €, livraison gratuite en point relais dès 20 € d'achat.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #voyage #autonomie #pulsecare",
-    "fb_message": "« Je l'ai emmenée en voyage sans même recharger. » C'est un avis client sur notre brosse à dents électrique, et c'est exactement l'idée.\n\n30 jours d'autonomie pour 2 brossages par jour. Sur un week-end, une semaine, ou trois, tu ne touches pas au chargeur.\n\nEt l'étui de voyage en bambou est inclus dans la boîte, pas vendu à part.\n\n→ recharge en USB-C, le câble du téléphone suffit\n→ étanche IPX7, la douche d'hôtel ne pose aucun problème\n\n59,90 €, livraison gratuite en point relais dès 20 € d'achat.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #voyage #autonomie #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg",
+    "caption": "Ton dentiste t'a dit de mieux brosser. Une brosse à dents électrique sonique fait une bonne partie du travail à ta place.\n\nLe problème d'une brosse manuelle, ce n'est pas l'outil. C'est que la technique parfaite, personne ne la tient 2 minutes, 2 fois par jour, pendant des années.\n\nAvec la Bamboo+ :\n→ 41 000 vibrations par minute, tu guides seulement\n→ minuteur 2 minutes, pause toutes les 30 s par zone\n→ mode Sensible si les gencives sont fragiles\n\n59,90 € avec 2 têtes en bambou, l'étui et le câble USB-C.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #detartrage #conseilsdentaires #pulsecare",
+    "fb_message": "Ton dentiste t'a dit de mieux brosser. Une brosse à dents électrique sonique fait une bonne partie du travail à ta place.\n\nLe problème d'une brosse manuelle, ce n'est pas l'outil. C'est que la technique parfaite, personne ne la tient 2 minutes, 2 fois par jour, pendant des années.\n\nAvec la Bamboo+ :\n→ 41 000 vibrations par minute, tu guides seulement\n→ minuteur 2 minutes, pause toutes les 30 s par zone\n→ mode Sensible si les gencives sont fragiles\n\n59,90 € avec 2 têtes en bambou, l'étui et le câble USB-C.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #detartrage #conseilsdentaires #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-3.jpg"
       }
     ]
   }

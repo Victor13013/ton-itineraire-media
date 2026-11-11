@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-1.jpg",
-    "caption": "La question qu'on reçoit le plus souvent sur nos têtes de brosse à dents électrique : sont-elles compatibles avec d'autres manches ?\n\nNon. Elles sont conçues uniquement pour les manches Pulse Care. Le clip et le moteur sont dimensionnés ensemble, et une tête mal ajustée perd en efficacité.\n\nCe que tu as à la place :\n→ têtes en bambou, poils ricin ou nylon\n→ clip en une seconde, sans vis ni sens à chercher\n→ 5,50 € l'unité, 14,90 € le pack de 4\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #faq #pulsecare",
-    "fb_message": "La question qu'on reçoit le plus souvent sur nos têtes de brosse à dents électrique : sont-elles compatibles avec d'autres manches ?\n\nNon. Elles sont conçues uniquement pour les manches Pulse Care. Le clip et le moteur sont dimensionnés ensemble, et une tête mal ajustée perd en efficacité.\n\nCe que tu as à la place :\n→ têtes en bambou, poils ricin ou nylon\n→ clip en une seconde, sans vis ni sens à chercher\n→ 5,50 € l'unité, 14,90 € le pack de 4\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #faq #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-2.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique, ça coûte combien par an ? Le calcul, sans arrondi.\n\nPremière année : 59,90 € pour la brosse, avec 2 têtes, l'étui et le câble. Ces 2 têtes tiennent environ 6 mois, donc un seul pack à ajouter.\n\nAnnées suivantes : 14,90 €. C'est le prix d'un pack de 4 têtes, soit un an de brossage.\n\nLe manche, lui, se garde. C'est tout le principe.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
+    "fb_message": "Une brosse à dents électrique, ça coûte combien par an ? Le calcul, sans arrondi.\n\nPremière année : 59,90 € pour la brosse, avec 2 têtes, l'étui et le câble. Ces 2 têtes tiennent environ 6 mois, donc un seul pack à ajouter.\n\nAnnées suivantes : 14,90 €. C'est le prix d'un pack de 4 têtes, soit un an de brossage.\n\nLe manche, lui, se garde. C'est tout le principe.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-2.jpg"
       }
     ]
   }

@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-24-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-24-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-24-3.jpg"
-      }
-    ],
-    "caption": "Une brosse à dents électrique en cadeau, c'est l'idée qu'on trouve bête jusqu'à ce qu'on y réfléchisse.\n\nC'est un objet utilisé deux fois par jour, tous les jours, pendant des années. Peu de cadeaux à moins de 100 € peuvent en dire autant.\n\nTrois budgets :\n→ pack de 4 têtes en bambou : 14,90 €\n→ pack découverte : 64,90 €\n→ pack duo, deux brosses : 94,90 €\n\nLivraison gratuite en point relais dès 20 € d'achat.\n\nTu offres à qui cette année ?\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #ideecadeau #cadeaunoel #pulsecare",
-    "fb_message": "Une brosse à dents électrique en cadeau, c'est l'idée qu'on trouve bête jusqu'à ce qu'on y réfléchisse.\n\nC'est un objet utilisé deux fois par jour, tous les jours, pendant des années. Peu de cadeaux à moins de 100 € peuvent en dire autant.\n\nTrois budgets :\n→ pack de 4 têtes en bambou : 14,90 €\n→ pack découverte : 64,90 €\n→ pack duo, deux brosses : 94,90 €\n\nLivraison gratuite en point relais dès 20 € d'achat.\n\nTu offres à qui cette année ?\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #ideecadeau #cadeaunoel #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-24-1.jpg",
+    "caption": "Le café laisse des taches sur l'émail. Une brosse à dents électrique ne les efface pas d'un coup, mais elle évite qu'elles s'installent.\n\nLe mode Blanchiment de la Bamboo+ accélère les vibrations pour décrocher les pigments de surface : café, thé, vin rouge.\n\nCe qu'il ne fait pas : changer la teinte naturelle de ta dent. Ça, c'est le travail du dentiste, avec un vrai protocole.\n\nLe réflexe qui aide : un verre d'eau après le café, pour ne pas laisser le pigment poser.\n\n4 modes sur la Bamboo+, 59,90 €.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #blanchiment #cafe #pulsecare",
+    "fb_message": "Le café laisse des taches sur l'émail. Une brosse à dents électrique ne les efface pas d'un coup, mais elle évite qu'elles s'installent.\n\nLe mode Blanchiment de la Bamboo+ accélère les vibrations pour décrocher les pigments de surface : café, thé, vin rouge.\n\nCe qu'il ne fait pas : changer la teinte naturelle de ta dent. Ça, c'est le travail du dentiste, avec un vrai protocole.\n\nLe réflexe qui aide : un verre d'eau après le café, pour ne pas laisser le pigment poser.\n\n4 modes sur la Bamboo+, 59,90 €.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #blanchiment #cafe #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-24-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-24-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-24-3.jpg"
       }
     ]
   }
