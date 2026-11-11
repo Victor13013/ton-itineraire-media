@@ -129,7 +129,7 @@ Traduction : l'écart est réel et il grandit avec le temps. Mais le geste reste
 
 # ── 0c · ANGLE : transparence, ce qu'on ne te dira pas
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="editorial", img="u:1583642037383-861ac716c3f0", over="4 fois par an", kicker="Le geste qui gêne", title="Jeter une brosse *entière*, tous les 3 mois", sub="Le manche marche encore, mais il part avec. Chez nous il reste : seule la tête se change, et elle est en bambou.", swipe=True),
+  dict(tpl="editorial", img="u:1583642037383-861ac716c3f0", over="4 fois par an", kicker="Le geste qui gêne", title="Jeter une *brosse entière*, tous les 3 mois", sub="Le manche marche encore, mais il part avec. Chez nous il reste : seule la tête se change, et elle est en bambou.", swipe=True),
   dict(tpl="steps", kicker="Ce qui est vrai", title="Les faits, sans enrobage", items=[("La tête est en bambou", "C'est la partie remplacée tous les 3 mois."), ("Les poils viennent du ricin", "Une fibre végétale, à la place du pétrole."), ("Le manche est en plastique ASA", "Choisi pour durer des années, pas pour être joli à dire.")]),
   dict(tpl="offer", img=s("p006"), kicker="Notre parti pris", title="Réduire la partie *qu'on jette*", price="59,90 €", perks=["Tête en bambou", "Poils en ricin", "Manche gardé des années"]),
 ],
@@ -350,7 +350,7 @@ Le réflexe qui aide : un verre d'eau après le café, pour ne pas laisser le pi
 
 # ── 10 · ANGLE : idée cadeau, petit budget
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="split", img="u:1512909006721-3d6018887383", kicker="Le cadeau qui finit au tiroir", title="Offert en décembre, *oublié en janvier*", items=["Celui-là sert matin et soir", "Un seul bouton, 4 modes", "L'étui dans la boîte"], price="59,90 €", sub="Livraison gratuite en point relais dès 20 € d'achat.", dark=True, swipe=True),
+  dict(tpl="split", img="u:1512909006721-3d6018887383", kicker="Le cadeau-tiroir", title="Offert en décembre, *oublié en janvier*", items=["Celui-là sert matin et soir", "Un seul bouton, 4 modes", "L'étui dans la boîte"], price="59,90 €", sub="Livraison gratuite en point relais dès 20 € d'achat.", dark=True, swipe=True),
   dict(tpl="mosaic", kicker="Trois budgets", title="Pour qui, à quel prix", imgs=[(s("ricin_pack4_douce"), "Pack de 4 têtes · 14,90 €"), (s("decouverte_neutre"), "Pack découverte · 64,90 €"), (s("duo_coffret"), "Pack duo · 94,90 €")]),
   dict(tpl="statement", img="u:1545608444-f045a6db6133", kicker="L'argument", title="Il ne finira pas *au fond d'un tiroir.*", sub=LIV),
 ],
