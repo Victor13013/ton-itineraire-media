@@ -33,6 +33,8 @@ jobs:
           restore-keys: photos-
       - name: Voix off ElevenLabs
         run: python render/fetch_vo.py
+      - name: Musiques de fond Mixkit
+        run: python render/fetch_music.py
       - name: Rendu (visuels, Reels, planning)
         run: python render/render.py
       - name: Publication

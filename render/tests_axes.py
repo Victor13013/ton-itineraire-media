@@ -140,7 +140,7 @@ VOICES = {"agathe": "SptHT9PQ49isQvxFm28t", "maxence": "GGkMUTZaJ8IyPwaHimUq"}
 
 VIDEOS = [
   # PARENTS · format POV (plan filmé + texte natif), puis carte avec le plan qui joue dedans
-  dict(id="v-parents", date="2026-11-14", axis="PARENTS", voice="agathe", pal="corail", fmt="POV", scenes=[
+  dict(id="v-parents", music="Feeling Happy", date="2026-11-14", axis="PARENTS", voice="agathe", pal="corail", fmt="POV", scenes=[
     dict(t="pov", clip="fillette", title="POV : il est 20h40 et tu négocies chaque seconde de brossage", sub="« Encore 30 secondes ! »",
          say="Tous les soirs, c'est la même négociation. « Encore trente secondes ! »"),
     dict(t="card", clip="fille-matin", kicker="Le minuteur", title="Il *compte à ta place*", sub="Une vibration toutes les 30 secondes.",
@@ -156,7 +156,7 @@ Le minuteur vibre toutes les 30 secondes. L'enfant change de zone tout seul, et 
 """ + TAGS_T + " #parents"),
 
   # ÉCONOMIE · format Notes (le calcul qui s'écrit), puis grille des prix
-  dict(id="v-eco", date="2026-11-17", axis="ECO", voice="maxence", pal="lime", fmt="Notes", scenes=[
+  dict(id="v-eco", music="Sounds Good", date="2026-11-17", axis="ECO", voice="maxence", pal="lime", fmt="Notes", scenes=[
     dict(t="counter", clip="dentifrice", kicker="Une tête de rechange", value=15, suffix=" €", label="jusqu'à 15 € pièce, ailleurs",
          say="Tu as déjà regardé le prix des têtes de rechange ? Jusqu'à quinze euros pièce."),
     dict(t="notes", title="Budget brosse à dents", items=[("Une tête : jusqu'à 15 €", ""), ("Une tous les 3 mois", ""), ("Jusqu'à 60 € par an", "barre")],
@@ -173,7 +173,7 @@ Ailleurs, une tête de rechange peut coûter jusqu'à 15 €. Chez Pulse Care : 
 """ + TAGS_T + " #budget"),
 
   # PEUR · format question reçue + réponse, sur plan filmé
-  dict(id="v-peur", date="2026-11-20", axis="PEUR", voice="agathe", pal="creme", fmt="Question / réponse", scenes=[
+  dict(id="v-peur", music="Curiosity", date="2026-11-20", axis="PEUR", voice="agathe", pal="creme", fmt="Question / réponse", scenes=[
     dict(t="comment", clip="femme-brosse", comment="J'ai les gencives sensibles. Une électrique, ça ne va pas être trop agressif ?",
          title="Ce qui blesse, c'est *la pression.*",
          say="« J'ai les gencives sensibles, une électrique, ça ne va pas être trop agressif ? » En vrai, ce qui blesse, c'est la pression. Pas les vibrations."),
@@ -189,7 +189,7 @@ Avec le mode Sensible, tu poses la brosse et tu guides, sans frotter. Le minuteu
 """ + TAGS_T + " #gencivessensibles"),
 
   # CADEAU · format conversation SMS (petite scène de la vie)
-  dict(id="v-cadeau", date="2026-11-23", axis="CADEAU", voice="agathe", pal="nuit", fmt="Conversation", scenes=[
+  dict(id="v-cadeau", music="A Very Happy Christmas", date="2026-11-23", axis="CADEAU", voice="agathe", pal="nuit", fmt="Conversation", scenes=[
     dict(t="chat", contact="Maman", msgs=[("in", "Tu veux quoi pour Noël ?"), ("out", "Rien, j'ai tout"), ("in", "Même pas une nouvelle brosse à dents ?"), ("out", "Une électrique ? Ok, ça je l'utiliserai vraiment")],
          say="« Tu veux quoi pour Noël ? » « Rien, j'ai tout. » « Même pas une nouvelle brosse à dents ? » … Bon. Celle-là, je l'utiliserai vraiment."),
     dict(t="grid", shots=["u:1627130595904-ebeeb6540a93", s("boite_bambou"), s("etui_ouvert")], labels=["Matin et soir", "Prêt à emporter", "Étui inclus"], kicker="Celui-là sert", title="*Matin et soir,* toute l'année",
@@ -205,7 +205,7 @@ Pas un gadget qu'on range après Noël. Un seul bouton, 4 modes, et l'étui de v
 """ + TAGS_T + " #ideecadeau"),
 
   # PREUVE · format expert / statistique : la phrase du dentiste, le comparatif, le chiffre
-  dict(id="v-preuve", date="2026-11-26", axis="PREUVE", voice="maxence", pal="foret", fmt="Statistique", scenes=[
+  dict(id="v-preuve", music="Raising Me Higher", date="2026-11-26", axis="PREUVE", voice="maxence", pal="foret", fmt="Statistique", scenes=[
     dict(t="hook", clip="dentiste-geste", kicker="Chez le dentiste", title="« Il faudrait *mieux brosser.* »",
          say="Chez le dentiste, on te dit toujours la même chose : il faudrait mieux brosser."),
     dict(t="compare", left=("À la main", ["Tu choisis la durée", "Tu choisis la pression", "Tu oublies le fond"]),
@@ -224,7 +224,7 @@ La revue Cochrane compile des dizaines d'essais : jusqu'à 21 % de plaque en moi
 """ + TAGS_T + " #sciencedentaire"),
 
   # CONFIANCE · format avis client (vrai avis de la fiche produit)
-  dict(id="v-confiance", date="2026-11-29", axis="CONFIANCE", voice="agathe", pal="ocre", fmt="Avis client", scenes=[
+  dict(id="v-confiance", music="Smile", date="2026-11-29", axis="CONFIANCE", voice="agathe", pal="ocre", fmt="Avis client", scenes=[
     dict(t="hook", img=s("p029"), kicker="Le moment où on hésite", title="Panier rempli, *doigt en l'air*.",
          say="Une marque que tu ne connais pas, à cinquante-neuf euros quatre-vingt-dix… c'est normal d'hésiter."),
     dict(t="review", kicker="Avis client", quote="J'étais sceptique au début.",
@@ -240,7 +240,7 @@ La revue Cochrane compile des dizaines d'essais : jusqu'à 21 % de plaque en moi
 """ + TAGS_T + " #avisclients"),
 
   # DESIGN · format POV sur plan filmé, puis grille
-  dict(id="v-design", date="2026-12-02", axis="DESIGN", voice="maxence", pal="creme", fmt="POV", scenes=[
+  dict(id="v-design", music="Tech House vibes", date="2026-12-02", axis="DESIGN", voice="maxence", pal="creme", fmt="POV", scenes=[
     dict(t="pov", clip="homme-miroir", title="POV : tout est rangé dans ta salle de bain… sauf le socle branché sur le lavabo",
          say="Ta salle de bain est nickel… sauf ce socle branché en permanence sur le lavabo."),
     dict(t="grid", shots=[s("p087"), s("bamboo_face"), s("etui_voyage"), s("usb")], labels=["Sans socle", "Design sobre", "Étui", "USB-C"], kicker="Ce qu'on a changé", title="*Pas de socle.* Un étui.",
@@ -256,7 +256,7 @@ Une recharge USB-C qui tient 30 jours, un étui pour la ranger, des têtes en ba
 """ + TAGS_T + " #salledebain"),
 
   # GASPI · format statistique + carte
-  dict(id="v-gaspi", date="2026-12-05", axis="GASPI", voice="agathe", pal="nuit", fmt="Statistique", scenes=[
+  dict(id="v-gaspi", music="Rising Forest", date="2026-12-05", axis="GASPI", voice="agathe", pal="nuit", fmt="Statistique", scenes=[
     dict(t="counter", img="u:1583642037383-861ac716c3f0", kicker="Par an", value=4, suffix=" ×", label="tu jettes une brosse entière",
          say="Quatre fois par an, tu jettes une brosse entière. Alors que le manche marchait encore."),
     dict(t="card", img=s("tete_main2"), kicker="Avec Pulse Care", title="Le manche reste. *Seule la tête part.*",
@@ -272,7 +272,7 @@ Le manche reste des années. Tous les 3 mois, seule la tête part, et elle est e
 """ + TAGS_T + " #moinsjeter"),
 
   # PRATIQUE · format POV (la valise qui ne ferme pas)
-  dict(id="v-pratique", date="2026-12-08", axis="PRATIQUE", voice="maxence", pal="lime", fmt="POV", scenes=[
+  dict(id="v-pratique", music="Motivating Mornings", date="2026-12-08", axis="PRATIQUE", voice="maxence", pal="lime", fmt="POV", scenes=[
     dict(t="pov", clip="valise-zip", title="POV : la valise est pleine et il reste le socle de ta brosse à dents",
          say="Partir trois jours, et devoir encore caser le socle, le câble, l'adaptateur…"),
     dict(t="counter", clip="valise-pliage", kicker="Une charge", value=30, suffix=" j", label="d'autonomie, en USB-C",
@@ -289,7 +289,7 @@ Tu laisses le chargeur à la maison. L'étui de voyage est inclus, et elle est �
 """ + TAGS_T + " #voyage"),
 
   # RÉSULTAT · format démonstration rapide (plans filmés coupés vite)
-  dict(id="v-resultat", date="2026-12-11", axis="RESULTAT", voice="agathe", pal="corail", fmt="Démo rapide", scenes=[
+  dict(id="v-resultat", music="Summer Fun", date="2026-12-11", axis="RESULTAT", voice="agathe", pal="corail", fmt="Démo rapide", scenes=[
     dict(t="counter", clip="cafe-gorgee", kicker="Par jour", value=3, suffix=" cafés", label="et ça finit par se voir",
          say="Trois cafés par jour… et ça finit par se voir sur les dents."),
     dict(t="burst", shots=["clip:cafe-fumant", s("p019"), "clip:sourire"], kicker="Mode Blanchiment", title="Café, thé, vin : *les taches de surface*",

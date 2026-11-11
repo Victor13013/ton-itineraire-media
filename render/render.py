@@ -2750,15 +2750,35 @@ def fit_scenes(scenes_spec, total):
         out.append(dict(c, dur=max(2.2, span * wi / sum(w))))
     return out
 
-def render_reel(scenes_spec, out, audio=None, pal=None):
+def music_path(name):
+    """Musique de fond téléchargée par fetch_music.py ; à défaut, n'importe quelle autre piste présente."""
+    if not name: return None
+    d = os.path.join(ROOT, "media", "music"); slug_ = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    p = os.path.join(d, slug_ + ".mp3")
+    if os.path.exists(p): return p
+    alt = sorted(f for f in os.listdir(d) if f.endswith(".mp3")) if os.path.isdir(d) else []
+    return os.path.join(d, alt[sum(map(ord, name)) % len(alt)]) if alt else None
+
+MUSIC_VOL = 0.16   # sous la voix : présente mais jamais devant
+
+def render_reel(scenes_spec, out, audio=None, pal=None, music=None):
     if audio: scenes_spec = fit_scenes(scenes_spec, audio_len(audio) + 0.9)
     scenes = [Scene(c, i, pal) for i, c in enumerate(scenes_spec)]
     starts, t = [], 0.0
     for i, sc in enumerate(scenes):
         starts.append(t); t += sc.dur - (XF if i < len(scenes) - 1 else 0)
     total = t; n = int(total * FPS)
+    if music:
+        # voix devant, musique en boucle dessous, qui monte au début et s'éteint à la fin
+        vin = ["-i", audio] if audio else ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]
+        fo = max(0.0, total - 1.4)
+        aud = [*vin, "-stream_loop", "-1", "-i", music, "-filter_complex",
+               f"[1:a]aresample=48000,apad[v];[2:a]aresample=48000,volume={MUSIC_VOL if audio else 0.5},afade=t=in:d=0.6,afade=t=out:st={fo:.2f}:d=1.4[m];"
+               f"[v][m]amix=inputs=2:duration=first:normalize=0,atrim=0:{total:.2f}[a]", "-map", "0:v", "-map", "[a]"]
+    else:
+        aud = ["-i", audio, "-af", "apad"] if audio else ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{RW}x{RH}", "-r", str(FPS), "-i", "-",
-           *(["-i", audio, "-af", "apad"] if audio else ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]), "-shortest",
+           *aud, "-shortest",
            "-c:v", "libx264", "-profile:v", "high", "-pix_fmt", "yuv420p", "-preset", "medium", "-crf", "21",
            "-maxrate", "4500k", "-bufsize", "9000k", "-g", "60", "-keyint_min", "60", "-sc_threshold", "0",
            "-c:a", "aac", "-b:a", "128k", "-ar", "48000", "-movflags", "+faststart", out]
@@ -2834,17 +2854,17 @@ def render_videos():
         if not os.path.exists(vo):
             # Pas encore de voix : aperçu muet (durées estimées sur le texte), jamais programmé.
             prev = os.path.join(ROOT, "media", "previews", v["id"] + ".mp4"); os.makedirs(os.path.dirname(prev), exist_ok=True)
-            sig = hashlib.sha1((json.dumps(v["scenes"], ensure_ascii=False) + str(v.get("pal")) + SCENE_V).encode()).hexdigest()
+            sig = hashlib.sha1((json.dumps(v["scenes"], ensure_ascii=False) + str(v.get("pal")) + os.path.basename(music_path(v.get("music")) or "") + SCENE_V).encode()).hexdigest()
             stamp = prev.replace(".mp4", ".sig")
             if not (os.path.exists(prev) and os.path.exists(stamp) and open(stamp).read() == sig):
                 est = sum(len(sc.get("say", "")) for sc in v["scenes"]) / 15.5 + 0.9
-                render_reel(fit_scenes(v["scenes"], est), prev, pal=v.get("pal")); open(stamp, "w").write(sig)
+                render_reel(fit_scenes(v["scenes"], est), prev, pal=v.get("pal"), music=music_path(v.get("music"))); open(stamp, "w").write(sig)
             print(v["date"], v["id"], "voix off absente : aperçu muet, vidéo non programmée"); continue
         rel = f"media/reels/{v['date']}.mp4"; out = os.path.join(ROOT, rel)
-        sig = hashlib.sha1((json.dumps(v["scenes"], ensure_ascii=False) + str(v.get("pal")) + str(os.path.getsize(vo)) + SCENE_V).encode()).hexdigest()
+        sig = hashlib.sha1((json.dumps(v["scenes"], ensure_ascii=False) + str(v.get("pal")) + str(os.path.getsize(vo)) + os.path.basename(music_path(v.get("music")) or "") + SCENE_V).encode()).hexdigest()
         stamp = out.replace(".mp4", ".sig")
         if not (os.path.exists(out) and os.path.exists(stamp) and open(stamp).read() == sig):
-            t0 = time.time(); dur = render_reel(v["scenes"], out, audio=vo, pal=v.get("pal"))
+            t0 = time.time(); dur = render_reel(v["scenes"], out, audio=vo, pal=v.get("pal"), music=music_path(v.get("music")))
             open(stamp, "w").write(sig); print(f"{v['date']} vidéo {v['id']} {dur:.1f}s ({time.time() - t0:.0f}s)")
         ig = v["caption"].replace("[CTA]", CTA_IG); fb = v["caption"].replace("[CTA]", CTA_FB)
         post = {"type": "reel", "video_url": REEL_HOST + rel, "thumb_offset": 1200, "caption": ig, "fb_message": fb}
