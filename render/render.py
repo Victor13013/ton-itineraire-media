@@ -24,10 +24,10 @@ def _shift(posts, start, offset=0):
     de suite dans la même DA, ni la même DA le matin et le soir du même jour."""
     d = _date.fromisoformat(start)
     for i, p in enumerate(posts):
-        p["date"] = d.isoformat(); p["da"] = "abc"[(i + offset) % 3]; d += _td(days=1)
+        p["date"] = d.isoformat(); p["da"] = "abcde"[(i + offset) % 5]; d += _td(days=1)
 
 _shift([p for p in POSTS if not p["date"].startswith("test")], "2026-11-11", 0)
-_shift([p for p in POSTS_AM if not p["date"].startswith("test")], "2026-11-11", 1)
+_shift([p for p in POSTS_AM if not p["date"].startswith("test")], "2026-11-11", 2)
 SLOTS = [("", POSTS, 0), ("-10h", POSTS_AM, 1)]   # 18h -> AAAA-MM-JJ.json · 10h -> AAAA-MM-JJ-10h.json
 ALL = [p for _, L, _ in SLOTS for p in L]
 # Les posts publiés en test ont une date préfixée "test-" : leur fichier n'est lu par aucun scénario
@@ -1338,9 +1338,42 @@ TPL_C = {"hero": tc_hero, "statement": tc_statement, "product": tc_product, "lis
 class Th: pass
 C_TINTS = {"cream": PAPER, "blush": (252, 240, 234), "sage": (236, 243, 234)}
 A_TONES = {"mint": MINTV, "sand": SANDV, "honey": HONEY, "forest": FOREST}
+# DA "d" (Nuit) et DA "e" (Pop) : deux palettes de plus, pour sortir des pastels.
+NIGHT = (11, 21, 17)
+POPS = [CORAL, (233, 172, 74), (108, 170, 138), LIME]
+
+def night_bg(n):
+    base = Image.new("RGB", (W, H), NIGHT).convert("RGBA")
+    gl = Image.new("RGBA", (W, H), (0, 0, 0, 0)); gd = ImageDraw.Draw(gl)
+    cx, cy = (0.74 if n % 2 else 0.24) * W, (0.22 if n % 3 else 0.78) * H
+    for r, a in ((640, 26), (430, 30), (250, 34)):
+        gd.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(46, 96, 72, a))
+    base.alpha_composite(gl.filter(ImageFilter.GaussianBlur(120)))
+    return grain(base, 7)
+
+def pop_bg(bg, n):
+    base = Image.new("RGB", (W, H), bg).convert("RGBA")
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); ld = ImageDraw.Draw(lay)
+    tint = tuple(min(255, int(v * 1.14)) for v in bg)
+    cx, cy, r = (0.18 if n % 2 else 0.86) * W, (0.84 if n % 2 else 0.16) * H, int(W * 0.56)
+    ld.ellipse([cx - r, cy - r, cx + r, cy + r], fill=tint + (150,))
+    base.alpha_composite(lay.filter(ImageFilter.GaussianBlur(70)))
+    return grain(base, 6)
 
 def theme(c):
     t = Th(); t.da = c.get("da") or "a"; n = c.get("_n", 0); tone = c.get("tone")
+    if t.da == "d":
+        t.dark = True; t.base = night_bg(n); t.card = (26, 42, 34)
+        t.ink = CREAM; t.sub = (176, 200, 186); t.acc = LIME; t.acc_ink = INKV
+        t.card_ink = CREAM; t.card_sub = (186, 206, 194)
+        return t
+    if t.da == "e":
+        bg = POPS[n % len(POPS)]; t.dark = bg == CORAL
+        t.base = pop_bg(bg, n); t.card = WHITE_A
+        t.ink = CREAM if t.dark else INKV; t.sub = (252, 226, 220) if t.dark else (58, 72, 62)
+        t.acc = CREAM if t.dark else INKV; t.acc_ink = CORAL if t.dark else (LIME if bg != LIME else CREAM)
+        t.card_ink = INKV; t.card_sub = GREYV
+        return t
     if t.da == "b":
         kind = tone if tone in ("fresh", "sand", "forest") else ["fresh", "sand", "forest"][n % 3]
         t.dark = kind == "forest"; t.base = mesh_bg(kind, n)
@@ -1683,17 +1716,16 @@ def x_schema(c):
 # mot barré corrigé à la main, crainte/réponse en deux blocs, mise en page magazine.
 
 def light_bg(c):
-    """Fond très clair, légèrement teinté selon la DA. Sert de studio photo."""
+    """Fond « studio » du post : clair sur les DA a/b/c, nuit sur la d, saturé sur la e."""
     n = c.get("_n", 0); da = c.get("da") or "a"
-    tints = {"a": (238, 246, 240), "b": (240, 243, 248), "c": PAPER}
-    base = Image.new("RGB", (W, H), tints.get(da, tints["a"])).convert("RGBA")
-    if da == "c": base = paper_bg(n, PAPER).convert("RGBA")
-    else:
-        g = Image.new("L", (W, H))
-        ImageDraw.Draw(g).rectangle([0, 0, W, H], fill=0)
-        v = Image.linear_gradient("L").resize((W, H)).rotate(0)
-        base = Image.composite(Image.new("RGB", (W, H), (255, 255, 255)).convert("RGBA"), base, v.point(lambda p: 255 - p))
-    return base.convert("RGBA")
+    if da == "d": return night_bg(n).convert("RGBA")
+    if da == "e": return pop_bg(POPS[n % len(POPS)], n).convert("RGBA")
+    if da == "c": return paper_bg(n, PAPER).convert("RGBA")
+    tints = {"a": (238, 246, 240), "b": (240, 243, 248)}
+    base = Image.new("RGB", (W, H), tints[da]).convert("RGBA")
+    v = Image.linear_gradient("L").resize((W, H))
+    return Image.composite(Image.new("RGB", (W, H), (255, 255, 255)).convert("RGBA"), base,
+                           v.point(lambda p: 255 - p)).convert("RGBA")
 
 def leader(d, x0, y0, x1, y1, color, r=11):
     """Pastille + trait de rappel vers un détail du produit."""
@@ -1706,12 +1738,12 @@ def strike_line(d, x, y, w, color, h):
 
 # ── Produit annoté : le produit en grand, des rappels vers les détails qui comptent
 def x_callout(c):
-    base = light_bg(c); d = ImageDraw.Draw(base)
-    acc = CORAL if (c.get("da") == "c") else FOREST
+    base = light_bg(c); t = theme_on(base, c); d = ImageDraw.Draw(base)
+    acc, hand_c = t.acc, (LIME if t.dark else CORAL)
     y = 92
     if c.get("kicker"):
-        if c.get("da") == "c": y, _ = hand_note(base, M, y, c["kicker"], 52, CORAL, -2); y += 4
-        else: y = kicker_pill(base, M, y, c["kicker"], acc, CREAM) + 22
+        if c.get("da") == "c": y, _ = hand_note(base, M, y, c["kicker"], 52, hand_c, -2); y += 4
+        else: y = kicker_pill(base, M, y, c["kicker"], acc, t.acc_ink) + 22
     pw_max, ph_max = int(W * 0.40), int(H * 0.37)
     px, py = M - 10, int(H * 0.15)
     prod, ok = product_cut(load(c["img"]), base.convert("RGB").getpixel((200, int(H * 0.3))), pw_max, ph_max)
@@ -1730,45 +1762,45 @@ def x_callout(c):
         ax, ay = px + pw * fx, py + ph * fy
         leader(d, ax, ay, tx - 16, ry, acc)
         for j, ln in enumerate(wrap(lab, f, W - M - tx)):
-            d.text((tx, ry - f.size * 0.62 + j * f.size * 1.3), ln, font=f, fill=INKV)
+            d.text((tx, ry - f.size * 0.62 + j * f.size * 1.3), ln, font=f, fill=t.ink)
     # correction manuscrite : le mot rayé, et le bon mot au-dessus
     ty = max(int(H * 0.57), int(py + ph + 46))
     if c.get("strike"):
         bad, good = c["strike"]; f = BLACK(72)
         while d.textlength(bad.upper(), font=f) > W - 2 * M - 260: f = BLACK(f.size - 4)
-        hand_note(base, M + 16, ty - 86, good, 64, CORAL, -7)
-        d = ImageDraw.Draw(base); d.text((M, ty), bad.upper(), font=f, fill=(150, 162, 154))
-        strike_line(d, M, ty, d.textlength(bad.upper(), font=f), CORAL, f.size); ty += f.size * 1.18
+        hand_note(base, M + 16, ty - 86, good, 64, hand_c, -7)
+        d = ImageDraw.Draw(base); d.text((M, ty), bad.upper(), font=f, fill=(104, 122, 112) if t.dark else (150, 162, 154))
+        strike_line(d, M, ty, d.textlength(bad.upper(), font=f), hand_c, f.size); ty += f.size * 1.18
     f, tl = sans_fit(c["title"], BLACK, W - 2 * M, 72, 42, 2)
-    ty = sans_draw_marks(base, M, ty, tl, f, INKV, acc, CREAM, 1.02)
+    ty = sans_draw_marks(base, M, ty, tl, f, t.ink, acc, t.acc_ink, 1.02)
     if c.get("sub"):
         f2 = IM(29); d = ImageDraw.Draw(base)
         for ln in wrap(c["sub"], f2, W - 2 * M - 40):
-            d.text((M, ty + 10), ln, font=f2, fill=GREYV); ty += f2.size * 1.32
+            d.text((M, ty + 10), ln, font=f2, fill=t.sub); ty += f2.size * 1.32
     if c.get("cta"):
         f3 = BOLD(29); d = ImageDraw.Draw(base)
         tw = d.textlength(c["cta"].upper(), font=f3); bw = tw + 134
         bx, by = M, H - 178
-        d.rounded_rectangle([bx, by, bx + bw, by + 80], radius=40, outline=INKV, width=3)
-        d.text((bx + 38, by + 25), c["cta"].upper(), font=f3, fill=INKV)
-        d.ellipse([bx + bw - 72, by + 13, bx + bw - 12, by + 73], fill=INKV)
-        d.text((bx + bw - 55, by + 22), "→", font=ARR(32), fill=CREAM)
+        d.rounded_rectangle([bx, by, bx + bw, by + 80], radius=40, outline=t.ink, width=3)
+        d.text((bx + 38, by + 25), c["cta"].upper(), font=f3, fill=t.ink)
+        d.ellipse([bx + bw - 72, by + 13, bx + bw - 12, by + 73], fill=t.ink)
+        d.text((bx + bw - 55, by + 22), "→", font=ARR(32), fill=NIGHT if t.dark else CREAM)
     return base.convert("RGB")
 
 # ── Mot barré : on corrige à voix haute ce que le client croit
 def x_note(c):
-    base = light_bg(c); d = ImageDraw.Draw(base); y = 120
+    base = light_bg(c); t = theme_on(base, c); hand_c = LIME if t.dark else CORAL
+    d = ImageDraw.Draw(base); y = 120
     if c.get("kicker"):
-        if c.get("da") == "c": y, _ = hand_note(base, M, y, c["kicker"], 54, CORAL, -2); y += 10
-        else: y = kicker_pill(base, M, y, c["kicker"], FOREST, CREAM) + 34
+        if c.get("da") == "c": y, _ = hand_note(base, M, y, c["kicker"], 54, hand_c, -2); y += 10
+        else: y = kicker_pill(base, M, y, c["kicker"], t.acc, t.acc_ink) + 34
     f, tl = sans_fit(c["bad"], BLACK, W - 2 * M, 84, 48, 3); d = ImageDraw.Draw(base)
-    sp = d.textlength(" ", font=f)
     for ln in tl:
         txt = " ".join(k[0] for k in ln); w = d.textlength(txt, font=f)
-        d.text((M, y), txt, font=f, fill=(154, 166, 158))
-        strike_line(d, M, y, w, CORAL, f.size); y += f.size * 1.08
-    y, _ = hand_note(base, M + 30, y + 4, c.get("hand", "en vrai :"), 72, CORAL, -4)
-    y = th_title(theme_on(base, c), M, y + 10, c["good"], start=92, minsize=52, maxlines=3)
+        d.text((M, y), txt, font=f, fill=(104, 122, 112) if t.dark else (154, 166, 158))
+        strike_line(d, M, y, w, hand_c, f.size); y += f.size * 1.08
+    y, _ = hand_note(base, M + 30, y + 4, c.get("hand", "en vrai :"), 72, hand_c, -4)
+    y = th_title(t, M, y + 10, c["good"], start=92, minsize=52, maxlines=3)
     top = H - 120   # haut de la vignette, calculé avant d'écrire le sous-titre
     if c.get("img"):
         bg = base.convert("RGB").getpixel((W - 200, H - 300))
@@ -1786,15 +1818,19 @@ def x_note(c):
         while y + 14 + len(ls) * f2.size * 1.36 > top - 26 and f2.size > 23:
             f2 = IM(f2.size - 2); ls = wrap(c["sub"], f2, W - 2 * M - 60)
         for ln in ls:
-            d.text((M, y + 14), ln, font=f2, fill=GREYV); y += f2.size * 1.36
+            d.text((M, y + 14), ln, font=f2, fill=t.sub); y += f2.size * 1.36
     return base.convert("RGB")
 
 def theme_on(base, c):
-    """Réutilise les helpers de titre sur un fond déjà dessiné."""
-    t = Th(); t.da = "a" if c.get("da") != "c" else "c"; t.base = base; t.dark = False
-    t.ink = INKV; t.sub = GREYV; t.acc = CORAL if t.da == "c" else FOREST
-    t.acc_ink = WHITE_A if t.da == "c" else CREAM; t.card = WHITE_A
-    t.card_ink = INKV; t.card_sub = GREYV
+    """Réutilise les helpers de titre sur un fond déjà dessiné, avec les encres de la DA."""
+    t = Th(); da = c.get("da") or "a"; t.da = da; t.base = base; n = c.get("_n", 0)
+    t.dark = da == "d" or (da == "e" and POPS[n % len(POPS)] == CORAL)
+    t.ink = CREAM if t.dark else INKV
+    t.sub = (186, 206, 194) if da == "d" else ((252, 226, 220) if t.dark else GREYV)
+    t.acc = LIME if t.dark else (CORAL if da == "c" else FOREST)
+    t.acc_ink = INKV if t.dark else (WHITE_A if da == "c" else CREAM)
+    t.card = (26, 42, 34) if t.dark else WHITE_A
+    t.card_ink = t.ink; t.card_sub = t.sub
     return t
 
 # ── Crainte / réponse : deux blocs pleine largeur, rien d'autre
@@ -1830,24 +1866,25 @@ def x_editorial(c):
     im = cover(load(c["img"]), W, ph, 0.5, c.get("fy", 0.45))
     base.paste(im.convert("RGBA"), (0, 0))
     d = ImageDraw.Draw(base)
+    t = theme_on(base, c)
     if c.get("over"):
         f0 = BOLD(27); tw = d.textlength(c["over"].upper(), font=f0)
-        d.rounded_rectangle([M, ph - 96, M + tw + 56, ph - 28], radius=34, fill=CREAM)
-        d.text((M + 28, ph - 82), c["over"].upper(), font=f0, fill=INKV)
+        d.rounded_rectangle([M, ph - 96, M + tw + 56, ph - 28], radius=34, fill=NIGHT if t.dark else CREAM)
+        d.text((M + 28, ph - 82), c["over"].upper(), font=f0, fill=CREAM if t.dark else INKV)
     y = ph + 54
     if c.get("kicker"):
         f0 = BOLD(26); txt = " ".join(c["kicker"].upper())
-        d.text((M, y), txt, font=f0, fill=CORAL if c.get("da") == "c" else FOREST); y += 52
-        d.line([M, y, W - M, y], fill=(206, 214, 206), width=2); y += 34
-    t = theme_on(base, c); y = th_title(t, M, y, c["title"], start=86, minsize=48, maxlines=3)
+        d.text((M, y), txt, font=f0, fill=LIME if t.dark else (CORAL if c.get("da") == "c" else FOREST)); y += 52
+        d.line([M, y, W - M, y], fill=(58, 78, 68) if t.dark else (206, 214, 206), width=2); y += 34
+    y = th_title(t, M, y, c["title"], start=86, minsize=48, maxlines=3)
     if c.get("sub"):
         maxw = W - 2 * M - (150 if c.get("swipe") else 30); f2 = IM(32)
         ls = wrap(c["sub"], f2, maxw)
         while len(ls) * f2.size * 1.36 + y + 16 > H - 150 and f2.size > 24:
             f2 = IM(f2.size - 2); ls = wrap(c["sub"], f2, maxw)
         for ln in ls:
-            d.text((M, y + 16), ln, font=f2, fill=GREYV); y += f2.size * 1.36
-    chrome(base, c, INKV, GREYV)
+            d.text((M, y + 16), ln, font=f2, fill=t.sub); y += f2.size * 1.36
+    chrome(base, c, t.ink, t.sub, light_btn=t.dark)
     return base.convert("RGB")
 
 # ── Ticket de caisse : le détail d'un prix, ligne par ligne
@@ -1954,10 +1991,14 @@ TPLX = {"bignum": x_bignum, "quiz": x_quiz, "steps": x_steps, "mosaic": x_mosaic
 DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
 DA_C_ALL = "--da-c" in sys.argv     # aperçu : tout en DA C
 def pick_tpl(sl):
-    """La DA vient du post (da = "a" v5, "b", "c") ; les formats mixtes s'habillent selon la DA."""
+    """La DA vient du post ("a" v5, "b" dégradé, "c" carnet, "d" nuit, "e" pop).
+    Les formats mixtes s'habillent seuls ; les six gabarits historiques retombent
+    sur l'habillage le plus proche."""
     if sl["tpl"] in TPLX: return TPLX[sl["tpl"]]
-    if DA_C_ALL or sl.get("da") == "c": return TPL_C[sl["tpl"]]
-    return (TPL_B if (DA_B_ALL or sl.get("da") == "b") else TPL)[sl["tpl"]]
+    da = sl.get("da")
+    if DA_C_ALL or da == "c": return TPL_C[sl["tpl"]]
+    if da == "d": sl.setdefault("tone", "forest"); return TPL_B[sl["tpl"]]
+    return (TPL_B if (DA_B_ALL or da == "b") else TPL)[sl["tpl"]]
 
 # ───────────────────────────── Reels 1080x1920
 RW, RH, FPS, XF = 1080, 1920, 30, 0.4
