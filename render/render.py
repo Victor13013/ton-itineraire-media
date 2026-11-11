@@ -2734,7 +2734,7 @@ class Scene:
     def frame(self, t):
         return getattr(self, "frame_" + self.c["t"])(t)
 
-SCENE_V = "7"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
+SCENE_V = "8"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
 
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
