@@ -210,7 +210,7 @@ Pour décider sans te tromper :
 
 # ── 3 · ANGLE : le design sur le lavabo
 dict(date="x", kind="photo", slides=[
-  dict(tpl="editorial", img=s("p084"), over="Sur le lavabo", kicker="Le détail qui agace", title="Ta salle de bain est soignée. *Ta brosse, non.*", sub="Un bloc de plastique blanc, un socle branché en permanence. Le bambou et l'absence de socle, c'est le compliment n°1 dans les avis."),
+  dict(tpl="editorial", img=s("p084"), over="Sur le lavabo", kicker="Le détail qui agace", title="Ta salle de bain est soignée. *Ta brosse, non.*", sub="Un bloc de plastique blanc, un socle branché en permanence. Le design et l'absence de socle, c'est le compliment n°1 dans les avis."),
 ],
 caption="""Le compliment qui revient le plus sur notre brosse à dents électrique ? Pas la puissance. Le design.
 
@@ -725,7 +725,7 @@ dict(date="x", kind="carousel", slides=[
   dict(tpl="editorial", img=s("p004"), over="Le récap", kicker="Bamboo+", title="Pourquoi *celle-là* ?", sub="Un mois d'arguments, remis dans l'ordre : ce qu'elle fait, ce qu'elle coûte, ce qu'elle ne promet pas.", swipe=True),
   dict(tpl="stats", img=s("etui"), title="En résumé", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("2 min", "de minuteur intégré"), ("30 j", "d'autonomie")]),
   dict(tpl="steps", kicker="Et le reste", title="Ce que tu ne paies qu'une fois", items=[("Le manche", "Gardé pendant des années."), ("L'étui de voyage", "En bambou, inclus."), ("Le câble USB-C", "Inclus aussi.")]),
-  dict(tpl="ticket", kicker="Récapitulatif", title="Ce que tu reçois *pour 59,90 €*", head="Pulse Care · Bamboo+", lines=[("Manche sonique bambou", "—"), ("2 têtes en bambou", "incluses"), ("Étui de voyage", "inclus"), ("Câble USB-C", "inclus")], total=("À payer", "59,90 €"), note=LIV + " " + RET),
+  dict(tpl="ticket", kicker="Récapitulatif", title="Ce que tu reçois *pour 59,90 €*", head="Pulse Care · Bamboo+", lines=[("Manche sonique Bamboo+", "—"), ("2 têtes en bambou", "incluses"), ("Étui de voyage", "inclus"), ("Câble USB-C", "inclus")], total=("À payer", "59,90 €"), note=LIV + " " + RET),
 ],
 caption="""Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap complet, pour décider.
 

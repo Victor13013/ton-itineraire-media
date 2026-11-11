@@ -31,6 +31,8 @@ jobs:
           path: render/.cache
           key: photos-${{ hashFiles('render/content.py') }}
           restore-keys: photos-
+      - name: Voix off ElevenLabs
+        run: python render/fetch_vo.py
       - name: Rendu (visuels, Reels, planning)
         run: python render/render.py
       - name: Publication

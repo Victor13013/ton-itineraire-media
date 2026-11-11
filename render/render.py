@@ -15,7 +15,10 @@ sys.path.insert(0, os.path.join(ROOT, "render"))
 from content import POSTS, SHOP, CTA_IG, CTA_FB  # noqa: E402
 from content_am import POSTS_AM  # noqa: E402
 from reels import REELS  # noqa: E402
+from tests_axes import apply as _apply_axes, VIDEOS, vo_text  # noqa: E402
 from datetime import date as _date, timedelta as _td
+
+_apply_axes(POSTS)
 
 REEL_DATES = {r["date"] for r in REELS}
 
@@ -55,7 +58,8 @@ def MED(s): return F("Poppins-Medium.ttf", s)
 def REG(s): return F("Poppins-Regular.ttf", s)
 def ARR(s): return F("Inter-Bold.otf", s)
 
-def nb(t):  # espaces insécables avant ? ! : ; €
+def nb(t):  # espaces insécables avant ? ! : ; € et entre un nombre et son unité
+    t = re.sub(r"(\d) (min|s|j|h|mois|ans?|zones?)\b", "\\1\u00a0\\2", t)
     return re.sub(r" ([?!:;€])", " \\1", t)
 
 # ───────────────────────────── sources
@@ -2013,14 +2017,14 @@ def pick_tpl(sl):
     return (TPL_B if (DA_B_ALL or da == "b") else TPL)[sl["tpl"]]
 
 # ───────────────────────────── Reels 1080x1920
-RW, RH, FPS, XF = 1080, 1920, 30, 0.4
+RW, RH, FPS, XF = 1080, 1920, 30, 0.14   # fondus courts : montage rapide
 
 def ease(x): x = min(max(x, 0), 1); return 1 - (1 - x) ** 3
 def ease_io(x): x = min(max(x, 0), 1); return 3 * x * x - 2 * x * x * x
 
 class Layer:
     """Élément pré-rendu (RGBA), animé en opacité / translation."""
-    def __init__(self, im, x, y, t0, dur=0.55, dx=0, dy=60):
+    def __init__(self, im, x, y, t0, dur=0.3, dx=0, dy=40):
         self.im, self.x, self.y, self.t0, self.dur, self.dx, self.dy = im, x, y, t0, dur, dx, dy
         self.arr = np.array(im)
     def draw(self, frame, t):
@@ -2059,10 +2063,83 @@ class KenBurns:
 def brand_top(frame, fg=CREAM):
     wordmark(ImageDraw.Draw(frame), 70, 90, fg, 34)
 
+# Palettes des vidéos : une par vidéo, pour que deux vidéos ne se ressemblent pas.
+PALS = {
+    "foret":  dict(bg=(18, 36, 29),  bg2=(30, 58, 47),   ink=(243, 238, 228), acc=(196, 158, 98), sub=(198, 214, 204), mark=(196, 158, 98), pop=(196, 158, 98)),
+    "nuit":   dict(bg=(11, 21, 17),  bg2=(26, 42, 34),   ink=(243, 238, 228), acc=(214, 240, 120), sub=(176, 200, 186), mark=(214, 240, 120), pop=(214, 240, 120)),
+    "corail": dict(bg=(226, 108, 92), bg2=(206, 88, 74), ink=(255, 247, 240), acc=(16, 28, 22),   sub=(255, 224, 214), mark=(16, 28, 22), pop=(240, 122, 104)),
+    "ocre":   dict(bg=(233, 172, 74), bg2=(216, 152, 56), ink=(16, 28, 22),   acc=(24, 52, 40),   sub=(70, 60, 30),    mark=(16, 28, 22), pop=(240, 182, 84)),
+    "creme":  dict(bg=(246, 241, 232), bg2=(221, 232, 223), ink=(18, 36, 29), acc=(226, 108, 92), sub=(84, 98, 90),    mark=(226, 108, 92), pop=(246, 241, 232)),
+    "lime":   dict(bg=(214, 240, 120), bg2=(194, 222, 98), ink=(16, 28, 22),  acc=(24, 52, 40),   sub=(52, 70, 44),    mark=(24, 52, 40), pop=(214, 240, 120)),
+}
+
+def kinetic_words(text, fnt, maxw):
+    """Découpe en lignes et renvoie [(ligne, [(mot, x)])] pour une apparition mot par mot."""
+    d = ImageDraw.Draw(Image.new("L", (1, 1))); out = []
+    for ln in wrap(text, fnt, maxw):
+        x = 0; ws = []
+        for w_ in ln.split(" "):
+            ws.append((w_, x)); x += d.textlength(w_ + " ", font=fnt)
+        out.append((ln, ws, d.textlength(ln, font=fnt)))
+    return out
+
+def is_hl(word, hl):
+    toks = [x.strip(".,!?»« ").lower() for x in word.replace("\u00a0", " ").split()]
+    return bool(toks) and all(x in hl for x in toks if x)
+
 class Scene:
-    def __init__(self, c, idx):
+    def __init__(self, c, idx, pal=None):
         self.c, self.dur, self.idx = c, c["dur"], idx
+        self.P = PALS.get(pal or c.get("pal") or "foret", PALS["foret"])
+        self.kb = None
+        if c.get("img") and c["t"] not in ("photo", "split"):
+            # Fond photo : la vraie vie plutôt qu'un aplat. Texte clair, accents de la palette.
+            self.kb = KenBurns(c["img"], RW, RH, (1.0, 1.16), ((-1) ** idx * 0.5, 0.15))
+            self.shade = gradient(RW, RH, (8, 16, 12), 0.0, 1.0, 120, 225)
+            pop = self.P["pop"]
+            self.P = dict(self.P, ink=(250, 247, 240), sub=(226, 232, 226), acc=pop, bg=(16, 28, 22), bg2=(250, 247, 240), mark=pop)
         getattr(self, "setup_" + c["t"])()
+    def bgframe(self, t, alt=False):
+        if self.kb:
+            f = self.kb.at(min(1, t / self.dur)).convert("RGBA"); f.alpha_composite(self.shade); return f
+        P = self.P; f = Image.new("RGBA", (RW, RH), (P["bg2"] if alt else P["bg"]) + (255,))
+        d = ImageDraw.Draw(f)  # grand disque qui respire, pour que le fond ne soit jamais figé
+        r = 560 + 30 * math.sin(t * 1.3 + self.idx); cx = RW * (1.08 if self.idx % 2 else -0.08); cy = RH * (0.06 if self.idx % 2 else 0.96)
+        d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(P["bg2"] if not alt else P["bg"]) + (255,))
+        return f
+    def brand(self, f): wordmark(ImageDraw.Draw(f), 70, 90, self.P["ink"], 34)
+
+    # accroche : typographie plein écran, mot par mot
+    def setup_hook(self):
+        c = self.c; self.f = BLACK(132 if len(c["title"]) < 34 else 112)
+        self.lines = kinetic_words(c["title"].replace("*", ""), self.f, RW - 150)
+        self.hl = set(w_.strip("*.,!?»« ").lower() for w_ in re.findall(r"\*([^*]+)\*", c["title"])[0].split()) if "*" in c["title"] else set()
+        h = len(self.lines) * self.f.size * 1.04
+        self.y0 = (RH - h) / 2 - 40
+        self.layers = []
+        if c.get("kicker"): self.layers.append(Layer(pill_layer(c["kicker"].upper(), MED(30), self.P["acc"], self.P["bg"]), 75, self.y0 - 110, 0.05, dx=-60, dy=0))
+        if c.get("sub"):
+            sl = wrap(c["sub"], REG(44), RW - 150)
+            self.layers.append(Layer(text_layer(sl, REG(46), self.P["sub"], 1.3), 75, self.y0 + h + 50, 0.15 + 0.06 * sum(len(w) for _, w, _ in self.lines), dy=30))
+    def frame_hook(self, t):
+        f = self.bgframe(t); d = ImageDraw.Draw(f); self.brand(f)
+        k = 0; y = self.y0
+        for ln, ws, lw in self.lines:
+            for w_, x in ws:
+                p = ease((t - 0.08 - k * 0.06) / 0.2); k += 1
+                if p <= 0: continue
+                col = self.P["ink"]
+                if is_hl(w_, self.hl):
+                    ww = d.textlength(w_ + (" " if w_ != ws[-1][0] else ""), font=self.f)
+                    d.rectangle([75 + x - 8, y + self.f.size * 0.18, 75 + x + ww * p + 8, y + self.f.size * 1.02], fill=self.P["mark"])
+                    col = self.P["bg"] if self.P["mark"] != self.P["ink"] else self.P["bg"]
+                lay = Image.new("RGBA", (int(d.textlength(w_, font=self.f)) + 10, int(self.f.size * 1.3)), (0, 0, 0, 0))
+                ImageDraw.Draw(lay).text((0, 0), w_, font=self.f, fill=col + (int(255 * p),))
+                f.alpha_composite(lay, (int(75 + x), int(y + 40 * (1 - p))))
+            y += self.f.size * 1.04
+        for l in self.layers: l.draw(f, t)
+        return f
+
     # photo plein cadre + textes en bas
     def setup_photo(self):
         c = self.c
@@ -2075,7 +2152,7 @@ class Scene:
         y = RH - 330 - text_h(sl, REG(42), 1.35) - (30 if sl else 0) - text_h(tl, tf)
         self.layers = []
         if c.get("kicker"):
-            self.layers.append(Layer(pill_layer(c["kicker"].upper(), MED(30), BAMBOO, DEEP), 70, y - 100, 0.15, dx=-80, dy=0))
+            self.layers.append(Layer(pill_layer(c["kicker"].upper(), MED(30), self.P["acc"] if self.P["acc"] != (16, 28, 22) else BAMBOO, DEEP), 70, y - 100, 0.15, dx=-80, dy=0))
         for i, l in enumerate(tl):
             self.layers.append(Layer(text_layer([l], tf, CREAM), 70, y + i * tf.size * 1.15, 0.3 + i * 0.12))
         y += text_h(tl, tf)
@@ -2084,127 +2161,186 @@ class Scene:
         f = self.kb.at(t / self.dur).convert("RGBA"); f.alpha_composite(self.grad); brand_top(f)
         for l in self.layers: l.draw(f, t)
         return f
+
     # moitié photo / moitié panneau
     def setup_split(self):
-        c = self.c
+        c = self.c; P = self.P
         self.kb = KenBurns(c["img"], RW, 1060, (1.04, 1.14), (0.3, 0.0))
         self.top_grad = gradient(RW, 300, DEEP, 0, 1, 130, 0)
-        self.layers = [Layer(pill_layer(c["kicker"].upper(), MED(30), GREEN, CREAM), 70, 1080, 0.35, dx=-60, dy=0)]
+        self.layers = [Layer(pill_layer(c["kicker"].upper(), MED(30), P["acc"], P["bg"]), 70, 1080, 0.35, dx=-60, dy=0)]
         y = 1190
-        for i, (a, b) in enumerate(c["items"]):
+        for i, (a_, b_) in enumerate(c["items"]):
             im = Image.new("RGBA", (RW - 140, 230), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-            d.ellipse([0, 10, 60, 70], fill=BAMBOO); d.text((15, 14), "→", font=ARR(34), fill=DEEP)
-            yy = draw_lines(d, 90, 0, wrap(a, BOLD(52), RW - 240), BOLD(52), GREEN, 1.12)
-            if b: draw_lines(d, 90, yy + 4, wrap(b, REG(38), RW - 240), REG(38), (70, 92, 82), 1.3)
+            d.ellipse([0, 10, 60, 70], fill=P["acc"]); d.text((15, 14), "→", font=ARR(34), fill=P["bg"])
+            yy = draw_lines(d, 90, 0, wrap(a_, BOLD(52), RW - 240), BOLD(52), P["ink"], 1.12)
+            if b_: draw_lines(d, 90, yy + 4, wrap(b_, REG(38), RW - 240), REG(38), P["sub"], 1.3)
             self.layers.append(Layer(im, 70, y, 0.6 + i * 0.35, dx=80, dy=0)); y += 250
     def frame_split(self, t):
-        f = Image.new("RGBA", (RW, RH), CREAM + (255,))
+        f = Image.new("RGBA", (RW, RH), self.P["bg"] + (255,))
         f.paste(self.kb.at(t / self.dur), (0, 0)); f.alpha_composite(self.top_grad, (0, 0))
         p = ease(t / 0.55); top = int(RH - (RH - 1000) * p)
-        ImageDraw.Draw(f).rounded_rectangle([0, top, RW, RH + 60], radius=60, fill=CREAM)
+        ImageDraw.Draw(f).rounded_rectangle([0, top, RW, RH + 60], radius=60, fill=self.P["bg"])
         brand_top(f)
         for l in self.layers: l.draw(f, t)
         return f
-    # liste sur fond uni
+
+    # liste : gros intitulés qui arrivent un par un, centrés dans l'écran
     def setup_list(self):
-        c = self.c; self.bg = MINT if c.get("theme") == "mint" else CREAM
-        self.layers = [Layer(text_layer([c["kicker"].upper()], MED(34), BAMBOO), 70, 380, 0.1, dy=30)]
-        y = 500
-        for i, (a, b) in enumerate(c["items"]):
-            im = Image.new("RGBA", (RW - 140, 300), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-            yy = draw_lines(d, 0, 0, wrap(a, BOLD(64), RW - 140), BOLD(64), GREEN, 1.1)
-            if b: yy = draw_lines(d, 0, yy + 6, wrap(b, REG(42), RW - 140), REG(42), (70, 92, 82), 1.3)
-            self.layers.append(Layer(im.crop((0, 0, RW - 140, int(yy) + 20)), 70, y, 0.35 + i * 0.55, dx=0, dy=50))
-            y += yy + 90
+        c = self.c; P = self.P; blocks = []
+        for i, (a_, b_) in enumerate(c["items"]):
+            fa = BLACK(118 if len(c["items"]) == 1 else 92)
+            im = Image.new("RGBA", (RW - 150, 520), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+            yy = draw_lines(d, 0, 0, wrap(nb(a_), fa, RW - 150), fa, P["ink"], 1.04)
+            if b_: yy = draw_lines(d, 0, yy + 14, wrap(b_, REG(50), RW - 150), REG(50), P["sub"], 1.3)
+            blocks.append(im.crop((0, 0, RW - 150, int(yy) + 16)))
+        gap = 90; total = sum(b_.height for b_ in blocks) + gap * (len(blocks) - 1) + 120
+        y = (RH - total) / 2 + 60
+        self.layers = [Layer(pill_layer(c["kicker"].upper(), MED(30), P["acc"], P["bg"]), 75, y - 60, 0.05, dx=-60, dy=0)]
+        y += 60
+        span = max(0.3, min(0.9, (self.dur - 1.0) / max(1, len(blocks))))
+        for i, im in enumerate(blocks):
+            self.layers.append(Layer(im, 75, y, 0.25 + i * span, dx=0, dy=60)); y += im.height + gap
+        self.bar = (y - 60 - (RH - total) / 2)
     def frame_list(self, t):
-        f = Image.new("RGBA", (RW, RH), self.bg + (255,)); d = ImageDraw.Draw(f)
-        bar = int(1100 * ease(t / 0.8)); d.rectangle([0, 360, 18, 360 + bar], fill=BAMBOO)
-        brand_top(f, GREEN)
+        f = self.bgframe(t); d = ImageDraw.Draw(f)
+        self.brand(f)
         for l in self.layers: l.draw(f, t)
         return f
+
     # compteur animé
     def setup_counter(self):
-        c = self.c
-        self.layers = [Layer(text_layer([c["kicker"].upper()], MED(36), BAMBOO, center=True), 70, 500, 0.1, dy=30),
-                       Layer(text_layer(wrap(c["label"], MED(50), RW - 160), MED(50), CREAM, center=True), 70, 1120, 1.2, dy=40)]
+        c = self.c; P = self.P
+        self.layers = [Layer(text_layer(wrap(c["kicker"].upper(), MED(40), RW - 160), MED(40), P["acc"] if P["acc"] != P["bg"] else P["ink"], center=True), 70, 470, 0.1, dy=30),
+                       Layer(text_layer(wrap(c["label"], MED(54), RW - 160), MED(54), P["ink"], center=True), 70, 1330, 1.2, dy=40)]
     def frame_counter(self, t):
-        c = self.c
-        f = Image.new("RGBA", (RW, RH), GREEN + (255,)); d = ImageDraw.Draw(f)
-        for i in range(-6, 14):  # rayures bambou en mouvement
-            x = i * 160 + (t * 40) % 160
-            d.line([(x, 0), (x + 600, RH)], fill=(36, 66, 54), width=40)
-        r = 300 + 60 * ease(t / 1.5)
-        d.ellipse([RW / 2 - r, 960 - r, RW / 2 + r, 960 + r], outline=BAMBOO, width=5)
+        c = self.c; P = self.P
+        f = self.bgframe(t, alt=True); d = ImageDraw.Draw(f)
+        r = 300 + 40 * ease(t / 1.5)
+        d.ellipse([RW / 2 - r, 940 - r, RW / 2 + r, 940 + r], outline=P["mark"], width=6)
         v = int(round(c["value"] * ease(t / 1.6)))
-        s = f"{v:,}".replace(",", " ") + c.get("suffix", "")
-        fnt = BOLD(200 if len(s) < 7 else 170)
-        tw = d.textlength(s, font=fnt); d.text(((RW - tw) / 2, 820), s, font=fnt, fill=CREAM)
-        brand_top(f)
+        s_ = f"{v:,}".replace(",", " ") + c.get("suffix", "")
+        fnt = BLACK(230 if len(s_) < 6 else (180 if len(s_) < 8 else 150))
+        tw = d.textlength(s_, font=fnt); d.text(((RW - tw) / 2, 940 - fnt.size * 0.62), s_, font=fnt, fill=P["ink"])
+        self.brand(f)
         for l in self.layers: l.draw(f, t)
         return f
+
     # minuteur circulaire
     def setup_timer(self):
-        c = self.c
-        self.layers = [Layer(text_layer([c["kicker"].upper()], MED(36), BAMBOO, center=True), 70, 420, 0.1, dy=30),
-                       Layer(text_layer([nb(c["title"])], BOLD(110), CREAM, center=True), 70, 880, 0.3, dy=40),
-                       Layer(text_layer(wrap(c["sub"], REG(42), RW - 200), REG(42), (226, 232, 226), 1.35, center=True), 70, 1450, 0.8, dy=30)]
+        c = self.c; P = self.P
+        self.layers = [Layer(text_layer([c["kicker"].upper()], MED(38), P["acc"] if P["acc"] != P["bg"] else P["ink"], center=True), 70, 420, 0.1, dy=30),
+                       Layer(text_layer([nb(c["title"])], BLACK(120), P["ink"], center=True), 70, 880, 0.3, dy=40),
+                       Layer(text_layer(wrap(c["sub"], REG(44), RW - 200), REG(44), P["sub"], 1.35, center=True), 70, 1450, 0.8, dy=30)]
     def frame_timer(self, t):
-        f = Image.new("RGBA", (RW, RH), DEEP + (255,)); d = ImageDraw.Draw(f)
+        P = self.P; f = self.bgframe(t); d = ImageDraw.Draw(f)
         cx, cy, r = RW / 2, 960, 360
-        d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(46, 80, 66), width=26)
+        d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=P["bg2"], width=26)
         p = ease_io(t / (self.dur - 0.3))
-        d.arc([cx - r, cy - r, cx + r, cy + r], -90, -90 + 360 * p, fill=BAMBOO, width=26)
+        d.arc([cx - r, cy - r, cx + r, cy + r], -90, -90 + 360 * p, fill=P["mark"], width=26)
         for q in range(4):
-            a = math.radians(-90 + q * 90); on = p >= q / 4 + 0.001
-            x, y = cx + r * math.cos(a), cy + r * math.sin(a)
-            d.ellipse([x - 24, y - 24, x + 24, y + 24], fill=CREAM if on else (46, 80, 66))
-        brand_top(f)
+            a_ = math.radians(-90 + q * 90); on = p >= q / 4 + 0.001
+            x, y = cx + r * math.cos(a_), cy + r * math.sin(a_)
+            d.ellipse([x - 24, y - 24, x + 24, y + 24], fill=P["ink"] if on else P["bg2"])
+        self.brand(f)
         for l in self.layers: l.draw(f, t)
         return f
+
     # comparatif 2 colonnes
     def setup_compare(self):
-        c = self.c; cw = (RW - 170) // 2; self.layers = []
+        c = self.c; P = self.P; cw = (RW - 170) // 2; self.layers = []
         for i, (head, rows) in enumerate([c["left"], c["right"]]):
             dark = i == 1
-            im = Image.new("RGBA", (cw, 820), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-            d.rounded_rectangle([0, 0, cw, 820], radius=44, fill=GREEN if dark else MINT)
-            d.text((40, 50), head, font=BOLD(54), fill=BAMBOO if dark else GREEN)
-            y = 180
+            im = Image.new("RGBA", (cw, 860), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+            d.rounded_rectangle([0, 0, cw, 860], radius=44, fill=P["ink"] if dark else P["bg2"])
+            d.text((40, 50), head, font=BLACK(56), fill=P["bg"] if dark else P["ink"])
+            y = 190
             for r_ in rows:
-                y = draw_lines(d, 40, y, wrap("• " + r_, REG(46), cw - 80), REG(46), CREAM if dark else GREEN, 1.3) + 40
-            self.layers.append(Layer(im, 70 + i * (cw + 30), 600, 0.2 + i * 0.5, dx=(-120 if i == 0 else 120), dy=0))
-        self.layers.append(Layer(text_layer(["Le comparatif"], BOLD(84), GREEN), 70, 420, 0.05, dy=30))
+                y = draw_lines(d, 40, y, wrap(("+ " if dark else "× ") + nb(r_), MED(46), cw - 80), MED(46), P["bg"] if dark else P["sub"], 1.3) + 40
+            self.layers.append(Layer(im, 70 + i * (cw + 30), 560, 0.2 + i * 0.6, dx=(-120 if i == 0 else 120), dy=0))
     def frame_compare(self, t):
-        f = Image.new("RGBA", (RW, RH), CREAM + (255,)); brand_top(f, GREEN)
+        f = self.bgframe(t); self.brand(f)
         for l in self.layers: l.draw(f, t)
         return f
+
     # carton de fin
     def setup_end(self):
-        c = self.c
-        tl = wrap(c["title"], BOLD(78), RW - 180)
-        self.layers = [Layer(text_layer(tl, BOLD(78), CREAM, 1.15, RW - 180, True), 90, 820, 0.45, dy=40),
-                       Layer(text_layer([c.get("sub", "")], MED(40), BAMBOO, center=True), 70, 820 + text_h(tl, BOLD(78)) + 70, 0.85, dy=20)]
+        c = self.c; P = self.P
+        tl = wrap(c["title"], BLACK(92), RW - 160)
+        self.layers = [Layer(text_layer(tl, BLACK(92), P["ink"], 1.06, RW - 160, True), 80, 800, 0.35, dy=40),
+                       Layer(text_layer([c.get("sub", "")], MED(42), P["acc"] if P["acc"] != P["bg"] else P["ink"], center=True), 70, 800 + text_h(tl, BLACK(92), 1.06) + 80, 0.75, dy=20)]
     def frame_end(self, t):
-        f = Image.new("RGBA", (RW, RH), GREEN + (255,)); d = ImageDraw.Draw(f)
-        s = 0.9 + 0.1 * ease(t / 0.6)
-        fnt = MED(int(64 * s)); tw = d.textlength("PULSE CARE", font=fnt)
+        P = self.P; f = self.bgframe(t, alt=True); d = ImageDraw.Draw(f)
+        s_ = 0.9 + 0.1 * ease(t / 0.6)
+        fnt = MED(int(64 * s_)); tw = d.textlength("PULSE CARE", font=fnt)
         x = (RW - tw) / 2 + 30
-        d.ellipse([x - 64 * s, 560 + 20 * s, x - 30 * s, 560 + 54 * s], fill=BAMBOO)
-        d.text((x, 560), "PULSE CARE", font=fnt, fill=CREAM)
-        ln = 180 * ease((t - 0.2) / 0.6); d.line([(RW / 2 - ln / 2, 690), (RW / 2 + ln / 2, 690)], fill=BAMBOO, width=5)
+        d.ellipse([x - 64 * s_, 560 + 20 * s_, x - 30 * s_, 560 + 54 * s_], fill=P["mark"])
+        d.text((x, 560), "PULSE CARE", font=fnt, fill=P["ink"])
+        ln = 180 * ease((t - 0.2) / 0.6); d.line([(RW / 2 - ln / 2, 690), (RW / 2 + ln / 2, 690)], fill=P["mark"], width=5)
         for l in self.layers: l.draw(f, t)
         return f
+    # rafale : 2 à 4 photos coupées sec, zoom « punch » à chaque coupe, légende en bas
+    def setup_burst(self):
+        c = self.c; P = self.P
+        self.kbs = [KenBurns(r_, RW, RH, (1.18, 1.02), ((-1) ** i * 0.4, 0.1)) for i, r_ in enumerate(c["shots"])]
+        self.shade = gradient(RW, RH, (8, 16, 12), 0.38, 1.0, 0, 235)
+        self.shade.alpha_composite(gradient(RW, 320, (8, 16, 12), 0, 1, 140, 0), (0, 0))
+        title = c["title"]; self.f = BLACK(108 if len(title) < 28 else 90)
+        self.lines = kinetic_words(title.replace("*", ""), self.f, RW - 150)
+        self.hl = set(w_.strip("*.,!?»« ").lower() for w_ in re.findall(r"\*([^*]+)\*", title)[0].split()) if "*" in title else set()
+        self.y0 = RH - 330 - len(self.lines) * self.f.size * 1.04
+        pop = P["pop"]; self.P = dict(P, ink=(250, 247, 240), mark=pop, bg=(16, 28, 22))
+        self.layers = [Layer(pill_layer(c["kicker"].upper(), MED(30), pop, (16, 28, 22)), 75, self.y0 - 100, 0.05, dx=-60, dy=0)] if c.get("kicker") else []
+    def frame_burst(self, t):
+        n = len(self.kbs); seg = self.dur / n; i = min(n - 1, int(t / seg)); lt = (t - i * seg) / seg
+        f = self.kbs[i].at(min(1.0, 0.65 * ease(lt * 4) + 0.35 * lt)).convert("RGBA")
+        if i > 0 and lt * seg < 0.08:  # éclair blanc très bref à la coupe
+            f.alpha_composite(Image.new("RGBA", (RW, RH), (255, 255, 255, int(150 * (1 - lt * seg / 0.08)))))
+        f.alpha_composite(self.shade); brand_top(f)
+        d = ImageDraw.Draw(f); k = 0; y = self.y0
+        for ln, ws, lw in self.lines:
+            for w_, x in ws:
+                p = ease((t - 0.05 - k * 0.05) / 0.18); k += 1
+                if p <= 0: continue
+                col = self.P["ink"]
+                if is_hl(w_, self.hl):
+                    ww = d.textlength(w_ + (" " if w_ != ws[-1][0] else ""), font=self.f)
+                    d.rectangle([75 + x - 8, y + self.f.size * 0.18, 75 + x + ww * p + 8, y + self.f.size * 1.02], fill=self.P["mark"])
+                    col = (16, 28, 22)
+                lay = Image.new("RGBA", (int(d.textlength(w_, font=self.f)) + 10, int(self.f.size * 1.3)), (0, 0, 0, 0))
+                ImageDraw.Draw(lay).text((0, 0), w_, font=self.f, fill=col + (int(255 * p),))
+                f.alpha_composite(lay, (int(75 + x), int(y + 30 * (1 - p))))
+            y += self.f.size * 1.04
+        for l in self.layers: l.draw(f, t)
+        return f
+
     def frame(self, t):
         return getattr(self, "frame_" + self.c["t"])(t)
 
-def render_reel(scenes_spec, out):
-    scenes = [Scene(c, i) for i, c in enumerate(scenes_spec)]
+SCENE_V = "4"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
+
+def audio_len(path):
+    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
+                       capture_output=True, text=True)
+    return float(r.stdout.strip())
+
+def fit_scenes(scenes_spec, total):
+    """Répartit la durée de la voix entre les scènes, au prorata de la phrase lue sur chacune."""
+    w = [max(len(c.get("say", "")), 12) for c in scenes_spec]
+    span = total + XF * (len(scenes_spec) - 1)
+    out = []
+    for c, wi in zip(scenes_spec, w):
+        out.append(dict(c, dur=max(2.2, span * wi / sum(w))))
+    return out
+
+def render_reel(scenes_spec, out, audio=None, pal=None):
+    if audio: scenes_spec = fit_scenes(scenes_spec, audio_len(audio) + 0.9)
+    scenes = [Scene(c, i, pal) for i, c in enumerate(scenes_spec)]
     starts, t = [], 0.0
     for i, sc in enumerate(scenes):
         starts.append(t); t += sc.dur - (XF if i < len(scenes) - 1 else 0)
     total = t; n = int(total * FPS)
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{RW}x{RH}", "-r", str(FPS), "-i", "-",
-           "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-shortest",
+           *(["-i", audio, "-af", "apad"] if audio else ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]), "-shortest",
            "-c:v", "libx264", "-profile:v", "high", "-pix_fmt", "yuv420p", "-preset", "medium", "-crf", "21",
            "-maxrate", "4500k", "-bufsize", "9000k", "-g", "60", "-keyint_min", "60", "-sc_threshold", "0",
            "-c:a", "aac", "-b:a", "128k", "-ar", "48000", "-movflags", "+faststart", out]
@@ -2216,12 +2352,12 @@ def render_reel(scenes_spec, out):
         if len(act) > 1:  # fondu enchaîné
             j = act[0]; a = ease_io((tt - starts[i]) / XF)
             fr = Image.blend(scenes[j].frame(tt - starts[j]).convert("RGB"), fr.convert("RGB"), a).convert("RGBA")
-        d = ImageDraw.Draw(fr); d.rectangle([0, 0, int(RW * (k + 1) / n), 8], fill=BAMBOO)  # barre de progression
+        d = ImageDraw.Draw(fr); d.rectangle([0, 0, int(RW * (k + 1) / n), 8], fill=scenes[i].P["mark"])  # barre de progression
         p.stdin.write(fr.convert("RGB").tobytes())
     p.stdin.close(); p.wait()
     if p.returncode: raise RuntimeError("ffmpeg failed")
     # miniature pour l'aperçu
-    Scene(scenes_spec[0], 0).frame(min(1.6, scenes_spec[0]["dur"] - 0.1)).convert("RGB").save(out.replace(".mp4", "-cover.jpg"), quality=88)
+    Scene(scenes_spec[0], 0, pal).frame(min(2.4, scenes_spec[0]["dur"] - 0.1)).convert("RGB").save(out.replace(".mp4", "-cover.jpg"), quality=88)
     return total
 
 # ───────────────────────────── contrôles + export
@@ -2254,7 +2390,35 @@ def check():
         if not os.path.exists(os.path.join(ROOT, "media", "reels", r["date"] + ".mp4")): errs.append(r["date"] + " vidéo absente")
         for w in FORBIDDEN:
             if w in cap.lower(): errs.append(f"{r['date']} reel mot interdit « {w.strip()} »")
+    taken = {r["date"] for r in REELS}
+    for v in VIDEOS:
+        if v["date"] in taken: errs.append(v["date"] + " deux vidéos le même jour")
+        taken.add(v["date"])
+        cap = v["caption"].replace("[CTA]", CTA_IG)
+        if not re.search(r"brosses? à dents électriques?", cap.split("\n")[0].lower()): errs.append(v["id"] + " mot-clé 1re ligne")
+        if len(re.findall(r"#\w+", cap)) > 5: errs.append(v["id"] + " >5 hashtags")
+        screen = json.dumps([{k: x for k, x in sc.items() if k != "say"} for sc in v["scenes"]], ensure_ascii=False).lower()
+        for w in FORBIDDEN:
+            if w in cap.lower() or w in screen or w in vo_text(v).lower(): errs.append(f"{v['id']} mot interdit « {w.strip()} »")
     return errs, used
+
+def render_videos():
+    """Vidéos de test avec voix off : rendues seulement si la voix est là, et une seule fois."""
+    import hashlib
+    for v in VIDEOS:
+        if ONLY and v["date"] not in ONLY: continue
+        vo = os.path.join(ROOT, "media", "vo", v["id"] + ".mp3")
+        if not os.path.exists(vo):
+            print(v["date"], v["id"], "voix off absente, vidéo non programmée"); continue
+        rel = f"media/reels/{v['date']}.mp4"; out = os.path.join(ROOT, rel)
+        sig = hashlib.sha1((json.dumps(v["scenes"], ensure_ascii=False) + str(v.get("pal")) + str(os.path.getsize(vo)) + SCENE_V).encode()).hexdigest()
+        stamp = out.replace(".mp4", ".sig")
+        if not (os.path.exists(out) and os.path.exists(stamp) and open(stamp).read() == sig):
+            t0 = time.time(); dur = render_reel(v["scenes"], out, audio=vo, pal=v.get("pal"))
+            open(stamp, "w").write(sig); print(f"{v['date']} vidéo {v['id']} {dur:.1f}s ({time.time() - t0:.0f}s)")
+        ig = v["caption"].replace("[CTA]", CTA_IG); fb = v["caption"].replace("[CTA]", CTA_FB)
+        post = {"type": "reel", "video_url": REEL_HOST + rel, "thumb_offset": 1200, "caption": ig, "fb_message": fb}
+        json.dump({"post": post}, open(os.path.join(ROOT, "planning", v["date"] + "-reel.json"), "w"), ensure_ascii=False, indent=2)
 
 def main():
     if "--fetch-only" in sys.argv:   # télécharge les photos sources (utile hors GitHub Actions)
@@ -2310,6 +2474,11 @@ def main():
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(r.get("cover", 0) / 1000), "-i", os.path.join(ROOT, rel),
                             "-frames:v", "1", "-vf", "scale=540:-1", cov], check=False)
         gallery.append((r["date"] + " · vidéo", "reel", [f"media/reels/{r['date']}-cover.jpg"], rel, ig))
+    render_videos()
+    for v in VIDEOS:
+        rel = f"media/reels/{v['date']}.mp4"
+        if os.path.exists(os.path.join(ROOT, rel)):
+            gallery.append((v["date"] + " · vidéo " + v["axis"], "reel", [rel.replace(".mp4", "-cover.jpg")], rel, v["caption"]))
     gallery.sort(key=lambda g: g[0])
     if not ONLY: write_index(gallery)
 
