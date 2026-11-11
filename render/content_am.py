@@ -235,7 +235,7 @@ Le tartre irrite la gencive et accroche encore plus de plaque. D'où le détartr
 
 # ───────────────────────── 12 · 22/11 · ce que tu jettes
 dict(date="2026-11-22", kind="carousel", da="c", slides=[
-  dict(tpl="callout", img=s("ricin_solo"), kicker="Têtes Pulse Care", notes=[("Poils en ricin, fibre végétale", 0.5, 0.18), ("Corps en bambou", 0.5, 0.68)], strike=("toute la brosse", "la tête"), title="Tous les 3 mois, *tu changes ça*", sub="Le manche, lui, reste. C'est la seule pièce qui part à la poubelle.", swipe=True),
+  dict(tpl="callout", img=s("tete_main2"), kicker="Têtes Pulse Care", notes=[("Poils en ricin, fibre végétale", 0.52, 0.2), ("Corps en bambou", 0.48, 0.66)], strike=("toute la brosse", "la tête"), title="Tous les 3 mois, *tu changes ça*", sub="Le manche, lui, reste. C'est la seule pièce qui part à la poubelle.", swipe=True),
   dict(tpl="versus", kicker="La différence", title="Brosse manuelle *ou Pulse Care*", left=("Brosse manuelle", ["Toute la brosse part", "Pas de minuteur", "Tu rachètes tout tous les 3 mois"]), right=("Pulse Care", ["Seule la tête se change", "Minuteur 2 min intégré", "Le manche, tu le gardes"])),
 ],
 caption="""Avec une brosse manuelle, tous les 3 mois, c'est l'objet entier qui part à la poubelle. Avec une brosse à dents électrique Pulse Care, c'est juste la tête.
@@ -423,7 +423,7 @@ Astuce : note la date du changement dans ton téléphone, ou prends l'abonnement
 
 # ───────────────────────── 23 · 03/12 · émail
 dict(date="2026-12-03", kind="carousel", da="c", slides=[
-  dict(tpl="note", img="u:1570840934347-4dc56c98b8ef", kicker="Idée reçue", bad="Une électrique, ça abîme l'émail.", hand="en vrai :", good="Ce qui abîme l'émail, c'est *la force* et l'acide.", sub="Poils souples, zéro pression, et on attend 30 minutes après un aliment acide.", swipe=True),
+  dict(tpl="note", img=s("nylon_profil"), kicker="Idée reçue", bad="Une électrique, ça abîme l'émail.", hand="en vrai :", good="Ce qui abîme l'émail, c'est *la force* et l'acide.", sub="Poils souples, zéro pression, et on attend 30 minutes après un aliment acide.", swipe=True),
   dict(tpl="steps", kicker="Non, si tu l'utilises bien", title="Les 3 conditions", items=[("Tu n'appuies pas", "Les vibrations nettoient seules."), ("Mode Sensible au début", "1 à 2 semaines pour s'habituer."), ("Des poils souples", "Comme les têtes ricin ou nylon Pulse Care.")]),
 ],
 caption="""Une brosse à dents électrique abîme-t-elle l'émail ? C'est la question qui revient le plus souvent.
