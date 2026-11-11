@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-3.jpg"
-      }
-    ],
-    "caption": "Une brosse à dents électrique qui ne tient plus la charge, c'est le signe qu'il est temps de changer.\n\nSur la Bamboo+ :\n→ batterie lithium 500 mAh\n→ jusqu'à 30 jours d'autonomie pour 2 brossages par jour\n→ recharge complète en 2,5 h environ\n→ en USB-C, le même câble que ton téléphone\n\nPas de socle propriétaire à garder branché sur le lavabo.\n\n59,90 € avec 2 têtes, l'étui et le câble. 30 jours pour changer d'avis.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #usbc #autonomie #pulsecare",
-    "fb_message": "Une brosse à dents électrique qui ne tient plus la charge, c'est le signe qu'il est temps de changer.\n\nSur la Bamboo+ :\n→ batterie lithium 500 mAh\n→ jusqu'à 30 jours d'autonomie pour 2 brossages par jour\n→ recharge complète en 2,5 h environ\n→ en USB-C, le même câble que ton téléphone\n\nPas de socle propriétaire à garder branché sur le lavabo.\n\n59,90 € avec 2 têtes, l'étui et le câble. 30 jours pour changer d'avis.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #usbc #autonomie #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-1.jpg",
+    "caption": "Se brosser les dents sous la douche : une brosse à dents électrique le supporte, à condition d'être étanche.\n\nLa Bamboo+ est certifiée IPX7. Concrètement :\n→ elle résiste à l'immersion\n→ tu la rinces sous le robinet sans stress\n→ les éclaboussures du lavabo ne posent aucun problème\n\nLe seul réflexe à garder : bien sécher le port USB-C avant de la brancher.\n\n59,90 €, livraison gratuite en point relais dès 20 € d'achat.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #ipx7 #brosseadentsbambou #pulsecare",
+    "fb_message": "Se brosser les dents sous la douche : une brosse à dents électrique le supporte, à condition d'être étanche.\n\nLa Bamboo+ est certifiée IPX7. Concrètement :\n→ elle résiste à l'immersion\n→ tu la rinces sous le robinet sans stress\n→ les éclaboussures du lavabo ne posent aucun problème\n\nLe seul réflexe à garder : bien sécher le port USB-C avant de la brancher.\n\n59,90 €, livraison gratuite en point relais dès 20 € d'achat.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #ipx7 #brosseadentsbambou #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-3.jpg"
       }
     ]
   }

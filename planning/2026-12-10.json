@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-2.jpg"
-      }
-    ],
-    "caption": "Une brosse à dents électrique, ça coûte combien par an ? Le calcul, sans arrondi.\n\nPremière année : 59,90 € pour la brosse, avec 2 têtes, l'étui et le câble. Ces 2 têtes tiennent environ 6 mois, donc un seul pack à ajouter.\n\nAnnées suivantes : 14,90 €. C'est le prix d'un pack de 4 têtes, soit un an de brossage.\n\nLe manche, lui, se garde. C'est tout le principe.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
-    "fb_message": "Une brosse à dents électrique, ça coûte combien par an ? Le calcul, sans arrondi.\n\nPremière année : 59,90 € pour la brosse, avec 2 têtes, l'étui et le câble. Ces 2 têtes tiennent environ 6 mois, donc un seul pack à ajouter.\n\nAnnées suivantes : 14,90 €. C'est le prix d'un pack de 4 têtes, soit un an de brossage.\n\nLe manche, lui, se garde. C'est tout le principe.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-1.jpg",
+    "caption": "Offrir une brosse à dents électrique à ses parents, c'est un cadeau utile qu'ils n'achèteront jamais pour eux.\n\nPourquoi la Bamboo+ fonctionne bien pour eux :\n→ un seul bouton pour changer de mode\n→ le mode Sensible pour les gencives qui ont vécu\n→ 30 jours d'autonomie, donc une seule recharge par mois\n→ l'étui de voyage inclus\n\n59,90 € avec 2 têtes en bambou, l'étui et le câble USB-C.\n\nLivraison gratuite en point relais dès 20 € d'achat.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #ideecadeau #parents #pulsecare",
+    "fb_message": "Offrir une brosse à dents électrique à ses parents, c'est un cadeau utile qu'ils n'achèteront jamais pour eux.\n\nPourquoi la Bamboo+ fonctionne bien pour eux :\n→ un seul bouton pour changer de mode\n→ le mode Sensible pour les gencives qui ont vécu\n→ 30 jours d'autonomie, donc une seule recharge par mois\n→ l'étui de voyage inclus\n\n59,90 € avec 2 têtes en bambou, l'étui et le câble USB-C.\n\nLivraison gratuite en point relais dès 20 € d'achat.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #ideecadeau #parents #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-10-2.jpg"
       }
     ]
   }

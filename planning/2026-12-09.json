@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-1.jpg",
-    "caption": "Offrir une brosse à dents électrique à ses parents, c'est un cadeau utile qu'ils n'achèteront jamais pour eux.\n\nPourquoi la Bamboo+ fonctionne bien pour eux :\n→ un seul bouton pour changer de mode\n→ le mode Sensible pour les gencives qui ont vécu\n→ 30 jours d'autonomie, donc une seule recharge par mois\n→ l'étui de voyage inclus\n\n59,90 € avec 2 têtes en bambou, l'étui et le câble USB-C.\n\nLivraison gratuite en point relais dès 20 € d'achat.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #ideecadeau #parents #pulsecare",
-    "fb_message": "Offrir une brosse à dents électrique à ses parents, c'est un cadeau utile qu'ils n'achèteront jamais pour eux.\n\nPourquoi la Bamboo+ fonctionne bien pour eux :\n→ un seul bouton pour changer de mode\n→ le mode Sensible pour les gencives qui ont vécu\n→ 30 jours d'autonomie, donc une seule recharge par mois\n→ l'étui de voyage inclus\n\n59,90 € avec 2 têtes en bambou, l'étui et le câble USB-C.\n\nLivraison gratuite en point relais dès 20 € d'achat.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #ideecadeau #parents #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-3.jpg"
+      }
+    ],
+    "caption": "Un détartrage à peine fait et le tartre revient ? Le problème se joue dans les 72 heures, et une brosse à dents électrique change la donne.\n\nLa plaque se dépose en permanence. Souple, elle part au brossage. Mais elle se minéralise en 24 à 72 heures. Là, c'est du tartre : dur, collé, impossible à retirer avec une brosse.\n\nTout se joue donc sur la régularité, pas sur la force.\n\n→ minuteur 2 minutes, pause toutes les 30 s\n→ 41 000 vibrations par minute\n→ mode Sensible pour la ligne des gencives\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tartre #plaquedentaire #pulsecare",
+    "fb_message": "Un détartrage à peine fait et le tartre revient ? Le problème se joue dans les 72 heures, et une brosse à dents électrique change la donne.\n\nLa plaque se dépose en permanence. Souple, elle part au brossage. Mais elle se minéralise en 24 à 72 heures. Là, c'est du tartre : dur, collé, impossible à retirer avec une brosse.\n\nTout se joue donc sur la régularité, pas sur la force.\n\n→ minuteur 2 minutes, pause toutes les 30 s\n→ 41 000 vibrations par minute\n→ mode Sensible pour la ligne des gencives\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tartre #plaquedentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-09-3.jpg"
       }
     ]
   }

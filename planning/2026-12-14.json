@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-1.jpg",
-    "caption": "Un sourire en bonne santé ne dépend pas du prix de ta brosse à dents électrique. Il dépend de la régularité.\n\nMatin et soir. 2 minutes. Tous les jours. C'est tout.\n\nLe matériel ne fait qu'une chose : t'aider à tenir le rythme. Le minuteur s'arrête seul, tu n'as plus à compter ni à estimer.\n\nLe défi : capture ce post, coche une case matin et soir pendant 7 jours. Au bout d'une semaine, l'habitude tient toute seule.\n\nTu relèves ?\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #defi7jours #routinedentaire #pulsecare",
-    "fb_message": "Un sourire en bonne santé ne dépend pas du prix de ta brosse à dents électrique. Il dépend de la régularité.\n\nMatin et soir. 2 minutes. Tous les jours. C'est tout.\n\nLe matériel ne fait qu'une chose : t'aider à tenir le rythme. Le minuteur s'arrête seul, tu n'as plus à compter ni à estimer.\n\nLe défi : capture ce post, coche une case matin et soir pendant 7 jours. Au bout d'une semaine, l'habitude tient toute seule.\n\nTu relèves ?\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #defi7jours #routinedentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-3.jpg"
+      }
+    ],
+    "caption": "Même la meilleure brosse à dents électrique ne nettoie qu'environ 60 % de la surface des dents. Les 40 % restants sont entre les dents.\n\nD'où le fil ou les brossettes, une fois par jour, le soir de préférence.\n\n→ Fil : pour les espaces serrés, très peu cher\n→ Brossettes : pour les espaces plus larges, plus rapides. Demande la taille à ton dentiste\n\nPour les 60 % restants, la Bamboo+ fait le travail : 41 000 vibrations par minute et un minuteur de 2 minutes.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #fildentaire #brossettes #pulsecare",
+    "fb_message": "Même la meilleure brosse à dents électrique ne nettoie qu'environ 60 % de la surface des dents. Les 40 % restants sont entre les dents.\n\nD'où le fil ou les brossettes, une fois par jour, le soir de préférence.\n\n→ Fil : pour les espaces serrés, très peu cher\n→ Brossettes : pour les espaces plus larges, plus rapides. Demande la taille à ton dentiste\n\nPour les 60 % restants, la Bamboo+ fait le travail : 41 000 vibrations par minute et un minuteur de 2 minutes.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #fildentaire #brossettes #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-3.jpg"
       }
     ]
   }

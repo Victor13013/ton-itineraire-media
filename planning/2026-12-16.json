@@ -1,42 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-3.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-4.jpg"
-      }
-    ],
-    "caption": "Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap complet, pour décider.\n\n→ 41 000 vibrations par minute, technologie sonique\n→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage\n→ minuteur 2 min, pause toutes les 30 s\n→ 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n→ têtes en bambou, poils ricin ou nylon\n\nTout est dans la boîte : 2 têtes, l'étui de voyage et le câble. 59,90 €.\n\nLivraison gratuite en point relais dès 20 € d'achat. 30 jours pour changer d'avis.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "Pourquoi choisir la brosse à dents électrique Pulse Care Bamboo+ ? Le récap complet, pour décider.\n\n→ 41 000 vibrations par minute, technologie sonique\n→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage\n→ minuteur 2 min, pause toutes les 30 s\n→ 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n→ têtes en bambou, poils ricin ou nylon\n\nTout est dans la boîte : 2 têtes, l'étui de voyage et le câble. 59,90 €.\n\nLivraison gratuite en point relais dès 20 € d'achat. 30 jours pour changer d'avis.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-1.jpg",
+    "caption": "La question qu'on reçoit le plus souvent sur nos têtes de brosse à dents électrique : sont-elles compatibles avec d'autres manches ?\n\nNon. Elles sont conçues uniquement pour les manches Pulse Care. Le clip et le moteur sont dimensionnés ensemble, et une tête mal ajustée perd en efficacité.\n\nCe que tu as à la place :\n→ têtes en bambou, poils ricin ou nylon\n→ clip en une seconde, sans vis ni sens à chercher\n→ 5,50 € l'unité, 14,90 € le pack de 4\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #faq #pulsecare",
+    "fb_message": "La question qu'on reçoit le plus souvent sur nos têtes de brosse à dents électrique : sont-elles compatibles avec d'autres manches ?\n\nNon. Elles sont conçues uniquement pour les manches Pulse Care. Le clip et le moteur sont dimensionnés ensemble, et une tête mal ajustée perd en efficacité.\n\nCe que tu as à la place :\n→ têtes en bambou, poils ricin ou nylon\n→ clip en une seconde, sans vis ni sens à chercher\n→ 5,50 € l'unité, 14,90 € le pack de 4\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #faq #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-3.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-4.jpg"
       }
     ]
   }
