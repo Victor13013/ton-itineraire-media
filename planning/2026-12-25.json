@@ -1,0 +1,27 @@
+{
+  "post": {
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-25-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-25-2.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique : pourquoi changer la tête tous les 3 mois.\n\nLes poils s'usent avant que la brosse casse : ils s'écartent et nettoient moins bien. Le pack de 4 têtes couvre un an pour 14,90 €.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #entretien",
+    "fb_message": "Brosse à dents électrique : pourquoi changer la tête tous les 3 mois.\n\nLes poils s'usent avant que la brosse casse : ils s'écartent et nettoient moins bien. Le pack de 4 têtes couvre un an pour 14,90 €.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #entretien",
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-25-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-25-2.jpg"
+      }
+    ]
+  }
+}
