@@ -114,6 +114,8 @@ from tests_axes import apply as _apply_axes, VIDEOS, vo_text  # noqa: E402
 from datetime import date as _date, timedelta as _td
 
 _apply_axes(POSTS)
+from content_campagne import CAMP_AM, CAMP_PM  # noqa: E402
+POSTS += CAMP_PM; POSTS_AM += CAMP_AM
 
 REEL_DATES = {r["date"] for r in REELS}
 
