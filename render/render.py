@@ -2367,9 +2367,13 @@ def kinetic_draw(f, t, lines, fnt, x0, y0, hl, ink, mark, markink, step=0.06):
             safe_composite(f, lay, (int(x0 + x), int(y + 40 * (1 - q))))
         y += fnt.size * 1.04
 
+HL_SCENES = {'hook', 'burst', 'card', 'grid', 'comment'}   # scènes qui savent surligner les *marques*
+
 class Scene:
     def __init__(self, c, idx, pal=None):
         self.c, self.dur, self.idx = c, c["dur"], idx
+        if c["t"] not in HL_SCENES:   # ces scènes n'ont pas de surlignage : on retire les *marques*
+            c = self.c = {k: (v.replace("*", "") if isinstance(v, str) else v) for k, v in c.items()}
         self.P = PALS.get(pal or c.get("pal") or "foret", PALS["foret"])
         self.kb = None
         bgref = c.get("clip") and "clip:" + c["clip"] or (c.get("img") if c["t"] not in ("photo", "split", "card") else None)
@@ -2834,7 +2838,7 @@ class Scene:
     def frame(self, t):
         return getattr(self, "frame_" + self.c["t"])(t)
 
-SCENE_V = "10"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
+SCENE_V = "11"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
 
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
