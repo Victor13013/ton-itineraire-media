@@ -2409,7 +2409,14 @@ def render_videos():
         if ONLY and v["date"] not in ONLY: continue
         vo = os.path.join(ROOT, "media", "vo", v["id"] + ".mp3")
         if not os.path.exists(vo):
-            print(v["date"], v["id"], "voix off absente, vidéo non programmée"); continue
+            # Pas encore de voix : aperçu muet (durées estimées sur le texte), jamais programmé.
+            prev = os.path.join(ROOT, "media", "previews", v["id"] + ".mp4"); os.makedirs(os.path.dirname(prev), exist_ok=True)
+            sig = hashlib.sha1((json.dumps(v["scenes"], ensure_ascii=False) + str(v.get("pal")) + SCENE_V).encode()).hexdigest()
+            stamp = prev.replace(".mp4", ".sig")
+            if not (os.path.exists(prev) and os.path.exists(stamp) and open(stamp).read() == sig):
+                est = sum(len(sc.get("say", "")) for sc in v["scenes"]) / 15.5 + 0.9
+                render_reel(fit_scenes(v["scenes"], est), prev, pal=v.get("pal")); open(stamp, "w").write(sig)
+            print(v["date"], v["id"], "voix off absente : aperçu muet, vidéo non programmée"); continue
         rel = f"media/reels/{v['date']}.mp4"; out = os.path.join(ROOT, rel)
         sig = hashlib.sha1((json.dumps(v["scenes"], ensure_ascii=False) + str(v.get("pal")) + str(os.path.getsize(vo)) + SCENE_V).encode()).hexdigest()
         stamp = out.replace(".mp4", ".sig")
