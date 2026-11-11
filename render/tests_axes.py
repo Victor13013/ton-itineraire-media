@@ -54,7 +54,7 @@ Et les avis clients sont publics sur la fiche produit, critiques comprises.
              kicker2="Ce qu'on a fait", answer="Pas de socle, *un design sobre*",
              sub="Elle se recharge en USB-C et se range dans son étui. Rien ne reste branché sur le lavabo.", swipe=True),
         dict(tpl="note", kicker="Le socle", bad="Il faut la laisser branchée tous les soirs.", hand="avec la Bamboo+ :",
-             good="*Une charge*, un mois de brossage.", sub="30 jours d'autonomie. Le câble reste dans le tiroir.", swipe=True),
+             good="*Une charge,* un mois de brossage.", sub="30 jours d'autonomie. Le câble reste dans le tiroir.", swipe=True),
         dict(tpl="bignum", kicker="Sur ton lavabo", big="0", title="socle branché *en permanence*",
              sub="C'est le compliment qui revient le plus dans les avis : le design, et rien qui traîne."),
     ], caption="""Brosse à dents électrique et salle de bain soignée, ça peut aller ensemble.

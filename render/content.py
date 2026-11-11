@@ -129,7 +129,7 @@ Traduction : l'écart est réel et il grandit avec le temps. Mais le geste reste
 
 # ── 0c · ANGLE : transparence, ce qu'on ne te dira pas
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="editorial", img="u:1583642037383-861ac716c3f0", over="4 fois par an", kicker="Le geste qui gêne", title="Jeter une *brosse entière*, tous les 3 mois", sub="Le manche marche encore, mais il part avec. Chez nous il reste : seule la tête se change, et elle est en bambou.", swipe=True),
+  dict(tpl="editorial", img="u:1583642037383-861ac716c3f0", over="4 fois par an", kicker="Le geste qui gêne", title="Jeter une *brosse entière,* tous les 3 mois", sub="Le manche marche encore, mais il part avec. Chez nous il reste : seule la tête se change, et elle est en bambou.", swipe=True),
   dict(tpl="steps", kicker="Ce qui est vrai", title="Les faits, sans enrobage", items=[("La tête est en bambou", "C'est la partie remplacée tous les 3 mois."), ("Les poils viennent du ricin", "Une fibre végétale, à la place du pétrole."), ("Le manche est en plastique ASA", "Choisi pour durer des années, pas pour être joli à dire.")]),
   dict(tpl="offer", img=s("p006"), kicker="Notre parti pris", title="Réduire la partie *qu'on jette*", price="59,90 €", perks=["Tête en bambou", "Poils en ricin", "Manche gardé des années"]),
 ],
@@ -269,7 +269,7 @@ Pour les plus jeunes, demande à ton dentiste le modèle adapté à leur âge.
 
 # ── 6 · ANGLE : après le rendez-vous chez le dentiste
 dict(date="x", kind="photo", slides=[
-  dict(tpl="fear", kicker="Chez le dentiste", fear="Il faudrait mieux brosser. D'accord, mais comment ?", kicker2="Ce qui s'en charge", answer="La *technique*, c'est la brosse qui l'applique", sub="41 000 vibrations par minute, un minuteur qui découpe les 4 zones, un mode Sensible. Toi, tu guides."),
+  dict(tpl="fear", kicker="Chez le dentiste", fear="Il faudrait mieux brosser. D'accord, mais comment ?", kicker2="Ce qui s'en charge", answer="La *technique,* c'est la brosse qui l'applique", sub="41 000 vibrations par minute, un minuteur qui découpe les 4 zones, un mode Sensible. Toi, tu guides."),
 ],
 caption="""Ton dentiste t'a dit de mieux brosser. Une brosse à dents électrique sonique fait une bonne partie du travail à ta place.
 
@@ -394,7 +394,7 @@ La sonique corrige ça :
 
 # ── 12 · ANGLE : le plastique qu'on jette
 dict(date="x", kind="photo", slides=[
-  dict(tpl="callout", img=s("p087"), kicker="Le réflexe qu'on a tous", notes=[("Le manche : gardé des années", 0.5, 0.62), ("La tête : changée tous les 3 mois", 0.5, 0.12)], strike=("toute la brosse", "la tête"), title="Tu changes *ce qui est usé*, pas le reste", sub="Les poils s'écrasent au bout de 3 mois. Le moteur, lui, n'a rien demandé.", cta="Voir la recharge"),
+  dict(tpl="callout", img=s("p087"), kicker="Le réflexe qu'on a tous", notes=[("Le manche : gardé des années", 0.5, 0.62), ("La tête : changée tous les 3 mois", 0.5, 0.12)], strike=("toute la brosse", "la tête"), title="Tu changes *ce qui est usé,* pas le reste", sub="Les poils s'écrasent au bout de 3 mois. Le moteur, lui, n'a rien demandé.", cta="Voir la recharge"),
 ],
 caption="""La partie d'une brosse à dents électrique qu'on jette le plus souvent, c'est la tête. C'est là que Pulse Care a mis le bambou.
 
@@ -553,7 +553,7 @@ Le seul réflexe à garder : bien sécher le port USB-C avant de la brancher.
 
 # ── 20 · ANGLE : la panne de l'ancienne brosse
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="note", img=s("p095"), kicker="Le moment du changement", bad="Elle tient encore, je la garde.", hand="le vrai signe :", good="Si tu la recharges *toutes les semaines*, elle est finie.", sub="Une batterie en fin de vie perd d'abord son autonomie, puis sa puissance de brossage.", swipe=True),
+  dict(tpl="note", img=s("p095"), kicker="Le moment du changement", bad="Elle tient encore, je la garde.", hand="le vrai signe :", good="Si tu la recharges *toutes les semaines,* elle est finie.", sub="Une batterie en fin de vie perd d'abord son autonomie, puis sa puissance de brossage.", swipe=True),
   dict(tpl="bignum", kicker="Batterie", big="500", title="mAh, *30 jours d'autonomie*", sub="Une charge d'environ 2,5 h, en USB-C."),
   dict(tpl="offer", img="u:1667550177726-96da7c257853", kicker="Bamboo+", title="Le câble que *tu as déjà*", price="59,90 €", perks=["Recharge USB-C", "2,5 h de charge", "30 jours d'autonomie"]),
 ],
