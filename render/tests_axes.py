@@ -108,7 +108,7 @@ Ailleurs, une tête peut coûter jusqu'à 15 €, et il en faut 4 par an. Chez P
 """ + TAGS_T + " #budget")),
 
     (29, dict(date="x", kind="photo", axis="PEUR", slides=[
-        dict(tpl="commentpost", img=s("ricin_solo"), comment="J'ai les gencives qui saignent un peu. Une électrique, ça va empirer ?",
+        dict(tpl="commentpost", comment="J'ai les gencives qui saignent un peu. Une électrique, ça va empirer ?",
              kicker2="Notre réponse", answer="Ce qui blesse, c'est *la pression,* pas les vibrations.",
              sub="Mode Sensible, poils ricin, aucune force à appliquer. Si les saignements durent, parles-en à ton dentiste."),
     ], caption="""Brosse à dents électrique et gencives qui saignent : la question qu'on reçoit souvent.

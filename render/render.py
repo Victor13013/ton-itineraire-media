@@ -2042,10 +2042,14 @@ def x_notespost(c):
             if mode == "barre": d.line([M, y + fnt.size * 0.62, M + d.textlength(l, font=fnt), y + fnt.size * 0.62], fill=(226, 108, 92), width=6)
             y += fnt.size * 1.32
         y += 14
-    if c.get("img"):
-        prod, ok = product_cut(load(c["img"]), (252, 250, 243), int(W * 0.34), int(H * 0.26))
-        if ok: base.paste(prod, (W - M - prod.width, H - 120 - prod.height))
     d.rectangle([M, y + 4, M + 4, y + 60], fill=(214, 160, 20))
+    if c.get("img"):
+        # photo collée dans la note, comme une pièce jointe
+        top = int(y + 100); bw, bh = W - 2 * M, H - 90 - top
+        if bh > 220:
+            ph = ImageOps.fit(load(c["img"]).convert("RGB"), (bw, bh), centering=(0.5, c.get("fy", 0.5)))
+            mk = Image.new("L", (bw, bh), 0); ImageDraw.Draw(mk).rounded_rectangle([0, 0, bw, bh], 36, fill=255)
+            base.paste(ph, (M, top), mk)
     return base.convert("RGB")
 
 def x_commentpost(c):
@@ -2053,12 +2057,12 @@ def x_commentpost(c):
     if c.get("img"):
         th_photo(t, c["img"], (0, 0, W, int(H * 0.52)), c.get("_n", 0), c.get("fy", 0.45))
     fnt = IM(42); ls = wrap(c["comment"], fnt, W - 2 * M - 160)
-    ch_ = 110 + len(ls) * fnt.size * 1.3; y0 = int(H * 0.52) - ch_ / 2 if c.get("img") else 150
+    ch_ = 110 + len(ls) * fnt.size * 1.3; y0 = int(H * 0.52) - ch_ / 2 if c.get("img") else 260
     box = (M, y0, W - M, y0 + ch_); phone_card(base, box, 40); d = ImageDraw.Draw(base)
     d.ellipse([box[0] + 30, box[1] + 30, box[0] + 100, box[1] + 100], fill=(210, 214, 218))
     d.text((box[0] + 124, box[1] + 30), c.get("who", "Une question qu'on reçoit souvent"), font=BOLD(30), fill=(30, 30, 30))
     for i, l in enumerate(ls): d.text((box[0] + 124, box[1] + 76 + i * fnt.size * 1.3), l, font=fnt, fill=(30, 30, 30))
-    y = box[3] + 60
+    y = box[3] + (60 if c.get("img") else 130)
     if c.get("kicker2"):
         d.text((M, y), c["kicker2"].upper(), font=BOLD(28), fill=t.acc); y += 54
     y = th_title(t, M, y, c["answer"], start=72, minsize=42, maxlines=3)
