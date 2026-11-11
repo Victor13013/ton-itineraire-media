@@ -472,7 +472,7 @@ On préfère que tu les lises avant d'acheter.
 
 # ── 16 · ANGLE : le prix d'entrée
 dict(date="x", kind="photo", slides=[
-  dict(tpl="stats", img=s("duo_tete"), title="Ce que tu as *pour 59,90 €*", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("30 j", "d'autonomie, USB-C"), ("2", "têtes en bambou incluses")]),
+  dict(tpl="stats", img=s("duo_tete"), title="59,90 €. *On détaille.*", items=[("41 000", "vibrations par minute"), ("4", "modes de brossage"), ("30 j", "d'autonomie, USB-C"), ("2", "têtes en bambou incluses")]),
 ],
 caption="""59,90 € pour une brosse à dents électrique sonique : voilà exactement ce que ça comprend.
 
@@ -632,7 +632,7 @@ Le manche, lui, se garde. C'est tout le principe.
 
 # ── 24 · ANGLE : les 4 modes, aider à choisir
 dict(date="x", kind="photo", slides=[
-  dict(tpl="mosaic", kicker="4 modes", title="Un mode *par besoin*", sub="Un seul bouton pour passer de l'un à l'autre.", imgs=[(s("modes_main"), "Sensible"), (s("icones"), "Nettoyage"), (s("p019"), "Blanchiment"), ("u:1542013936693-884638332954", "Polissage")]),
+  dict(tpl="mosaic", kicker="Le réglage unique", title="Tes dents n'ont pas *le même besoin* chaque jour", sub="Gencives sensibles le matin, taches de café le soir. Un bouton pour passer de l'un à l'autre.", imgs=[(s("modes_main"), "Sensible"), (s("icones"), "Nettoyage"), (s("p019"), "Blanchiment"), ("u:1542013936693-884638332954", "Polissage")]),
 ],
 caption="""4 modes sur une brosse à dents électrique, ça sert à quoi exactement ?
 
@@ -705,7 +705,7 @@ Tu relèves ?
 
 # ── 28 · ANGLE : la livraison et la garantie
 dict(date="x", kind="carousel", slides=[
-  dict(tpl="split", img=s("p029"), side="right", kicker="Avant de commander", title="Ce qu'il faut savoir *sur la commande*", items=["Livraison gratuite dès 20 €", "30 jours pour changer d'avis", "Suivi par e-mail"], swipe=True),
+  dict(tpl="split", img=s("p029"), side="right", kicker="Le moment où on hésite", title="Panier rempli, *doigt en l'air*", items=["Livraison gratuite dès 20 €", "30 jours pour changer d'avis", "Suivi par e-mail à chaque étape"], swipe=True),
   dict(tpl="steps", kicker="Les 3 points", title="Simple et sans piège", items=[("Livraison gratuite", "En point relais, dès 20 € d'achat."), ("30 jours pour changer d'avis", "Hors têtes déjà ouvertes, pour raison d'hygiène."), ("Une question ?", "Par mail, réponse sous 24 à 48 h.")]),
 ],
 caption="""Commander une brosse à dents électrique chez Pulse Care : les 3 choses à savoir avant de cliquer.
