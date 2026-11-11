@@ -455,6 +455,57 @@ Un bouton, 4 modes (Sensible, Nettoyage, Blanchiment, Polissage) et un minuteur 
 """ + TAGS_T + " #routinematin"),
 ]
 
+
+# ───────────────────────────── vague 2 : formats natifs en vidéo (recherche tapée, notifications)
+VIDEOS += [
+  dict(id="v-recherche", music="Upbeat Jazz", date="x", axis="QUESTION", voice="maxence", pal="creme", fmt="Recherche tapée", scenes=[
+    dict(t="search", clip="homme-miroir", query="brosse à dents électrique ça vaut le coup ?", suggest=[
+        "brosse électrique ou manuelle", "brosse électrique prix des têtes", "brosse électrique autonomie"],
+        title="Réponse en *3 chiffres*", say="Brosse à dents électrique, ça vaut le coup ? Réponse en trois chiffres."),
+    dict(t="list", kicker="Pulse Care", title="Les chiffres", items=[
+        ("59,90 €", "La brosse, 2 têtes, l'étui et le câble."), ("3,73 €", "La tête de rechange, en pack de 4."), ("30 jours", "D'autonomie sur une charge.")],
+         say="Cinquante-neuf euros quatre-vingt-dix la brosse. Trois euros soixante-treize la tête. Trente jours d'autonomie."),
+    dict(t="end", img=s("p046"), title="À toi de juger.", sub="pulsecarefrance.com", say="À toi de juger. Le lien est en bio."),
+  ], caption="""Brosse à dents électrique : ça vaut le coup ? Réponse en 3 chiffres.
+
+→ 59,90 € la brosse, avec 2 têtes, l'étui et le câble
+→ 3,73 € la tête de rechange en pack de 4
+→ 30 jours d'autonomie sur une charge
+
+À toi de juger.
+
+[CTA]
+
+""" + TAGS_T + " #faq"),
+
+  dict(id="v-notifs", music="Happy Spring", date="x", axis="PRATIQUE", voice="agathe", pal="nuit", fmt="Notifications", scenes=[
+    dict(t="notif", clip="fille-matin", day="Si ta brosse pouvait t'écrire", time="7:42", notifs=[
+        ("Pulse Care", "Minuteur", "30 secondes : passe à la zone suivante."),
+        ("Pulse Care", "Batterie", "Encore des semaines d'autonomie."),
+        ("Pulse Care", "Tête de brosse", "3 mois déjà : pense à la changer.")],
+         say="Si ta brosse pouvait t'écrire. Minuteur : trente secondes, change de zone. Batterie : encore des semaines. Tête de brosse : trois mois, pense à la changer."),
+    dict(t="card", clip="dentifrice", kicker="Pas d'appli", title="Elle pense à tout, *sans écran*", sub="Minuteur, 30 jours d'autonomie, têtes en bambou.",
+         say="Pas d'appli. Elle pense à tout, sans écran."),
+    dict(t="end", img=s("p121"), title="Tu brosses, elle compte.", sub="pulsecarefrance.com", say="Le lien est en bio."),
+  ], caption="""Brosse à dents électrique : si elle pouvait t'écrire, voilà ce qu'elle te dirait.
+
+Pas d'appli, pas de notification : le minuteur vibre toutes les 30 secondes, une charge tient jusqu'à 30 jours, et tu changes la tête tous les 3 mois.
+
+[CTA]
+
+""" + TAGS_T + " #routine"),
+]
+
+# Ordre de diffusion des vidéos de test (une sur deux dans la cadence « une vidéo tous les 3 jours »)
+_ORDER = ["v-parents", "v-mythes", "v-recherche", "v-peur", "v-notifs", "v-cadeau", "v-habitude", "v-eco", "v-boite", "v-confiance",
+          "v-pratique", "v-prix", "v-design", "v-entretien", "v-resultat", "v-ados", "v-preuve", "v-douche", "v-gaspi", "v-matin"]
+_SLOTS = ["2026-11-11", "2026-11-17", "2026-11-23", "2026-11-29", "2026-12-05", "2026-12-11", "2026-12-17", "2026-12-23", "2026-12-29",
+          "2027-01-04", "2027-01-10", "2027-01-16", "2027-01-19", "2027-01-22", "2027-01-25", "2027-01-28", "2027-01-31", "2027-02-03",
+          "2027-02-06", "2027-02-09"]
+_byid = {v["id"]: v for v in VIDEOS}
+assert sorted(_ORDER) == sorted(_byid), "ordre des vidéos incomplet"
+for _id, _d in zip(_ORDER, _SLOTS): _byid[_id]["date"] = _d
+
 def vo_text(v):
     return " ".join(sc["say"] for sc in v["scenes"])
 

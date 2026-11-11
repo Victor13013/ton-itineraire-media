@@ -1,3 +1,4 @@
+import random
 # -*- coding: utf-8 -*-
 """Rendu des visuels et Reels Pulse Care + planning Make.
 
@@ -116,6 +117,11 @@ from datetime import date as _date, timedelta as _td
 _apply_axes(POSTS)
 from content_campagne import CAMP_AM, CAMP_PM  # noqa: E402
 POSTS += CAMP_PM; POSTS_AM += CAMP_AM
+from content_campagne2 import CAMP2_AM, CAMP2_PM  # noqa: E402
+def _sprinkle(lst, new, start, step):
+    """Glisse les nouveaux designs tôt dans la file (sans toucher aux posts déjà publiés)."""
+    for k, p_ in enumerate(new): lst.insert(start + k * step, p_)
+_sprinkle(POSTS_AM, CAMP2_AM, 3, 3); _sprinkle(POSTS, CAMP2_PM, 5, 3)
 
 REEL_DATES = {r["date"] for r in REELS}
 
@@ -2187,6 +2193,220 @@ TPLX = {"bignum": x_bignum, "quiz": x_quiz, "steps": x_steps, "mosaic": x_mosaic
         "ticket": x_ticket, "split": x_split, "offer": x_offer,
         "chatpost": x_chatpost, "notespost": x_notespost, "commentpost": x_commentpost, "reviewpost": x_reviewpost}
 
+
+# ───────────────────────────── formats « natifs » et décalés (campagne large)
+def _loupe(d, x, y, r, col, w=5):
+    d.ellipse([x - r, y - r, x + r, y + r], outline=col, width=w)
+    d.line([x + r * 0.7, y + r * 0.7, x + r * 1.6, y + r * 1.6], fill=col, width=w + 1)
+
+def x_search(c):
+    """Barre de recherche : la question que les gens tapent vraiment, puis la réponse."""
+    t = theme(c); base = t.base; d = ImageDraw.Draw(base)
+    y = th_kicker(t, M, 90, c.get("kicker")) if c.get("kicker") else 110
+    fq = IM(44); q = c["query"]; ls = wrap(q, fq, W - 2 * M - 170)
+    bh = 60 + len(ls) * fq.size * 1.3; box = (M, y + 10, W - M, y + 10 + bh)
+    phone_card(base, box, int(min(bh / 2, 60))); d = ImageDraw.Draw(base)
+    _loupe(d, box[0] + 66, box[1] + bh / 2 - 6, 20, (110, 116, 122))
+    for i, l in enumerate(ls):
+        d.text((box[0] + 120, box[1] + 30 + i * fq.size * 1.3), l, font=fq, fill=(24, 24, 24))
+    lx = box[0] + 120 + d.textlength(ls[-1], font=fq) + 6; ly = box[1] + 30 + (len(ls) - 1) * fq.size * 1.3
+    d.rectangle([lx, ly + 4, lx + 4, ly + fq.size * 1.1], fill=(40, 110, 230))
+    if c.get("suggest"):
+        sh = 26 + len(c["suggest"]) * 84; sb = (M, box[3] + 14, W - M, box[3] + 14 + sh)
+        phone_card(base, sb, 30); d = ImageDraw.Draw(base)
+        for i, sg in enumerate(c["suggest"]):
+            yy = sb[1] + 20 + i * 84
+            _loupe(d, sb[0] + 60, yy + 30, 13, (150, 154, 160), 4)
+            d.text((sb[0] + 110, yy + 8), sg, font=IR(38), fill=(60, 64, 70))
+        y = sb[3]
+    else:
+        y = box[3]
+    f_, tl_ = sans_fit(c["answer"], BLACK, W - 2 * M, 104, 50, 3)
+    blk = 56 + len(tl_) * f_.size * 1.04 + (len(wrap(c.get("sub", ""), IM(38), W - 2 * M - 40)) * 52 if c.get("sub") else 0)
+    y = max(y + 80, y + (H - 150 - y - blk) / 2)
+    d.text((M, y), c.get("kicker2", "La réponse").upper(), font=BOLD(30), fill=t.acc); y += 56
+    y = th_title(t, M, y, c["answer"], start=104, minsize=50, maxlines=3)
+    if c.get("sub"): th_sub(t, M, y + 8, c["sub"], W - 2 * M - 40, 38)
+    return th_end(t, c)
+
+def x_lockscreen(c):
+    """Écran verrouillé : les notifications que tu recevrais si ta brosse te parlait."""
+    if c.get("photo"):
+        base = ImageOps.fit(load(c["photo"]).convert("RGB"), (W, H), centering=(0.5, c.get("fy", 0.5))).convert("RGBA")
+        base = base.filter(ImageFilter.GaussianBlur(6))
+    else:
+        base = rich_bg(FOREST, c.get("_n", 0)).convert("RGBA")
+    base.alpha_composite(Image.new("RGBA", (W, H), (10, 18, 14, 120)))
+    d = ImageDraw.Draw(base)
+    fd = SB(40); dt = c.get("day", "mercredi 11 novembre"); d.text(((W - d.textlength(dt, font=fd)) / 2, 120), dt, font=fd, fill=(250, 250, 250))
+    ft = BLACK(200); tm = c.get("time", "7:42"); d.text(((W - d.textlength(tm, font=ft)) / 2, 160), tm, font=ft, fill=(250, 250, 250))
+    y = 420
+    for app, title, txt in c["notifs"]:
+        fb = IR(34); ls = wrap(txt, fb, W - 2 * M - 80); h = 160 + len(ls) * fb.size * 1.28
+        card = Image.new("RGBA", (W - 2 * M, int(h)), (0, 0, 0, 0))
+        ImageDraw.Draw(card).rounded_rectangle([0, 0, card.width - 1, card.height - 1], radius=44, fill=(246, 246, 244, 226))
+        base.alpha_composite(card, (M, int(y))); d = ImageDraw.Draw(base)
+        d.rounded_rectangle([M + 30, y + 28, M + 86, y + 84], radius=14, fill=FOREST)
+        d.text((M + 58 - d.textlength(app[0], font=BOLD(30)) / 2, y + 34), app[0], font=BOLD(30), fill=LIME)
+        d.text((M + 104, y + 36), app.upper(), font=SB(26), fill=(110, 110, 110))
+        d.text((W - M - 30 - d.textlength("maintenant", font=IR(26)), y + 36), "maintenant", font=IR(26), fill=(120, 120, 120))
+        d.text((M + 30, y + 92), title, font=BOLD(36), fill=(20, 20, 20))
+        for i, l in enumerate(ls): d.text((M + 30, y + 136 + i * fb.size * 1.28), l, font=fb, fill=(40, 40, 40))
+        y += h + 16
+    if c.get("caption_end"):
+        f2 = BLACK(58); ls = wrap(c["caption_end"].replace("*", ""), f2, W - 2 * M)
+        yy = max(y + 30, H - 90 - len(ls) * f2.size * 1.1)
+        for l in ls: d.text((M, yy), l, font=f2, fill=(250, 250, 250)); yy += f2.size * 1.1
+    return base.convert("RGB")
+
+PAPER = (244, 240, 230)
+def x_headline(c):
+    """Une de journal : un fait présenté comme une info."""
+    base = Image.new("RGBA", (W, H), PAPER); d = ImageDraw.Draw(base)
+    fm = SERIF(66, w=800); mh = c.get("masthead", "Le Quotidien du Sourire")
+    d.text(((W - d.textlength(mh, font=fm)) / 2, 70), mh, font=fm, fill=(20, 20, 20))
+    d.line([M, 170, W - M, 170], fill=(20, 20, 20), width=5); d.line([M, 180, W - M, 180], fill=(20, 20, 20), width=2)
+    info = c.get("edition", "Édition du soir · Hygiène dentaire")
+    d.text((M, 194), info, font=IM(26), fill=(70, 70, 70))
+    y = 260
+    if c.get("kicker"): d.text((M, y), c["kicker"].upper(), font=BOLD(30), fill=(178, 48, 40)); y += 56
+    fh = SERIF(92, w=800); ls = wrap(c["headline"], fh, W - 2 * M)
+    while len(ls) > 4 and fh.size > 60: fh = SERIF(fh.size - 6, w=800); ls = wrap(c["headline"], fh, W - 2 * M)
+    for l in ls: d.text((M, y), l, font=fh, fill=(18, 18, 18)); y += fh.size * 1.08
+    y += 18
+    if c.get("dek"):
+        fk = SERIF(40, italic=True, w=500)
+        for l in wrap(c["dek"], fk, W - 2 * M): d.text((M, y), l, font=fk, fill=(60, 60, 60)); y += fk.size * 1.3
+    y += 26
+    if c.get("photo") and H - 120 - y > 240:
+        bx = (M, int(y), W - M, H - 130)
+        ph = ImageOps.fit(load(c["photo"]).convert("RGB"), (bx[2] - bx[0], bx[3] - bx[1]), centering=(0.5, c.get("fy", 0.5)))
+        base.paste(ph, bx[:2]); d = ImageDraw.Draw(base)
+        if c.get("legend"): d.text((M, H - 112), c["legend"], font=IR(26), fill=(90, 90, 90))
+    d.line([M, H - 70, W - M, H - 70], fill=(20, 20, 20), width=2)
+    return base.convert("RGB")
+
+def x_label(c):
+    """Étiquette façon « valeurs nutritionnelles » : la fiche technique, sans blabla."""
+    t = theme(c); base = t.base; d = ImageDraw.Draw(base)
+    y = th_kicker(t, M, 80, c.get("kicker")) if c.get("kicker") else 90
+    bx0, bx1 = M + 40, W - M - 40; y0 = y + 10
+    rows = c["rows"]; h = 260 + sum(70 if not r[2:] or not r[2] else 84 for r in rows) + 110
+    d.rectangle([bx0, y0, bx1, y0 + h], fill=(255, 255, 255), outline=(15, 15, 15), width=6)
+    x = bx0 + 34; yy = y0 + 26
+    d.text((x, yy), c.get("title", "Fiche technique"), font=BLACK(84), fill=(15, 15, 15)); yy += 100
+    d.line([x, yy, bx1 - 34, yy], fill=(15, 15, 15), width=4); yy += 14
+    d.text((x, yy), c.get("serving", "Pour 1 brosse"), font=SB(34), fill=(15, 15, 15)); yy += 56
+    d.rectangle([x, yy, bx1 - 34, yy + 18], fill=(15, 15, 15)); yy += 34
+    for r in rows:
+        k, v = r[0], r[1]; big = len(r) > 2 and r[2]
+        fk = BLACK(42) if big else SB(36); fv = BLACK(42) if big else IM(36)
+        d.text((x, yy), k, font=fk, fill=(15, 15, 15)); d.text((bx1 - 34 - d.textlength(v, font=fv), yy), v, font=fv, fill=(15, 15, 15))
+        yy += (84 if big else 70) - 14
+        d.line([x, yy, bx1 - 34, yy], fill=(15, 15, 15), width=6 if big else 2); yy += 14
+    if c.get("note"):
+        for l in wrap(c["note"], IR(28), bx1 - bx0 - 68): d.text((x, yy + 6), l, font=IR(28), fill=(50, 50, 50)); yy += 38
+    return th_end(t, c)
+
+def x_checker(c):
+    """Damier 2 x 2 : texte et photo en alternance, toute l'info en un seul visuel."""
+    base = Image.new("RGBA", (W, H), CREAM); d = ImageDraw.Draw(base)
+    cw, ch = W // 2, H // 2; cols = [FOREST, LIME, CORAL, INKV]
+    for i, cell in enumerate(c["cells"]):
+        x, y = (i % 2) * cw, (i // 2) * ch
+        if cell.get("img"):
+            base.paste(ImageOps.fit(load(cell["img"]).convert("RGB"), (cw, ch), centering=(0.5, cell.get("fy", 0.5))), (x, y))
+            continue
+        bg = cell.get("bg") and tuple(cell["bg"]) or cols[i % 4]
+        d.rectangle([x, y, x + cw, y + ch], fill=bg)
+        ink = INKV if sum(bg) > 450 else CREAM
+        f, tl = sans_fit(cell["text"], BLACK, cw - 100, 92, 46, 4)
+        yy = y + (ch - len(tl) * f.size * 1.05) / 2 - (30 if cell.get("small") else 0)
+        yy = sans_draw(base, x + 50, yy, tl, f, ink, INKV if ink == CREAM else CREAM, ink if ink != CREAM else LIME, 1.05); d = ImageDraw.Draw(base)
+        if cell.get("small"):
+            for l in wrap(cell["small"], IM(30), cw - 100): d.text((x + 50, yy + 14), l, font=IM(30), fill=ink); yy += 40
+    return base.convert("RGB")
+
+def x_antiad(c):
+    """L'anti-pub : à qui elle ne sert à rien, puis à qui elle sert."""
+    t = theme(c); base = t.base; d = ImageDraw.Draw(base)
+    y = th_kicker(t, M, 90, c.get("kicker")) if c.get("kicker") else 90
+    y = th_title(t, M, y + 4, c["title"], start=86, minsize=50, maxlines=2) + 18
+    def lst(items, ok, y):
+        f = IM(46)
+        for it in items:
+            ls = wrap(it, f, W - 2 * M - 110)
+            cx, cy = M + 30, y + 26
+            if ok:
+                d.ellipse([cx - 26, cy - 26, cx + 26, cy + 26], fill=LIME)
+                d.line([cx - 12, cy, cx - 3, cy + 10, cx + 13, cy - 10], fill=INKV, width=6)
+            else:
+                d.ellipse([cx - 26, cy - 26, cx + 26, cy + 26], fill=(178, 48, 40))
+                d.line([cx - 10, cy - 10, cx + 10, cy + 10], fill=(255, 255, 255), width=6); d.line([cx - 10, cy + 10, cx + 10, cy - 10], fill=(255, 255, 255), width=6)
+            for i, l in enumerate(ls): d.text((M + 84, y + i * f.size * 1.3), l, font=f, fill=t.ink)
+            y += max(70, len(ls) * f.size * 1.3 + 26)
+        return y
+    y = lst(c["no"], False, y)
+    y += 26; d.line([M, y, W - M, y], fill=t.sub, width=2); y += 34
+    d.text((M, y), c.get("turn", "Par contre, si…").upper(), font=BOLD(30), fill=t.acc); y += 64
+    lst(c["yes"], True, y)
+    return th_end(t, c)
+
+def x_meme(c):
+    """Deux cases : ce qu'on croit / ce qui se passe vraiment."""
+    base = Image.new("RGBA", (W, H), CREAM); d = ImageDraw.Draw(base)
+    half = H // 2
+    for k, (lab, txt, bg, ink) in enumerate([(c.get("top_label", "Ce que tu crois"), c["top"], (238, 232, 220), INKV),
+                                             (c.get("bottom_label", "Ce qui se passe vraiment"), c["bottom"], FOREST, CREAM)]):
+        y0 = k * half; d.rectangle([0, y0, W, y0 + half], fill=bg)
+        tw = W - 2 * M - (380 if (k == 1 and c.get("photo")) else 0)
+        kicker_pill(base, M, y0 + 70, lab, LIME if k else INKV, INKV if k else CREAM); d = ImageDraw.Draw(base)
+        f, tl = sans_fit(txt, BLACK, tw, 116, 50, 4)
+        ty = y0 + 150 + max(0, (half - 190 - len(tl) * f.size * 1.06) / 2)
+        sans_draw(base, M, ty, tl, f, ink, LIME if k else FOREST, INKV if k else CREAM, 1.06); d = ImageDraw.Draw(base)
+        if k == 1 and c.get("photo"):
+            prod, ok = product_cut(load(c["photo"]), FOREST, 340, half - 120)
+            if ok: base.paste(prod, (W - M - prod.width, y0 + half - 40 - prod.height))
+            else:
+                ph = ImageOps.fit(load(c["photo"]).convert("RGB"), (340, half - 160)); base.paste(ph, (W - M - 340, y0 + 80))
+            d = ImageDraw.Draw(base)
+    if c.get("emoji_line"):
+        d.text((M, H - 90), c["emoji_line"], font=IM(30), fill=(220, 230, 222))
+    return base.convert("RGB")
+
+def x_boarding(c):
+    """Carte d'embarquement : l'argument voyage, version billet."""
+    t = theme(c); base = t.base; d = ImageDraw.Draw(base)
+    y = th_kicker(t, M, 90, c.get("kicker")) if c.get("kicker") else 90
+    y = th_title(t, M, y + 4, c["title"], start=78, minsize=46, maxlines=2) + 24
+    bx = (M, int(y), W - M, H - 150); phone_card(base, bx, 40); d = ImageDraw.Draw(base)
+    d.rounded_rectangle([bx[0], bx[1], bx[2], bx[1] + 90], radius=40, fill=FOREST); d.rectangle([bx[0], bx[1] + 50, bx[2], bx[1] + 90], fill=FOREST)
+    d.text((bx[0] + 40, bx[1] + 24), "CARTE D'EMBARQUEMENT", font=BOLD(32), fill=LIME)
+    yy = bx[1] + 130
+    fc = BLACK(120)
+    d.text((bx[0] + 40, yy), c["frm"], font=fc, fill=INKV)
+    d.text((bx[2] - 40 - d.textlength(c["to"], font=fc), yy), c["to"], font=fc, fill=INKV)
+    mx = (bx[0] + bx[2]) / 2; d.line([mx - 90, yy + 66, mx + 70, yy + 66], fill=(160, 160, 160), width=4)
+    d.polygon([(mx + 70, yy + 52), (mx + 98, yy + 66), (mx + 70, yy + 80)], fill=(160, 160, 160))
+    d.text((bx[0] + 40, yy + 140), c["frm_name"], font=IM(30), fill=GREYV)
+    d.text((bx[2] - 40 - d.textlength(c["to_name"], font=IM(30)), yy + 140), c["to_name"], font=IM(30), fill=GREYV)
+    yy += 220; d.line([bx[0] + 30, yy, bx[2] - 30, yy], fill=(225, 225, 225), width=2); yy += 26
+    colw = (bx[2] - bx[0] - 80) / 2
+    for i, (k, v) in enumerate(c["fields"]):
+        cx = bx[0] + 40 + (i % 2) * colw; cy = yy + (i // 2) * 120
+        d.text((cx, cy), k.upper(), font=SB(24), fill=GREYV); d.text((cx, cy + 34), v, font=BOLD(40), fill=INKV)
+    yy += ((len(c["fields"]) + 1) // 2) * 120 + 10
+    for k in range(int(bx[0] + 30), int(bx[2] - 30), 26):
+        d.line([k, yy, k + 12, yy], fill=(200, 200, 200), width=3)
+    yy += 30; rnd = random.Random(c["title"])
+    xx = bx[0] + 40
+    while xx < bx[2] - 40 and yy + 100 < bx[3] - 20:
+        w_ = rnd.choice([3, 3, 5, 8]); d.rectangle([xx, yy, xx + w_, min(yy + 110, bx[3] - 30)], fill=INKV); xx += w_ + rnd.choice([4, 6, 9])
+    return th_end(t, c)
+
+TPLX.update({"search": x_search, "lockscreen": x_lockscreen, "headline": x_headline, "label": x_label,
+             "checker": x_checker, "antiad": x_antiad, "meme": x_meme, "boarding": x_boarding})
+
 DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
 DA_C_ALL = "--da-c" in sys.argv     # aperçu : tout en DA C
 def pick_tpl(sl):
@@ -2791,6 +3011,69 @@ class Scene:
         for l in self.layers: l.draw(f, t)
         return f
 
+    # recherche : la question se tape lettre par lettre, les suggestions tombent, puis la réponse
+    def setup_search(self):
+        c = self.c; self.qf = IM(46); self.q = c["query"]
+        tf = BLACK(96 if len(c["title"]) < 30 else 80); self.f = tf
+        self.lines = kinetic_words(c["title"].replace("*", ""), tf, RW - 150); self.hl = HL(c["title"])
+        self.y0 = RH - 420 - len(self.lines) * tf.size * 1.04
+        self.layers = [Layer(text_layer(wrap(c["sub"], REG(42), RW - 160), REG(42), self.P["sub"] if self.kb else self.P["ink"], 1.3), 75, RH - 380, 0.0, dy=30)] if c.get("sub") else []
+        self.t_type = min(1.6, len(self.q) / 30)
+    def frame_search(self, t):
+        f = self.bgframe(t); P = self.P; d = ImageDraw.Draw(f)
+        n = int(len(self.q) * min(1, t / self.t_type)); txt = self.q[:n]
+        ls = wrap(txt or " ", self.qf, RW - 330); bh = 70 + len(wrap(self.q, self.qf, RW - 330)) * self.qf.size * 1.3
+        box = (70, 230, RW - 70, 230 + bh)
+        sh = Image.new("RGBA", f.size, (0, 0, 0, 0)); ImageDraw.Draw(sh).rounded_rectangle([box[0], box[1] + 14, box[2], box[3] + 14], radius=50, fill=(0, 0, 0, 70))
+        f.alpha_composite(sh.filter(ImageFilter.GaussianBlur(18))); d = ImageDraw.Draw(f)
+        d.rounded_rectangle(box, radius=50, fill=(255, 255, 255))
+        _loupe(d, box[0] + 70, box[1] + bh / 2 - 6, 22, (110, 116, 122))
+        for i, l in enumerate(ls): d.text((box[0] + 130, box[1] + 36 + i * self.qf.size * 1.3), l, font=self.qf, fill=(24, 24, 24))
+        if int(t * 2.5) % 2 == 0 or t < self.t_type:
+            lx = box[0] + 130 + d.textlength(ls[-1], font=self.qf) + 6; ly = box[1] + 36 + (len(ls) - 1) * self.qf.size * 1.3
+            d.rectangle([lx, ly + 4, lx + 5, ly + self.qf.size * 1.1], fill=(40, 110, 230))
+        sg = self.c.get("suggest", [])
+        for i, s_ in enumerate(sg):
+            q = ease((t - self.t_type - 0.1 - i * 0.12) / 0.25)
+            if q <= 0: continue
+            yy = box[3] + 20 + i * 96
+            card = Image.new("RGBA", (RW - 140, 84), (0, 0, 0, 0)); cd = ImageDraw.Draw(card)
+            cd.rounded_rectangle([0, 0, RW - 141, 83], radius=28, fill=(255, 255, 255, int(235 * q)))
+            _loupe(cd, 46, 38, 14, (150, 154, 160), 4); cd.text((90, 18), s_, font=IR(38), fill=(60, 64, 70, int(255 * q)))
+            f.alpha_composite(card, (70, int(yy + 20 * (1 - q))))
+        kinetic_draw(f, t - self.t_type - 0.5 - 0.12 * len(sg), self.lines, self.f, 75, self.y0, self.hl, P["ink"], P["mark"], P["bg"])
+        for l in self.layers: l.t0 = self.t_type + 0.9 + 0.12 * len(sg); l.draw(f, t)
+        return f
+
+    # notifications : elles tombent une par une sur l'écran verrouillé
+    def setup_notif(self):
+        c = self.c; self.cards = []
+        for app, title, txt in c["notifs"]:
+            fb = IR(38); ls = wrap(txt, fb, RW - 260); h = int(170 + len(ls) * fb.size * 1.28)
+            card = Image.new("RGBA", (RW - 140, h), (0, 0, 0, 0)); d = ImageDraw.Draw(card)
+            d.rounded_rectangle([0, 0, RW - 141, h - 1], radius=46, fill=(246, 246, 244, 236))
+            d.rounded_rectangle([32, 30, 92, 90], radius=16, fill=FOREST)
+            d.text((62 - d.textlength(app[0], font=BOLD(32)) / 2, 36), app[0], font=BOLD(32), fill=LIME)
+            d.text((112, 40), app.upper(), font=SB(28), fill=(110, 110, 110))
+            d.text((RW - 170 - d.textlength("maintenant", font=IR(28)), 40), "maintenant", font=IR(28), fill=(120, 120, 120))
+            d.text((32, 100), title, font=BOLD(40), fill=(20, 20, 20))
+            for i, l in enumerate(ls): d.text((32, 150 + i * fb.size * 1.28), l, font=fb, fill=(40, 40, 40))
+            self.cards.append(card)
+        self.gap = max(0.45, (self.dur - 1.4) / max(1, len(self.cards)))
+        self.time = c.get("time", "7:42")
+    def frame_notif(self, t):
+        f = self.bgframe(t); d = ImageDraw.Draw(f)
+        ft = BLACK(220); d.text(((RW - d.textlength(self.time, font=ft)) / 2, 200), self.time, font=ft, fill=(250, 250, 250))
+        if self.c.get("day"):
+            fd = SB(42); d.text(((RW - d.textlength(self.c["day"], font=fd)) / 2, 150), self.c["day"], font=fd, fill=(250, 250, 250))
+        y = 540
+        for i, card in enumerate(self.cards):
+            q = back((t - 0.3 - i * self.gap) / 0.35)
+            if q <= 0: break
+            f.alpha_composite(card, (70, int(y - 120 * (1 - q))))
+            y += card.height + 22
+        return f
+
     # avis client : étoiles qui se remplissent, citation qui s'écrit
     def setup_review(self):
         c = self.c; self.qf = BLACK(78); self.q = c["quote"]
@@ -2838,7 +3121,7 @@ class Scene:
     def frame(self, t):
         return getattr(self, "frame_" + self.c["t"])(t)
 
-SCENE_V = "11"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
+SCENE_V = "12"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
 
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
