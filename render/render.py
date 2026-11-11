@@ -2083,9 +2083,26 @@ def kinetic_words(text, fnt, maxw):
         out.append((ln, ws, d.textlength(ln, font=fnt)))
     return out
 
-def is_hl(word, hl):
-    toks = [x.strip(".,!?»« ").lower() for x in word.replace("\u00a0", " ").split()]
-    return bool(toks) and all(x in hl for x in toks if x)
+def hl_spans(title):
+    """Indices (dans le titre sans astérisques) des caractères à surligner."""
+    out, idx, on = set(), 0, False
+    for ch in title:
+        if ch == "*": on = not on; continue
+        if on: out.add(idx)
+        idx += 1
+    return out
+
+class HL:
+    """Suit la position de chaque mot affiché dans le titre, pour surligner exactement les mots entre astérisques."""
+    def __init__(self, title):
+        self.clean = title.replace("*", ""); self.spans = hl_spans(title); self.cur = 0
+    def reset(self): self.cur = 0
+    def __call__(self, word):
+        w = word.replace("\u00a0", " "); i = self.clean.find(w, self.cur)
+        if i < 0: return False
+        self.cur = i + len(w)
+        core = [k for k in range(i, i + len(w)) if self.clean[k].isalnum()]
+        return bool(core) and all(k in self.spans for k in core)
 
 class Scene:
     def __init__(self, c, idx, pal=None):
@@ -2113,7 +2130,7 @@ class Scene:
     def setup_hook(self):
         c = self.c; self.f = BLACK(132 if len(c["title"]) < 34 else 112)
         self.lines = kinetic_words(c["title"].replace("*", ""), self.f, RW - 150)
-        self.hl = set(w_.strip("*.,!?»« ").lower() for w_ in re.findall(r"\*([^*]+)\*", c["title"])[0].split()) if "*" in c["title"] else set()
+        self.hl = HL(c["title"])
         h = len(self.lines) * self.f.size * 1.04
         self.y0 = (RH - h) / 2 - 40
         self.layers = []
@@ -2123,13 +2140,13 @@ class Scene:
             self.layers.append(Layer(text_layer(sl, REG(46), self.P["sub"], 1.3), 75, self.y0 + h + 50, 0.15 + 0.06 * sum(len(w) for _, w, _ in self.lines), dy=30))
     def frame_hook(self, t):
         f = self.bgframe(t); d = ImageDraw.Draw(f); self.brand(f)
-        k = 0; y = self.y0
+        k = 0; y = self.y0; self.hl.reset()
         for ln, ws, lw in self.lines:
             for w_, x in ws:
                 p = ease((t - 0.08 - k * 0.06) / 0.2); k += 1
                 if p <= 0: continue
                 col = self.P["ink"]
-                if is_hl(w_, self.hl):
+                if self.hl(w_):
                     ww = d.textlength(w_ + (" " if w_ != ws[-1][0] else ""), font=self.f)
                     d.rectangle([75 + x - 8, y + self.f.size * 0.18, 75 + x + ww * p + 8, y + self.f.size * 1.02], fill=self.P["mark"])
                     col = self.P["bg"] if self.P["mark"] != self.P["ink"] else self.P["bg"]
@@ -2286,7 +2303,7 @@ class Scene:
         self.shade.alpha_composite(gradient(RW, 320, (8, 16, 12), 0, 1, 140, 0), (0, 0))
         title = c["title"]; self.f = BLACK(108 if len(title) < 28 else 90)
         self.lines = kinetic_words(title.replace("*", ""), self.f, RW - 150)
-        self.hl = set(w_.strip("*.,!?»« ").lower() for w_ in re.findall(r"\*([^*]+)\*", title)[0].split()) if "*" in title else set()
+        self.hl = HL(title)
         self.y0 = RH - 330 - len(self.lines) * self.f.size * 1.04
         pop = P["pop"]; self.P = dict(P, ink=(250, 247, 240), mark=pop, bg=(16, 28, 22))
         self.layers = [Layer(pill_layer(c["kicker"].upper(), MED(30), pop, (16, 28, 22)), 75, self.y0 - 100, 0.05, dx=-60, dy=0)] if c.get("kicker") else []
@@ -2296,13 +2313,13 @@ class Scene:
         if i > 0 and lt * seg < 0.08:  # éclair blanc très bref à la coupe
             f.alpha_composite(Image.new("RGBA", (RW, RH), (255, 255, 255, int(150 * (1 - lt * seg / 0.08)))))
         f.alpha_composite(self.shade); brand_top(f)
-        d = ImageDraw.Draw(f); k = 0; y = self.y0
+        d = ImageDraw.Draw(f); k = 0; y = self.y0; self.hl.reset()
         for ln, ws, lw in self.lines:
             for w_, x in ws:
                 p = ease((t - 0.05 - k * 0.05) / 0.18); k += 1
                 if p <= 0: continue
                 col = self.P["ink"]
-                if is_hl(w_, self.hl):
+                if self.hl(w_):
                     ww = d.textlength(w_ + (" " if w_ != ws[-1][0] else ""), font=self.f)
                     d.rectangle([75 + x - 8, y + self.f.size * 0.18, 75 + x + ww * p + 8, y + self.f.size * 1.02], fill=self.P["mark"])
                     col = (16, 28, 22)
@@ -2316,7 +2333,7 @@ class Scene:
     def frame(self, t):
         return getattr(self, "frame_" + self.c["t"])(t)
 
-SCENE_V = "4"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
+SCENE_V = "5"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
 
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
