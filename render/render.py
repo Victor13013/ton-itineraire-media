@@ -2000,9 +2000,91 @@ def x_offer(c):
                 d.text((cxp - d.textlength(ln, font=f) / 2, yy + 40 + j * f.size * 1.24), ln, font=f, fill=t.ink)
     return th_end(t, c)
 
+# ── Formats « natifs » : ce qui ressemble à ce qu'on voit sur son téléphone (conversation, notes, question, avis)
+def phone_card(base, box, r=56):
+    soft_shadow(base, (box[0] + 20, box[3] - 40, box[2] - 20, box[3] + 10), 60, 40)
+    ImageDraw.Draw(base).rounded_rectangle(box, radius=r, fill=(255, 255, 255))
+
+def x_chatpost(c):
+    t = theme(c); base = t.base; d = ImageDraw.Draw(base)
+    y = th_kicker(t, M, 90, c.get("kicker")) if c.get("kicker") else 90
+    box = (M, y + 20, W - M, H - 150); phone_card(base, box)
+    cx = W / 2; d.ellipse([cx - 38, box[1] + 26, cx + 38, box[1] + 102], fill=(200, 204, 210))
+    ini = c["contact"][0].upper(); fi = BOLD(38); d.text((cx - d.textlength(ini, font=fi) / 2, box[1] + 38), ini, font=fi, fill=(255, 255, 255))
+    fn_ = IM(28); d.text((cx - d.textlength(c["contact"], font=fn_) / 2, box[1] + 110), c["contact"], font=fn_, fill=(40, 40, 40))
+    d.line([box[0], box[1] + 160, box[2], box[1] + 160], fill=(230, 230, 233), width=2)
+    yy = box[1] + 190; fnt = IM(40)
+    for side, txt in c["msgs"]:
+        out = side == "out"; ls = wrap(txt, fnt, 560)
+        w = max(d.textlength(l, font=fnt) for l in ls) + 60; h = len(ls) * fnt.size * 1.26 + 36
+        x = box[2] - 34 - w if out else box[0] + 34
+        d.rounded_rectangle([x, yy, x + w, yy + h], radius=36, fill=(36, 96, 72) if out else (234, 234, 236))
+        for i, l in enumerate(ls): d.text((x + 30, yy + 16 + i * fnt.size * 1.26), l, font=fnt, fill=(250, 247, 240) if out else (20, 20, 20))
+        yy += h + 22
+    if c.get("caption_end"):
+        f2 = BOLD(44); ls = wrap(c["caption_end"], f2, box[2] - box[0] - 80)
+        yy = box[3] - 50 - len(ls) * f2.size * 1.2
+        for l in ls: d.text((box[0] + 40, yy), l, font=f2, fill=(36, 96, 72)); yy += f2.size * 1.2
+    return th_end(t, c)
+
+def x_notespost(c):
+    base = Image.new("RGB", (W, H), (252, 250, 243)).convert("RGBA"); d = ImageDraw.Draw(base)
+    d.text((M, 90), "‹ Notes", font=MED(36), fill=(214, 160, 20))
+    d.text((M, 170), c["title"], font=BLACK(78), fill=(20, 20, 20))
+    y = 320; fnt = IM(52)
+    for txt, mode in c["items"]:
+        if mode == "total":
+            d.line([M, y, W - M, y], fill=(210, 205, 190), width=3); y += 26
+            f2 = BLACK(66); d.text((M, y), txt, font=f2, fill=(36, 96, 72)); y += f2.size * 1.5; continue
+        ls = wrap("– " + txt, fnt, W - 2 * M)
+        for l in ls:
+            d.text((M, y), l, font=fnt, fill=(140, 140, 140) if mode == "barre" else (20, 20, 20))
+            if mode == "barre": d.line([M, y + fnt.size * 0.62, M + d.textlength(l, font=fnt), y + fnt.size * 0.62], fill=(226, 108, 92), width=6)
+            y += fnt.size * 1.32
+        y += 14
+    if c.get("img"):
+        prod, ok = product_cut(load(c["img"]), (252, 250, 243), int(W * 0.34), int(H * 0.26))
+        if ok: base.paste(prod, (W - M - prod.width, H - 120 - prod.height))
+    d.rectangle([M, y + 4, M + 4, y + 60], fill=(214, 160, 20))
+    return base.convert("RGB")
+
+def x_commentpost(c):
+    t = theme(c); base = t.base; d = ImageDraw.Draw(base)
+    if c.get("img"):
+        th_photo(t, c["img"], (0, 0, W, int(H * 0.52)), c.get("_n", 0), c.get("fy", 0.45))
+    fnt = IM(42); ls = wrap(c["comment"], fnt, W - 2 * M - 160)
+    ch_ = 110 + len(ls) * fnt.size * 1.3; y0 = int(H * 0.52) - ch_ / 2 if c.get("img") else 150
+    box = (M, y0, W - M, y0 + ch_); phone_card(base, box, 40); d = ImageDraw.Draw(base)
+    d.ellipse([box[0] + 30, box[1] + 30, box[0] + 100, box[1] + 100], fill=(210, 214, 218))
+    d.text((box[0] + 124, box[1] + 30), c.get("who", "Une question qu'on reçoit souvent"), font=BOLD(30), fill=(30, 30, 30))
+    for i, l in enumerate(ls): d.text((box[0] + 124, box[1] + 76 + i * fnt.size * 1.3), l, font=fnt, fill=(30, 30, 30))
+    y = box[3] + 60
+    if c.get("kicker2"):
+        d.text((M, y), c["kicker2"].upper(), font=BOLD(28), fill=t.acc); y += 54
+    y = th_title(t, M, y, c["answer"], start=72, minsize=42, maxlines=3)
+    if c.get("sub"): th_sub(t, M, y + 6, c["sub"], W - 2 * M - 40)
+    return th_end(t, c)
+
+def x_reviewpost(c):
+    t = theme(c); base = t.base; d = ImageDraw.Draw(base)
+    y = th_kicker(t, M, 90, c.get("kicker"))
+    y = th_title(t, M, y + 4, c["title"], start=74, minsize=44, maxlines=2) + 20
+    for q in c["quotes"]:
+        f2 = IM(40); ls = wrap("« " + q + " »", f2, W - 2 * M - 80); h = 96 + len(ls) * f2.size * 1.3
+        phone_card(base, (M, y, W - M, y + h), 36); d = ImageDraw.Draw(base)
+        for k in range(5):
+            cx, cy, r = M + 50 + k * 46, y + 44, 18
+            pts = [(cx + (r if j % 2 == 0 else r * 0.45) * math.cos(math.radians(-90 + j * 36)), cy + (r if j % 2 == 0 else r * 0.45) * math.sin(math.radians(-90 + j * 36))) for j in range(10)]
+            d.polygon(pts, fill=(255, 190, 40))
+        for i, l in enumerate(ls): d.text((M + 36, y + 78 + i * f2.size * 1.3), l, font=f2, fill=(30, 30, 30))
+        y += h + 24
+    d.text((M, y + 6), c.get("source", "Avis clients publiés sur la fiche produit, mot pour mot."), font=IM(30), fill=t.sub)
+    return th_end(t, c)
+
 TPLX = {"bignum": x_bignum, "quiz": x_quiz, "steps": x_steps, "mosaic": x_mosaic, "arch": x_arch, "tracker": x_tracker, "schema": x_schema,
         "callout": x_callout, "note": x_note, "fear": x_fear, "editorial": x_editorial,
-        "ticket": x_ticket, "split": x_split, "offer": x_offer}
+        "ticket": x_ticket, "split": x_split, "offer": x_offer,
+        "chatpost": x_chatpost, "notespost": x_notespost, "commentpost": x_commentpost, "reviewpost": x_reviewpost}
 
 DA_B_ALL = "--da-b" in sys.argv     # aperçu : tout en DA B
 DA_C_ALL = "--da-c" in sys.argv     # aperçu : tout en DA C
@@ -2017,10 +2099,70 @@ def pick_tpl(sl):
     return (TPL_B if (DA_B_ALL or da == "b") else TPL)[sl["tpl"]]
 
 # ───────────────────────────── Reels 1080x1920
-RW, RH, FPS, XF = 1080, 1920, 30, 0.14   # fondus courts : montage rapide
+RW, RH, FPS, XF = 1080, 1920, 30, 0.32   # transitions glissées : la scène suivante pousse la précédente
 
 def ease(x): x = min(max(x, 0), 1); return 1 - (1 - x) ** 3
+
+# Clips vidéo libres de droits (Mixkit, licence gratuite pour usage commercial, sans attribution).
+# Chaque nom pointe vers l'identifiant Mixkit du plan.
+CLIPS = {
+    "fille-matin": 48136, "ado-miroir": 48137, "peignoir": 48174, "ado-salle-de-bain": 48135, "fillette": 48134,
+    "homme-miroir": 50758, "femme-brosse": 24705, "homme-gros-plan": 36105, "dentifrice": 48930,
+    "sourire": 48173, "dentiste-geste": 8975, "dentiste-radio": 9027,
+    "cafe-gorgee": 46568, "cafe-fumant": 43935, "valise-zip": 45509, "valise-timelapse": 45506,
+    "valise-pliage": 45511, "valise-stopmotion": 46338, "chocolat": 10373,
+}
+
+def clip_path(name):
+    os.makedirs(os.path.join(CACHE, "clips"), exist_ok=True)
+    fn = os.path.join(CACHE, "clips", name + ".mp4")
+    if os.path.exists(fn) and os.path.getsize(fn) > 10000: return fn
+    vid = CLIPS[name]
+    for q in ("720", "1080", "360"):
+        try:
+            req = urllib.request.Request(f"https://assets.mixkit.co/videos/{vid}/{vid}-{q}.mp4", headers={"User-Agent": "pulse-care-media/1.0"})
+            data = urllib.request.urlopen(req, timeout=90).read()
+            if len(data) > 10000: open(fn, "wb").write(data); return fn
+        except Exception as e:
+            print("clip", name, q, e)
+    raise RuntimeError("clip introuvable : " + name)
+
+class ClipBG:
+    """Plan vidéo recadré en 9:16, lu image par image à la demande (boucle si trop court)."""
+    def __init__(self, name, fx=0.5, speed=1.0):
+        self.name, self.fx, self.speed, self.proc, self.idx, self.last = name, fx, speed, None, -1, None
+    def _open(self):
+        if FAKE: return
+        src = clip_path(self.name)
+        vf = (f"setpts=PTS/{self.speed},scale={RW}:{RH}:force_original_aspect_ratio=increase,"
+              f"crop={RW}:{RH}:(iw-{RW})*{self.fx}:(ih-{RH})/2,fps={FPS}")
+        self.proc = subprocess.Popen(["ffmpeg", "-v", "error", "-stream_loop", "-1", "-i", src, "-vf", vf, "-an",
+                                      "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
+    def at(self, t):
+        want = int(t * FPS)
+        if FAKE:
+            g = np.zeros((RH, RW, 3), np.uint8); g[..., 0] = 90 + int(60 * math.sin(t)); g[..., 1] = 120; g[..., 2] = 110 + int(40 * math.cos(t * 1.3))
+            im = Image.fromarray(g); ImageDraw.Draw(im).ellipse([300 + 200 * math.sin(t * 2), 700, 800 + 200 * math.sin(t * 2), 1200], fill=(230, 220, 200)); return im
+        if self.proc is None: self._open()
+        while self.idx < want or self.last is None:
+            buf = self.proc.stdout.read(RW * RH * 3)
+            if len(buf) < RW * RH * 3: break
+            self.last = Image.frombytes("RGB", (RW, RH), buf); self.idx += 1
+        return self.last
+    def close(self):
+        if self.proc: self.proc.kill(); self.proc = None
+
+def make_bg(ref, w=RW, h=RH, zoom=(1.0, 1.16), pan=(0.0, 0.15)):
+    """Fond d'une scène : un clip (« clip:nom ») ou une photo animée."""
+    if isinstance(ref, str) and ref.startswith("clip:"):
+        name, _, fx = ref[5:].partition("@"); return ClipBG(name, float(fx) if fx else 0.5)
+    return KenBurns(ref, w, h, zoom, pan)
+
+def bg_at(bg, t, dur):
+    return bg.at(t) if isinstance(bg, ClipBG) else bg.at(min(1, t / dur))
 def ease_io(x): x = min(max(x, 0), 1); return 3 * x * x - 2 * x * x * x
+def back(x, k=1.7):  # dépasse un peu sa cible puis revient : un rebond
+    x = min(max(x, 0), 1); return 1 + (k + 1) * (x - 1) ** 3 + k * (x - 1) ** 2
 
 class Layer:
     """Élément pré-rendu (RGBA), animé en opacité / translation."""
@@ -2028,9 +2170,10 @@ class Layer:
         self.im, self.x, self.y, self.t0, self.dur, self.dx, self.dy = im, x, y, t0, dur, dx, dy
         self.arr = np.array(im)
     def draw(self, frame, t):
-        p = ease((t - self.t0) / self.dur)
-        if p <= 0: return
-        a = self.arr.copy(); a[..., 3] = (a[..., 3] * p).astype(np.uint8)
+        q = (t - self.t0) / self.dur
+        if q <= 0: return
+        p = back(q); o = ease(q * 1.6)
+        a = self.arr.copy(); a[..., 3] = (a[..., 3] * min(1, o)).astype(np.uint8)
         frame.alpha_composite(Image.fromarray(a, "RGBA"), (int(self.x + self.dx * (1 - p)), int(self.y + self.dy * (1 - p))))
 
 def text_layer(lines, fnt, fill, lh=1.15, w=RW - 140, center=False):
@@ -2104,21 +2247,39 @@ class HL:
         core = [k for k in range(i, i + len(w)) if self.clean[k].isalnum()]
         return bool(core) and all(k in self.spans for k in core)
 
+def kinetic_draw(f, t, lines, fnt, x0, y0, hl, ink, mark, markink, step=0.06):
+    d = ImageDraw.Draw(f); k = 0; y = y0; hl.reset()
+    for ln, ws, lw in lines:
+        for w_, x in ws:
+            q = back((t - k * step) / 0.3); k += 1
+            if q <= 0: continue
+            col = ink
+            if hl(w_):
+                ww = d.textlength(w_, font=fnt)
+                d.rounded_rectangle([x0 + x - 10, y + fnt.size * 0.14, x0 + x + ww * min(1, q) + 10, y + fnt.size * 1.04], radius=12, fill=mark)
+                col = markink
+            lay = Image.new("RGBA", (int(d.textlength(w_, font=fnt)) + 10, int(fnt.size * 1.3)), (0, 0, 0, 0))
+            ImageDraw.Draw(lay).text((0, 0), w_, font=fnt, fill=col + (int(255 * min(1, q)),))
+            f.alpha_composite(lay, (int(x0 + x), int(y + 40 * (1 - q))))
+        y += fnt.size * 1.04
+
 class Scene:
     def __init__(self, c, idx, pal=None):
         self.c, self.dur, self.idx = c, c["dur"], idx
         self.P = PALS.get(pal or c.get("pal") or "foret", PALS["foret"])
         self.kb = None
-        if c.get("img") and c["t"] not in ("photo", "split"):
-            # Fond photo : la vraie vie plutôt qu'un aplat. Texte clair, accents de la palette.
-            self.kb = KenBurns(c["img"], RW, RH, (1.0, 1.16), ((-1) ** idx * 0.5, 0.15))
-            self.shade = gradient(RW, RH, (8, 16, 12), 0.0, 1.0, 120, 225)
+        bgref = c.get("clip") and "clip:" + c["clip"] or (c.get("img") if c["t"] not in ("photo", "split", "card") else None)
+        if bgref:
+            # Fond filmé ou photo : la vraie vie plutôt qu'un aplat. Texte clair, accents de la palette.
+            self.kb = make_bg(bgref, RW, RH, (1.0, 1.16), ((-1) ** idx * 0.5, 0.15))
+            self.shade = gradient(RW, RH, (8, 16, 12), 0.25, 1.0, 0, 215)
+            self.shade.alpha_composite(gradient(RW, 260, (8, 16, 12), 0, 1, 110, 0), (0, 0))
             pop = self.P["pop"]
             self.P = dict(self.P, ink=(250, 247, 240), sub=(226, 232, 226), acc=pop, bg=(16, 28, 22), bg2=(250, 247, 240), mark=pop)
         getattr(self, "setup_" + c["t"])()
     def bgframe(self, t, alt=False):
         if self.kb:
-            f = self.kb.at(min(1, t / self.dur)).convert("RGBA"); f.alpha_composite(self.shade); return f
+            f = bg_at(self.kb, t, self.dur).convert("RGBA"); f.alpha_composite(self.shade); return f
         P = self.P; f = Image.new("RGBA", (RW, RH), (P["bg2"] if alt else P["bg"]) + (255,))
         d = ImageDraw.Draw(f)  # grand disque qui respire, pour que le fond ne soit jamais figé
         r = 560 + 30 * math.sin(t * 1.3 + self.idx); cx = RW * (1.08 if self.idx % 2 else -0.08); cy = RH * (0.06 if self.idx % 2 else 0.96)
@@ -2298,8 +2459,8 @@ class Scene:
     # rafale : 2 à 4 photos coupées sec, zoom « punch » à chaque coupe, légende en bas
     def setup_burst(self):
         c = self.c; P = self.P
-        self.kbs = [KenBurns(r_, RW, RH, (1.18, 1.02), ((-1) ** i * 0.4, 0.1)) for i, r_ in enumerate(c["shots"])]
-        self.shade = gradient(RW, RH, (8, 16, 12), 0.38, 1.0, 0, 235)
+        self.kbs = [make_bg(r_, RW, RH, (1.18, 1.02), ((-1) ** i * 0.4, 0.1)) for i, r_ in enumerate(c["shots"])]
+        self.shade = gradient(RW, RH, (8, 16, 12), 0.5, 1.0, 0, 225)
         self.shade.alpha_composite(gradient(RW, 320, (8, 16, 12), 0, 1, 140, 0), (0, 0))
         title = c["title"]; self.f = BLACK(108 if len(title) < 28 else 90)
         self.lines = kinetic_words(title.replace("*", ""), self.f, RW - 150)
@@ -2309,7 +2470,8 @@ class Scene:
         self.layers = [Layer(pill_layer(c["kicker"].upper(), MED(30), pop, (16, 28, 22)), 75, self.y0 - 100, 0.05, dx=-60, dy=0)] if c.get("kicker") else []
     def frame_burst(self, t):
         n = len(self.kbs); seg = self.dur / n; i = min(n - 1, int(t / seg)); lt = (t - i * seg) / seg
-        f = self.kbs[i].at(min(1.0, 0.65 * ease(lt * 4) + 0.35 * lt)).convert("RGBA")
+        kb = self.kbs[i]
+        f = (kb.at(lt * seg) if isinstance(kb, ClipBG) else kb.at(min(1.0, 0.65 * ease(lt * 4) + 0.35 * lt))).convert("RGBA")
         if i > 0 and lt * seg < 0.08:  # éclair blanc très bref à la coupe
             f.alpha_composite(Image.new("RGBA", (RW, RH), (255, 255, 255, int(150 * (1 - lt * seg / 0.08)))))
         f.alpha_composite(self.shade); brand_top(f)
@@ -2330,10 +2492,245 @@ class Scene:
         for l in self.layers: l.draw(f, t)
         return f
 
+    # carte : la photo dans une carte qui arrive en rebond, inclinée, sur un fond de couleur qui bouge
+    def setup_card(self):
+        c = self.c; P = self.P
+        cw, ch = 860, 980
+        self.cardclip = ClipBG(c["clip"]) if c.get("clip") else None
+        ph = cover(load(c["img"]), cw, ch, 0.5, c.get("fy", 0.45)).convert("RGBA") if c.get("img") else Image.new("RGBA", (cw, ch), (200, 200, 200, 255))
+        m = Image.new("L", (cw, ch), 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, cw, ch], radius=56, fill=255)
+        frame_ = Image.new("RGBA", (cw + 28, ch + 28), (255, 255, 255, 255))
+        mm = Image.new("L", frame_.size, 0); ImageDraw.Draw(mm).rounded_rectangle([0, 0, frame_.width, frame_.height], radius=68, fill=255)
+        frame_.putalpha(mm); frame_.paste(ph, (14, 14), m)
+        self.card = frame_; self.tilt = -5 if self.idx % 2 else 5; self.cmask = m; self.cwh = (cw, ch)
+        self.shadow = Image.new("RGBA", (frame_.width + 120, frame_.height + 120), (0, 0, 0, 0))
+        ImageDraw.Draw(self.shadow).rounded_rectangle([60, 80, frame_.width + 60, frame_.height + 80], radius=68, fill=(0, 0, 0, 90))
+        self.shadow = self.shadow.filter(ImageFilter.GaussianBlur(28))
+        tf = BLACK(92 if len(c["title"]) < 30 else 78)
+        self.f = tf; self.lines = kinetic_words(c["title"].replace("*", ""), tf, RW - 150); self.hl = HL(c["title"])
+        self.y0 = 150 if c.get("kicker") else 120
+        self.layers = []
+        if c.get("kicker"): self.layers.append(Layer(pill_layer(c["kicker"].upper(), MED(30), P["acc"], P["bg"]), 75, self.y0 - 20, 0.0, dx=-80, dy=0)); self.y0 += 70
+        self.cy = self.y0 + len(self.lines) * tf.size * 1.04 + 40
+        if c.get("sub"):
+            self.layers.append(Layer(text_layer(wrap(c["sub"], REG(44), RW - 160), REG(44), P["ink"], 1.3, RW - 160, True), 80, RH - 250, 0.55, dy=40))
+    def frame_card(self, t):
+        P = self.P; f = Image.new("RGBA", (RW, RH), P["bg"] + (255,)); d = ImageDraw.Draw(f)
+        for k_ in range(3):  # trois formes qui dérivent
+            r = 260 + 90 * k_; ang = t * (0.6 + 0.25 * k_) + k_ * 2.1
+            cx = RW * (0.5 + 0.42 * math.cos(ang)); cy = RH * (0.55 + 0.35 * math.sin(ang * 0.8))
+            d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=P["bg2"])
+        self.brand(f)
+        p = back((t - 0.15) / 0.55); o = min(1, ease((t - 0.15) / 0.3))
+        if o > 0:
+            sc = 0.82 + 0.18 * p; ang = self.tilt * (1 - p) + self.tilt * 0.35 + math.sin(t * 1.4) * 0.8
+            if self.cardclip:  # le clip joue à l'intérieur de la carte
+                fr_ = self.cardclip.at(t).resize((RW, RH)); cw, ch = self.cwh
+                fr_ = fr_.crop(((RW - cw * RH / ch) / 2, 0, (RW + cw * RH / ch) / 2, RH)).resize((cw, ch))
+                self.card.paste(fr_, (14, 14), self.cmask)
+            cd = self.card.resize((int(self.card.width * sc), int(self.card.height * sc)), Image.BILINEAR).rotate(ang, Image.BICUBIC, expand=True)
+            sh = self.shadow.resize((int(self.shadow.width * sc), int(self.shadow.height * sc))).rotate(ang, Image.BICUBIC, expand=True)
+            cx = RW / 2 + 22 * math.sin(t * 0.9); cy = self.cy + cd.height / 2 + 140 * (1 - p)
+            if o < 1: cd.putalpha(cd.getchannel("A").point(lambda v: int(v * o)))
+            f.alpha_composite(sh, (int(cx - sh.width / 2), int(cy - sh.height / 2)))
+            f.alpha_composite(cd, (int(cx - cd.width / 2), int(cy - cd.height / 2)))
+        d = ImageDraw.Draw(f); k = 0; y = self.y0; self.hl.reset()
+        for ln, ws, lw in self.lines:
+            for w_, x in ws:
+                q = back((t - 0.05 - k * 0.06) / 0.3); k += 1
+                if q <= 0: continue
+                col = P["ink"]
+                if self.hl(w_):
+                    ww = d.textlength(w_, font=self.f)
+                    d.rounded_rectangle([75 + x - 10, y + self.f.size * 0.14, 75 + x + ww * min(1, q) + 10, y + self.f.size * 1.04], radius=14, fill=P["mark"])
+                    col = P["bg"]
+                lay = Image.new("RGBA", (int(d.textlength(w_, font=self.f)) + 10, int(self.f.size * 1.3)), (0, 0, 0, 0))
+                ImageDraw.Draw(lay).text((0, 0), w_, font=self.f, fill=col + (int(255 * min(1, q)),))
+                f.alpha_composite(lay, (int(75 + x), int(y + 50 * (1 - q))))
+            y += self.f.size * 1.04
+        for l in self.layers: l.draw(f, t)
+        return f
+
+    # grille : 2 à 4 photos qui pop une par une, titre en haut
+    def setup_grid(self):
+        c = self.c; P = self.P; shots = c["shots"][:4]; n = len(shots)
+        cols = 2; rows_ = (n + 1) // 2; gap = 26; top = 470
+        cw = (RW - 2 * 70 - gap) // 2; chh = min(560, (RH - top - 200 - gap * (rows_ - 1)) // rows_)
+        self.tiles = []
+        for i, r_ in enumerate(shots):
+            w = cw if not (n == 3 and i == 2) else RW - 140
+            im = cover(load(r_), w, chh, 0.5, 0.45).convert("RGBA")
+            m = Image.new("L", (w, chh), 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, w, chh], radius=36, fill=255); im.putalpha(m)
+            x = 70 + (i % cols) * (cw + gap) if not (n == 3 and i == 2) else 70; y = top + (i // cols) * (chh + gap)
+            self.tiles.append((im, x, y, 0.2 + i * 0.22))
+        tf = BLACK(84 if len(c["title"]) < 30 else 70)
+        self.f = tf; self.lines = kinetic_words(c["title"].replace("*", ""), tf, RW - 150); self.hl = HL(c["title"])
+        self.layers = [Layer(pill_layer(c["kicker"].upper(), MED(30), P["acc"], P["bg"]), 75, 170, 0.0, dx=-80, dy=0)] if c.get("kicker") else []
+        self.labels = c.get("labels", [])
+    def frame_grid(self, t):
+        P = self.P; f = self.bgframe(t); self.brand(f); d = ImageDraw.Draw(f)
+        for i, (im, x, y, t0) in enumerate(self.tiles):
+            q = (t - t0) / 0.42
+            if q <= 0: continue
+            sc = 0.55 + 0.45 * back(q); w, h = int(im.width * sc), int(im.height * sc)
+            tile = im.resize((max(1, w), max(1, h)), Image.BILINEAR)
+            f.alpha_composite(tile, (int(x + (im.width - w) / 2), int(y + (im.height - h) / 2 + 6 * math.sin(t * 2 + i))))
+            if i < len(self.labels) and q > 0.8:
+                pl = pill_layer(self.labels[i].upper(), MED(28), P["mark"], P["bg"]); f.alpha_composite(pl, (x + 18, y + im.height - pl.height - 18))
+        k = 0; y = 250; self.hl.reset()
+        for ln, ws, lw in self.lines:
+            for w_, x in ws:
+                q = back((t - 0.05 - k * 0.06) / 0.3); k += 1
+                if q <= 0: continue
+                col = P["ink"]
+                if self.hl(w_):
+                    ww = d.textlength(w_, font=self.f)
+                    d.rounded_rectangle([75 + x - 10, y + self.f.size * 0.14, 75 + x + ww * min(1, q) + 10, y + self.f.size * 1.04], radius=12, fill=P["mark"])
+                    col = P["bg"]
+                lay = Image.new("RGBA", (int(d.textlength(w_, font=self.f)) + 10, int(self.f.size * 1.3)), (0, 0, 0, 0))
+                ImageDraw.Draw(lay).text((0, 0), w_, font=self.f, fill=col + (int(255 * min(1, q)),))
+                f.alpha_composite(lay, (int(75 + x), int(y + 40 * (1 - q))))
+            y += self.f.size * 1.04
+        for l in self.layers: l.draw(f, t)
+        return f
+
+    # POV : plan filmé + texte natif en haut, comme un créateur qui poste
+    def setup_pov(self):
+        c = self.c; f_ = BOLD(58); lines = wrap(c["title"], f_, RW - 220)
+        w = max(ImageDraw.Draw(Image.new("L", (1, 1))).textlength(l, font=f_) for l in lines) + 60
+        h = len(lines) * f_.size * 1.22 + 40
+        box = Image.new("RGBA", (int(w), int(h)), (0, 0, 0, 0)); d = ImageDraw.Draw(box)
+        d.rounded_rectangle([0, 0, w, h], radius=22, fill=(255, 255, 255, 245))
+        for i, l in enumerate(lines):
+            d.text(((w - d.textlength(l, font=f_)) / 2, 18 + i * f_.size * 1.22), l, font=f_, fill=(16, 16, 16))
+        self.box = box; self.layers = []
+        if c.get("sub"):
+            self.layers.append(Layer(text_layer(wrap(c["sub"], BOLD(54), RW - 160), BOLD(54), (255, 255, 255), 1.2, RW - 160, True), 80, RH - 520, 0.9, dy=40))
+        self.shade = gradient(RW, RH, (8, 16, 12), 0.6, 1.0, 0, 200)
+    def frame_pov(self, t):
+        f = self.bgframe(t)
+        q = back(t / 0.35); bw, bh = int(self.box.width * (0.7 + 0.3 * q)), int(self.box.height * (0.7 + 0.3 * q))
+        if q > 0: f.alpha_composite(self.box.resize((max(1, bw), max(1, bh))), (int((RW - bw) / 2), int(300 - (bh - self.box.height) / 2)))
+        for l in self.layers: l.draw(f, t)
+        return f
+
+    # conversation SMS : les bulles arrivent une par une, avec « … » avant chaque réponse
+    def setup_chat(self):
+        c = self.c; self.msgs = []; fnt = IM(56); maxw = 840
+        for side, txt in c["msgs"]:
+            ls = wrap(txt, fnt, maxw - 80); w = max(ImageDraw.Draw(Image.new("L", (1, 1))).textlength(l, font=fnt) for l in ls) + 80
+            h = len(ls) * fnt.size * 1.26 + 50
+            im = Image.new("RGBA", (int(w), int(h)), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+            out = side == "out"; bg = (36, 96, 72) if out else (234, 234, 236); fg = (250, 247, 240) if out else (20, 20, 20)
+            d.rounded_rectangle([0, 0, w, h], radius=48, fill=bg)
+            for i, l in enumerate(ls): d.text((40, 20 + i * fnt.size * 1.26), l, font=fnt, fill=fg)
+            self.msgs.append((out, im))
+        n = len(self.msgs); span = max(0.6, (self.dur - 1.0) / n)
+        self.times = [0.35 + i * span for i in range(n)]
+    def frame_chat(self, t):
+        c = self.c; P = self.P
+        f = Image.new("RGBA", (RW, RH), P["bg"] + (255,)); d = ImageDraw.Draw(f)
+        x0, y0, x1, y1 = 50, 150, RW - 50, RH - 120
+        d.rounded_rectangle([x0, y0, x1, y1], radius=60, fill=(255, 255, 255))
+        y = y0 + 220; items = []
+        for (out, im), t0 in zip(self.msgs, self.times):
+            if not out and t0 - 0.5 < t < t0:   # l'autre est en train d'écrire
+                dots = Image.new("RGBA", (150, 86), (0, 0, 0, 0)); dd = ImageDraw.Draw(dots)
+                dd.rounded_rectangle([0, 0, 150, 86], radius=40, fill=(234, 234, 236))
+                for k in range(3):
+                    a_ = 120 + int(100 * (0.5 + 0.5 * math.sin(t * 9 - k)))
+                    dd.ellipse([30 + k * 34, 32, 52 + k * 34, 54], fill=(150, 150, 155, a_))
+                items.append((False, dots, 1.0))
+            elif t >= t0:
+                items.append((out, im, back((t - t0) / 0.3)))
+        total = sum(it[1].height + 30 for it in items); scroll = max(0, y + total - (y1 - 40))
+        y -= scroll
+        for out, im, q in items:
+            sc = 0.6 + 0.4 * min(1.05, q); w, h = int(im.width * sc), int(im.height * sc)
+            x = (x1 - 40 - w) if out else (x0 + 40)
+            if y + im.height > y0 + 190:
+                f.alpha_composite(im.resize((max(1, w), max(1, h))), (int(x), int(y + (im.height - h))))
+            y += im.height + 30
+        # en-tête redessiné par-dessus, pour que les bulles qui remontent passent dessous
+        d = ImageDraw.Draw(f)
+        d.rounded_rectangle([x0, y0, x1, y0 + 200], radius=60, fill=(255, 255, 255)); d.rectangle([x0, y0 + 120, x1, y0 + 200], fill=(255, 255, 255))
+        d.rectangle([x0, y0 + 198, x1, y0 + 200], fill=(226, 226, 230))
+        cx = RW / 2; d.ellipse([cx - 44, y0 + 30, cx + 44, y0 + 118], fill=(200, 204, 210))
+        ini = c.get("contact", "?")[0].upper(); fi = BOLD(44); d.text((cx - d.textlength(ini, font=fi) / 2, y0 + 44), ini, font=fi, fill=(255, 255, 255))
+        fn_ = IM(30); nm = c.get("contact", ""); d.text((cx - d.textlength(nm, font=fn_) / 2, y0 + 132), nm, font=fn_, fill=(40, 40, 40))
+        return f
+
+    # question reçue + réponse : une carte « commentaire » en haut, la réponse en grand dessous
+    def setup_comment(self):
+        c = self.c; fnt = IM(46); ls = wrap(c["comment"], fnt, RW - 300)
+        h = 120 + len(ls) * fnt.size * 1.3; card = Image.new("RGBA", (RW - 140, int(h)), (0, 0, 0, 0)); d = ImageDraw.Draw(card)
+        d.rounded_rectangle([0, 0, RW - 140, h], radius=36, fill=(255, 255, 255, 250))
+        d.ellipse([30, 30, 100, 100], fill=(210, 214, 218))
+        d.text((120, 32), c.get("who", "Une question qu'on reçoit souvent"), font=BOLD(30), fill=(30, 30, 30))
+        for i, l in enumerate(ls): d.text((120, 80 + i * fnt.size * 1.3), l, font=fnt, fill=(30, 30, 30))
+        self.card = card
+        tf = BLACK(96 if len(c["title"]) < 30 else 80); self.f = tf
+        self.lines = kinetic_words(c["title"].replace("*", ""), tf, RW - 150); self.hl = HL(c["title"])
+        self.y0 = RH - 360 - len(self.lines) * tf.size * 1.04
+        self.layers = [Layer(text_layer(wrap(c["sub"], REG(42), RW - 160), REG(42), self.P["sub"] if self.kb else self.P["ink"], 1.3), 75, RH - 330, 1.0, dy=30)] if c.get("sub") else []
+    def frame_comment(self, t):
+        f = self.bgframe(t); self.brand(f); P = self.P
+        q = back(t / 0.4)
+        if q > 0:
+            w, h = int(self.card.width * (0.75 + 0.25 * q)), int(self.card.height * (0.75 + 0.25 * q))
+            f.alpha_composite(self.card.resize((max(1, w), max(1, h))), (int((RW - w) / 2), int(230 - 80 * (1 - q))))
+        kinetic_draw(f, t - 0.6, self.lines, self.f, 75, self.y0, self.hl, P["ink"], P["mark"], P["bg"])
+        for l in self.layers: l.draw(f, t)
+        return f
+
+    # avis client : étoiles qui se remplissent, citation qui s'écrit
+    def setup_review(self):
+        c = self.c; self.qf = BLACK(78); self.q = c["quote"]
+        self.layers = [Layer(pill_layer(c.get("kicker", "Avis vérifié").upper(), MED(30), self.P["mark"], self.P["bg"]), 75, 300, 0.0, dx=-60, dy=0)]
+    def frame_review(self, t):
+        P = self.P; f = self.bgframe(t); self.brand(f); d = ImageDraw.Draw(f)
+        for k in range(5):  # étoiles
+            q = back((t - 0.2 - k * 0.12) / 0.3)
+            if q <= 0: continue
+            cx, cy, r = 130 + k * 120, 470, 46 * min(1.1, q)
+            pts = [(cx + (r if j % 2 == 0 else r * 0.45) * math.cos(math.radians(-90 + j * 36)), cy + (r if j % 2 == 0 else r * 0.45) * math.sin(math.radians(-90 + j * 36))) for j in range(10)]
+            d.polygon(pts, fill=(255, 196, 46))
+        n = int(max(0, (t - 0.9)) * 28); txt = "« " + self.q[:n] + (" »" if n >= len(self.q) else "")
+        ls = wrap(txt, self.qf, RW - 150); y = 600
+        for l in ls: d.text((75, y), l, font=self.qf, fill=P["ink"]); y += self.qf.size * 1.12
+        if n >= len(self.q):
+            d.text((75, y + 30), self.c.get("source", "Avis client publié sur la fiche produit"), font=IM(36), fill=P["sub"])
+        for l in self.layers: l.draw(f, t)
+        return f
+
+    # notes : une liste qui s'écrit ligne par ligne, comme dans l'appli Notes du téléphone
+    def setup_notes(self):
+        self.title = self.c["title"]; self.items = self.c["items"]
+        span = max(0.4, (self.dur - 0.9) / max(1, len(self.items)))
+        self.times = [0.35 + i * span for i in range(len(self.items))]
+        self.cps = max(40, max(len(x) for x, _ in self.items) / (span * 0.7))   # vitesse de frappe : chaque ligne finit avant la suivante
+    def frame_notes(self, t):
+        f = Image.new("RGBA", (RW, RH), (252, 250, 243, 255)); d = ImageDraw.Draw(f)
+        d.text((60, 120), "‹ Notes", font=MED(40), fill=(214, 160, 20))
+        d.text((60, 260), self.title, font=BLACK(96), fill=(20, 20, 20))
+        y = 460; fnt = IM(66)
+        for (txt, mode), t0 in zip(self.items, self.times):
+            if t < t0: break
+            n = int((t - t0) * self.cps); shown = txt[:n]
+            bold = mode == "total"; fx = BLACK(80) if bold else fnt
+            if bold: d.line([60, y - 10, RW - 60, y - 10], fill=(210, 205, 190), width=3); y += 10
+            d.text((60, y), ("" if bold else "– ") + shown, font=fx, fill=(20, 20, 20) if mode != "barre" else (140, 140, 140))
+            if mode == "barre" and n >= len(txt):
+                w = d.textlength("– " + txt, font=fx); p = ease((t - t0 - len(txt) / self.cps) / 0.3)
+                d.line([60, y + fx.size * 0.62, 60 + w * p, y + fx.size * 0.62], fill=(226, 108, 92), width=7)
+            y += fx.size * 1.5
+        if int(t * 2) % 2 == 0: d.rectangle([60, y + 6, 64, y + 60], fill=(214, 160, 20))   # curseur
+        return f
+
     def frame(self, t):
         return getattr(self, "frame_" + self.c["t"])(t)
 
-SCENE_V = "5"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
+SCENE_V = "7"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
 
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
@@ -2366,9 +2763,14 @@ def render_reel(scenes_spec, out, audio=None, pal=None):
         tt = k / FPS
         act = [i for i, s0 in enumerate(starts) if s0 <= tt < s0 + scenes[i].dur]
         i = act[-1]; fr = scenes[i].frame(tt - starts[i])
-        if len(act) > 1:  # fondu enchaîné
+        if len(act) > 1:  # la nouvelle scène pousse l'ancienne hors du cadre
             j = act[0]; a = ease_io((tt - starts[i]) / XF)
-            fr = Image.blend(scenes[j].frame(tt - starts[j]).convert("RGB"), fr.convert("RGB"), a).convert("RGBA")
+            old = scenes[j].frame(tt - starts[j]).convert("RGBA"); comp = Image.new("RGBA", (RW, RH))
+            if i % 2:
+                off = int(RW * a); comp.paste(old, (-off, 0)); comp.paste(fr, (RW - off, 0))
+            else:
+                off = int(RH * a); comp.paste(old, (0, -off)); comp.paste(fr, (0, RH - off))
+            fr = comp
         d = ImageDraw.Draw(fr); d.rectangle([0, 0, int(RW * (k + 1) / n), 8], fill=scenes[i].P["mark"])  # barre de progression
         p.stdin.write(fr.convert("RGB").tobytes())
     p.stdin.close(); p.wait()
