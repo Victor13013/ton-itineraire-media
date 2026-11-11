@@ -140,7 +140,7 @@ VOICES = {"agathe": "SptHT9PQ49isQvxFm28t", "maxence": "GGkMUTZaJ8IyPwaHimUq"}
 
 VIDEOS = [
   # PARENTS · format POV (plan filmé + texte natif), puis carte avec le plan qui joue dedans
-  dict(id="v-parents", music="Feeling Happy", date="2026-11-14", axis="PARENTS", voice="agathe", pal="corail", fmt="POV", scenes=[
+  dict(id="v-parents", music="Feeling Happy", date="2026-11-11", axis="PARENTS", voice="agathe", pal="corail", fmt="POV", scenes=[
     dict(t="pov", clip="fillette", title="POV : il est 20h40 et tu négocies chaque seconde de brossage", sub="« Encore 30 secondes ! »",
          say="Tous les soirs, c'est la même négociation. « Encore trente secondes ! »"),
     dict(t="card", clip="fille-matin", kicker="Le minuteur", title="Il *compte à ta place*", sub="Une vibration toutes les 30 secondes.",
@@ -156,7 +156,7 @@ Le minuteur vibre toutes les 30 secondes. L'enfant change de zone tout seul, et 
 """ + TAGS_T + " #parents"),
 
   # ÉCONOMIE · format Notes (le calcul qui s'écrit), puis grille des prix
-  dict(id="v-eco", music="Sounds Good", date="2026-11-17", axis="ECO", voice="maxence", pal="lime", fmt="Notes", scenes=[
+  dict(id="v-eco", music="Sounds Good", date="2026-12-11", axis="ECO", voice="maxence", pal="lime", fmt="Notes", scenes=[
     dict(t="counter", clip="dentifrice", kicker="Une tête de rechange", value=15, suffix=" €", label="jusqu'à 15 € pièce, ailleurs",
          say="Tu as déjà regardé le prix des têtes de rechange ? Jusqu'à quinze euros pièce."),
     dict(t="notes", title="Budget brosse à dents", items=[("Une tête : jusqu'à 15 €", ""), ("Une tous les 3 mois", ""), ("Jusqu'à 60 € par an", "barre")],
@@ -173,7 +173,7 @@ Ailleurs, une tête de rechange peut coûter jusqu'à 15 €. Chez Pulse Care : 
 """ + TAGS_T + " #budget"),
 
   # PEUR · format question reçue + réponse, sur plan filmé
-  dict(id="v-peur", music="Curiosity", date="2026-11-20", axis="PEUR", voice="agathe", pal="creme", fmt="Question / réponse", scenes=[
+  dict(id="v-peur", music="Curiosity", date="2026-11-23", axis="PEUR", voice="agathe", pal="creme", fmt="Question / réponse", scenes=[
     dict(t="comment", clip="femme-brosse", comment="J'ai les gencives sensibles. Une électrique, ça ne va pas être trop agressif ?",
          title="Ce qui blesse, c'est *la pression.*",
          say="« J'ai les gencives sensibles, une électrique, ça ne va pas être trop agressif ? » En vrai, ce qui blesse, c'est la pression. Pas les vibrations."),
@@ -189,7 +189,7 @@ Avec le mode Sensible, tu poses la brosse et tu guides, sans frotter. Le minuteu
 """ + TAGS_T + " #gencivessensibles"),
 
   # CADEAU · format conversation SMS (petite scène de la vie)
-  dict(id="v-cadeau", music="A Very Happy Christmas", date="2026-11-23", axis="CADEAU", voice="agathe", pal="nuit", fmt="Conversation", scenes=[
+  dict(id="v-cadeau", music="A Very Happy Christmas", date="2026-11-29", axis="CADEAU", voice="agathe", pal="nuit", fmt="Conversation", scenes=[
     dict(t="chat", contact="Maman", msgs=[("in", "Tu veux quoi pour Noël ?"), ("out", "Rien, j'ai tout"), ("in", "Même pas une nouvelle brosse à dents ?"), ("out", "Une électrique ? Ok, ça je l'utiliserai vraiment")],
          say="« Tu veux quoi pour Noël ? » « Rien, j'ai tout. » « Même pas une nouvelle brosse à dents ? » … Bon. Celle-là, je l'utiliserai vraiment."),
     dict(t="grid", shots=["u:1627130595904-ebeeb6540a93", s("boite_bambou"), s("etui_ouvert")], labels=["Matin et soir", "Prêt à emporter", "Étui inclus"], kicker="Celui-là sert", title="*Matin et soir,* toute l'année",
@@ -205,7 +205,7 @@ Pas un gadget qu'on range après Noël. Un seul bouton, 4 modes, et l'étui de v
 """ + TAGS_T + " #ideecadeau"),
 
   # PREUVE · format expert / statistique : la phrase du dentiste, le comparatif, le chiffre
-  dict(id="v-preuve", music="Raising Me Higher", date="2026-11-26", axis="PREUVE", voice="maxence", pal="foret", fmt="Statistique", scenes=[
+  dict(id="v-preuve", music="Raising Me Higher", date="2027-01-25", axis="PREUVE", voice="maxence", pal="foret", fmt="Statistique", scenes=[
     dict(t="hook", clip="dentiste-geste", kicker="Chez le dentiste", title="« Il faudrait *mieux brosser.* »",
          say="Chez le dentiste, on te dit toujours la même chose : il faudrait mieux brosser."),
     dict(t="compare", left=("À la main", ["Tu choisis la durée", "Tu choisis la pression", "Tu oublies le fond"]),
@@ -224,7 +224,7 @@ La revue Cochrane compile des dizaines d'essais : jusqu'à 21 % de plaque en moi
 """ + TAGS_T + " #sciencedentaire"),
 
   # CONFIANCE · format avis client (vrai avis de la fiche produit)
-  dict(id="v-confiance", music="Smile", date="2026-11-29", axis="CONFIANCE", voice="agathe", pal="ocre", fmt="Avis client", scenes=[
+  dict(id="v-confiance", music="Smile", date="2026-12-23", axis="CONFIANCE", voice="agathe", pal="ocre", fmt="Avis client", scenes=[
     dict(t="hook", img=s("p029"), kicker="Le moment où on hésite", title="Panier rempli, *doigt en l'air*.",
          say="Une marque que tu ne connais pas, à cinquante-neuf euros quatre-vingt-dix… c'est normal d'hésiter."),
     dict(t="review", kicker="Avis client", quote="J'étais sceptique au début.",
@@ -240,7 +240,7 @@ La revue Cochrane compile des dizaines d'essais : jusqu'à 21 % de plaque en moi
 """ + TAGS_T + " #avisclients"),
 
   # DESIGN · format POV sur plan filmé, puis grille
-  dict(id="v-design", music="Tech House vibes", date="2026-12-02", axis="DESIGN", voice="maxence", pal="creme", fmt="POV", scenes=[
+  dict(id="v-design", music="Tech House vibes", date="2027-01-10", axis="DESIGN", voice="maxence", pal="creme", fmt="POV", scenes=[
     dict(t="pov", clip="homme-miroir", title="POV : tout est rangé dans ta salle de bain… sauf le socle branché sur le lavabo",
          say="Ta salle de bain est nickel… sauf ce socle branché en permanence sur le lavabo."),
     dict(t="grid", shots=[s("p087"), s("bamboo_face"), s("etui_voyage"), s("usb")], labels=["Sans socle", "Design sobre", "Étui", "USB-C"], kicker="Ce qu'on a changé", title="*Pas de socle.* Un étui.",
@@ -256,7 +256,7 @@ Une recharge USB-C qui tient 30 jours, un étui pour la ranger, des têtes en ba
 """ + TAGS_T + " #salledebain"),
 
   # GASPI · format statistique + carte
-  dict(id="v-gaspi", music="Rising Forest", date="2026-12-05", axis="GASPI", voice="agathe", pal="nuit", fmt="Statistique", scenes=[
+  dict(id="v-gaspi", music="Rising Forest", date="2027-01-31", axis="GASPI", voice="agathe", pal="nuit", fmt="Statistique", scenes=[
     dict(t="counter", img="u:1583642037383-861ac716c3f0", kicker="Par an", value=4, suffix=" ×", label="tu jettes une brosse entière",
          say="Quatre fois par an, tu jettes une brosse entière. Alors que le manche marchait encore."),
     dict(t="card", img=s("tete_main2"), kicker="Avec Pulse Care", title="Le manche reste. *Seule la tête part.*",
@@ -272,7 +272,7 @@ Le manche reste des années. Tous les 3 mois, seule la tête part, et elle est e
 """ + TAGS_T + " #moinsjeter"),
 
   # PRATIQUE · format POV (la valise qui ne ferme pas)
-  dict(id="v-pratique", music="Motivating Mornings", date="2026-12-08", axis="PRATIQUE", voice="maxence", pal="lime", fmt="POV", scenes=[
+  dict(id="v-pratique", music="Motivating Mornings", date="2026-12-29", axis="PRATIQUE", voice="maxence", pal="lime", fmt="POV", scenes=[
     dict(t="pov", clip="valise-zip", title="POV : la valise est pleine et il reste le socle de ta brosse à dents",
          say="Partir trois jours, et devoir encore caser le socle, le câble, l'adaptateur…"),
     dict(t="counter", clip="valise-pliage", kicker="Une charge", value=30, suffix=" j", label="d'autonomie, en USB-C",
@@ -289,7 +289,7 @@ Tu laisses le chargeur à la maison. L'étui de voyage est inclus, et elle est �
 """ + TAGS_T + " #voyage"),
 
   # RÉSULTAT · format démonstration rapide (plans filmés coupés vite)
-  dict(id="v-resultat", music="Summer Fun", date="2026-12-11", axis="RESULTAT", voice="agathe", pal="corail", fmt="Démo rapide", scenes=[
+  dict(id="v-resultat", music="Summer Fun", date="2027-01-19", axis="RESULTAT", voice="agathe", pal="corail", fmt="Démo rapide", scenes=[
     dict(t="counter", clip="cafe-gorgee", kicker="Par jour", value=3, suffix=" cafés", label="et ça finit par se voir",
          say="Trois cafés par jour… et ça finit par se voir sur les dents."),
     dict(t="burst", shots=["clip:cafe-fumant", s("p019"), "clip:sourire"], kicker="Mode Blanchiment", title="Café, thé, vin : *les taches de surface*",
@@ -302,6 +302,157 @@ Il travaille les taches de surface (café, thé, vin) par un polissage quotidien
 [CTA]
 
 """ + TAGS_T + " #cafe"),
+]
+
+
+# ───────────────────────────── 8 vidéos de plus : un sujet, une question ou un problème différent chacune
+VIDEOS += [
+  # MYTHES · format vrai ou faux
+  dict(id="v-mythes", music="Positive Energy", date="2026-11-17", axis="MYTHES", voice="maxence", pal="foret", fmt="Vrai ou faux", scenes=[
+    dict(t="hook", clip="homme-miroir", kicker="Vrai ou faux", title="3 idées reçues sur *la brosse électrique*",
+         say="Trois idées reçues sur la brosse électrique."),
+    dict(t="list", kicker="Faux, faux et faux", title="Ce qu'on entend", items=[
+        ("« Ça abîme les gencives »", "Ce qui irrite, c'est la pression. Tu guides, tu n'appuies pas."),
+        ("« Ça coûte cher à l'usage »", "3,73 € la tête en pack de 4."),
+        ("« Faut tout le temps la recharger »", "Jusqu'à 30 jours sur une charge.")],
+         say="Ça abîme les gencives ? Ce qui irrite, c'est la pression. Ça coûte cher ? Trois euros soixante-treize la tête. Il faut la recharger tout le temps ? Trente jours sur une charge."),
+    dict(t="card", img=s("bamboo_face"), kicker="Et toi ?", title="Tu en croyais *combien* ?", sub="pulsecarefrance.com", say="Le lien est en bio."),
+  ], caption="""Brosse à dents électrique : 3 idées reçues, et ce qu'il en est.
+
+1. « Ça abîme les gencives » : ce qui irrite, c'est surtout la pression. Avec une électrique, tu guides, tu n'appuies pas.
+2. « Ça coûte cher à l'usage » : 3,73 € la tête en pack de 4, une tête tous les 3 mois.
+3. « Faut tout le temps la recharger » : jusqu'à 30 jours sur une charge, en USB-C.
+
+Tu en croyais combien ? Dis-le en commentaire.
+
+[CTA]
+
+""" + TAGS_T + " #vraioufaux"),
+
+  # HABITUDE · format quiz / auto-diagnostic
+  dict(id="v-habitude", music="Happy Times", date="2026-12-05", axis="HABITUDE", voice="agathe", pal="ocre", fmt="Quiz", scenes=[
+    dict(t="pov", clip="ado-salle-de-bain", title="Tu crois te brosser 2 minutes. Tu en fais combien, vraiment ?",
+         sub="Sois honnête.", say="Tu crois te brosser deux minutes. Tu en fais combien, vraiment ?"),
+    dict(t="timer", kicker="Le minuteur intégré", title="2 min", sub="Une vibration toutes les 30 secondes : tu changes de zone.",
+         say="Le minuteur compte deux minutes, et vibre toutes les trente secondes pour te faire changer de zone."),
+    dict(t="end", img=s("p121"), title="Il compte. *Toi, tu brosses.*", sub="pulsecarefrance.com", say="Le lien est en bio."),
+  ], caption="""Brosse à dents électrique avec minuteur : tu te brosses vraiment 2 minutes ?
+
+Sans montre, on s'arrête souvent avant. Le minuteur compte les 2 minutes et vibre toutes les 30 secondes : haut gauche, haut droite, bas gauche, bas droite.
+
+Réponds en commentaire : tu tiens combien de temps, sans tricher ?
+
+[CTA]
+
+""" + TAGS_T + " #routine"),
+
+  # TRANSPARENCE · format unboxing
+  dict(id="v-boite", music="Gimme that Groove", date="2026-12-17", axis="TRANSPARENCE", voice="maxence", pal="creme", fmt="Unboxing", scenes=[
+    dict(t="hook", clip="dentifrice", kicker="Unboxing", title="Ce qu'il y a *dans la boîte*", say="Ce qu'il y a dans la boîte."),
+    dict(t="grid", shots=[s("bamboo_face"), s("ricin_pack2"), s("etui_voyage"), s("chargeur")],
+         labels=["Le manche sonique", "2 têtes en bambou", "L'étui de voyage", "Le câble USB-C"], kicker="Pour 59,90 €", title="Tout est *inclus*",
+         say="Le manche sonique, deux têtes en bambou, l'étui de voyage et le câble USB-C. Tout est inclus."),
+    dict(t="counter", clip="peignoir", kicker="Pas convaincu ?", value=30, suffix=" jours", label="pour changer d'avis",
+         say="Et si elle ne te plaît pas, tu as trente jours pour changer d'avis."),
+    dict(t="end", img=s("boite_bambou"), title="Rien à racheter *pour commencer.*", sub="pulsecarefrance.com", say="Le lien est en bio."),
+  ], caption="""Brosse à dents électrique : ce qu'il y a dans la boîte.
+
+→ Le manche sonique
+→ 2 têtes en bambou
+→ L'étui de voyage
+→ Le câble USB-C
+
+59,90 €, livraison gratuite en point relais, et 30 jours pour changer d'avis.
+
+[CTA]
+
+""" + TAGS_T + " #unboxing"),
+
+  # PRIX · format calcul
+  dict(id="v-prix", music="Driving Ambition", date="2027-01-04", axis="PRIX", voice="agathe", pal="lime", fmt="Calcul", scenes=[
+    dict(t="counter", clip="cafe-fumant", kicker="La première année", value=16, suffix=" cts", label="par jour pour la brosse",
+         say="Seize centimes par jour. C'est ce que coûte la brosse, la première année."),
+    dict(t="notes", title="Le calcul", items=[("Brosse : 59,90 €", ""), ("Divisé par 365 jours", ""), ("0,16 € par jour", "total")],
+         say="Cinquante-neuf euros quatre-vingt-dix, divisé par trois cent soixante-cinq jours : seize centimes."),
+    dict(t="end", img=s("p095"), title="Moins de *5 € par mois.*", sub="La première année · pulsecarefrance.com", say="Moins de cinq euros par mois. Le lien est en bio."),
+  ], caption="""Brosse à dents électrique : combien elle coûte par jour ?
+
+59,90 € divisé par 365 jours : 0,16 € par jour la première année. Soit moins de 5 € par mois.
+
+Ensuite, seules les têtes se changent : 14,90 € le pack de 4.
+
+[CTA]
+
+""" + TAGS_T + " #budget"),
+
+  # ENTRETIEN · format checklist
+  dict(id="v-entretien", music="Hip Hop 02", date="2027-01-16", axis="ENTRETIEN", voice="maxence", pal="nuit", fmt="Checklist", scenes=[
+    dict(t="hook", clip="homme-gros-plan", kicker="Check rapide", title="Ta tête de brosse est *usée* ?", say="Ta tête de brosse est usée ?"),
+    dict(t="notes", title="3 signes", items=[("Les poils s'écartent", ""), ("La couleur a passé", ""), ("Plus de 3 mois", ""), ("Tu la changes", "total")],
+         say="Les poils s'écartent. La couleur a passé. Elle a plus de trois mois. Tu la changes."),
+    dict(t="grid", shots=[s("ricin_pack4"), s("nylon_pack4"), s("tete_ricin2")], labels=["Ricin", "Nylon", "Tête en bambou"],
+         kicker="Pack de 4", title="*3,73 €* la tête", say="En pack de quatre, la tête revient à trois euros soixante-treize."),
+    dict(t="end", img=s("ricin_pack4_vue"), title="Une tête neuve, *pas une brosse neuve.*", sub="pulsecarefrance.com", say="Le lien est en bio."),
+  ], caption="""Brosse à dents électrique : 3 signes que ta tête est à changer.
+
+1. Les poils s'écartent
+2. La couleur a passé
+3. Elle a plus de 3 mois
+
+Tu changes la tête, pas la brosse. Pack de 4 têtes : 14,90 €, soit 3,73 € la tête.
+
+[CTA]
+
+""" + TAGS_T + " #entretien"),
+
+  # ADOS · format conversation
+  dict(id="v-ados", music="Phat Moves", date="2027-01-22", axis="ADOS", voice="agathe", pal="corail", fmt="Conversation", scenes=[
+    dict(t="pov", clip="ado-miroir", title="POV : ton ado jure qu'il s'est brossé les dents", say="Ton ado jure qu'il s'est brossé les dents."),
+    dict(t="chat", contact="Léo", msgs=[("out", "Tu t'es brossé les dents ?"), ("in", "Oui"), ("out", "La brosse est sèche…"), ("in", "…")],
+         say="Tu t'es brossé les dents ? Oui. La brosse est sèche…"),
+    dict(t="card", clip="ado-salle-de-bain", kicker="Le minuteur", title="2 minutes, *sans négocier*", sub="Une vibration toutes les 30 secondes.",
+         say="Avec le minuteur, deux minutes, sans négocier."),
+    dict(t="end", img=s("deux_brosses"), title="Une brosse qu'il a *envie d'utiliser.*", sub="pulsecarefrance.com", say="Le lien est en bio."),
+  ], caption="""Brosse à dents électrique pour ado : fini « oui oui je me suis brossé ».
+
+Le minuteur compte les 2 minutes et vibre toutes les 30 secondes. Le design bambou fait le reste.
+
+Tag un parent qui connaît cette conversation.
+
+[CTA]
+
+""" + TAGS_T + " #ado"),
+
+  # QUESTION · format question / réponse
+  dict(id="v-douche", music="Under the Sun", date="2027-01-28", axis="QUESTION", voice="maxence", pal="foret", fmt="Question / réponse", scenes=[
+    dict(t="comment", clip="peignoir", comment="Je peux l'utiliser sous la douche ?", title="Oui : *étanche IPX7.*",
+         say="Je peux l'utiliser sous la douche ? Oui, elle est étanche IPX7."),
+    dict(t="counter", clip="femme-brosse", kicker="Une charge", value=30, suffix=" j", label="d'autonomie, recharge en USB-C",
+         say="Et une charge tient trente jours, en USB-C."),
+    dict(t="end", img=s("etui_ouvert"), title="Douche, lavabo, *voyage.*", sub="pulsecarefrance.com", say="Le lien est en bio."),
+  ], caption="""Brosse à dents électrique sous la douche : oui, elle est étanche IPX7.
+
+Douche, lavabo, rinçage sous le robinet : aucun souci. Et une charge tient jusqu'à 30 jours en USB-C.
+
+Une autre question ? Écris-la en commentaire.
+
+[CTA]
+
+""" + TAGS_T + " #faq"),
+
+  # ROUTINE · format démo rapide
+  dict(id="v-matin", music="Dreaming Big", date="2027-02-03", axis="ROUTINE", voice="agathe", pal="creme", fmt="Démo rapide", scenes=[
+    dict(t="hook", clip="fille-matin", kicker="7 h 42", title="Matin pressé. *2 minutes chrono.*", say="Matin pressé. Deux minutes chrono."),
+    dict(t="burst", shots=["clip:cafe-gorgee", s("modes_main"), "clip:sourire"], kicker="4 modes", title="Un bouton, *tu choisis ton mode*",
+         say="Un seul bouton : Sensible, Nettoyage, Blanchiment ou Polissage."),
+    dict(t="card", clip="dentifrice", title="Tu brosses. *Elle compte.*", sub="pulsecarefrance.com", say="Elle compte pour toi. Le lien est en bio."),
+  ], caption="""Brosse à dents électrique : ta routine du matin en 2 minutes chrono.
+
+Un bouton, 4 modes (Sensible, Nettoyage, Blanchiment, Polissage) et un minuteur qui vibre toutes les 30 secondes.
+
+[CTA]
+
+""" + TAGS_T + " #routinematin"),
 ]
 
 def vo_text(v):

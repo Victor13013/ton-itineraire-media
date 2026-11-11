@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Pulse Care — vidéos (Reels Instagram + Facebook), une tous les 3 jours à 18h.
+"""Pulse Care — vidéos (Reels Instagram + Facebook), une vidéo tous les 3 jours à 18h (en alternance avec les vidéos de test).
 
 Les fichiers sont dans media/reels/AAAA-MM-JJ.mp4 (1080x1920, H.264 + AAC, moov en tête).
 Le jour d'une vidéo, le post image de 18h est décalé au jour suivant (voir render.py).
@@ -7,7 +7,7 @@ Le jour d'une vidéo, le post image de 18h est décalé au jour suivant (voir re
 """
 
 REELS = [
-dict(date="2026-11-13", cover=1500, caption="""Ce qu'il y a à l'intérieur d'une dent, et pourquoi ta brosse à dents électrique ne doit jamais appuyer.
+dict(date="2026-11-14", cover=1500, caption="""Ce qu'il y a à l'intérieur d'une dent, et pourquoi ta brosse à dents électrique ne doit jamais appuyer.
 
 → L'émail : la couche extérieure, le tissu le plus dur du corps. Il ne se régénère pas.
 → La dentine : plus tendre, parcourue de micro-canaux qui transmettent le froid.
@@ -21,7 +21,7 @@ Ton brossage protège la couche la plus exposée. Zéro pression, poils souples.
 
 #brosseadentselectrique #email #anatomiedentaire #pulsecare"""),
 
-dict(date="2026-11-16", cover=800, caption="""Vos questions sur la brosse à dents électrique Pulse Care, et nos réponses, en direct.
+dict(date="2026-11-20", cover=800, caption="""Vos questions sur la brosse à dents électrique Pulse Care, et nos réponses, en direct.
 
 → La batterie tient jusqu'à 30 jours, pour 2 brossages par jour
 → Recharge en USB-C, le même câble que ton téléphone
@@ -36,7 +36,7 @@ Une autre question ? Écris-la en commentaire, on répond à toutes.
 
 #brosseadentselectrique #faq #brosseadentsbambou #pulsecare"""),
 
-dict(date="2026-11-19", cover=1500, caption="""Blanchir ses dents à la maison : ce que ta brosse à dents électrique peut faire, et ce que les astuces virales font vraiment.
+dict(date="2026-11-26", cover=1500, caption="""Blanchir ses dents à la maison : ce que ta brosse à dents électrique peut faire, et ce que les astuces virales font vraiment.
 
 → Le bicarbonate tous les jours : trop abrasif, il use l'émail à force
 → Fraise + sel : double agression, l'acide ramollit et le sel râpe
@@ -50,7 +50,7 @@ Pour un vrai éclaircissement, il n'y a qu'une adresse : ton dentiste.
 
 #brosseadentselectrique #blanchiment #ideerecue #pulsecare"""),
 
-dict(date="2026-11-22", cover=1500, caption="""Les dents de ton enfant : le guide des parents, en 30 secondes.
+dict(date="2026-12-02", cover=1500, caption="""Les dents de ton enfant : le guide des parents, en 30 secondes.
 
 → La quantité de dentifrice : un grain de riz avant 3 ans, un petit pois ensuite
 → Jusqu'à 6 ans, c'est toi qui brosses, ou qui repasses derrière
@@ -65,7 +65,7 @@ Identifie un parent qui galère au moment du brossage.
 
 #brosseadentselectrique #parents #hygienebuccodentaire #pulsecare"""),
 
-dict(date="2026-11-25", cover=1200, caption="""Ton assiette compte autant que ta brosse à dents électrique. La preuve en un ticket de caisse.
+dict(date="2026-12-08", cover=1200, caption="""Ton assiette compte autant que ta brosse à dents électrique. La preuve en un ticket de caisse.
 
 Ce que tes dents aiment : laitages, viandes et poissons, œufs, pain et céréales complètes, eau.
 Ce qu'il faut limiter : sodas, boissons énergisantes, jus de fruits acides, grignotage sucré.
@@ -78,7 +78,7 @@ Chaque prise déclenche une attaque acide d'environ 20 minutes. Mieux vaut un de
 
 #brosseadentselectrique #alimentation #carie #pulsecare"""),
 
-dict(date="2026-11-28", cover=600, caption="""Mythe ou réalité ? Trois croyances sur le brossage et la brosse à dents électrique.
+dict(date="2026-12-14", cover=600, caption="""Mythe ou réalité ? Trois croyances sur le brossage et la brosse à dents électrique.
 
 → « 30 secondes de brossage, ça suffit » : non, la recommandation reste 2 minutes, 2 fois par jour
 → « Une brosse, ça se garde toute l'année » : non, une tête se change tous les 3 mois
@@ -90,7 +90,7 @@ Tu en pensais quoi, honnêtement ? Dis-le en commentaire.
 
 #brosseadentselectrique #mythe #hygienebuccodentaire #pulsecare"""),
 
-dict(date="2026-12-01", cover=1200, caption="""Diabète et gencives : un lien à double sens que ta brosse à dents électrique ne suffit pas à régler.
+dict(date="2026-12-20", cover=1200, caption="""Diabète et gencives : un lien à double sens que ta brosse à dents électrique ne suffit pas à régler.
 
 Un diabète mal équilibré fragilise les gencives. Et une gencive enflammée rend le diabète plus difficile à équilibrer. Les deux s'entretiennent.
 
@@ -106,7 +106,7 @@ Ta bouche fait partie de ton suivi médical. Si tu es concerné, préviens ton d
 
 #brosseadentselectrique #gencives #santebuccodentaire #pulsecare"""),
 
-dict(date="2026-12-04", cover=1500, caption="""Les dents de sagesse, en 4 points, pour arrêter les idées reçues.
+dict(date="2026-12-26", cover=1500, caption="""Les dents de sagesse, en 4 points, pour arrêter les idées reçues.
 
 → Elles arrivent tard, souvent entre 17 et 25 ans
 → Elles manquent fréquemment de place sur la mâchoire
@@ -119,7 +119,7 @@ Et quand elles sont là, elles se brossent comme les autres : tout au fond, derr
 
 #brosseadentselectrique #dentsdesagesse #hygienebuccodentaire #pulsecare"""),
 
-dict(date="2026-12-07", cover=1200, caption="""Partir avec sa brosse à dents électrique : 5 règles pour que tout se passe bien.
+dict(date="2027-01-01", cover=1200, caption="""Partir avec sa brosse à dents électrique : 5 règles pour que tout se passe bien.
 
 → Charge-la avant de partir : 30 jours d'autonomie, le chargeur peut rester à la maison
 → Range-la bien sèche, l'humidité enfermée dans l'étui est le pire ennemi
@@ -133,7 +133,7 @@ L'étui de voyage en bambou est inclus avec la Bamboo+.
 
 #brosseadentselectrique #voyage #troussedetoilette #pulsecare"""),
 
-dict(date="2026-12-10", cover=1200, caption="""Ta brosse à dents finit où ? La question qu'on s'est posée avant de créer Pulse Care.
+dict(date="2027-01-07", cover=1200, caption="""Ta brosse à dents finit où ? La question qu'on s'est posée avant de créer Pulse Care.
 
 Une brosse manuelle se remplace tous les 3 mois. À chaque fois, c'est l'objet entier qui part : manche compris.
 
@@ -148,7 +148,7 @@ Un petit geste, à l'échelle d'une salle de bain. Mais répété deux fois par 
 
 #brosseadentselectrique #brosseadentsbambou #poilsricin #pulsecare"""),
 
-dict(date="2026-12-13", cover=2000, caption="""Pour une tortue marine, un sac plastique qui flotte ressemble à une méduse. La confusion peut être fatale.
+dict(date="2027-01-13", cover=2000, caption="""Pour une tortue marine, un sac plastique qui flotte ressemble à une méduse. La confusion peut être fatale.
 
 C'est l'une des images qui nous a marqués quand on a conçu la brosse à dents électrique Pulse Care, et qui explique notre parti pris : réduire la partie qu'on jette.
 

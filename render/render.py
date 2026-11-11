@@ -10,6 +10,101 @@ from collections import Counter
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
+# ───────────────────────────── garde-fou de lisibilité
+# Chaque texte posé est comparé au fond réel juste en dessous (contraste WCAG).
+# Fond uni : la couleur du texte est corrigée. Fond photo / vidéo : halo sombre ou clair derrière les lettres.
+# Jamais de blanc sur blanc ni de noir sur noir. Chaque correction est notée dans media/audit-contraste.txt.
+AUDIT, CTX = [], [""]
+
+def _lum(a):
+    a = np.asarray(a, dtype=np.float32) / 255.0
+    a = np.where(a <= 0.03928, a / 12.92, ((a + 0.055) / 1.055) ** 2.4)
+    return a[..., 0] * 0.2126 + a[..., 1] * 0.7152 + a[..., 2] * 0.0722
+
+def _cr(a, b): return (np.maximum(a, b) + 0.05) / (np.minimum(a, b) + 0.05)
+
+DARK_INK, LIGHT_INK = (18, 26, 22), (250, 247, 240)
+
+def _diagnose(bg_rgb, ink):
+    """bg_rgb : pixels du fond sous les lettres (N,3). Renvoie None si lisible, sinon ('flat'|'busy', encre conseillée)."""
+    if len(bg_rgb) < 12: return None
+    lb = _lum(bg_rgb); li = float(_lum(np.array(ink[:3], dtype=np.float32)[None])[0])
+    crs = _cr(lb, li)
+    if np.median(crs) >= 3.2 and (crs < 2.0).mean() < 0.15: return None
+    mb = float(np.median(lb))
+    target = DARK_INK if _cr(mb, float(_lum(np.array(DARK_INK, dtype=np.float32)[None])[0])) >= _cr(mb, float(_lum(np.array(LIGHT_INK, dtype=np.float32)[None])[0])) else LIGHT_INK
+    return ("flat" if float(lb.std()) < 0.07 else "busy"), target
+
+def _fix_ink(ink, target, mb):
+    """Rapproche l'encre de la cible jusqu'à un contraste de 4,5 en gardant sa teinte."""
+    for k in range(1, 11):
+        c = tuple(int(ink[i] + (target[i] - ink[i]) * k / 10) for i in range(3))
+        if _cr(mb, float(_lum(np.array(c, dtype=np.float32)[None])[0])) >= 4.5: return c
+    return target
+
+def _halo(dst, mask, pos, ink):
+    """Ombre douce derrière les lettres, de la couleur opposée au texte."""
+    pad = 22
+    m = Image.new("L", (mask.width + 2 * pad, mask.height + 2 * pad), 0); m.paste(mask, (pad, pad))
+    m = m.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(9)).point(lambda v: int(min(255, v * 0.85)))
+    li = float(_lum(np.array(ink[:3], dtype=np.float32)[None])[0])
+    col = (6, 12, 9) if li > 0.3 else (252, 250, 245)
+    dst.paste(Image.new(dst.mode, m.size, col + ((255,) if dst.mode == "RGBA" else ())), (int(pos[0]) - pad, int(pos[1]) - pad), m)
+
+def _region(dst, x, y, w, h):
+    x0, y0 = max(0, int(x)), max(0, int(y)); x1, y1 = min(dst.width, int(x + w + 0.999)), min(dst.height, int(y + h + 0.999))
+    return (x0, y0, x1, y1) if x1 > x0 and y1 > y0 else None
+
+def safe_composite(dst, src, pos):
+    """alpha_composite d'un calque texte, avec contrôle du contraste."""
+    try:
+        a = np.asarray(src); m = a[..., 3] > 150
+        r = _region(dst, pos[0], pos[1], src.width, src.height)
+        if r is not None and m.sum() > 12:
+            sub = np.asarray(dst.crop(r).convert("RGB"))
+            mm = m[r[1] - int(pos[1]):r[3] - int(pos[1]), r[0] - int(pos[0]):r[2] - int(pos[0])]
+            ink = tuple(int(v) for v in np.median(a[..., :3][m], axis=0))
+            dg = _diagnose(sub[mm], ink) if mm.any() else None
+            if dg:
+                kind, target = dg; AUDIT.append((CTX[0], kind, ink))
+                if kind == "flat":
+                    nc = _fix_ink(ink, target, float(np.median(_lum(sub[mm]))))
+                    a = a.copy(); a[..., :3][a[..., 3] > 0] = nc; src = Image.fromarray(a, "RGBA")
+                else:
+                    _halo(dst, Image.fromarray((a[..., 3]).astype(np.uint8), "L"), pos, ink)
+    except Exception as e:
+        AUDIT.append((CTX[0], "erreur " + str(e)[:60], ()))
+    dst.alpha_composite(src, (int(pos[0]), int(pos[1])))
+
+_orig_text = ImageDraw.ImageDraw.text
+
+def _safe_text(self, xy, text, fill=None, font=None, *a, **k):
+    im = getattr(self, "_image", None)
+    if (im is not None and im.mode in ("RGB", "RGBA") and isinstance(fill, tuple) and len(fill) >= 3 and text
+            and isinstance(text, str) and text.strip() and not k.get("anchor") and font is not None):
+        try:
+            bb = self.textbbox(xy, text, font=font)
+            r = _region(im, bb[0], bb[1], bb[2] - bb[0], bb[3] - bb[1])
+            if r is not None:
+                sub = np.asarray(im.crop(r).convert("RGBA"))
+                if sub[..., 3].mean() > 200:   # fond opaque (sinon : calque transparent, contrôlé à la composition)
+                    mk = Image.new("L", (r[2] - r[0], r[3] - r[1]), 0)
+                    ImageDraw.Draw(mk).text((xy[0] - r[0], xy[1] - r[1]), text, fill=255, font=font)
+                    mm = np.asarray(mk) > 150
+                    dg = _diagnose(sub[..., :3][mm], fill) if mm.any() else None
+                    if dg:
+                        kind, target = dg; AUDIT.append((CTX[0], kind, fill[:3]))
+                        if kind == "flat":
+                            nc = _fix_ink(fill, target, float(np.median(_lum(sub[..., :3][mm]))))
+                            fill = nc + tuple(fill[3:])
+                        else:
+                            _halo(im, mk, (r[0], r[1]), fill)
+        except Exception as e:
+            AUDIT.append((CTX[0], "erreur " + str(e)[:60], ()))
+    return _orig_text(self, xy, text, fill, font, *a, **k)
+
+ImageDraw.ImageDraw.text = _safe_text
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "render"))
 from content import POSTS, SHOP, CTA_IG, CTA_FB  # noqa: E402
@@ -1129,7 +1224,7 @@ def hand_note(base, x, y, text, size=52, color=CORAL, angle=-3, maxw=W - 2 * M, 
     lay = Image.new("RGBA", (w, h), (0, 0, 0, 0)); draw_lines(ImageDraw.Draw(lay), 10, 4, lines, f, color, 1.05)
     lay = lay.rotate(angle, resample=Image.BICUBIC, expand=True)
     if center: x = (W - lay.width) / 2
-    base.alpha_composite(lay, (int(x), int(y))); return y + lay.height, x + lay.width
+    safe_composite(base, lay, (int(x), int(y))); return y + lay.height, x + lay.width
 
 def c_title(base, c, x=M, y=100, maxw=W - 2 * M, start=100, maxlines=3, kicker=True, center=False):
     if kicker and c.get("kicker"): y, _ = hand_note(base, x, y, c["kicker"], 54, CORAL, -2, maxw, center); y += 6
@@ -2172,13 +2267,15 @@ class Layer:
     """Élément pré-rendu (RGBA), animé en opacité / translation."""
     def __init__(self, im, x, y, t0, dur=0.3, dx=0, dy=40):
         self.im, self.x, self.y, self.t0, self.dur, self.dx, self.dy = im, x, y, t0, dur, dx, dy
-        self.arr = np.array(im)
+        self.arr = np.array(im); self.txt = bool(im.info.get("txt"))
     def draw(self, frame, t):
         q = (t - self.t0) / self.dur
         if q <= 0: return
         p = back(q); o = ease(q * 1.6)
         a = self.arr.copy(); a[..., 3] = (a[..., 3] * min(1, o)).astype(np.uint8)
-        frame.alpha_composite(Image.fromarray(a, "RGBA"), (int(self.x + self.dx * (1 - p)), int(self.y + self.dy * (1 - p))))
+        pos = (int(self.x + self.dx * (1 - p)), int(self.y + self.dy * (1 - p)))
+        if self.txt: safe_composite(frame, Image.fromarray(a, "RGBA"), pos)
+        else: frame.alpha_composite(Image.fromarray(a, "RGBA"), pos)
 
 def text_layer(lines, fnt, fill, lh=1.15, w=RW - 140, center=False):
     h = int(text_h(lines, fnt, lh) + fnt.size * 0.4)
@@ -2187,6 +2284,7 @@ def text_layer(lines, fnt, fill, lh=1.15, w=RW - 140, center=False):
     for l in lines:
         x = (w - d.textlength(l, font=fnt)) / 2 if center else 0
         d.text((x, y), l, font=fnt, fill=fill); y += fnt.size * lh
+    im.info["txt"] = 1
     return im
 
 def pill_layer(text, fnt, bg, fg):
@@ -2214,9 +2312,9 @@ def brand_top(frame, fg=CREAM):
 PALS = {
     "foret":  dict(bg=(18, 36, 29),  bg2=(30, 58, 47),   ink=(243, 238, 228), acc=(196, 158, 98), sub=(198, 214, 204), mark=(196, 158, 98), pop=(196, 158, 98)),
     "nuit":   dict(bg=(11, 21, 17),  bg2=(26, 42, 34),   ink=(243, 238, 228), acc=(214, 240, 120), sub=(176, 200, 186), mark=(214, 240, 120), pop=(214, 240, 120)),
-    "corail": dict(bg=(226, 108, 92), bg2=(206, 88, 74), ink=(255, 247, 240), acc=(16, 28, 22),   sub=(255, 224, 214), mark=(16, 28, 22), pop=(240, 122, 104)),
+    "corail": dict(bg=(178, 62, 50), bg2=(156, 50, 40), ink=(255, 247, 240), acc=(255, 214, 120),   sub=(255, 228, 220), mark=(255, 214, 120), pop=(240, 122, 104)),
     "ocre":   dict(bg=(233, 172, 74), bg2=(216, 152, 56), ink=(16, 28, 22),   acc=(24, 52, 40),   sub=(70, 60, 30),    mark=(16, 28, 22), pop=(240, 182, 84)),
-    "creme":  dict(bg=(246, 241, 232), bg2=(221, 232, 223), ink=(18, 36, 29), acc=(226, 108, 92), sub=(84, 98, 90),    mark=(226, 108, 92), pop=(246, 241, 232)),
+    "creme":  dict(bg=(246, 241, 232), bg2=(221, 232, 223), ink=(18, 36, 29), acc=(176, 60, 48), sub=(74, 88, 80),    mark=(176, 60, 48), pop=(246, 241, 232)),
     "lime":   dict(bg=(214, 240, 120), bg2=(194, 222, 98), ink=(16, 28, 22),  acc=(24, 52, 40),   sub=(52, 70, 44),    mark=(24, 52, 40), pop=(214, 240, 120)),
 }
 
@@ -2260,11 +2358,11 @@ def kinetic_draw(f, t, lines, fnt, x0, y0, hl, ink, mark, markink, step=0.06):
             col = ink
             if hl(w_):
                 ww = d.textlength(w_, font=fnt)
-                d.rounded_rectangle([x0 + x - 10, y + fnt.size * 0.14, x0 + x + ww * min(1, q) + 10, y + fnt.size * 1.04], radius=12, fill=mark)
+                d.rounded_rectangle([x0 + x - 10, y + 40 * (1 - q) + fnt.size * 0.14, x0 + x + ww * min(1, q) + 10, y + 40 * (1 - q) + fnt.size * 1.04], radius=12, fill=mark)
                 col = markink
             lay = Image.new("RGBA", (int(d.textlength(w_, font=fnt)) + 10, int(fnt.size * 1.3)), (0, 0, 0, 0))
             ImageDraw.Draw(lay).text((0, 0), w_, font=fnt, fill=col + (int(255 * min(1, q)),))
-            f.alpha_composite(lay, (int(x0 + x), int(y + 40 * (1 - q))))
+            safe_composite(f, lay, (int(x0 + x), int(y + 40 * (1 - q))))
         y += fnt.size * 1.04
 
 class Scene:
@@ -2276,7 +2374,8 @@ class Scene:
         if bgref:
             # Fond filmé ou photo : la vraie vie plutôt qu'un aplat. Texte clair, accents de la palette.
             self.kb = make_bg(bgref, RW, RH, (1.0, 1.16), ((-1) ** idx * 0.5, 0.15))
-            self.shade = gradient(RW, RH, (8, 16, 12), 0.25, 1.0, 0, 215)
+            self.shade = Image.new("RGBA", (RW, RH), (8, 16, 12, 92))
+            self.shade.alpha_composite(gradient(RW, RH, (8, 16, 12), 0.25, 1.0, 0, 175))
             self.shade.alpha_composite(gradient(RW, 260, (8, 16, 12), 0, 1, 110, 0), (0, 0))
             pop = self.P["pop"]
             self.P = dict(self.P, ink=(250, 247, 240), sub=(226, 232, 226), acc=pop, bg=(16, 28, 22), bg2=(250, 247, 240), mark=pop)
@@ -2289,7 +2388,7 @@ class Scene:
         r = 560 + 30 * math.sin(t * 1.3 + self.idx); cx = RW * (1.08 if self.idx % 2 else -0.08); cy = RH * (0.06 if self.idx % 2 else 0.96)
         d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(P["bg2"] if not alt else P["bg"]) + (255,))
         return f
-    def brand(self, f): wordmark(ImageDraw.Draw(f), 70, 90, self.P["ink"], 34)
+    def brand(self, f): pass   # pas de logo en haut à gauche des vidéos
 
     # accroche : typographie plein écran, mot par mot
     def setup_hook(self):
@@ -2313,11 +2412,11 @@ class Scene:
                 col = self.P["ink"]
                 if self.hl(w_):
                     ww = d.textlength(w_ + (" " if w_ != ws[-1][0] else ""), font=self.f)
-                    d.rectangle([75 + x - 8, y + self.f.size * 0.18, 75 + x + ww * p + 8, y + self.f.size * 1.02], fill=self.P["mark"])
+                    d.rectangle([75 + x - 8, y + 40 * (1 - p) + self.f.size * 0.18, 75 + x + ww * p + 8, y + 40 * (1 - p) + self.f.size * 1.02], fill=self.P["mark"])
                     col = self.P["bg"] if self.P["mark"] != self.P["ink"] else self.P["bg"]
                 lay = Image.new("RGBA", (int(d.textlength(w_, font=self.f)) + 10, int(self.f.size * 1.3)), (0, 0, 0, 0))
                 ImageDraw.Draw(lay).text((0, 0), w_, font=self.f, fill=col + (int(255 * p),))
-                f.alpha_composite(lay, (int(75 + x), int(y + 40 * (1 - p))))
+                safe_composite(f, lay, (int(75 + x), int(y + 40 * (1 - p))))
             y += self.f.size * 1.04
         for l in self.layers: l.draw(f, t)
         return f
@@ -2340,7 +2439,7 @@ class Scene:
         y += text_h(tl, tf)
         if sl: self.layers.append(Layer(text_layer(sl, REG(42), (226, 232, 226), 1.35), 70, y + 30, 0.75, dy=30))
     def frame_photo(self, t):
-        f = self.kb.at(t / self.dur).convert("RGBA"); f.alpha_composite(self.grad); brand_top(f)
+        f = self.kb.at(t / self.dur).convert("RGBA"); f.alpha_composite(self.grad)
         for l in self.layers: l.draw(f, t)
         return f
 
@@ -2362,7 +2461,6 @@ class Scene:
         f.paste(self.kb.at(t / self.dur), (0, 0)); f.alpha_composite(self.top_grad, (0, 0))
         p = ease(t / 0.55); top = int(RH - (RH - 1000) * p)
         ImageDraw.Draw(f).rounded_rectangle([0, top, RW, RH + 60], radius=60, fill=self.P["bg"])
-        brand_top(f)
         for l in self.layers: l.draw(f, t)
         return f
 
@@ -2478,7 +2576,7 @@ class Scene:
         f = (kb.at(lt * seg) if isinstance(kb, ClipBG) else kb.at(min(1.0, 0.65 * ease(lt * 4) + 0.35 * lt))).convert("RGBA")
         if i > 0 and lt * seg < 0.08:  # éclair blanc très bref à la coupe
             f.alpha_composite(Image.new("RGBA", (RW, RH), (255, 255, 255, int(150 * (1 - lt * seg / 0.08)))))
-        f.alpha_composite(self.shade); brand_top(f)
+        f.alpha_composite(self.shade)
         d = ImageDraw.Draw(f); k = 0; y = self.y0; self.hl.reset()
         for ln, ws, lw in self.lines:
             for w_, x in ws:
@@ -2487,11 +2585,11 @@ class Scene:
                 col = self.P["ink"]
                 if self.hl(w_):
                     ww = d.textlength(w_ + (" " if w_ != ws[-1][0] else ""), font=self.f)
-                    d.rectangle([75 + x - 8, y + self.f.size * 0.18, 75 + x + ww * p + 8, y + self.f.size * 1.02], fill=self.P["mark"])
+                    d.rectangle([75 + x - 8, y + 30 * (1 - p) + self.f.size * 0.18, 75 + x + ww * p + 8, y + 30 * (1 - p) + self.f.size * 1.02], fill=self.P["mark"])
                     col = (16, 28, 22)
                 lay = Image.new("RGBA", (int(d.textlength(w_, font=self.f)) + 10, int(self.f.size * 1.3)), (0, 0, 0, 0))
                 ImageDraw.Draw(lay).text((0, 0), w_, font=self.f, fill=col + (int(255 * p),))
-                f.alpha_composite(lay, (int(75 + x), int(y + 30 * (1 - p))))
+                safe_composite(f, lay, (int(75 + x), int(y + 30 * (1 - p))))
             y += self.f.size * 1.04
         for l in self.layers: l.draw(f, t)
         return f
@@ -2546,11 +2644,11 @@ class Scene:
                 col = P["ink"]
                 if self.hl(w_):
                     ww = d.textlength(w_, font=self.f)
-                    d.rounded_rectangle([75 + x - 10, y + self.f.size * 0.14, 75 + x + ww * min(1, q) + 10, y + self.f.size * 1.04], radius=14, fill=P["mark"])
+                    d.rounded_rectangle([75 + x - 10, y + 50 * (1 - q) + self.f.size * 0.14, 75 + x + ww * min(1, q) + 10, y + 50 * (1 - q) + self.f.size * 1.04], radius=14, fill=P["mark"])
                     col = P["bg"]
                 lay = Image.new("RGBA", (int(d.textlength(w_, font=self.f)) + 10, int(self.f.size * 1.3)), (0, 0, 0, 0))
                 ImageDraw.Draw(lay).text((0, 0), w_, font=self.f, fill=col + (int(255 * min(1, q)),))
-                f.alpha_composite(lay, (int(75 + x), int(y + 50 * (1 - q))))
+                safe_composite(f, lay, (int(75 + x), int(y + 50 * (1 - q))))
             y += self.f.size * 1.04
         for l in self.layers: l.draw(f, t)
         return f
@@ -2589,11 +2687,11 @@ class Scene:
                 col = P["ink"]
                 if self.hl(w_):
                     ww = d.textlength(w_, font=self.f)
-                    d.rounded_rectangle([75 + x - 10, y + self.f.size * 0.14, 75 + x + ww * min(1, q) + 10, y + self.f.size * 1.04], radius=12, fill=P["mark"])
+                    d.rounded_rectangle([75 + x - 10, y + 40 * (1 - q) + self.f.size * 0.14, 75 + x + ww * min(1, q) + 10, y + 40 * (1 - q) + self.f.size * 1.04], radius=12, fill=P["mark"])
                     col = P["bg"]
                 lay = Image.new("RGBA", (int(d.textlength(w_, font=self.f)) + 10, int(self.f.size * 1.3)), (0, 0, 0, 0))
                 ImageDraw.Draw(lay).text((0, 0), w_, font=self.f, fill=col + (int(255 * min(1, q)),))
-                f.alpha_composite(lay, (int(75 + x), int(y + 40 * (1 - q))))
+                safe_composite(f, lay, (int(75 + x), int(y + 40 * (1 - q))))
             y += self.f.size * 1.04
         for l in self.layers: l.draw(f, t)
         return f
@@ -2734,7 +2832,7 @@ class Scene:
     def frame(self, t):
         return getattr(self, "frame_" + self.c["t"])(t)
 
-SCENE_V = "9"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
+SCENE_V = "10"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
 
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
@@ -2762,6 +2860,7 @@ def music_path(name):
 MUSIC_VOL = 0.16   # sous la voix : présente mais jamais devant
 
 def render_reel(scenes_spec, out, audio=None, pal=None, music=None):
+    CTX[0] = "vidéo " + os.path.basename(out)
     if audio: scenes_spec = fit_scenes(scenes_spec, audio_len(audio) + 0.9)
     scenes = [Scene(c, i, pal) for i, c in enumerate(scenes_spec)]
     starts, t = [], 0.0
@@ -2899,6 +2998,7 @@ def main():
       for p in LIST:
           if ONLY and p["date"] not in ONLY: continue
           date = p["date"] + suf; cap = p["caption"]
+          CTX[0] = "post " + date
           if p["kind"] == "carousel" and "swipe" not in cap.lower():
               cap = cap.replace("[CTA]", "Swipe pour tout voir.\n\n[CTA]")
           ig = cap.replace("[CTA]", CTA_IG); fb = cap.replace("[CTA]", CTA_FB)
@@ -2939,6 +3039,11 @@ def main():
                             "-frames:v", "1", "-vf", "scale=540:-1", cov], check=False)
         gallery.append((r["date"] + " · vidéo", "reel", [f"media/reels/{r['date']}-cover.jpg"], rel, ig))
     render_videos()
+    rep = Counter((c, k) for c, k, _ in AUDIT)
+    with open(os.path.join(ROOT, "media", "audit-contraste.txt"), "w") as fh:
+        fh.write("Corrections automatiques de lisibilité (flat = couleur du texte corrigée, busy = halo ajouté)\n")
+        for (c, k), n in sorted(rep.items()): fh.write(f"{c}\t{k}\t{n}\n")
+    print("audit contraste :", len(rep), "éléments corrigés")
     for v in VIDEOS:
         rel = f"media/reels/{v['date']}.mp4"
         if os.path.exists(os.path.join(ROOT, rel)):
