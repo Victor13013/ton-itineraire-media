@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-3.jpg"
-      }
-    ],
-    "caption": "Passer à la brosse à dents électrique sans se tromper : c'est à ça que sert le pack découverte Pulse Care.\n\nDedans : le manche sonique, des têtes en bambou à poils de ricin et l'étui de voyage. De quoi tenir plusieurs mois sans rien racheter.\n\n→ 64,90 €\n→ 30 jours pour changer d'avis\n→ livraison gratuite en point relais dès 20 € d'achat\n\nC'est aussi le pack à offrir à quelqu'un qui hésite depuis des mois.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #packdecouverte #brosseadentsbambou #pulsecare",
-    "fb_message": "Passer à la brosse à dents électrique sans se tromper : c'est à ça que sert le pack découverte Pulse Care.\n\nDedans : le manche sonique, des têtes en bambou à poils de ricin et l'étui de voyage. De quoi tenir plusieurs mois sans rien racheter.\n\n→ 64,90 €\n→ 30 jours pour changer d'avis\n→ livraison gratuite en point relais dès 20 € d'achat\n\nC'est aussi le pack à offrir à quelqu'un qui hésite depuis des mois.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #packdecouverte #brosseadentsbambou #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-1.jpg",
+    "caption": "Le café laisse des taches sur l'émail. Une brosse à dents électrique ne les efface pas d'un coup, mais elle évite qu'elles s'installent.\n\nLe mode Blanchiment de la Bamboo+ accélère les vibrations pour décrocher les pigments de surface : café, thé, vin rouge.\n\nCe qu'il ne fait pas : changer la teinte naturelle de ta dent. Ça, c'est le travail du dentiste, avec un vrai protocole.\n\nLe réflexe qui aide : un verre d'eau après le café, pour ne pas laisser le pigment poser.\n\n4 modes sur la Bamboo+, 59,90 €.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #blanchiment #cafe #pulsecare",
+    "fb_message": "Le café laisse des taches sur l'émail. Une brosse à dents électrique ne les efface pas d'un coup, mais elle évite qu'elles s'installent.\n\nLe mode Blanchiment de la Bamboo+ accélère les vibrations pour décrocher les pigments de surface : café, thé, vin rouge.\n\nCe qu'il ne fait pas : changer la teinte naturelle de ta dent. Ça, c'est le travail du dentiste, avec un vrai protocole.\n\nLe réflexe qui aide : un verre d'eau après le café, pour ne pas laisser le pigment poser.\n\n4 modes sur la Bamboo+, 59,90 €.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #blanchiment #cafe #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-29-3.jpg"
       }
     ]
   }

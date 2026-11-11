@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-10h-1.jpg",
-    "caption": "Vrai ou faux : un bain de bouche peut remplacer un passage de brosse à dents électrique ?\n\nFAUX. Un bain de bouche ne retire pas la plaque, qui est un dépôt collant. Seul le frottement mécanique le fait.\n\nEt le détail que presque personne ne connaît : si tu l'utilises juste après le brossage, tu rinces le fluor que le dentifrice vient de déposer.\n\nMieux : utilise-le à un autre moment de la journée, si ton dentiste te l'a conseillé.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #baindebouche #fluor #pulsecare",
-    "fb_message": "Vrai ou faux : un bain de bouche peut remplacer un passage de brosse à dents électrique ?\n\nFAUX. Un bain de bouche ne retire pas la plaque, qui est un dépôt collant. Seul le frottement mécanique le fait.\n\nEt le détail que presque personne ne connaît : si tu l'utilises juste après le brossage, tu rinces le fluor que le dentifrice vient de déposer.\n\nMieux : utilise-le à un autre moment de la journée, si ton dentiste te l'a conseillé.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #baindebouche #fluor #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-10h-2.jpg"
+      }
+    ],
+    "caption": "Ta routine du matin avec une brosse à dents électrique, en 3 étapes.\n\n1. Un verre d'eau au réveil. La bouche est sèche après la nuit, la salive doit repartir.\n2. 2 minutes de brossage en mode Nettoyage. Le minuteur s'arrête seul.\n3. Tu craches, tu ne rinces pas. Le fluor reste sur l'émail et continue d'agir.\n\nQuatre minutes montre en main, café compris.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #routinedumatin #fluor #pulsecare",
+    "fb_message": "Ta routine du matin avec une brosse à dents électrique, en 3 étapes.\n\n1. Un verre d'eau au réveil. La bouche est sèche après la nuit, la salive doit repartir.\n2. 2 minutes de brossage en mode Nettoyage. Le minuteur s'arrête seul.\n3. Tu craches, tu ne rinces pas. Le fluor reste sur l'émail et continue d'agir.\n\nQuatre minutes montre en main, café compris.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #routinedumatin #fluor #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-10h-2.jpg"
       }
     ]
   }

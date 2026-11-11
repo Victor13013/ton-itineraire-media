@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-10h-2.jpg"
-      }
-    ],
-    "caption": "Brosse à dents électrique avec minuteur : tu te brosses vraiment 2 minutes ?\n\nSans montre, on s'arrête souvent avant. Le minuteur découpe les 2 minutes en 4 zones de 30 secondes et vibre à chaque changement.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #routine",
-    "fb_message": "Brosse à dents électrique avec minuteur : tu te brosses vraiment 2 minutes ?\n\nSans montre, on s'arrête souvent avant. Le minuteur découpe les 2 minutes en 4 zones de 30 secondes et vibre à chaque changement.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #routine",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-10h-1.jpg",
+    "caption": "Une brosse à dents électrique, ça coûte combien par an ? Faisons le calcul pour la Bamboo+.\n\n→ La brosse : 59,90 €, avec 2 têtes incluses. Le manche se garde des années.\n→ Les têtes : 14,90 € le pack de 4, soit une année complète.\n\nLa première année, tu paies le manche. Les suivantes, ce sont uniquement les têtes.\n\nC'est précisément le principe : le durable d'un côté, le consommable de l'autre.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
+    "fb_message": "Une brosse à dents électrique, ça coûte combien par an ? Faisons le calcul pour la Bamboo+.\n\n→ La brosse : 59,90 €, avec 2 têtes incluses. Le manche se garde des années.\n→ Les têtes : 14,90 € le pack de 4, soit une année complète.\n\nLa première année, tu paies le manche. Les suivantes, ce sont uniquement les têtes.\n\nC'est précisément le principe : le durable d'un côté, le consommable de l'autre.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-14-10h-2.jpg"
       }
     ]
   }

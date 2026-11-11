@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-03-1.jpg",
-    "caption": "59,90 € pour une brosse à dents électrique sonique : voilà exactement ce que ça comprend.\n\n→ 41 000 vibrations par minute\n→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage\n→ minuteur 2 min, pause toutes les 30 s\n→ jusqu'à 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n→ 2 têtes en bambou, l'étui de voyage et le câble inclus\n\nPas d'accessoire à racheter avant 6 mois. Et 30 jours pour changer d'avis.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "59,90 € pour une brosse à dents électrique sonique : voilà exactement ce que ça comprend.\n\n→ 41 000 vibrations par minute\n→ 4 modes : Sensible, Nettoyage, Blanchiment, Polissage\n→ minuteur 2 min, pause toutes les 30 s\n→ jusqu'à 30 jours d'autonomie, recharge USB-C\n→ étanche IPX7\n→ 2 têtes en bambou, l'étui de voyage et le câble inclus\n\nPas d'accessoire à racheter avant 6 mois. Et 30 jours pour changer d'avis.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-03-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-03-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-03-3.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique ou manuelle : la vraie différence n'est pas la puissance, c'est la régularité.\n\nLa manuelle fait le travail si ta technique est parfaite : bon angle, bon mouvement, 2 minutes pile, deux fois par jour. Dans la vraie vie, ça n'arrive pas.\n\nLa sonique corrige ça :\n→ 41 000 vibrations par minute, tu n'as qu'à guider\n→ minuteur intégré, plus de brossage bâclé\n→ un mode Sensible pour les gencives fragiles\n\n59,90 € avec 2 têtes, l'étui et le câble. 30 jours pour changer d'avis.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare",
+    "fb_message": "Brosse à dents électrique ou manuelle : la vraie différence n'est pas la puissance, c'est la régularité.\n\nLa manuelle fait le travail si ta technique est parfaite : bon angle, bon mouvement, 2 minutes pile, deux fois par jour. Dans la vraie vie, ça n'arrive pas.\n\nLa sonique corrige ça :\n→ 41 000 vibrations par minute, tu n'as qu'à guider\n→ minuteur intégré, plus de brossage bâclé\n→ un mode Sensible pour les gencives fragiles\n\n59,90 € avec 2 têtes, l'étui et le câble. 30 jours pour changer d'avis.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentssonique #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-03-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-03-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-03-3.jpg"
       }
     ]
   }

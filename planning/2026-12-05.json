@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-3.jpg"
-      }
-    ],
-    "caption": "Têtes de brosse à dents électrique : ricin ou nylon ? La question qu'on nous pose le plus avant l'achat.\n\nLes deux sont montées sur une tête en bambou et se clipsent en une seconde. La différence tient à la fibre.\n\n→ Ricin : fibre d'origine végétale, toucher très doux. Le bon choix si tes gencives sont sensibles.\n→ Nylon : brossage plus ferme, pour ceux qui aiment sentir le nettoyage.\n\nPas sûr ? Prends une tête de chaque à 5,50 € et compare sur deux semaines.\n\nPack de 4 : 14,90 €.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #poilsricin #pulsecare",
-    "fb_message": "Têtes de brosse à dents électrique : ricin ou nylon ? La question qu'on nous pose le plus avant l'achat.\n\nLes deux sont montées sur une tête en bambou et se clipsent en une seconde. La différence tient à la fibre.\n\n→ Ricin : fibre d'origine végétale, toucher très doux. Le bon choix si tes gencives sont sensibles.\n→ Nylon : brossage plus ferme, pour ceux qui aiment sentir le nettoyage.\n\nPas sûr ? Prends une tête de chaque à 5,50 € et compare sur deux semaines.\n\nPack de 4 : 14,90 €.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #poilsricin #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-1.jpg",
+    "caption": "La partie d'une brosse à dents électrique qu'on jette le plus souvent, c'est la tête. C'est là que Pulse Care a mis le bambou.\n\n→ la tête, remplacée tous les 3 mois, est en bambou\n→ les poils sont à base d'huile de ricin, une fibre d'origine végétale\n→ le manche est en plastique ASA, choisi pour durer des années\n\nTu ne rachètes pas l'objet entier à chaque fois. Juste la tête.\n\nPack de 4 têtes : 14,90 €. La brosse : 59,90 €.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #poilsricin #pulsecare",
+    "fb_message": "La partie d'une brosse à dents électrique qu'on jette le plus souvent, c'est la tête. C'est là que Pulse Care a mis le bambou.\n\n→ la tête, remplacée tous les 3 mois, est en bambou\n→ les poils sont à base d'huile de ricin, une fibre d'origine végétale\n→ le manche est en plastique ASA, choisi pour durer des années\n\nTu ne rachètes pas l'objet entier à chaque fois. Juste la tête.\n\nPack de 4 têtes : 14,90 €. La brosse : 59,90 €.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #poilsricin #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-05-3.jpg"
       }
     ]
   }

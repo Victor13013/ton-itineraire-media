@@ -1,13 +1,34 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg",
-    "caption": "Ton dentiste t'a dit de mieux brosser. Une brosse à dents électrique sonique fait une bonne partie du travail à ta place.\n\nLe problème d'une brosse manuelle, ce n'est pas l'outil. C'est que la technique parfaite, personne ne la tient 2 minutes, 2 fois par jour, pendant des années.\n\nAvec la Bamboo+ :\n→ 41 000 vibrations par minute, tu guides seulement\n→ minuteur 2 minutes, pause toutes les 30 s par zone\n→ mode Sensible si les gencives sont fragiles\n\n59,90 € avec 2 têtes en bambou, l'étui et le câble USB-C.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #detartrage #conseilsdentaires #pulsecare",
-    "fb_message": "Ton dentiste t'a dit de mieux brosser. Une brosse à dents électrique sonique fait une bonne partie du travail à ta place.\n\nLe problème d'une brosse manuelle, ce n'est pas l'outil. C'est que la technique parfaite, personne ne la tient 2 minutes, 2 fois par jour, pendant des années.\n\nAvec la Bamboo+ :\n→ 41 000 vibrations par minute, tu guides seulement\n→ minuteur 2 minutes, pause toutes les 30 s par zone\n→ mode Sensible si les gencives sont fragiles\n\n59,90 € avec 2 têtes en bambou, l'étui et le câble USB-C.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #detartrage #conseilsdentaires #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-2.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-3.jpg"
+      }
+    ],
+    "caption": "Le brossage du soir avec les enfants, c'est souvent une négociation. Une brosse à dents électrique règle une partie du problème.\n\nLe minuteur tourne, il s'arrête seul à 2 minutes, avec une pause toutes les 30 secondes pour changer de zone. Ce n'est plus toi qui décides quand c'est fini : c'est la brosse.\n\nEt les enfants copient ce qu'ils voient. Quand les parents se brossent en même temps, la routine tient toute seule.\n\nPack duo : 94,90 € les deux brosses.\n\nPour les plus jeunes, demande à ton dentiste le modèle adapté à leur âge.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #parents #routinefamille #pulsecare",
+    "fb_message": "Le brossage du soir avec les enfants, c'est souvent une négociation. Une brosse à dents électrique règle une partie du problème.\n\nLe minuteur tourne, il s'arrête seul à 2 minutes, avec une pause toutes les 30 secondes pour changer de zone. Ce n'est plus toi qui décides quand c'est fini : c'est la brosse.\n\nEt les enfants copient ce qu'ils voient. Quand les parents se brossent en même temps, la routine tient toute seule.\n\nPack duo : 94,90 € les deux brosses.\n\nPour les plus jeunes, demande à ton dentiste le modèle adapté à leur âge.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #parents #routinefamille #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-2.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-3.jpg"
       }
     ]
   }

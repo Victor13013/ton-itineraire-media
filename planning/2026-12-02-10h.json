@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-10h-2.jpg"
-      }
-    ],
-    "caption": "Tenir une routine de brosse à dents électrique avec des enfants : 4 astuces qui marchent.\n\n1. Même heure tous les soirs, juste après le pyjama\n2. Les parents se brossent en même temps : les enfants copient ce qu'ils voient\n3. Le minuteur de 2 minutes devient un défi\n4. Chacun son repère pour ne pas mélanger les têtes\n\nPour les plus jeunes, demande à ton dentiste le type de brosse et le dosage de fluor adaptés à leur âge.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #routinefamille #parents #pulsecare",
-    "fb_message": "Tenir une routine de brosse à dents électrique avec des enfants : 4 astuces qui marchent.\n\n1. Même heure tous les soirs, juste après le pyjama\n2. Les parents se brossent en même temps : les enfants copient ce qu'ils voient\n3. Le minuteur de 2 minutes devient un défi\n4. Chacun son repère pour ne pas mélanger les têtes\n\nPour les plus jeunes, demande à ton dentiste le type de brosse et le dosage de fluor adaptés à leur âge.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #routinefamille #parents #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-10h-1.jpg",
+    "caption": "Brosse à dents électrique ou pas : on croit tous se brosser 2 minutes.\n\nLe minuteur compte pour toi et vibre toutes les 30 secondes. Tag la personne qui scrolle en se brossant les dents.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #humour",
+    "fb_message": "Brosse à dents électrique ou pas : on croit tous se brosser 2 minutes.\n\nLe minuteur compte pour toi et vibre toutes les 30 secondes. Tag la personne qui scrolle en se brossant les dents.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #humour",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-02-10h-2.jpg"
       }
     ]
   }

@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-11-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-11-10h-2.jpg"
-      }
-    ],
-    "caption": "Si tu ne devais retenir que 3 choses sur la brosse à dents électrique, ce serait celles-là.\n\n1. 2 minutes, 2 fois par jour. Le minuteur s'arrête seul, tu n'as pas à compter.\n2. Zéro pression. Tu poses la tête, tu guides, les vibrations font le reste.\n3. Une tête tous les 3 mois, même si elle paraît en bon état.\n\nLe reste (modes, accessoires, astuces) vient après. Ces trois-là font 90 % du résultat.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "Si tu ne devais retenir que 3 choses sur la brosse à dents électrique, ce serait celles-là.\n\n1. 2 minutes, 2 fois par jour. Le minuteur s'arrête seul, tu n'as pas à compter.\n2. Zéro pression. Tu poses la tête, tu guides, les vibrations font le reste.\n3. Une tête tous les 3 mois, même si elle paraît en bon état.\n\nLe reste (modes, accessoires, astuces) vient après. Ces trois-là font 90 % du résultat.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-11-10h-1.jpg",
+    "caption": "Le mode Blanchiment d'une brosse à dents électrique, qu'est-ce qu'il fait exactement ?\n\nIl augmente le rythme des vibrations pour aider à décrocher les taches de surface : café, thé, vin rouge, tabac.\n\nCe qu'il ne fait pas : changer la teinte naturelle de ton émail. Ça, c'est le travail d'un dentiste, avec un vrai protocole.\n\nLe réflexe simple : un verre d'eau après le café, pour ne pas laisser le pigment s'installer.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #blanchiment #tachesdentaires #pulsecare",
+    "fb_message": "Le mode Blanchiment d'une brosse à dents électrique, qu'est-ce qu'il fait exactement ?\n\nIl augmente le rythme des vibrations pour aider à décrocher les taches de surface : café, thé, vin rouge, tabac.\n\nCe qu'il ne fait pas : changer la teinte naturelle de ton émail. Ça, c'est le travail d'un dentiste, avec un vrai protocole.\n\nLe réflexe simple : un verre d'eau après le café, pour ne pas laisser le pigment s'installer.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #blanchiment #tachesdentaires #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-11-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-11-10h-2.jpg"
       }
     ]
   }

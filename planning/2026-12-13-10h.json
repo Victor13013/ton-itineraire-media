@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-13-10h-1.jpg",
-    "caption": "Brosse à dents électrique et émail : vrai ou faux ?\n\nLa bonne réponse : ça dépend surtout de la pression. Avec une électrique, tu poses la tête et tu guides, sans frotter. Le mode Sensible est fait pour ça.\n\nRéponds en commentaire avant de lire la réponse.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #vraioufaux",
-    "fb_message": "Brosse à dents électrique et émail : vrai ou faux ?\n\nLa bonne réponse : ça dépend surtout de la pression. Avec une électrique, tu poses la tête et tu guides, sans frotter. Le mode Sensible est fait pour ça.\n\nRéponds en commentaire avant de lire la réponse.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #vraioufaux",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-13-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-13-10h-2.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique abîme-t-elle l'émail ? C'est la question qui revient le plus souvent.\n\nNon, à trois conditions.\n\n1. Tu n'appuies pas. La force est inutile : ce sont les vibrations qui nettoient.\n2. Tu commences en mode Sensible, une à deux semaines, le temps de prendre le geste.\n3. Tu utilises des poils souples.\n\nCe qui abîme l'émail, c'est la pression et les poils durs. Pas la technologie.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #email #ideerecue #pulsecare",
+    "fb_message": "Une brosse à dents électrique abîme-t-elle l'émail ? C'est la question qui revient le plus souvent.\n\nNon, à trois conditions.\n\n1. Tu n'appuies pas. La force est inutile : ce sont les vibrations qui nettoient.\n2. Tu commences en mode Sensible, une à deux semaines, le temps de prendre le geste.\n3. Tu utilises des poils souples.\n\nCe qui abîme l'émail, c'est la pression et les poils durs. Pas la technologie.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #email #ideerecue #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-13-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-13-10h-2.jpg"
       }
     ]
   }

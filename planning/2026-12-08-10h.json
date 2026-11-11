@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-08-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-08-10h-2.jpg"
-      }
-    ],
-    "caption": "Face au sucre, une brosse à dents électrique ne peut pas tout. Et le vrai problème n'est pas celui qu'on croit.\n\nCe n'est pas la quantité, c'est la fréquence. Chaque prise de sucre déclenche une attaque acide d'environ 20 minutes. Dix bonbons d'un coup : une attaque. Dix bonbons étalés sur la journée : dix attaques.\n\nTrois réflexes :\n→ regroupe le sucré en fin de repas\n→ bois un verre d'eau après\n→ attends 30 minutes avant de brosser si c'était acide\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #sucre #carie #pulsecare",
-    "fb_message": "Face au sucre, une brosse à dents électrique ne peut pas tout. Et le vrai problème n'est pas celui qu'on croit.\n\nCe n'est pas la quantité, c'est la fréquence. Chaque prise de sucre déclenche une attaque acide d'environ 20 minutes. Dix bonbons d'un coup : une attaque. Dix bonbons étalés sur la journée : dix attaques.\n\nTrois réflexes :\n→ regroupe le sucré en fin de repas\n→ bois un verre d'eau après\n→ attends 30 minutes avant de brosser si c'était acide\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #sucre #carie #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-08-10h-1.jpg",
+    "caption": "Après la gingivite vient la parodontite. C'est la raison pour laquelle on insiste autant sur la ligne des gencives avec une brosse à dents électrique.\n\nLe mécanisme : la plaque s'installe sous la gencive, l'inflammation s'étend, et elle finit par toucher l'os qui maintient la dent.\n\nLes signes à ne pas ignorer : saignements répétés, gencives qui reculent, dents qui bougent, mauvaise haleine persistante.\n\nUn contrôle chez le dentiste au moindre doute. Plus c'est pris tôt, plus c'est simple.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #parodontite #gencives #pulsecare",
+    "fb_message": "Après la gingivite vient la parodontite. C'est la raison pour laquelle on insiste autant sur la ligne des gencives avec une brosse à dents électrique.\n\nLe mécanisme : la plaque s'installe sous la gencive, l'inflammation s'étend, et elle finit par toucher l'os qui maintient la dent.\n\nLes signes à ne pas ignorer : saignements répétés, gencives qui reculent, dents qui bougent, mauvaise haleine persistante.\n\nUn contrôle chez le dentiste au moindre doute. Plus c'est pris tôt, plus c'est simple.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #parodontite #gencives #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-08-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-08-10h-2.jpg"
       }
     ]
   }

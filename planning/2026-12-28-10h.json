@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-28-10h-1.jpg",
-    "caption": "Brosse à dents électrique : la routine du matin pressé.\n\nUn bouton, 4 modes, un minuteur de 2 minutes. Tu brosses, elle compte.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #routinematin",
-    "fb_message": "Brosse à dents électrique : la routine du matin pressé.\n\nUn bouton, 4 modes, un minuteur de 2 minutes. Tu brosses, elle compte.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #routinematin",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-28-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-28-10h-2.jpg"
+      }
+    ],
+    "caption": "Brosse à dents électrique : ta routine du soir en 2 minutes.\n\n4 zones, 30 secondes chacune, le minuteur te guide. Enregistre le défi et coche tes cases pendant 7 jours.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #defi",
+    "fb_message": "Brosse à dents électrique : ta routine du soir en 2 minutes.\n\n4 zones, 30 secondes chacune, le minuteur te guide. Enregistre le défi et coche tes cases pendant 7 jours.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #defi",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-28-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-28-10h-2.jpg"
       }
     ]
   }

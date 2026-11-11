@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-10h-1.jpg",
-    "caption": "Souple, medium ou dure : quelle dureté de poils pour une brosse à dents électrique ?\n\nLe souple. C'est la recommandation quasi unanime des dentistes.\n\nUne brosse dure ne retire pas plus de plaque. Elle use l'émail, fait reculer les gencives et crée des zones sensibles au collet de la dent.\n\nLes têtes Pulse Care sont en poils souples, en ricin ou en nylon, sur une tête en bambou.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #poilssouples #gencivessensibles #pulsecare",
-    "fb_message": "Souple, medium ou dure : quelle dureté de poils pour une brosse à dents électrique ?\n\nLe souple. C'est la recommandation quasi unanime des dentistes.\n\nUne brosse dure ne retire pas plus de plaque. Elle use l'émail, fait reculer les gencives et crée des zones sensibles au collet de la dent.\n\nLes têtes Pulse Care sont en poils souples, en ricin ou en nylon, sur une tête en bambou.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #poilssouples #gencivessensibles #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-10h-2.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.\n\n1. Tu manges du sucre. Les bactéries de la plaque s'en nourrissent.\n2. Elles produisent de l'acide pendant une vingtaine de minutes.\n3. Cet acide dissout l'émail. Répété chaque jour, il finit par percer.\n\nC'est pour ça que grignoter toute la journée est pire que manger sucré d'un coup : chaque prise relance l'attaque acide.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
+    "fb_message": "Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.\n\n1. Tu manges du sucre. Les bactéries de la plaque s'en nourrissent.\n2. Elles produisent de l'acide pendant une vingtaine de minutes.\n3. Cet acide dissout l'émail. Répété chaque jour, il finit par percer.\n\nC'est pour ça que grignoter toute la journée est pire que manger sucré d'un coup : chaque prise relance l'attaque acide.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-15-10h-2.jpg"
       }
     ]
   }

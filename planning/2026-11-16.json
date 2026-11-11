@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-3.jpg"
-      }
-    ],
-    "caption": "« J'étais sceptique au début. » C'est ce qu'on lit le plus souvent dans les avis sur notre brosse à dents électrique.\n\nNormal. 59,90 €, une marque que tu ne connais pas, et une tête en bambou : ça interroge.\n\nCe qui revient juste après, dans les mêmes avis : la qualité de la matière, la prise en main, l'autonomie, le design.\n\nPour décider sans te tromper :\n→ 2 têtes, l'étui de voyage et le câble sont inclus\n→ 30 jours pour changer d'avis\n→ les avis clients sont publics sur la fiche produit\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "« J'étais sceptique au début. » C'est ce qu'on lit le plus souvent dans les avis sur notre brosse à dents électrique.\n\nNormal. 59,90 €, une marque que tu ne connais pas, et une tête en bambou : ça interroge.\n\nCe qui revient juste après, dans les mêmes avis : la qualité de la matière, la prise en main, l'autonomie, le design.\n\nPour décider sans te tromper :\n→ 2 têtes, l'étui de voyage et le câble sont inclus\n→ 30 jours pour changer d'avis\n→ les avis clients sont publics sur la fiche produit\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-1.jpg",
+    "caption": "Brosse à dents électrique : combien coûte une tête de rechange ?\n\nChez Pulse Care : 3,73 € la tête, en pack de 4 à 14,90 €. Une tête tous les 3 mois, donc un pack par an.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #budget",
+    "fb_message": "Brosse à dents électrique : combien coûte une tête de rechange ?\n\nChez Pulse Care : 3,73 € la tête, en pack de 4 à 14,90 €. Une tête tous les 3 mois, donc un pack par an.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #budget",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-16-3.jpg"
       }
     ]
   }

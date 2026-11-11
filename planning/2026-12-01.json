@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-3.jpg"
-      }
-    ],
-    "caption": "Ce que les clients disent de la brosse à dents électrique Pulse Care, dans leurs mots.\n\n« Le minuteur est hyper pratique. »\n« Elle est stylée, légère et tient hyper bien la charge. »\n« J'étais sceptique au début, mais après quelques semaines je suis convaincu. »\n\nLes avis sont publics et vérifiés sur la fiche produit. Y compris les critiques : un client trouve le manche un peu épais au début.\n\nOn préfère que tu les lises avant d'acheter.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "Ce que les clients disent de la brosse à dents électrique Pulse Care, dans leurs mots.\n\n« Le minuteur est hyper pratique. »\n« Elle est stylée, légère et tient hyper bien la charge. »\n« J'étais sceptique au début, mais après quelques semaines je suis convaincu. »\n\nLes avis sont publics et vérifiés sur la fiche produit. Y compris les critiques : un client trouve le manche un peu épais au début.\n\nOn préfère que tu les lises avant d'acheter.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-1.jpg",
+    "caption": "Brosse à dents électrique : on ne te dira pas qu'elle est parfaite.\n\nLe manche n'est pas en bambou et les têtes usées partent quand même à la poubelle. Mais les têtes sont en bambou, et tu ne jettes plus la brosse entière.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #honnete",
+    "fb_message": "Brosse à dents électrique : on ne te dira pas qu'elle est parfaite.\n\nLe manche n'est pas en bambou et les têtes usées partent quand même à la poubelle. Mais les têtes sont en bambou, et tu ne jettes plus la brosse entière.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #honnete",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-01-3.jpg"
       }
     ]
   }

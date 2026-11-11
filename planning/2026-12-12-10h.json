@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-10h-2.jpg"
-      }
-    ],
-    "caption": "Le récap du mois sur la brosse à dents électrique, en 5 points.\n\n1. Brosse avant le petit-déjeuner, ou 30 minutes après s'il y avait du jus ou du café\n2. Zéro pression : ce sont les vibrations qui nettoient\n3. Fil ou brossettes chaque soir : 40 % des surfaces sont entre les dents\n4. Une tête tous les 3 mois, et après une angine\n5. Un contrôle chez le dentiste par an\n\nEnregistre ce post, il résume tout le mois.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
-    "fb_message": "Le récap du mois sur la brosse à dents électrique, en 5 points.\n\n1. Brosse avant le petit-déjeuner, ou 30 minutes après s'il y avait du jus ou du café\n2. Zéro pression : ce sont les vibrations qui nettoient\n3. Fil ou brossettes chaque soir : 40 % des surfaces sont entre les dents\n4. Une tête tous les 3 mois, et après une angine\n5. Un contrôle chez le dentiste par an\n\nEnregistre ce post, il résume tout le mois.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #brosseadentsbambou #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-10h-1.jpg",
+    "caption": "Changer la tête d'une brosse à dents électrique Pulse Care prend une seconde.\n\nTu tires l'ancienne vers le haut. Tu enfonces la nouvelle jusqu'au clic. Il n'y a pas de vis, pas de sens à chercher.\n\nLes têtes sont en bambou, avec poils ricin ou nylon, et compatibles uniquement avec les manches Pulse Care.\n\nAstuce : note la date du changement dans ton téléphone, ou prends l'abonnement pour ne plus y penser.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare",
+    "fb_message": "Changer la tête d'une brosse à dents électrique Pulse Care prend une seconde.\n\nTu tires l'ancienne vers le haut. Tu enfonces la nouvelle jusqu'au clic. Il n'y a pas de vis, pas de sens à chercher.\n\nLes têtes sont en bambou, avec poils ricin ou nylon, et compatibles uniquement avec les manches Pulse Care.\n\nAstuce : note la date du changement dans ton téléphone, ou prends l'abonnement pour ne plus y penser.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #tetederechange #brosseadentsbambou #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-12-10h-2.jpg"
       }
     ]
   }

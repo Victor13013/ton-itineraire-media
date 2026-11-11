@@ -1,26 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-2.jpg"
-      }
-    ],
-    "caption": "Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.\n\n1. Tu manges du sucre. Les bactéries de la plaque s'en nourrissent.\n2. Elles produisent de l'acide pendant une vingtaine de minutes.\n3. Cet acide dissout l'émail. Répété chaque jour, il finit par percer.\n\nC'est pour ça que grignoter toute la journée est pire que manger sucré d'un coup : chaque prise relance l'attaque acide.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
-    "fb_message": "Une brosse à dents électrique sert surtout à casser ce cycle : voilà comment se forme une carie.\n\n1. Tu manges du sucre. Les bactéries de la plaque s'en nourrissent.\n2. Elles produisent de l'acide pendant une vingtaine de minutes.\n3. Cet acide dissout l'émail. Répété chaque jour, il finit par percer.\n\nC'est pour ça que grignoter toute la journée est pire que manger sucré d'un coup : chaque prise relance l'attaque acide.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #carie #hygienebuccodentaire #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-1.jpg",
+    "caption": "Brosse à dents électrique et gencives qui saignent : ce que tout le monde tape un jour.\n\nCe qui irrite, c'est surtout la pression. Avec le mode Sensible, tu poses la brosse et tu guides. Si les saignements durent, parles-en à ton dentiste.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #gencivessensibles",
+    "fb_message": "Brosse à dents électrique et gencives qui saignent : ce que tout le monde tape un jour.\n\nCe qui irrite, c'est surtout la pression. Avec le mode Sensible, tu poses la brosse et tu guides. Si les saignements durent, parles-en à ton dentiste.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #gencivessensibles",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-14-10h-2.jpg"
       }
     ]
   }

@@ -1,34 +1,13 @@
 {
   "post": {
-    "type": "carousel",
-    "media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-04-1.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-04-2.jpg"
-      },
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-04-3.jpg"
-      }
-    ],
-    "caption": "L'haleine du matin se joue la veille au soir. Une brosse à dents électrique aide, à condition de suivre l'ordre.\n\nLa nuit, tu produis moins de salive. Ce que tu laisses le soir reste 8 heures en place.\n\nL'ordre qui marche :\n→ fil dentaire ou brossettes\n→ 2 minutes de brossage, mode Nettoyage\n→ 3 passages doux sur la langue, c'est là que vivent beaucoup de bactéries\n→ plus rien à manger après\n\nLe minuteur de la Bamboo+ s'occupe du temps. Toi, tu suis l'ordre.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #haleinefraiche #routinedusoir #pulsecare",
-    "fb_message": "L'haleine du matin se joue la veille au soir. Une brosse à dents électrique aide, à condition de suivre l'ordre.\n\nLa nuit, tu produis moins de salive. Ce que tu laisses le soir reste 8 heures en place.\n\nL'ordre qui marche :\n→ fil dentaire ou brossettes\n→ 2 minutes de brossage, mode Nettoyage\n→ 3 passages doux sur la langue, c'est là que vivent beaucoup de bactéries\n→ plus rien à manger après\n\nLe minuteur de la Bamboo+ s'occupe du temps. Toi, tu suis l'ordre.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #haleinefraiche #routinedusoir #pulsecare",
+    "type": "photo",
+    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-04-1.jpg",
+    "caption": "Brosse à dents électrique de voyage : ta trousse avant, ta trousse maintenant.\n\nPas de socle, pas d'adaptateur : la brosse tient 30 jours dans son étui.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #voyage",
+    "fb_message": "Brosse à dents électrique de voyage : ta trousse avant, ta trousse maintenant.\n\nPas de socle, pas d'adaptateur : la brosse tient 30 jours dans son étui.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #voyage",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-04-1.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-04-2.jpg"
-      },
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-04-3.jpg"
       }
     ]
   }

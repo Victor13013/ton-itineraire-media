@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-10h-1.jpg",
-    "caption": "Entre deux passages de brosse à dents électrique, c'est la salive qui protège tes dents.\n\nUn adulte en produit environ 1 à 1,5 litre par jour. Elle rince les résidus, neutralise les acides et apporte des minéraux à l'émail.\n\nLa nuit, la production chute. C'est pour ça que le brossage du soir compte autant, et qu'il vaut mieux ne rien manger après.\n\nSi tu as souvent la bouche sèche, bois de l'eau régulièrement et parles-en à ton dentiste.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #salive #hygienebuccodentaire #pulsecare",
-    "fb_message": "Entre deux passages de brosse à dents électrique, c'est la salive qui protège tes dents.\n\nUn adulte en produit environ 1 à 1,5 litre par jour. Elle rince les résidus, neutralise les acides et apporte des minéraux à l'émail.\n\nLa nuit, la production chute. C'est pour ça que le brossage du soir compte autant, et qu'il vaut mieux ne rien manger après.\n\nSi tu as souvent la bouche sèche, bois de l'eau régulièrement et parles-en à ton dentiste.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #salive #hygienebuccodentaire #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-10h-2.jpg"
+      }
+    ],
+    "caption": "Partir avec sa brosse à dents électrique sans emporter le chargeur, c'est possible avec 30 jours d'autonomie.\n\nDans la trousse :\n→ l'étui de voyage en bambou, qui protège la tête\n→ le manche, chargé avant de partir\n→ une tête d'avance si le séjour est long\n\nPetit rappel : à l'arrivée, sors la brosse de l'étui pour qu'elle sèche. L'étui sert au transport, pas au rangement.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #voyage #troussedetoilette #pulsecare",
+    "fb_message": "Partir avec sa brosse à dents électrique sans emporter le chargeur, c'est possible avec 30 jours d'autonomie.\n\nDans la trousse :\n→ l'étui de voyage en bambou, qui protège la tête\n→ le manche, chargé avant de partir\n→ une tête d'avance si le séjour est long\n\nPetit rappel : à l'arrivée, sors la brosse de l'étui pour qu'elle sèche. L'étui sert au transport, pas au rangement.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #voyage #troussedetoilette #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-07-10h-2.jpg"
       }
     ]
   }

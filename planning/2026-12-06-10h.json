@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-1.jpg",
-    "caption": "Une brosse à dents électrique, ça coûte combien par an ? Faisons le calcul pour la Bamboo+.\n\n→ La brosse : 59,90 €, avec 2 têtes incluses. Le manche se garde des années.\n→ Les têtes : 14,90 € le pack de 4, soit une année complète.\n\nLa première année, tu paies le manche. Les suivantes, ce sont uniquement les têtes.\n\nC'est précisément le principe : le durable d'un côté, le consommable de l'autre.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
-    "fb_message": "Une brosse à dents électrique, ça coûte combien par an ? Faisons le calcul pour la Bamboo+.\n\n→ La brosse : 59,90 €, avec 2 têtes incluses. Le manche se garde des années.\n→ Les têtes : 14,90 € le pack de 4, soit une année complète.\n\nLa première année, tu paies le manche. Les suivantes, ce sont uniquement les têtes.\n\nC'est précisément le principe : le durable d'un côté, le consommable de l'autre.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #budget #tetederechange #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-2.jpg"
+      }
+    ],
+    "caption": "Même la meilleure brosse à dents électrique ne nettoie qu'environ 60 % de la surface des dents. Les 40 % restants sont entre les dents.\n\nD'où le fil dentaire ou les brossettes, une fois par jour, le soir de préférence.\n\n→ Fil : pour les espaces serrés, très peu cher\n→ Brossettes : pour les espaces plus larges, plus rapides. Demande la taille à ton dentiste\n\nTu passes le fil combien de fois par semaine ? Sois honnête.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #fildentaire #brossettes #pulsecare",
+    "fb_message": "Même la meilleure brosse à dents électrique ne nettoie qu'environ 60 % de la surface des dents. Les 40 % restants sont entre les dents.\n\nD'où le fil dentaire ou les brossettes, une fois par jour, le soir de préférence.\n\n→ Fil : pour les espaces serrés, très peu cher\n→ Brossettes : pour les espaces plus larges, plus rapides. Demande la taille à ton dentiste\n\nTu passes le fil combien de fois par semaine ? Sois honnête.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #fildentaire #brossettes #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-06-10h-2.jpg"
       }
     ]
   }

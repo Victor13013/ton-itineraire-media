@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-10h-1.jpg",
-    "caption": "Brosse à dents électrique : 0,16 € par jour la première année.\n\n59,90 € divisé par 365 jours. Ensuite, tu ne changes que la tête : 14,90 € le pack de 4, soit un an de brossage.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #budget",
-    "fb_message": "Brosse à dents électrique : 0,16 € par jour la première année.\n\n59,90 € divisé par 365 jours. Ensuite, tu ne changes que la tête : 14,90 € le pack de 4, soit un an de brossage.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #hygienebuccodentaire #pulsecare #budget",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-10h-2.jpg"
+      }
+    ],
+    "caption": "Face au sucre, une brosse à dents électrique ne peut pas tout. Et le vrai problème n'est pas celui qu'on croit.\n\nCe n'est pas la quantité, c'est la fréquence. Chaque prise de sucre déclenche une attaque acide d'environ 20 minutes. Dix bonbons d'un coup : une attaque. Dix bonbons étalés sur la journée : dix attaques.\n\nTrois réflexes :\n→ regroupe le sucré en fin de repas\n→ bois un verre d'eau après\n→ attends 30 minutes avant de brosser si c'était acide\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #sucre #carie #pulsecare",
+    "fb_message": "Face au sucre, une brosse à dents électrique ne peut pas tout. Et le vrai problème n'est pas celui qu'on croit.\n\nCe n'est pas la quantité, c'est la fréquence. Chaque prise de sucre déclenche une attaque acide d'environ 20 minutes. Dix bonbons d'un coup : une attaque. Dix bonbons étalés sur la journée : dix attaques.\n\nTrois réflexes :\n→ regroupe le sucré en fin de repas\n→ bois un verre d'eau après\n→ attends 30 minutes avant de brosser si c'était acide\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #sucre #carie #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-12-16-10h-2.jpg"
       }
     ]
   }

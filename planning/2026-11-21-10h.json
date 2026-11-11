@@ -1,13 +1,26 @@
 {
   "post": {
-    "type": "photo",
-    "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-10h-1.jpg",
-    "caption": "Tes gencives saignent quand tu passes la brosse à dents électrique ? Ce n'est pas un signe que tu brosses bien.\n\nC'est souvent le premier signe d'une gingivite : une inflammation due à la plaque accumulée à la ligne des gencives.\n\nCe qu'on fait :\n→ on ne stoppe pas le brossage de la zone, on le fait en douceur\n→ mode Sensible pendant quelques jours\n→ fil ou brossettes tous les jours\n→ et un avis du dentiste si ça dure plus d'une semaine\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #gingivite #gencives #pulsecare",
-    "fb_message": "Tes gencives saignent quand tu passes la brosse à dents électrique ? Ce n'est pas un signe que tu brosses bien.\n\nC'est souvent le premier signe d'une gingivite : une inflammation due à la plaque accumulée à la ligne des gencives.\n\nCe qu'on fait :\n→ on ne stoppe pas le brossage de la zone, on le fait en douceur\n→ mode Sensible pendant quelques jours\n→ fil ou brossettes tous les jours\n→ et un avis du dentiste si ça dure plus d'une semaine\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #gingivite #gencives #pulsecare",
+    "type": "carousel",
+    "media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-10h-1.jpg"
+      },
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-10h-2.jpg"
+      }
+    ],
+    "caption": "Une brosse à dents électrique ne règle pas tout : 4 causes fréquentes de mauvaise haleine.\n\n1. La langue. Elle héberge une bonne partie des bactéries responsables.\n2. La bouche sèche. Moins de salive, c'est moins de nettoyage naturel.\n3. Les espaces entre les dents, là où aucune brosse ne passe. D'où le fil ou les brossettes.\n4. Le tabac et le café, qui s'ajoutent au reste.\n\nLe geste en plus : 3 ou 4 passages doux sur la langue, de l'arrière vers l'avant.\n\nSwipe pour tout voir.\n\nLien en bio pour voir la gamme Pulse Care.\n\n#brosseadentselectrique #haleinefraiche #hygienebuccodentaire #pulsecare",
+    "fb_message": "Une brosse à dents électrique ne règle pas tout : 4 causes fréquentes de mauvaise haleine.\n\n1. La langue. Elle héberge une bonne partie des bactéries responsables.\n2. La bouche sèche. Moins de salive, c'est moins de nettoyage naturel.\n3. Les espaces entre les dents, là où aucune brosse ne passe. D'où le fil ou les brossettes.\n4. Le tabac et le café, qui s'ajoutent au reste.\n\nLe geste en plus : 3 ou 4 passages doux sur la langue, de l'arrière vers l'avant.\n\nSwipe pour tout voir.\n\nToute la gamme ici → https://pulsecarefrance.com\n\n#brosseadentselectrique #haleinefraiche #hygienebuccodentaire #pulsecare",
     "fb_photos": [
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-10h-1.jpg"
+      },
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/Victor13013/ton-itineraire-media/pulse-care/media/posts/2026-11-21-10h-2.jpg"
       }
     ]
   }
