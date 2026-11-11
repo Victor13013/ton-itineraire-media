@@ -20,6 +20,7 @@ def get(url, timeout=40):
 
 idx_path = os.path.join(OUT, "index.json")
 found = json.load(open(idx_path)) if os.path.exists(idx_path) else {}
+found = {} if found.get("_v") != 2 else found
 wanted = {slug(v["music"]) for v in VIDEOS if v.get("music")}
 if not all(os.path.exists(os.path.join(OUT, w + ".mp3")) for w in wanted):
     for page in PAGES:
@@ -28,10 +29,10 @@ if not all(os.path.exists(os.path.join(OUT, w + ".mp3")) for w in wanted):
         mp3s = [(m.start(), m.group(0)) for m in re.finditer(r"https://assets\.mixkit\.co/[^\"' >]+?\.mp3", html)]
         titles = [(m.start(), re.sub(r"\s+", " ", m.group(1)).strip()) for m in re.finditer(r"__title[^>]*>\s*(?:<a[^>]*>)?\s*([^<]{2,60}?)\s*<", html)]
         for pos, url in mp3s:
-            before = [t for p_, t in titles if p_ < pos]
-            if before: found.setdefault(slug(before[-1]), url)
+            after = [t for p_, t in titles if p_ > pos]   # dans chaque carte, le titre vient après le lecteur
+            if after: found.setdefault(slug(after[0]), url)
         print("musique :", page, len(mp3s), "mp3,", len(titles), "titres")
-    json.dump(found, open(idx_path, "w"), indent=1, sort_keys=True)
+    found["_v"] = 2; json.dump(found, open(idx_path, "w"), indent=1, sort_keys=True)
 for w in sorted(wanted):
     out = os.path.join(OUT, w + ".mp3")
     if os.path.exists(out): continue
