@@ -269,7 +269,7 @@ Pour les plus jeunes, demande à ton dentiste le modèle adapté à leur âge.
 
 # ── 6 · ANGLE : après le rendez-vous chez le dentiste
 dict(date="x", kind="photo", slides=[
-  dict(tpl="fear", kicker="Chez le dentiste", fear="« Il faudrait mieux brosser. » D'accord, mais comment ?", kicker2="Ce qui s'en charge", answer="La *technique*, c'est la brosse qui l'applique", sub="41 000 vibrations par minute, un minuteur qui découpe les 4 zones, un mode Sensible. Toi, tu guides."),
+  dict(tpl="fear", kicker="Chez le dentiste", fear="Il faudrait mieux brosser. D'accord, mais comment ?", kicker2="Ce qui s'en charge", answer="La *technique*, c'est la brosse qui l'applique", sub="41 000 vibrations par minute, un minuteur qui découpe les 4 zones, un mode Sensible. Toi, tu guides."),
 ],
 caption="""Ton dentiste t'a dit de mieux brosser. Une brosse à dents électrique sonique fait une bonne partie du travail à ta place.
 

@@ -1835,25 +1835,37 @@ def theme_on(base, c):
 
 # ── Crainte / réponse : deux blocs pleine largeur, rien d'autre
 def x_fear(c):
-    base = Image.new("RGBA", (W, H), FOREST); cut = int(H * 0.47)
-    low = rich_bg(MINTV if (c.get("da") != "c") else SANDV, c.get("_n", 0)).convert("RGBA")
-    base.alpha_composite(mesh_bg("forest", c.get("_n", 0)).convert("RGBA"), (0, 0))
+    n = c.get("_n", 0); da = c.get("da") or "a"; cut = int(H * 0.47)
+    # Haut : la crainte, sur fond sombre ou saturé. Bas : la réponse, sur fond clair.
+    if da == "d":
+        top, low, rule = night_bg(n).convert("RGBA"), rich_bg(MINTV, n).convert("RGBA"), LIME
+        top_ink, k1, k2 = CREAM, LIME, FOREST
+    elif da == "e":
+        bg = POPS[n % len(POPS)]; dark = bg == CORAL
+        top = pop_bg(bg, n).convert("RGBA"); low = Image.new("RGB", (W, H), CREAM).convert("RGBA")
+        rule = INKV if not dark else CREAM
+        top_ink, k1, k2 = (CREAM if dark else INKV), (CREAM if dark else INKV), FOREST
+    else:
+        top = mesh_bg("forest", n).convert("RGBA")
+        low = rich_bg(SANDV if da == "c" else MINTV, n).convert("RGBA")
+        rule, top_ink, k1, k2 = LIME, CREAM, LIME, FOREST
+    base = Image.new("RGBA", (W, H), FOREST); base.alpha_composite(top, (0, 0))
     base.paste(low.crop((0, cut, W, H)), (0, cut))
-    d = ImageDraw.Draw(base)
-    d.line([0, cut, W, cut], fill=LIME, width=5)
-    f0 = BOLD(28); f, tl = sans_fit("« " + c["fear"] + " »", BLACK, W - 2 * M, 72, 42, 4)
-    blk = 56 + f.size * 1.06 * len(tl)
-    y = max(104, (cut - blk) / 2)
-    d.text((M, y), (c.get("kicker") or "TU TE DIS").upper(), font=f0, fill=LIME); y += 56
+    d = ImageDraw.Draw(base); d.line([0, cut, W, cut], fill=rule, width=5)
+    q = c["fear"] if c["fear"].lstrip().startswith("«") else "« " + c["fear"] + " »"
+    f0 = BOLD(28); f, tl = sans_fit(q, BLACK, W - 2 * M, 72, 42, 4)
+    y = max(104, (cut - (56 + f.size * 1.06 * len(tl))) / 2)
+    d.text((M, y), (c.get("kicker") or "TU TE DIS").upper(), font=f0, fill=k1); y += 56
     for ln in tl:
-        d.text((M, y), " ".join(k[0] for k in ln), font=f, fill=CREAM); y += f.size * 1.06
+        d.text((M, y), " ".join(k[0] for k in ln), font=f, fill=top_ink); y += f.size * 1.06
     # bloc du bas mesuré d'abord, pour le centrer dans sa bande
-    t = theme_on(base, c); probe = Th(); probe.__dict__.update(t.__dict__); probe.base = base.copy()
+    t = theme_on(base, c); t.dark = False; t.ink = INKV; t.sub = GREYV; t.acc = FOREST; t.acc_ink = CREAM
+    probe = Th(); probe.__dict__.update(t.__dict__); probe.base = base.copy()
     end = th_title(probe, M, cut + 118, c["answer"], start=68, minsize=40, maxlines=3)
     f2 = IM(30); subl = wrap(c["sub"], f2, W - 2 * M - 40) if c.get("sub") else []
     end += 12 + f2.size * 1.34 * len(subl)
     yy = cut + 60 + max(0, (H - 120 - end) * 0.45)
-    f1 = BOLD(28); d.text((M, yy), (c.get("kicker2") or "EN VRAI").upper(), font=f1, fill=FOREST); yy += 54
+    d.text((M, yy), (c.get("kicker2") or "EN VRAI").upper(), font=BOLD(28), fill=k2); yy += 54
     yy = th_title(t, M, yy, c["answer"], start=68, minsize=40, maxlines=3)
     for ln in subl:
         d.text((M, yy + 12), ln, font=f2, fill=GREYV); yy += f2.size * 1.34
