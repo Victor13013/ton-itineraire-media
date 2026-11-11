@@ -1723,7 +1723,8 @@ def x_callout(c):
         pw, ph = pw_max, ph_max; rounded_photo(base, load(c["img"]), (px, py, px + pw, py + ph), 36, c.get("fy", 0.45))
     d = ImageDraw.Draw(base)
     # rappels : (libellé, fraction horizontale, fraction verticale du produit)
-    notes = c.get("notes", [])[:2]; tx = px + pw + 54; f = IM(30)
+    # triés par hauteur d'ancrage : les traits de rappel ne se croisent jamais
+    notes = sorted(c.get("notes", [])[:2], key=lambda n: n[2]); tx = px + pw + 54; f = IM(30)
     rows = [py + ph * k for k in ([0.26] if len(notes) == 1 else [0.16, 0.66])]
     for (lab, fx, fy), ry in zip(notes, rows):
         ax, ay = px + pw * fx, py + ph * fy

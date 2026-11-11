@@ -235,7 +235,7 @@ Le tartre irrite la gencive et accroche encore plus de plaque. D'où le détartr
 
 # ───────────────────────── 12 · 22/11 · ce que tu jettes
 dict(date="2026-11-22", kind="carousel", da="c", slides=[
-  dict(tpl="callout", img=s("tete_main2"), kicker="Têtes Pulse Care", notes=[("Poils en ricin, fibre végétale", 0.52, 0.2), ("Corps en bambou", 0.48, 0.66)], strike=("toute la brosse", "la tête"), title="Tous les 3 mois, *tu changes ça*", sub="Le manche, lui, reste. C'est la seule pièce qui part à la poubelle.", swipe=True),
+  dict(tpl="callout", img=s("tete_main2"), kicker="Têtes Pulse Care", notes=[("Poils en ricin, fibre végétale", 0.34, 0.29), ("Corps en bambou", 0.23, 0.56)], strike=("toute la brosse", "la tête"), title="Tous les 3 mois, *tu changes ça*", sub="Le manche, lui, reste. C'est la seule pièce qui part à la poubelle.", swipe=True),
   dict(tpl="versus", kicker="La différence", title="Brosse manuelle *ou Pulse Care*", left=("Brosse manuelle", ["Toute la brosse part", "Pas de minuteur", "Tu rachètes tout tous les 3 mois"]), right=("Pulse Care", ["Seule la tête se change", "Minuteur 2 min intégré", "Le manche, tu le gardes"])),
 ],
 caption="""Avec une brosse manuelle, tous les 3 mois, c'est l'objet entier qui part à la poubelle. Avec une brosse à dents électrique Pulse Care, c'est juste la tête.
