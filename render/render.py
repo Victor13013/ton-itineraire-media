@@ -2734,7 +2734,7 @@ class Scene:
     def frame(self, t):
         return getattr(self, "frame_" + self.c["t"])(t)
 
-SCENE_V = "8"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
+SCENE_V = "9"   # à incrémenter quand le dessin des scènes change : force le re-rendu des vidéos
 
 def audio_len(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
@@ -2774,7 +2774,7 @@ def render_reel(scenes_spec, out, audio=None, pal=None, music=None):
         fo = max(0.0, total - 1.4)
         aud = [*vin, "-stream_loop", "-1", "-i", music, "-filter_complex",
                f"[1:a]aresample=48000,apad[v];[2:a]aresample=48000,volume={MUSIC_VOL if audio else 0.5},afade=t=in:d=0.6,afade=t=out:st={fo:.2f}:d=1.4[m];"
-               f"[v][m]amix=inputs=2:duration=first:normalize=0,atrim=0:{total:.2f}[a]", "-map", "0:v", "-map", "[a]"]
+               f"[v][m]amix=inputs=2:duration=first:normalize=0,atrim=0:{total:.2f},loudnorm=I=-14:TP=-1.5:LRA=11[a]", "-map", "0:v", "-map", "[a]"]
     else:
         aud = ["-i", audio, "-af", "apad"] if audio else ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo"]
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{RW}x{RH}", "-r", str(FPS), "-i", "-",
